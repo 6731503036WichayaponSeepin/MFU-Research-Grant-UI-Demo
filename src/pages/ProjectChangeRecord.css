@@ -1,0 +1,35 @@
+.pcr-page { max-width: 1500px; margin: auto; }
+.pcr-eyebrow { color: var(--primary); font-size: 10px; letter-spacing: .14em; font-weight: 700; }
+.pcr-notice { display:flex; gap:12px; padding:16px 20px; background:#eef3f8; color:#475d76; border:1px solid #dce6f0; border-radius:12px; font-size:13px; margin-bottom:22px; }
+.pcr-project-select { display:flex; flex-direction:column; gap:8px; font-size:13px; font-weight:600; margin-bottom:22px; }
+.pcr-page input, .pcr-page select, .pcr-page textarea { width:100%; min-width:0; border:1px solid #d5dce5; border-radius:9px; padding:11px 12px; font:inherit; background:white; color:var(--black); min-height:44px; }
+.pcr-summary-top { background:#faf2f4; padding:24px; }
+.pcr-summary h2 { font-size:22px; margin:0 0 18px; overflow-wrap:anywhere; }
+.pcr-summary .section-label { margin-bottom:12px; }
+.pcr-facts { display:grid; grid-template-columns:1.3fr 1.5fr 1fr; gap:24px; padding:22px 24px; }
+.pcr-facts div { display:flex; flex-direction:column; gap:8px; font-size:13px; overflow-wrap:anywhere; }
+.pcr-facts span { color:var(--muted); font-size:12px; }
+.pcr-layout { display:grid; grid-template-columns:minmax(0, 1fr) 350px; gap:22px; align-items:start; }
+.pcr-history .panel-heading h2 { display:flex; align-items:center; gap:8px; }
+.pcr-filters { display:grid; grid-template-columns:1.5fr 1fr; gap:12px; padding:0 22px 22px; }
+.pcr-filters label { display:flex; flex-direction:column; gap:8px; font-size:12px; }
+.pcr-filters label span { display:flex; align-items:center; gap:6px; }
+.pcr-history td { vertical-align:top; overflow-wrap:anywhere; }
+.pcr-history td small { display:block; font-size:11px; margin-top:8px; color:var(--muted); }
+.pcr-history td p { margin:10px 0; font-weight:400; }
+.pcr-history a { color:#2866a0; display:inline-flex; align-items:center; gap:4px; font-size:12px; }
+.pcr-history summary { color:var(--primary); font-size:12px; cursor:pointer; }
+.pcr-form { padding:24px; }
+.pcr-form h2 { font-size:19px; margin:0 0 8px; }
+.pcr-form fieldset { padding:0; margin:20px 0 0; border:0; min-width:0; }
+.pcr-form label { display:flex; flex-direction:column; gap:8px; margin-bottom:16px; font-size:13px; font-weight:600; }
+.pcr-form textarea { resize:vertical; }
+.pcr-attachment { padding:16px; border:1px dashed #c5a1aa; border-radius:12px; background:#fcf9fa; }
+.pcr-attachment input { font-size:11px; padding:6px; background:transparent; border:0; }
+.pcr-save-note { color:var(--muted); font-size:12px; line-height:1.8; }
+.pcr-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+.pcr-actions button { flex:1; }
+.pcr-success { background:#eaf6ef; color:#246442; padding:16px 20px; border-radius:12px; }
+.pcr-empty { text-align:center; padding:60px 24px; color:var(--muted); }
+@media (max-width:1200px) { .pcr-layout { grid-template-columns: minmax(0,1fr); } .pcr-form { max-width:100%; } }
+@media (max-width:600px) { .pcr-facts, .pcr-filters { grid-template-columns:1fr; } .pcr-summary-top, .pcr-facts, .pcr-form { padding:20px; } .pcr-summary h2 { font-size:19px; } }

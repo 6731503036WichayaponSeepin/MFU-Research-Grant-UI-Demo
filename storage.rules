@@ -1,0 +1,28 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function profile() { return firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data; }
+    function member(workspace) { return request.auth != null && profile().active == true && profile().workspace == workspace; }
+    function ticket(id) { return firestore.get(/databases/(default)/documents/uploadTickets/$(id)).data; }
+    function project(workspace,id) { return firestore.get(/databases/(default)/documents/workspaces/$(workspace)/projects/$(id)).data; }
+    function canRead(workspace,id,t) {
+      return member(workspace) && (profile().role == 'staff' ||
+        request.auth.uid == t.uploaderUid && (profile().role != 'reviewer' || request.auth.uid in project(workspace,id).reviewerUids) ||
+        profile().role == 'researcher' && project(workspace,id).ownerUid == request.auth.uid &&
+          (t.purpose != 'feedback' || project(workspace,id).closure.feedbackReleasedAt is string) ||
+        profile().role == 'reviewer' && request.auth.uid in project(workspace,id).reviewerUids && t.purpose == 'research');
+    }
+    match /workspaces/{workspace}/projects/{projectId}/{uploaderUid}/{ticketId} {
+      allow get: if canRead(workspace,projectId,ticket(ticketId));
+      allow create: if resource == null && member(workspace) && request.auth.uid == uploaderUid
+        && ticket(ticketId).uploaderUid == request.auth.uid
+        && ticket(ticketId).workspace == workspace && ticket(ticketId).projectId == projectId
+        && ticket(ticketId).expiresAt > request.time.toMillis()
+        && request.resource.size == ticket(ticketId).size && request.resource.size <= 2 * 1024 * 1024
+        && request.resource.contentType == 'application/pdf'
+        && !request.resource.metadata.keys().hasAny(['firebaseStorageDownloadTokens']);
+      allow update, delete: if false;
+    }
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}

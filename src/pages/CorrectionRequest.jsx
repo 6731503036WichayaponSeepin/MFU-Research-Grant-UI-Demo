@@ -1,0 +1,11 @@
+import { useFormDraft } from '../utils/useFormDraft'
+import { useState } from 'react'
+import { correctionAction } from '../utils/demoCorrection'
+const states={pending:'รอเจ้าหน้าที่พิจารณา',approved:'อนุญาตให้แก้ไข',rejected:'ไม่อนุญาต',saved:'บันทึกฉบับแก้ไขแล้ว'}
+export default function CorrectionRequest({project,currentUser,onEdit,onApproved}) {
+  const [note,setNote,markSaved]=useFormDraft('correction-'+currentUser.role+'-'+project.id+'-'+(project.correction?.updatedAt||project.correction?.requestedAt||''),'')
+  const [message,setMessage]=useState(''),[busy,setBusy]=useState(false)
+  const c=project.correction||{},staff=currentUser.role==='staff'
+  async function act(action){setBusy(true);try{await correctionAction(project.id,action,currentUser,note);setMessage('บันทึกข้อมูลเดโมแล้ว สามารถเปลี่ยนบทบาทเพื่อดูผลได้');markSaved('');if(action==='approved')onApproved?.()}catch(e){setMessage(e.message)}finally{setBusy(false)}}
+  return <section className="panel focused-card correction-page"><h2>{project.title}</h2><p className="status-badge">{states[c.state]||'ยังไม่มีคำขอ'}</p><dl className="focused-facts"><div><dt>เหตุผลที่ขอแก้ไข</dt><dd>{c.reason||'ยังไม่ได้ระบุ'}</dd></div><div><dt>ความคิดเห็นเจ้าหน้าที่</dt><dd>{c.comment||'ยังไม่มีความคิดเห็น'}</dd></div></dl><p>ข้อเสนอที่ผ่านการรับรองจะแก้ไขได้หลังเจ้าหน้าที่อนุมัติคำขอ โดยยังคงประวัติและสถานะโครงการเดิม</p>{(staff&&c.state==='pending'||!staff&&!['pending','approved'].includes(c.state))&&<form onSubmit={e=>{e.preventDefault();act(staff?'approved':'request')}}><label>เหตุผล / ความคิดเห็น<textarea required rows={4} value={note} onChange={e=>setNote(e.target.value)}/></label><div className="focused-actions"><button disabled={busy} className="primary">{staff?'อนุมัติคำขอแก้ไข':'ส่งคำขอแก้ไขข้อมูล'}</button>{staff&&<button type="button" disabled={busy} className="outline-button" onClick={()=>act('rejected')}>ไม่อนุมัติคำขอ</button>}</div></form>}{!staff&&c.state==='approved'&&<button className="primary" onClick={()=>onEdit(project)}>แก้ไขแบบฟอร์ม RS-1 ที่ได้รับอนุญาต →</button>}{!staff&&c.state==='pending'&&<p role="status">ส่งคำขอแล้ว กรุณารอเจ้าหน้าที่พิจารณา</p>}{message&&<p role="status">{message}</p>}</section>
+}

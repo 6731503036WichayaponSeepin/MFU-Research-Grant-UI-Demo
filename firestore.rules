@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function profile() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
+    function member(workspace) { return signedIn() && profile().active == true && profile().workspace == workspace; }
+    function staff(workspace) { return member(workspace) && profile().role == 'staff'; }
+    function projectAccess(workspace, projectId) {
+      let p = get(/databases/$(database)/documents/workspaces/$(workspace)/projects/$(projectId)).data;
+      return member(workspace) && (profile().role == 'staff' ||
+        profile().role == 'researcher' && p.ownerUid == request.auth.uid ||
+        profile().role == 'reviewer' && request.auth.uid in p.reviewerUids);
+    }
+    match /users/{uid} {
+      allow get: if signedIn() && (uid == request.auth.uid || staff(resource.data.workspace));
+      allow list: if staff(resource.data.workspace);
+      allow write: if false;
+    }
+    match /workspaces/{workspace}/projects/{projectId} {
+      allow read: if staff(workspace);
+      allow write: if false;
+      match /activity/{eventId} { allow read: if staff(workspace); allow write: if false; }
+    }
+    match /workspaces/{workspace}/users/{uid}/projects/{projectId} {
+      allow read: if member(workspace) && request.auth.uid == uid && resource.data.viewerRole == profile().role;
+      allow write: if false;
+    }
+    match /workspaces/{workspace}/users/{uid}/notifications/{notificationId} {
+      allow read: if member(workspace) && request.auth.uid == uid;
+      allow update: if member(workspace) && request.auth.uid == uid && projectAccess(workspace,resource.data.projectId)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['readAt','isRead'])
+        && request.resource.data.readAt == request.time
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['isRead']) || request.resource.data.isRead == true);
+      allow create, delete: if false;
+    }
+    match /projects/{id} {
+      allow read: if member(resource.data.workspace) && (staff(resource.data.workspace) || resource.data.researcherId == request.auth.uid);
+      allow write: if false;
+    }
+    match /projectDocuments/{id} {
+      allow read: if staff(resource.data.workspace);
+      allow write: if false;
+    }
+    match /reviewAssignments/{id} {
+      allow read: if member(resource.data.workspace) && (staff(resource.data.workspace) || resource.data.reviewerId == request.auth.uid) && projectAccess(resource.data.workspace,resource.data.projectId);
+      allow write: if false;
+    }
+    match /reviews/{id} {
+      allow read: if member(resource.data.workspace) && projectAccess(resource.data.workspace,resource.data.projectId) && (staff(resource.data.workspace) || resource.data.reviewerId == request.auth.uid || profile().role == 'researcher' && resource.data.released);
+      allow write: if false;
+    }
+    match /activityLogs/{id} {
+      allow read: if staff(resource.data.workspace);
+      allow write: if false;
+    }
+    // Includes legacy demoProjects and private upload tickets. No public access.
+    match /{document=**} { allow read, write: if false; }
+  }
+}

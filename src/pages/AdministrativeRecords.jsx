@@ -1,0 +1,33 @@
+import { useFormDraft } from '../utils/useFormDraft'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { ClipboardCheck, Save } from 'lucide-react'
+import { useLiveProjects } from '../utils/useLiveProjects'
+import { recordAdministrativeResult } from '../utils/administrativeRecords'
+import { getProjects, updateProject } from '../utils/projectStorage'
+import { statusLabel } from '../data/statuses'
+const stages = ['unit_review','eoffice_pending','committee_review','active']
+export default function AdministrativeRecords({currentUser,onViewProject,projectId,focused=false}) {
+ const {i18n}=useTranslation(),th=i18n.language!=='en',t=(a,b)=>th?a:b
+ const [projects]=useLiveProjects(getProjects),[id,setId]=useState(projectId||'')
+ const [message,setMessage]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false)
+ const project=projects.find(p=>p.id===id)
+ return <div className="admin-page"><div className="page-heading"><div><span className="section-kicker">RESEARCH ADMINISTRATION</span><h1>{t('รับเอกสารและบันทึกผล','External records & decisions')}</h1><p>{t('ติดตามผลต้นสังกัด รับข้อเสนอ และบันทึกการรับรองในที่เดียว','Track unit decisions, receive proposals and record certification.')}</p></div><ClipboardCheck size={32}/></div><div className={focused?"admin-focused":"admin-layout"}>
+ {!focused&&<section className="panel admin-projects"><div className="panel-heading"><h2>{t('โครงการที่รอดำเนินการ','Pending projects')}</h2></div><div className="admin-project-list">{projects.filter(p=>stages.includes(p.status)||p.id===id).map(p=><button className={p.id===id?'selected':''} key={p.id} onClick={()=>{setId(p.id);setMessage('');setError('')}}><small>{p.id}</small><strong>{th?p.title:p.titleEn||p.title}</strong><span>{statusLabel(p.status,i18n.language)}</span></button>)}</div></section>}
+ <section className="panel cl-card cl-form">{!project?<div className="admin-empty"><ClipboardCheck size={40}/><h2>{t('เลือกโครงการเพื่อเริ่มต้น','Choose a project to begin')}</h2><p>{t('แบบฟอร์มจะแสดงข้อมูลตามขั้นตอนปัจจุบัน','The form adapts to the current workflow stage.')}</p></div>:<><h2>{statusLabel(project.status,i18n.language)}</h2><button className="text-button" onClick={()=>onViewProject(id)}>{t('ดูรายละเอียดโครงการ','View project details')}</button><p className="workflow-hint">{t('บันทึกข้อมูลจากเอกสารภายนอกที่ได้รับ การส่งหนังสือผ่าน e-Office ดำเนินการแยกจากระบบนี้','Record received documents. e-Office dispatch takes place outside this system.')}</p>
+ {stages.includes(project.status)&&<RecordForm key={id+project.status} project={project} currentUser={currentUser} busy={busy} onSave={async form=>{if(busy)return;setBusy(true);setMessage('');setError('');try{await updateProject(id,p=>recordAdministrativeResult(p,form,currentUser,project.status));setMessage(t('บันทึกผลและอัปเดตสถานะเรียบร้อย','Saved and advanced to the next step.'));return true}catch{setError(t('บันทึกไม่สำเร็จ ตรวจสอบข้อมูลและสถานะโครงการ','Unable to save. Check the form and current stage.'));return false}finally{setBusy(false)}}}/>}
+ {!!project.administrativeRecords?.length&&<details className="record-history"><summary>{t('ประวัติการบันทึก','Record history')} ({project.administrativeRecords.length})</summary>{[...project.administrativeRecords].reverse().map((r,i)=><article key={i}><strong>{r.meetingNumber||r.letterNumber||r.date}</strong><p>{r.notes}</p><small>{r.responsible} · {r.date}</small></article>)}</details>}</>}{message&&<p role="status" className="cl-success">{message}</p>}{error&&<p role="alert" className="submission-error">{error}</p>}</section></div></div>
+}
+function RecordForm({project,currentUser,busy,onSave}) {
+ const {i18n}=useTranslation(),t=(a,b)=>i18n.language==='en'?b:a
+ const [form,setForm,markSaved]=useFormDraft('administrative-'+project.id+'-'+project.status,{unitOutcome:'endorsed',certification:'',date:new Date().toLocaleDateString('en-CA'),responsible:currentUser.username,meetingNumber:'',meetingDate:'',outcome:'',notes:'',reference:'',letterNumber:''})
+ const set=(key,value)=>setForm(f=>({...f,[key]:value}))
+ const input=(key,th,en,type='text',required=true)=><label>{t(th,en)}{required?' *':''}<input type={type} required={required} value={form[key]} onChange={e=>set(key,e.target.value)} pattern={type==='url'?'https://.*':undefined}/></label>
+ return <form onSubmit={async e=>{e.preventDefault();if(await onSave(form))markSaved(form)}}><fieldset disabled={busy}>
+ {project.status==='active'&&<h3>{t('บันทึกหนังสือแจ้งให้ดำเนินการวิจัย (ส่งผ่าน e-Office ภายนอกแล้ว)','Record external notification to proceed')}</h3>}
+ {project.status==='unit_review'&&<label>{t('ผลการพิจารณาของต้นสังกัด','Unit decision')} *<select value={form.unitOutcome} onChange={e=>set('unitOutcome',e.target.value)}><option value="endorsed">{t('เห็นชอบ → เตรียมส่ง e-Office','Endorsed → prepare e-Office')}</option><option value="revision">{t('ไม่เห็นชอบ / ส่งกลับแก้ไข','Not endorsed / return for revision')}</option></select></label>}
+ <div className="form-pair">{input('date','วันที่รับ / บันทึกผล','Received / outcome date','date')}{input('responsible','ผู้รับผิดชอบ','Responsible staff')}</div>
+ {input('letterNumber','เลขที่หนังสือ e-Office / หนังสืออ้างอิง','e-Office / document reference','text',['eoffice_pending','active'].includes(project.status))}
+ {project.status==='committee_review'&&<><label>{t('การรับรองโครงการ','Certification')} *<select required value={form.certification} onChange={e=>set('certification',e.target.value)}><option value="">{t('เลือกผล','Select result')}</option><option value="complete">{t('รับรองแล้ว','Certified')}</option><option value="pending">{t('รอรับรอง','Pending')}</option></select></label><div className="form-pair">{input('meetingNumber','ครั้งที่ประชุม','Meeting number')}{input('meetingDate','วันที่ประชุม','Meeting date','date')}</div><label>{t('ผลที่บันทึก','Recorded result')} *<select required value={form.outcome} onChange={e=>set('outcome',e.target.value)}><option value="">{t('เลือกผล','Select result')}</option><option value="endorsed">{t('รับทราบและรับรอง','Acknowledged and endorsed')}</option><option value="revision">{t('ให้แก้ไข','Revision required')}</option><option value="deferred">{t('รอพิจารณา','Deferred')}</option></select></label></>}
+ {input('reference','ลิงก์เอกสารอ้างอิง (https)','Reference URL (https)','url',false)}<label>{t('รายละเอียด / เหตุผล','Details / reason')} *<textarea required rows={4} value={form.notes} onChange={e=>set('notes',e.target.value)}/></label><button className="primary"><Save size={17}/>{busy?t('กำลังบันทึก…','Saving…'):t('บันทึกผลและอัปเดตสถานะ','Save result & update status')}</button></fieldset></form>
+}

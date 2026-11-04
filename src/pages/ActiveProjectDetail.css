@@ -1,0 +1,429 @@
+
+/* ===== Active Project Detail ===== */
+
+.apd-page {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  color: #111827;
+}
+
+.apd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.apd-header h1 {
+  font-size: 27px;
+  margin: 8px 0 3px;
+}
+
+.apd-header p,
+.apd-muted {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.apd-back,
+.apd-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 9px 13px;
+  color: #334155;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.apd-back {
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: #8b1d24;
+}
+
+.apd-outline:hover {
+  border-color: #8b1d24;
+  color: #8b1d24;
+}
+
+.apd-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+  padding: 19px;
+  margin-bottom: 14px;
+  min-width: 0;
+}
+
+.apd-card h3 {
+  font-size: 16px;
+  margin: 0 0 16px;
+}
+
+.apd-project-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.apd-id,
+.apd-status {
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 7px 10px;
+}
+
+.apd-id {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.apd-status {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.apd-project-header h2 {
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.apd-facts {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.apd-facts > div {
+  min-width: 0;
+}
+
+.apd-facts small,
+.apd-facts strong {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.apd-facts small {
+  color: #64748b;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.apd-facts strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.apd-steps-scroll {
+  overflow-x: auto;
+  padding: 5px 0 15px;
+}
+
+.apd-steps {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(112px, 1fr));
+  min-width: 1008px;
+}
+
+.apd-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 11px;
+  position: relative;
+  padding: 0 7px;
+}
+
+.apd-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: calc(50% + 19px);
+  width: calc(100% - 38px);
+  height: 3px;
+  background: #d1d5db;
+}
+
+.apd-step-number {
+  z-index: 1;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.apd-done {
+  background: #16a34a;
+  color: #fff;
+}
+
+.apd-current {
+  background: #1976d2;
+  color: #fff;
+}
+
+.apd-pending {
+  background: #fbbf24;
+  color: #422006;
+}
+
+.apd-revision {
+  background: #ef4444;
+  color: #fff;
+}
+
+.apd-step strong {
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.apd-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+  font-size: 11px;
+  color: #475569;
+}
+
+.apd-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.apd-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.apd-tabs {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  margin: 0 0 14px;
+}
+
+.apd-tabs button {
+  flex: 1;
+  min-width: 135px;
+  padding: 12px 10px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  color: #334155;
+}
+
+.apd-tabs .apd-tab-active {
+  background: #8b1d24;
+  color: #fff;
+  border-color: #8b1d24;
+}
+
+.apd-two-column {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 14px;
+}
+
+.apd-progress-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.apd-progress-row strong {
+  font-size: 34px;
+  color: #16a34a;
+}
+
+.apd-progress-row span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.apd-progress-track {
+  height: 14px;
+  background: #e5e7eb;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.apd-progress-track > div {
+  height: 100%;
+  background: #16a34a;
+  border-radius: 20px;
+}
+
+.apd-progress-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 17px;
+}
+
+.apd-progress-info > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #334155;
+  font-size: 12px;
+}
+
+.apd-notice {
+  background: #f8fafc;
+  color: #64748b;
+  border-radius: 7px;
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 18px;
+  padding: 11px;
+}
+
+.apd-info-list > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 12px;
+}
+
+.apd-info-list span {
+  color: #64748b;
+}
+
+.apd-info-list strong {
+  text-align: right;
+  max-width: 65%;
+}
+
+.apd-no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 35px 15px;
+  color: #94a3b8;
+  font-size: 12px;
+  text-align: center;
+}
+
+.apd-empty {
+  text-align: center;
+  padding: 45px;
+}
+
+.apd-empty svg {
+  color: #94a3b8;
+}
+
+.apd-empty h2 {
+  font-size: 18px;
+}
+
+.apd-empty p {
+  color: #64748b;
+}
+
+.apd-document {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.apd-document span {
+  flex: 1;
+}
+
+.apd-document a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #8b1d24;
+  text-decoration: none;
+}
+
+.apd-history-item {
+  display: flex;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.apd-history-item svg {
+  flex-shrink: 0;
+  color: #8b1d24;
+}
+
+.apd-history-item strong {
+  font-size: 12px;
+}
+
+.apd-history-item p {
+  font-size: 12px;
+  margin: 5px 0;
+  color: #475569;
+}
+
+.apd-history-item small {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+@media (max-width: 1050px) {
+  .apd-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .apd-two-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .apd-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .apd-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .apd-project-header h2 {
+    font-size: 16px;
+  }
+}

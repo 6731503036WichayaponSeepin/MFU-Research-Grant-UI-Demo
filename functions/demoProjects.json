@@ -1,0 +1,1667 @@
+[
+  {
+    "id": "MFU-DEMO-001",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การเรียนรู้วิทยาศาสตร์ผ่านสวนชุมชน",
+    "titleEn": "Science Learning through Community Gardens",
+    "leader": "ดร. พิมพ์ชนก ใจดี",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "draft",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": null,
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การเรียนรู้วิทยาศาสตร์ผ่านสวนชุมชน",
+      "projectTitleEn": "Science Learning through Community Gardens",
+      "leaderName": "ดร. พิมพ์ชนก ใจดี",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. ณิชา พงศ์ไพศาล\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ธนกร เมืองเหนือ",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-002",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การอนุรักษ์ภูมิปัญญาผ้าทอเชียงราย",
+    "titleEn": "Preserving Chiang Rai Weaving Knowledge",
+    "leader": "ดร. กิตติพงษ์ แสงคำ",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "draft",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": null,
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การอนุรักษ์ภูมิปัญญาผ้าทอเชียงราย",
+      "projectTitleEn": "Preserving Chiang Rai Weaving Knowledge",
+      "leaderName": "ดร. กิตติพงษ์ แสงคำ",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. ธนกร เมืองเหนือ\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. วรินทร์ แสงแก้ว",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-003",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "พฤติกรรมสุขภาพผู้สูงอายุในชุมชน",
+    "titleEn": "Community Older Adult Health Behaviors",
+    "leader": "ดร. สุธิดา วัฒนชัย",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "unit_review",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "พฤติกรรมสุขภาพผู้สูงอายุในชุมชน",
+      "projectTitleEn": "Community Older Adult Health Behaviors",
+      "leaderName": "ดร. สุธิดา วัฒนชัย",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. วรินทร์ แสงแก้ว\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ณิชา พงศ์ไพศาล",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-004",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การจัดการน้ำเพื่อเกษตรยั่งยืน",
+    "titleEn": "Water Management for Sustainable Agriculture",
+    "leader": "ดร. ณัฐพล ภูมิใจ",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "unit_review",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การจัดการน้ำเพื่อเกษตรยั่งยืน",
+      "projectTitleEn": "Water Management for Sustainable Agriculture",
+      "leaderName": "ดร. ณัฐพล ภูมิใจ",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. ณิชา พงศ์ไพศาล\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ธนกร เมืองเหนือ",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-005",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การท่องเที่ยวเชิงวัฒนธรรมบนพื้นที่สูง",
+    "titleEn": "Highland Cultural Tourism",
+    "leader": "ดร. พิมพ์ชนก ใจดี",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "eoffice_pending",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การท่องเที่ยวเชิงวัฒนธรรมบนพื้นที่สูง",
+      "projectTitleEn": "Highland Cultural Tourism",
+      "leaderName": "ดร. พิมพ์ชนก ใจดี",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. ธนกร เมืองเหนือ\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. วรินทร์ แสงแก้ว",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-006",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "ระบบตรวจวัดคุณภาพอากาศต้นทุนต่ำ",
+    "titleEn": "Low Cost Air Quality Monitoring",
+    "leader": "ดร. กิตติพงษ์ แสงคำ",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "admin_review",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "ระบบตรวจวัดคุณภาพอากาศต้นทุนต่ำ",
+      "projectTitleEn": "Low Cost Air Quality Monitoring",
+      "leaderName": "ดร. กิตติพงษ์ แสงคำ",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. วรินทร์ แสงแก้ว\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ณิชา พงศ์ไพศาล",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-007",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "บรรจุภัณฑ์ชีวภาพจากวัสดุเหลือใช้",
+    "titleEn": "Biopackaging from Agricultural Residues",
+    "leader": "ดร. สุธิดา วัฒนชัย",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "admin_review",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "บรรจุภัณฑ์ชีวภาพจากวัสดุเหลือใช้",
+      "projectTitleEn": "Biopackaging from Agricultural Residues",
+      "leaderName": "ดร. สุธิดา วัฒนชัย",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "revision_required",
+        "updatedAt": "2026-07-01T03:00:00.000Z",
+        "updatedBy": "Demo staff",
+        "note": "โปรดชี้แจงวิธีเลือกกลุ่มตัวอย่าง / Clarify sample selection"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-07-05T03:00:00.000Z",
+        "updatedBy": "Demo researcher",
+        "note": "ส่งข้อมูลแก้ไข / Revision resubmitted"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. ณิชา พงศ์ไพศาล\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ธนกร เมืองเหนือ",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-008",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "ทักษะดิจิทัลของผู้ประกอบการชุมชน",
+    "titleEn": "Digital Skills of Community Entrepreneurs",
+    "leader": "ดร. ณัฐพล ภูมิใจ",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "admin_review",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "ทักษะดิจิทัลของผู้ประกอบการชุมชน",
+      "projectTitleEn": "Digital Skills of Community Entrepreneurs",
+      "leaderName": "ดร. ณัฐพล ภูมิใจ",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. ธนกร เมืองเหนือ\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. วรินทร์ แสงแก้ว",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-009",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การเพิ่มมูลค่าชาสมุนไพรท้องถิ่น",
+    "titleEn": "Adding Value to Local Herbal Tea",
+    "leader": "ดร. พิมพ์ชนก ใจดี",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "committee_review",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การเพิ่มมูลค่าชาสมุนไพรท้องถิ่น",
+      "projectTitleEn": "Adding Value to Local Herbal Tea",
+      "leaderName": "ดร. พิมพ์ชนก ใจดี",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "committee_review",
+        "updatedAt": "2026-06-14T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. วรินทร์ แสงแก้ว\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ณิชา พงศ์ไพศาล",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-010",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การเรียนรู้ภาษาไทยของนักศึกษานานาชาติ",
+    "titleEn": "Thai Language Learning for International Students",
+    "leader": "ดร. กิตติพงษ์ แสงคำ",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "committee_review",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การเรียนรู้ภาษาไทยของนักศึกษานานาชาติ",
+      "projectTitleEn": "Thai Language Learning for International Students",
+      "leaderName": "ดร. กิตติพงษ์ แสงคำ",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "committee_review",
+        "updatedAt": "2026-06-14T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. ณิชา พงศ์ไพศาล\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ธนกร เมืองเหนือ",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-011",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การติดตามคุณภาพน้ำในลุ่มน้ำกก",
+    "titleEn": "Kok River Water Quality Monitoring",
+    "leader": "ดร. สุธิดา วัฒนชัย",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "active",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การติดตามคุณภาพน้ำในลุ่มน้ำกก",
+      "projectTitleEn": "Kok River Water Quality Monitoring",
+      "leaderName": "ดร. สุธิดา วัฒนชัย",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "committee_review",
+        "updatedAt": "2026-06-14T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "active",
+        "updatedAt": "2026-06-17T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. ธนกร เมืองเหนือ\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. วรินทร์ แสงแก้ว",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-012",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การจัดการขยะอาหารในมหาวิทยาลัย",
+    "titleEn": "University Food Waste Management",
+    "leader": "ดร. ณัฐพล ภูมิใจ",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "active",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การจัดการขยะอาหารในมหาวิทยาลัย",
+      "projectTitleEn": "University Food Waste Management",
+      "leaderName": "ดร. ณัฐพล ภูมิใจ",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "committee_review",
+        "updatedAt": "2026-06-14T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "active",
+        "updatedAt": "2026-06-17T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. วรินทร์ แสงแก้ว\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ณิชา พงศ์ไพศาล",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-013",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "ความหลากหลายทางชีวภาพในสวนชา",
+    "titleEn": "Biodiversity in Tea Gardens",
+    "leader": "ดร. พิมพ์ชนก ใจดี",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "active",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "ความหลากหลายทางชีวภาพในสวนชา",
+      "projectTitleEn": "Biodiversity in Tea Gardens",
+      "leaderName": "ดร. พิมพ์ชนก ใจดี",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "committee_review",
+        "updatedAt": "2026-06-14T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "active",
+        "updatedAt": "2026-06-17T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. ณิชา พงศ์ไพศาล\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ธนกร เมืองเหนือ",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-014",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "สุขภาวะของนักศึกษามหาวิทยาลัย",
+    "titleEn": "University Student Wellbeing",
+    "leader": "ดร. กิตติพงษ์ แสงคำ",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "final_report",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "สุขภาวะของนักศึกษามหาวิทยาลัย",
+      "projectTitleEn": "University Student Wellbeing",
+      "leaderName": "ดร. กิตติพงษ์ แสงคำ",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "committee_review",
+        "updatedAt": "2026-06-14T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "active",
+        "updatedAt": "2026-06-17T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "final_report",
+        "updatedAt": "2026-06-20T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "closure": {
+      "state": "draft",
+      "method": "report",
+      "submittedAt": null,
+      "revision": 1,
+      "summary": "ข้อมูลสมมติสำหรับการสาธิต ไม่มีผลการวิจัยจริง / Fictional demonstration; no actual research findings.",
+      "finishedDate": "2026-09-30",
+      "documents": [],
+      "history": [],
+      "reviewer": null,
+      "check": null,
+      "closedAt": null
+    },
+    "registry": {
+      "coResearchers": "ดร. ธนกร เมืองเหนือ\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. วรินทร์ แสงแก้ว",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-015",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การลดการใช้พลาสติกในตลาดชุมชน",
+    "titleEn": "Reducing Plastic in Community Markets",
+    "leader": "ดร. สุธิดา วัฒนชัย",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "closure_review",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การลดการใช้พลาสติกในตลาดชุมชน",
+      "projectTitleEn": "Reducing Plastic in Community Markets",
+      "leaderName": "ดร. สุธิดา วัฒนชัย",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "committee_review",
+        "updatedAt": "2026-06-14T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "active",
+        "updatedAt": "2026-06-17T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "final_report",
+        "updatedAt": "2026-06-20T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "closure_review",
+        "updatedAt": "2026-06-23T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "closure": {
+      "state": "submitted",
+      "method": "report",
+      "submittedAt": "2026-10-01T03:00:00.000Z",
+      "revision": 1,
+      "summary": "ข้อมูลสมมติสำหรับการสาธิต ไม่มีผลการวิจัยจริง / Fictional demonstration; no actual research findings.",
+      "finishedDate": "2026-09-30",
+      "documents": [],
+      "history": [],
+      "reviewer": null,
+      "check": null,
+      "closedAt": null
+    },
+    "registry": {
+      "coResearchers": "ดร. วรินทร์ แสงแก้ว\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ณิชา พงศ์ไพศาล",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "กำหนดส่งผลประเมิน 30 ต.ค. 2569",
+      "firstResult": "อยู่ระหว่างรอผลจากผู้ทรงคุณวุฒิ",
+      "expertNomination": "เสนอชื่อแล้ว · หนังสือสมมุติ อว DEMO/015",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "อยู่ระหว่างดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-016",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การพัฒนาสื่อเรียนรู้สำหรับเด็ก",
+    "titleEn": "Learning Media for Children",
+    "leader": "ดร. ณัฐพล ภูมิใจ",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "completed",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การพัฒนาสื่อเรียนรู้สำหรับเด็ก",
+      "projectTitleEn": "Learning Media for Children",
+      "leaderName": "ดร. ณัฐพล ภูมิใจ",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "committee_review",
+        "updatedAt": "2026-06-14T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "active",
+        "updatedAt": "2026-06-17T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "final_report",
+        "updatedAt": "2026-06-20T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "closure_review",
+        "updatedAt": "2026-06-23T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "completed",
+        "updatedAt": "2026-06-26T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "closure": {
+      "state": "completed",
+      "method": "report",
+      "submittedAt": "2026-10-01T03:00:00.000Z",
+      "revision": 1,
+      "summary": "ข้อมูลสมมติสำหรับการสาธิต ไม่มีผลการวิจัยจริง / Fictional demonstration; no actual research findings.",
+      "finishedDate": "2026-09-30",
+      "documents": [],
+      "history": [],
+      "reviewer": null,
+      "check": null,
+      "closedAt": "2026-10-01"
+    },
+    "registry": {
+      "coResearchers": "ดร. ณิชา พงศ์ไพศาล\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "บทความวิจัยในวารสารชุมชนศึกษา ปีที่ 12 ฉบับที่ 2 (วารสารสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ธนกร เมืองเหนือ",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "15 ต.ค. 2569 · แบบประเมิน DEMO-16",
+      "firstResult": "ผ่านการประเมิน · รับรองรายงานฉบับสมบูรณ์",
+      "expertNomination": "เสนอชื่อแล้ว · หนังสือสมมุติ อว DEMO/016",
+      "notes": "ข้อมูลสมมุติ: จัดเก็บรายงานและเอกสารปิดโครงการในแฟ้มเรียบร้อย",
+      "assessmentStatus": "เสร็จสิ้นกระบวนการ",
+      "finalReport": true,
+      "steps": {
+        "letter": "ดำเนินการแล้วเสร็จ",
+        "received": "ดำเนินการแล้วเสร็จ",
+        "revision": "ดำเนินการแล้วเสร็จ",
+        "endorsed": "ดำเนินการแล้วเสร็จ",
+        "resubmitted": "ดำเนินการแล้วเสร็จ",
+        "payment": "ดำเนินการแล้วเสร็จ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-017",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การสื่อสารความเสี่ยงฝุ่นละออง",
+    "titleEn": "Particulate Air Pollution Risk Communication",
+    "leader": "ดร. พิมพ์ชนก ใจดี",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "revision_required",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การสื่อสารความเสี่ยงฝุ่นละออง",
+      "projectTitleEn": "Particulate Air Pollution Risk Communication",
+      "leaderName": "ดร. พิมพ์ชนก ใจดี",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "revision_required",
+        "updatedAt": "2026-07-01T03:00:00.000Z",
+        "updatedBy": "Demo staff",
+        "note": "โปรดชี้แจงวิธีเลือกกลุ่มตัวอย่าง / Clarify sample selection"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "registry": {
+      "coResearchers": "ดร. ธนกร เมืองเหนือ\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. วรินทร์ แสงแก้ว",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "ยังไม่ถึงขั้นประเมินรายงาน",
+      "firstResult": "รอยื่นรายงานเพื่อประเมิน",
+      "expertNomination": "รายชื่อเบื้องต้น: รศ. ดร. ปาริชาติ วิจิตรศึกษา · ยังไม่ส่งหนังสือ",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "ยังไม่ได้ดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ยังไม่ได้ดำเนินการ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  },
+  {
+    "id": "MFU-DEMO-018",
+    "demoGenerated": true,
+    "ownerUsername": "demo-user",
+    "title": "การจัดการพลังงานในอาคารเรียน",
+    "titleEn": "Energy Management in Academic Buildings",
+    "leader": "ดร. กิตติพงษ์ แสงคำ",
+    "affiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+    "grantType": "RS-1 Personal Research Grant",
+    "fiscalYear": 2569,
+    "budget": 100000,
+    "status": "closure_review",
+    "createdAt": "2026-06-01T03:00:00.000Z",
+    "submittedAt": "2026-06-05T03:00:00.000Z",
+    "startDate": "2026-08-01",
+    "endDate": "2027-07-31",
+    "proposal": {
+      "projectTitle": "การจัดการพลังงานในอาคารเรียน",
+      "projectTitleEn": "Energy Management in Academic Buildings",
+      "leaderName": "ดร. กิตติพงษ์ แสงคำ",
+      "leaderAffiliation": "สำนักวิชาวิทยาศาสตร์ / School of Science",
+      "objectives": "ศึกษาปัญหาและพัฒนาแนวทางร่วมกับชุมชน (ข้อมูลสมมติ) / Study community needs (fictional).",
+      "methodology": "สำรวจและสัมภาษณ์โดยสมัครใจ วิเคราะห์ข้อมูลเชิงพรรณนา / Voluntary survey and descriptive analysis.",
+      "startDate": "2026-08-01",
+      "endDate": "2027-07-31",
+      "compensation": "30000",
+      "directCost": "40000",
+      "materials": "25000",
+      "utility": "5000",
+      "workPlan": "สำรวจ ออกแบบ ทดลอง และสรุปผล / Survey, design, pilot and report."
+    },
+    "documents": [],
+    "statusHistory": [
+      {
+        "status": "draft",
+        "updatedAt": "2026-06-02T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "unit_review",
+        "updatedAt": "2026-06-05T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "eoffice_pending",
+        "updatedAt": "2026-06-08T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "admin_review",
+        "updatedAt": "2026-06-11T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "committee_review",
+        "updatedAt": "2026-06-14T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "active",
+        "updatedAt": "2026-06-17T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "final_report",
+        "updatedAt": "2026-06-20T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      },
+      {
+        "status": "closure_review",
+        "updatedAt": "2026-06-23T03:00:00.000Z",
+        "updatedBy": "Demo seed",
+        "note": "ข้อมูลสมมติ / Fictional demonstration record"
+      }
+    ],
+    "reviewNotes": [],
+    "certification": null,
+    "committeeRecord": null,
+    "closure": {
+      "state": "awaiting_review",
+      "method": "report",
+      "submittedAt": "2026-10-01T03:00:00.000Z",
+      "revision": 1,
+      "summary": "ข้อมูลสมมติสำหรับการสาธิต ไม่มีผลการวิจัยจริง / Fictional demonstration; no actual research findings.",
+      "finishedDate": "2026-09-30",
+      "documents": [],
+      "history": [],
+      "reviewer": "demo-user",
+      "check": {
+        "submitted": true,
+        "outcome": "complete",
+        "by": "Demo staff",
+        "date": "2026-10-01"
+      },
+      "closedAt": null
+    },
+    "registry": {
+      "coResearchers": "ดร. วรินทร์ แสงแก้ว\nอ. กานต์พิชชา สุขใจ",
+      "period": "1 ส.ค. 2569 – 31 ก.ค. 2570",
+      "publication": "แผนเผยแพร่: การประชุมวิชาการวิจัยเพื่อชุมชน พ.ศ. 2570 (งานสมมุติ)",
+      "evaluator": "ผู้ประสานการประเมิน: ดร. ณิชา พงศ์ไพศาล",
+      "expert": "รศ. ดร. ปาริชาติ วิจิตรศึกษา (บุคคลสมมุติ)",
+      "firstAssessment": "กำหนดส่งผลประเมิน 30 ต.ค. 2569",
+      "firstResult": "อยู่ระหว่างรอผลจากผู้ทรงคุณวุฒิ",
+      "expertNomination": "เสนอชื่อแล้ว · หนังสือสมมุติ อว DEMO/018",
+      "notes": "ข้อมูลสมมุติ: เจ้าหน้าที่ติดตามเอกสารทุกวันศุกร์ และบันทึกความคืบหน้าในทะเบียน",
+      "assessmentStatus": "อยู่ระหว่างดำเนินการ",
+      "finalReport": false,
+      "steps": {
+        "letter": "ดำเนินการแล้วเสร็จ",
+        "received": "ยังไม่ได้ดำเนินการ",
+        "revision": "ยังไม่ได้ดำเนินการ",
+        "endorsed": "ยังไม่ได้ดำเนินการ",
+        "resubmitted": "ยังไม่ได้ดำเนินการ",
+        "payment": "ยังไม่ได้ดำเนินการ"
+      }
+    },
+    "registrySampleVersion": 1
+  }
+]

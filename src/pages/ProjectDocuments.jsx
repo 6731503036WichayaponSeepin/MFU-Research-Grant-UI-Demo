@@ -1,0 +1,16 @@
+import DocumentPreview from '../components/DocumentPreview'
+
+const reportChapters=['บทคัดย่อ','บทที่ 1 บทนำและวัตถุประสงค์','บทที่ 2 แนวคิดที่เกี่ยวข้อง','บทที่ 3 วิธีวิจัย','บทที่ 4 ผลการศึกษา','บทที่ 5 อภิปรายและข้อจำกัด']
+
+export default function ProjectDocuments({project,currentUser,query,onNavigate}) {
+  const documents=[...(project.proposal?._document?[{...project.proposal._document,id:'proposal',kind:'proposal',name:project.proposal._document.name||'ข้อเสนอ RS-1'}]:[]),...(project.closure?.documents||[]),...(project.documents||[])]
+  const proposal=documents.find(d=>d.kind==='proposal'||d.id==='proposal')
+  const report=documents.find(d=>d.kind==='report')
+  const requested=query.document==='proposal'?'proposal':'report'
+  const selected=requested==='proposal'?(proposal||report):(report||proposal)
+  const isReport=selected?.kind==='report'
+  const readable=isReport&&query.format!=='pdf'
+  const paragraphs=[project.closure?.summary,project.proposal?.background+' '+project.proposal?.objectives,project.proposal?.literature,'สำรวจอาสาสมัคร 60 ครัวเรือนจาก 3 ชุมชนสมมติ ใช้แบบสอบถามก่อนและหลังการทดลอง 8 สัปดาห์ วิเคราะห์ค่าเฉลี่ยเชิงพรรณนาโดยไม่มีข้อมูลระบุตัวบุคคล','ผู้เข้าร่วม 52 จาก 60 ครัวเรือนทำกิจกรรมครบ พบการใช้ทรัพยากรลดลงเฉลี่ยร้อยละ 15 และความพึงพอใจ 4.2 จาก 5 จัดทำคู่มือชุมชน 1 ฉบับ ตัวเลขทั้งหมดเป็นข้อมูลสมมติ','แนวทางมีความเป็นไปได้ในชุมชนตัวอย่าง แต่ยังไม่มีกลุ่มเปรียบเทียบและติดตามเพียงระยะสั้น ควรทดสอบในพื้นที่และฤดูกาลใหม่ก่อนขยายผล พร้อมคืนข้อมูลและคู่มือแก่ชุมชน']
+  const href=params=>onNavigate.href('documents',project.id,{...query,...params})
+  return <div className="document-page"><section className="panel focused-card"><h2>{project.title}</h2><nav className="focused-tabs document-choice" aria-label="เลือกเอกสาร"><a href={href({document:'proposal',chapter:null,format:null})} aria-current={selected===proposal?'page':undefined}>ข้อเสนอ RS-1</a><a href={href({document:'report',chapter:null,format:'readable'})} aria-current={selected===report?'page':undefined}>รายงานฉบับสมบูรณ์</a></nav>{selected?<><div className="section-heading"><span>{isReport?'รายงานฉบับสมบูรณ์':'ข้อเสนอ RS-1'} · {selected.name}</span><div className="focused-actions">{isReport&&<><a href={href({document:'report',format:'readable',chapter:null})}>อ่านรายงาน</a><a href={href({document:'report',format:'pdf',chapter:null})}>ดู PDF</a></>}<a href={selected.dataUrl} download={selected.name}>ดาวน์โหลด PDF</a></div></div>{readable?<article className="readable-report readable-report-long"><small>รายงานฉบับสมบูรณ์</small><h3>{project.title}</h3>{reportChapters.map((label,index)=><section className="readable-report-chapter" key={label}><h4>{label}</h4><p>{paragraphs[index]}</p></section>)}</article>:<DocumentPreview url={selected.dataUrl} filename={selected.name} title={selected.name}/>}</>:<p>ยังไม่มีเอกสารแนบสำหรับโครงการนี้</p>}</section>{currentUser.role==='reviewer'&&<div className="focused-actions"><a className="outline-button" href={onNavigate.href('details',project.id)}>← รายละเอียดโครงการ</a><a className="primary" href={onNavigate.href(project.closure?.evaluations?.[currentUser.username]?.submitted?'results':'evaluation',project.id)}>ถัดไป · {project.closure?.evaluations?.[currentUser.username]?.submitted?'ดูผลประเมิน':'กรอกแบบประเมิน'} →</a></div>}</div>
+}

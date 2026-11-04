@@ -1,0 +1,177 @@
+/* Keep sidebar layout consistent across the existing responsive themes. */
+.app.focused-demo { flex-direction: row; }
+.focused-demo .sidebar {
+  width: 320px;
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: 20px 18px 24px;
+  transition: width 280ms ease, padding 280ms ease;
+  flex-direction: column;
+  align-items: stretch;
+  background: var(--primary, #590014);
+  color: #fff;
+}
+.sidebar-toggle {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+  border: 1px solid #ffffff30;
+  border-radius: 10px;
+  background: transparent;
+  color: #fff;
+}
+.sidebar-toggle:hover { background: #ffffff14; }
+.focused-demo .sidebar .brand {
+  flex-direction: row;
+  align-items: center;
+  padding: 0 4px 28px;
+}
+.focused-demo .sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 9px;
+  overflow: visible;
+  width: 100%;
+  padding: 0;
+}
+.focused-demo .sidebar .nav-item {
+  position: relative;
+  flex: 0 0 auto;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 12px;
+  min-height: 51px;
+  padding: 12px 15px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #f8e9ed;
+  background: transparent;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.focused-demo .sidebar .nav-item:hover,
+.focused-demo .sidebar .nav-item:focus-visible { color: #fff; background: #ffffff18; }
+.focused-demo .sidebar .nav-item.active {
+  color: #fff;
+  background: #ffffff20;
+  border-color: #ffffff35;
+  box-shadow: inset 3px 0 #fff, 0 5px 14px #25000a40;
+}
+.focused-demo .sidebar .nav-item.active .nav-icon { color: #fff; }
+.focused-demo .sidebar .nav-icon { color: #f8e9ed; }
+.focused-demo .sidebar .nav-label { color: inherit; }
+.focused-demo .sidebar .sidebar-toggle { cursor: pointer; }
+.focused-demo .sidebar .sidebar-bottom { display: flex; margin-top: auto; }
+.focused-demo .app-content { flex: 1; min-width: 0; }
+.sidebar-collapsed .sidebar { width: 72px; padding-inline: 14px; }
+.sidebar-collapsed .sidebar .brand,
+.sidebar-collapsed .sidebar .sidebar-bottom,
+.sidebar-collapsed .nav-label { display: none; }
+.sidebar-collapsed .sidebar .nav-item { justify-content: center; padding: 12px; }
+.sidebar-collapsed .sidebar .nav-item.active { box-shadow: inset 0 -3px #fff, 0 5px 14px #25000a40; }
+.sidebar-tooltip {
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: max-content;
+  max-width: 240px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #570112;
+  color: #fff;
+  box-shadow: 0 4px 16px #0002;
+  font-size: 12px;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+.nav-item:hover .sidebar-tooltip,
+.nav-item:focus-visible .sidebar-tooltip { visibility: visible; opacity: 1; }
+@media (max-width: 700px) {
+  /* The expanded panel overlays mobile content to preserve usable form width. */
+  .app.focused-demo { padding-left: 72px; }
+  .focused-demo .sidebar {
+    position: fixed;
+    left: 0;
+    width: min(320px, calc(100vw - 32px));
+    box-shadow: 5px 0 24px #57011226;
+    height: 100dvh;
+    align-items: stretch;
+    overflow-y: auto;
+  }
+  .sidebar-collapsed .sidebar { width: 72px; }
+}
+
+/* Role selection shares the system wine palette and remains readable on small screens. */
+.demo-welcome {
+  display: grid;
+  place-items: center;
+  max-width: none;
+  min-height: 100dvh;
+  margin: 0;
+  padding: clamp(18px, 4vw, 48px);
+  background: radial-gradient(ellipse at 12% 8%, #8b233c 0, transparent 42%), #590014;
+}
+.demo-welcome > .panel {
+  width: min(1050px, 100%);
+  padding: clamp(24px, 4vw, 44px);
+  background: #fff;
+  border: 1px solid #ffffff80;
+  box-shadow: 0 24px 70px #26000d55;
+}
+.demo-welcome .section-kicker { color: #79001d; }
+.demo-welcome > .panel > h1,
+.demo-welcome > .panel > h2 { color: #590014; }
+.demo-welcome > .panel > p { color: #4b3439; }
+.demo-welcome .demo-role-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+.demo-welcome .demo-role-grid button {
+  display: flex;
+  min-height: 190px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #eadce0;
+  border-radius: 16px;
+  background: #fff;
+  color: #590014;
+  box-shadow: 0 5px 18px #5900140d;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.demo-welcome .demo-role-grid button:hover,
+.demo-welcome .demo-role-grid button:focus-visible {
+  transform: translateY(-4px);
+  border-color: #a65a70;
+  background: #fff;
+  box-shadow: 0 14px 28px #59001420;
+}
+.demo-welcome .demo-role-grid button h2 { margin: 0; color: #590014; }
+.demo-welcome .demo-role-grid button p { margin: 0; color: #4b3439; }
+.demo-welcome .demo-role-grid button span { margin-top: 8px; color: #79001d; font-weight: 700; }
+.role-language-switch { display: flex; justify-content: flex-end; gap: 8px; margin-top: 22px; }
+.role-language-switch button { min-width: 48px; padding: 8px 12px; border: 1px solid #e4d4d9; border-radius: 8px; background: white; color: #590014; }
+.role-language-switch button[aria-pressed="true"] { background: #590014; border-color: #590014; color: white; }
+@media (max-width: 700px) {
+  .demo-welcome { align-items: start; }
+  .demo-welcome .demo-role-grid { grid-template-columns: 1fr; }
+  .demo-welcome .demo-role-grid button { min-height: 130px; }
+}
+@media (max-height: 650px) {
+  .focused-demo .sidebar { overflow-y: auto; }
+  .sidebar-collapsed .sidebar { overflow: visible; }
+  .focused-demo .sidebar .brand { padding-bottom: 12px; }
+  .focused-demo .sidebar .nav-item { min-height: 44px; padding-block: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .focused-demo .sidebar, .sidebar-tooltip { transition: none; }
+}

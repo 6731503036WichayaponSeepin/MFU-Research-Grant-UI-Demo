@@ -1,0 +1,5 @@
+[
+  {"uid":"test-researcher","email":"researcher@example.test","displayName":"Test Researcher","role":"researcher","workspace":"testing","affiliation":"MFU testing","passwordEnv":"MFU_RESEARCHER_PASSWORD"},
+  {"uid":"test-staff","email":"staff@example.test","displayName":"Test Research Staff","role":"staff","workspace":"testing","affiliation":"MFU testing","passwordEnv":"MFU_STAFF_PASSWORD"},
+  {"uid":"test-reviewer","email":"reviewer@example.test","displayName":"Test Reviewer","role":"reviewer","workspace":"testing","affiliation":"MFU testing","passwordEnv":"MFU_REVIEWER_PASSWORD"}
+]

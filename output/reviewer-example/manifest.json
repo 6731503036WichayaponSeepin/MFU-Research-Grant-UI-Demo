@@ -1,0 +1,502 @@
+{
+  "scope": "reviewer-example",
+  "seedId": "mfu-advisor-v1",
+  "workspace": "testing",
+  "generatedAt": "2026-10-29T03:00:00.000Z",
+  "files": [
+    {
+      "projectId": "MFU-ADVISOR-V1-C01",
+      "localFile": "MFU-ADVISOR-V1-C01-proposal.pdf",
+      "sha256": "2bf7123badb3d6e6492f20f4965709748e01d492904ef42548cf6a9fa4d84a78",
+      "purpose": "research",
+      "uploaderUid": "test-researcher",
+      "id": "advisor-v1-C01-proposal",
+      "name": "MFU-ADVISOR-V1-C01-proposal.pdf",
+      "size": 35282,
+      "storagePath": "workspaces/testing/projects/MFU-ADVISOR-V1-C01/test-researcher/advisor-v1-C01-proposal",
+      "contentType": "application/pdf",
+      "kind": "proposal",
+      "version": 1
+    },
+    {
+      "projectId": "MFU-ADVISOR-V1-C01",
+      "localFile": "MFU-ADVISOR-V1-C01-report.pdf",
+      "sha256": "a94c633d5cd2485c548f1d3bed592850c2217dfabbb04182edf1fd1a2f4b87be",
+      "purpose": "research",
+      "uploaderUid": "test-researcher",
+      "id": "advisor-v1-C01-report",
+      "name": "MFU-ADVISOR-V1-C01-report.pdf",
+      "size": 34506,
+      "storagePath": "workspaces/testing/projects/MFU-ADVISOR-V1-C01/test-researcher/advisor-v1-C01-report",
+      "contentType": "application/pdf",
+      "kind": "report",
+      "version": 1
+    }
+  ],
+  "projects": [
+    {
+      "id": "MFU-ADVISOR-V1-C01",
+      "ownerUsername": "test-researcher",
+      "title": "การใช้ภาพถ่ายจำลองเพื่อจำแนกโรคใบชาเบื้องต้น",
+      "titleEn": "Synthetic Image Classification for Preliminary Tea Leaf Disease Screening",
+      "leader": "ดร. วรินทร์ ใบชาจำลอง (สมมติ)",
+      "affiliation": "สำนักวิชาวิทยาการข้อมูล (บริบทสมมติ)",
+      "budget": 170000,
+      "status": "closure_review",
+      "createdAt": "2025-12-01T03:00:00.000Z",
+      "updatedAt": "2026-10-17T03:00:00.000Z",
+      "startDate": "2026-01-15",
+      "endDate": "2027-01-14",
+      "proposal": {
+        "projectTitle": "การใช้ภาพถ่ายจำลองเพื่อจำแนกโรคใบชาเบื้องต้น",
+        "projectTitleEn": "Synthetic Image Classification for Preliminary Tea Leaf Disease Screening",
+        "leaderName": "ดร. วรินทร์ ใบชาจำลอง (สมมติ)",
+        "leaderAffiliation": "สำนักวิชาวิทยาการข้อมูล (บริบทสมมติ)",
+        "leaderEmail": "fictional-c01@example.test",
+        "leaderPhone": "ไม่ใช้หมายเลขโทรศัพท์จริง",
+        "researchType": "การวิจัยประยุกต์",
+        "keywords": "การประเมินแบบจำลองจำแนกภาพที่อธิบายได้",
+        "background": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ โครงการนี้ใช้บริบทสมมติเกี่ยวกับการประเมินแบบจำลองจำแนกภาพที่อธิบายได้ เพื่อศึกษาปัญหาการจัดการข้อมูลและออกแบบแนวทางที่เหมาะสมกับพื้นที่ภาคเหนือ ไม่ใช้ข้อมูลบุคคลหรือผลวิจัยจริง",
+        "objectives": "1. ศึกษาความต้องการและข้อจำกัดด้านการประเมินแบบจำลองจำแนกภาพที่อธิบายได้\n2. พัฒนาต้นแบบและเกณฑ์ประเมินที่อธิบายได้\n3. ประเมินต้นแบบด้วยข้อมูลสังเคราะห์และสรุปแนวทางพัฒนาต่อ",
+        "methodology": "สร้างภาพสังเคราะห์ 600 ภาพ แยกชุดฝึกและทดสอบตามแหล่งกำเนิด และตรวจความผิดพลาดรายกลุ่ม",
+        "scope": "ศึกษาต้นแบบในสภาพแวดล้อมจำลองเท่านั้น ไม่ทดลองกับบุคคล สัตว์ หรือพื้นที่จริง",
+        "startDate": "2026-01-15",
+        "endDate": "2027-01-14",
+        "workPlan": "ม.ค.-มี.ค. ทบทวนและออกแบบ; เม.ย.-มิ.ย. สร้างข้อมูลสังเคราะห์; ก.ค.-ก.ย. ทดสอบต้นแบบ; ต.ค.-ม.ค. สรุปและจัดทำรายงาน",
+        "compensation": 42500,
+        "directCost": 51000,
+        "materials": 59499.99999999999,
+        "utility": 17000,
+        "outcomeDetail": "ต้นแบบหนึ่งระบบ ชุดข้อมูลสังเคราะห์ คู่มือการทดสอบ และรายงานผลพร้อมข้อจำกัด",
+        "progress": "จัดทำรายงานหรือหลักฐานเผยแพร่สมมติแล้ว อยู่ระหว่างตรวจเอกสารและประเมินเพื่อปิดโครงการ",
+        "standards": "none",
+        "literature": "ทบทวนแนวคิดการออกแบบต้นแบบ คุณภาพข้อมูล และการประเมินเชิงเปรียบเทียบ โดยไม่มีการอ้างงานวิจัยที่สร้างขึ้นเป็นงานจริง",
+        "references": "เอกสารนี้เป็นตัวอย่างสังเคราะห์ ไม่ใช่รายงานผลวิจัยหรือรายการอ้างอิงจริง",
+        "_document": {
+          "id": "advisor-v1-C01-proposal",
+          "name": "MFU-ADVISOR-V1-C01-proposal.pdf",
+          "size": 35282,
+          "storagePath": "workspaces/testing/projects/MFU-ADVISOR-V1-C01/test-researcher/advisor-v1-C01-proposal",
+          "contentType": "application/pdf",
+          "kind": "proposal",
+          "version": 1
+        },
+        "_projectId": "MFU-ADVISOR-V1-C01"
+      },
+      "documentName": "MFU-ADVISOR-V1-C01-proposal.pdf",
+      "statusHistory": [
+        {
+          "projectId": "MFU-ADVISOR-V1-C01",
+          "previousStatus": null,
+          "newStatus": "draft",
+          "action": "save_proposal",
+          "role": "researcher",
+          "status": "draft",
+          "note": "Draft saved",
+          "updatedAt": "2025-12-01T03:00:00.000Z",
+          "updatedBy": "test-researcher",
+          "isDemo": true,
+          "origin": "mfu-advisor-v1"
+        },
+        {
+          "projectId": "MFU-ADVISOR-V1-C01",
+          "previousStatus": "draft",
+          "newStatus": "unit_review",
+          "action": "submit_proposal",
+          "role": "researcher",
+          "status": "unit_review",
+          "note": "Proposal submitted",
+          "updatedAt": "2025-12-05T03:00:00.000Z",
+          "updatedBy": "test-researcher",
+          "isDemo": true,
+          "origin": "mfu-advisor-v1"
+        },
+        {
+          "projectId": "MFU-ADVISOR-V1-C01",
+          "previousStatus": "unit_review",
+          "newStatus": "eoffice_pending",
+          "action": "record_external_result",
+          "role": "staff",
+          "status": "eoffice_pending",
+          "updatedAt": "2025-12-10T03:00:00.000Z",
+          "updatedBy": "test-staff",
+          "note": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ บันทึกผลสมมติจากกระบวนการภายนอก ไม่ได้เชื่อมต่อ e-Office",
+          "description": "External administrative result recorded",
+          "isDemo": true,
+          "origin": "mfu-advisor-v1"
+        },
+        {
+          "projectId": "MFU-ADVISOR-V1-C01",
+          "previousStatus": "eoffice_pending",
+          "newStatus": "admin_review",
+          "action": "record_external_result",
+          "role": "staff",
+          "status": "admin_review",
+          "updatedAt": "2025-12-15T03:00:00.000Z",
+          "updatedBy": "test-staff",
+          "note": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ บันทึกผลสมมติจากกระบวนการภายนอก ไม่ได้เชื่อมต่อ e-Office",
+          "description": "External administrative result recorded",
+          "isDemo": true,
+          "origin": "mfu-advisor-v1"
+        },
+        {
+          "action": "proposal_check",
+          "projectId": "MFU-ADVISOR-V1-C01",
+          "previousStatus": "admin_review",
+          "newStatus": "committee_review",
+          "status": "committee_review",
+          "role": "staff",
+          "note": "ตรวจเอกสารครบ รอรับผลพิจารณาคณะกรรมการจากภายนอก",
+          "updatedBy": "test-staff",
+          "updatedAt": "2025-12-20T03:00:00.000Z",
+          "isDemo": true,
+          "origin": "mfu-advisor-v1"
+        },
+        {
+          "projectId": "MFU-ADVISOR-V1-C01",
+          "previousStatus": "committee_review",
+          "newStatus": "active",
+          "action": "record_external_result",
+          "role": "staff",
+          "status": "active",
+          "updatedAt": "2026-01-05T03:00:00.000Z",
+          "updatedBy": "test-staff",
+          "note": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ บันทึกผลสมมติจากกระบวนการภายนอก ไม่ได้เชื่อมต่อ e-Office",
+          "description": "External administrative result recorded",
+          "isDemo": true,
+          "origin": "mfu-advisor-v1"
+        },
+        {
+          "projectId": "MFU-ADVISOR-V1-C01",
+          "previousStatus": "active",
+          "newStatus": "active",
+          "action": "record_external_result",
+          "role": "staff",
+          "status": "active",
+          "updatedAt": "2026-01-10T03:00:00.000Z",
+          "updatedBy": "test-staff",
+          "note": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ บันทึกผลสมมติจากกระบวนการภายนอก ไม่ได้เชื่อมต่อ e-Office",
+          "description": "External administrative result recorded",
+          "isDemo": true,
+          "origin": "mfu-advisor-v1"
+        },
+        {
+          "projectId": "MFU-ADVISOR-V1-C01",
+          "previousStatus": "active",
+          "previousClosureState": "draft",
+          "id": "33cfec25-fe60-4e54-b679-8691aad0a16d",
+          "action": "submit",
+          "date": "2026-10-16T03:00:00.000Z",
+          "by": "test-researcher",
+          "role": "researcher",
+          "newStatus": "closure_review",
+          "newClosureState": "submitted",
+          "status": "closure_review",
+          "description": "submit",
+          "note": "ส่งคำขอปิดโครงการให้เจ้าหน้าที่",
+          "toRole": "staff",
+          "updatedAt": "2026-10-16T03:00:00.000Z",
+          "updatedBy": "test-researcher",
+          "isDemo": true,
+          "origin": "mfu-advisor-v1"
+        },
+        {
+          "projectId": "MFU-ADVISOR-V1-C01",
+          "previousStatus": "closure_review",
+          "previousClosureState": "submitted",
+          "id": "4c4139b6-1e02-4c1a-8c4d-513bb6a4bf33",
+          "action": "check",
+          "date": "2026-10-17T03:00:00.000Z",
+          "by": "test-staff",
+          "role": "staff",
+          "newStatus": "closure_review",
+          "newClosureState": "awaiting_review",
+          "status": "closure_review",
+          "description": "check",
+          "note": "บันทึกผลตรวจและส่งต่องาน",
+          "toRole": "reviewer",
+          "updatedAt": "2026-10-17T03:00:00.000Z",
+          "updatedBy": "test-staff",
+          "isDemo": true,
+          "origin": "mfu-advisor-v1"
+        }
+      ],
+      "ownerUid": "test-researcher",
+      "workspace": "testing",
+      "reviewerUids": [
+        "test-reviewer"
+      ],
+      "serverUpdatedAt": "2026-10-17T03:00:00.000Z",
+      "_version": 9,
+      "submittedAt": "2025-12-05T03:00:00.000Z",
+      "administrativeRecords": [
+        {
+          "unitOutcome": "endorsed",
+          "date": "2025-12-10",
+          "responsible": "เจ้าหน้าที่บัญชีทดสอบ",
+          "notes": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ บันทึกผลสมมติจากกระบวนการภายนอก ไม่ได้เชื่อมต่อ e-Office",
+          "letterNumber": "DEMO/EXT/C01",
+          "recordedAt": "2025-12-10T03:00:00.000Z",
+          "recordedBy": "test-staff",
+          "sourceStatus": "unit_review"
+        },
+        {
+          "unitOutcome": "endorsed",
+          "date": "2025-12-15",
+          "responsible": "เจ้าหน้าที่บัญชีทดสอบ",
+          "notes": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ บันทึกผลสมมติจากกระบวนการภายนอก ไม่ได้เชื่อมต่อ e-Office",
+          "letterNumber": "DEMO/EXT/C01",
+          "recordedAt": "2025-12-15T03:00:00.000Z",
+          "recordedBy": "test-staff",
+          "sourceStatus": "eoffice_pending"
+        },
+        {
+          "unitOutcome": "endorsed",
+          "certification": "complete",
+          "date": "2026-01-05",
+          "responsible": "เจ้าหน้าที่บัญชีทดสอบ",
+          "meetingNumber": "DEMO-C01",
+          "meetingDate": "2026-01-05",
+          "outcome": "endorsed",
+          "notes": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ บันทึกผลสมมติจากกระบวนการภายนอก ไม่ได้เชื่อมต่อ e-Office",
+          "letterNumber": "DEMO/EXT/C01",
+          "recordedAt": "2026-01-05T03:00:00.000Z",
+          "recordedBy": "test-staff",
+          "sourceStatus": "committee_review"
+        },
+        {
+          "unitOutcome": "endorsed",
+          "date": "2026-01-10",
+          "responsible": "เจ้าหน้าที่บัญชีทดสอบ",
+          "notes": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ บันทึกผลสมมติจากกระบวนการภายนอก ไม่ได้เชื่อมต่อ e-Office",
+          "letterNumber": "DEMO/EXT/C01",
+          "recordedAt": "2026-01-10T03:00:00.000Z",
+          "recordedBy": "test-staff",
+          "sourceStatus": "active"
+        }
+      ],
+      "reviewNotes": [
+        {
+          "action": "proposal_check",
+          "projectId": "MFU-ADVISOR-V1-C01",
+          "previousStatus": "admin_review",
+          "newStatus": "committee_review",
+          "status": "committee_review",
+          "role": "staff",
+          "note": "ตรวจเอกสารครบ รอรับผลพิจารณาคณะกรรมการจากภายนอก",
+          "updatedBy": "test-staff",
+          "updatedAt": "2025-12-20T03:00:00.000Z"
+        }
+      ],
+      "certification": {
+        "outcome": "complete",
+        "date": "2026-01-05",
+        "responsible": "เจ้าหน้าที่บัญชีทดสอบ"
+      },
+      "committeeRecord": {
+        "unitOutcome": "endorsed",
+        "certification": "complete",
+        "date": "2026-01-05",
+        "responsible": "เจ้าหน้าที่บัญชีทดสอบ",
+        "meetingNumber": "DEMO-C01",
+        "meetingDate": "2026-01-05",
+        "outcome": "endorsed",
+        "notes": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ บันทึกผลสมมติจากกระบวนการภายนอก ไม่ได้เชื่อมต่อ e-Office",
+        "letterNumber": "DEMO/EXT/C01",
+        "recordedAt": "2026-01-05T03:00:00.000Z",
+        "recordedBy": "test-staff",
+        "sourceStatus": "committee_review"
+      },
+      "proceedNotice": {
+        "unitOutcome": "endorsed",
+        "date": "2026-01-10",
+        "responsible": "เจ้าหน้าที่บัญชีทดสอบ",
+        "notes": "DEMO DATA — ข้อมูลสมมติสำหรับการทดสอบระบบ บันทึกผลสมมติจากกระบวนการภายนอก ไม่ได้เชื่อมต่อ e-Office",
+        "letterNumber": "DEMO/EXT/C01",
+        "recordedAt": "2026-01-10T03:00:00.000Z",
+        "recordedBy": "test-staff",
+        "sourceStatus": "active"
+      },
+      "closure": {
+        "state": "awaiting_review",
+        "revision": 1,
+        "method": "report",
+        "summary": "ผลจำลองแสดงความแม่นยำแตกต่างตามแสง ควรเพิ่มกรณีทดสอบที่พื้นหลังซับซ้อน",
+        "finishedDate": "2026-10-15",
+        "publication": "",
+        "documents": [
+          {
+            "id": "advisor-v1-C01-report",
+            "name": "MFU-ADVISOR-V1-C01-report.pdf",
+            "size": 34506,
+            "storagePath": "workspaces/testing/projects/MFU-ADVISOR-V1-C01/test-researcher/advisor-v1-C01-report",
+            "contentType": "application/pdf",
+            "kind": "report",
+            "version": 1
+          }
+        ],
+        "savedAt": "2026-10-16T03:00:00.000Z",
+        "submittedAt": "2026-10-16T03:00:00.000Z",
+        "submittedBy": "test-researcher",
+        "check": {
+          "outcome": "complete",
+          "checked": true,
+          "notes": "เอกสารครบถ้วน มอบหมายบัญชีผู้ทรงคุณวุฒิทดสอบ",
+          "reviewers": [
+            "test-reviewer"
+          ],
+          "dueAt": "2026-11-12",
+          "by": "test-staff",
+          "date": "2026-10-17T03:00:00.000Z",
+          "submitted": true
+        },
+        "evaluation": null,
+        "reviewer": "test-reviewer",
+        "finalCheck": null,
+        "revisedAfterEvaluation": false,
+        "submissions": [
+          {
+            "revision": 1,
+            "date": "2026-10-16T03:00:00.000Z",
+            "method": "report",
+            "summary": "ผลจำลองแสดงความแม่นยำแตกต่างตามแสง ควรเพิ่มกรณีทดสอบที่พื้นหลังซับซ้อน",
+            "documents": [
+              {
+                "id": "advisor-v1-C01-report",
+                "name": "MFU-ADVISOR-V1-C01-report.pdf",
+                "size": 34506,
+                "storagePath": "workspaces/testing/projects/MFU-ADVISOR-V1-C01/test-researcher/advisor-v1-C01-report",
+                "contentType": "application/pdf",
+                "kind": "report",
+                "version": 1
+              }
+            ]
+          }
+        ],
+        "history": [
+          {
+            "projectId": "MFU-ADVISOR-V1-C01",
+            "previousStatus": "active",
+            "previousClosureState": "draft",
+            "id": "33cfec25-fe60-4e54-b679-8691aad0a16d",
+            "action": "submit",
+            "date": "2026-10-16T03:00:00.000Z",
+            "by": "test-researcher",
+            "role": "researcher",
+            "notes": "",
+            "isDemo": true,
+            "origin": "mfu-advisor-v1"
+          },
+          {
+            "projectId": "MFU-ADVISOR-V1-C01",
+            "previousStatus": "closure_review",
+            "previousClosureState": "submitted",
+            "id": "4c4139b6-1e02-4c1a-8c4d-513bb6a4bf33",
+            "action": "check",
+            "date": "2026-10-17T03:00:00.000Z",
+            "by": "test-staff",
+            "role": "staff",
+            "notes": "เอกสารครบถ้วน มอบหมายบัญชีผู้ทรงคุณวุฒิทดสอบ",
+            "snapshot": {
+              "outcome": "complete",
+              "checked": true,
+              "notes": "เอกสารครบถ้วน มอบหมายบัญชีผู้ทรงคุณวุฒิทดสอบ",
+              "reviewers": [
+                "test-reviewer"
+              ],
+              "dueAt": "2026-11-12",
+              "by": "test-staff",
+              "date": "2026-10-17T03:00:00.000Z",
+              "submitted": true
+            },
+            "isDemo": true,
+            "origin": "mfu-advisor-v1"
+          }
+        ],
+        "reviewers": [
+          "test-reviewer"
+        ],
+        "evaluations": {},
+        "evaluationVersion": 2
+      },
+      "registry": {
+        "coResearchers": "",
+        "period": "2026-01-15 – 2027-01-14",
+        "publication": "",
+        "evaluator": "",
+        "expert": "test-reviewer",
+        "firstAssessment": "",
+        "firstResult": "รอผลประเมินจากผู้ทรงคุณวุฒิ",
+        "expertNomination": "",
+        "notes": "",
+        "assessmentStatus": "อยู่ระหว่างดำเนินการ",
+        "finalReport": true,
+        "steps": {
+          "letter": "ดำเนินการแล้วเสร็จ",
+          "received": "ยังไม่ได้ดำเนินการ",
+          "revision": "ยังไม่ได้ดำเนินการ",
+          "endorsed": "ยังไม่ได้ดำเนินการ",
+          "resubmitted": "ยังไม่ได้ดำเนินการ",
+          "payment": "ยังไม่ได้ดำเนินการ"
+        }
+      },
+      "registryHistory": [
+        {
+          "by": "test-researcher",
+          "role": "researcher",
+          "at": "2026-10-16T03:00:00.000Z",
+          "source": "submit",
+          "changes": [
+            {
+              "field": "assessmentStatus",
+              "label": "สถานะการประเมิน",
+              "before": "ยังไม่ได้ดำเนินการ",
+              "after": "อยู่ระหว่างดำเนินการ"
+            },
+            {
+              "field": "finalReport",
+              "label": "ส่งเล่ม Final Report",
+              "before": false,
+              "after": true
+            }
+          ]
+        },
+        {
+          "by": "test-staff",
+          "role": "staff",
+          "at": "2026-10-17T03:00:00.000Z",
+          "source": "check",
+          "changes": [
+            {
+              "field": "expert",
+              "label": "ผู้ทรงฯ",
+              "before": "",
+              "after": "test-reviewer"
+            },
+            {
+              "field": "firstResult",
+              "label": "ผลประเมิน ครั้งที่ 1",
+              "before": "",
+              "after": "รอผลประเมินจากผู้ทรงคุณวุฒิ"
+            },
+            {
+              "field": "letter",
+              "label": "นำส่งหนังสือผู้ทรงฯ + แบบฟอร์ม",
+              "before": "ยังไม่ได้ดำเนินการ",
+              "after": "ดำเนินการแล้วเสร็จ"
+            }
+          ]
+        }
+      ],
+      "isDemo": true,
+      "fictional": true,
+      "demoSeedId": "mfu-advisor-v1",
+      "demoGroup": "reviewer",
+      "demoScenarioLabel": "รอเริ่มประเมิน",
+      "demoCode": "C01",
+      "researchField": "วิทยาการข้อมูล",
+      "demoOrigin": "ข้อมูลสังเคราะห์ที่เตรียมไว้ ไม่ใช่การยื่นหรือผลพิจารณาจริง",
+      "demoResults": "ผลจำลองแสดงความแม่นยำแตกต่างตามแสง ควรเพิ่มกรณีทดสอบที่พื้นหลังซับซ้อน"
+    }
+  ]
+}
