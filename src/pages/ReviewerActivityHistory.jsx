@@ -1,0 +1,22 @@
+import { useTranslation } from 'react-i18next'
+import { Check, FilePenLine, FileText, UserCheck } from 'lucide-react'
+import { ownAssignment, ownEvaluation, reviewStatus } from '../utils/reviewerWorkspace'
+import { actorName, displayDate, eventLabel, projectReference } from '../utils/researchDisplay'
+import { statusLabel } from '../data/statuses'
+import { Feedback } from '../components/SharedFeedback'
+import './StaffProjectOverview.css'
+import './ReviewerActivityHistory.css'
+
+export default function ReviewerActivityHistory({project:p,currentUser}) {
+ const {i18n}=useTranslation(),text=(th,en)=>i18n.language==='en'?en:th
+ const assignment=ownAssignment(p,currentUser),evaluation=ownEvaluation(p,currentUser),status=reviewStatus(p,currentUser)
+ const labels={pending:text('รอประเมิน','Pending'),draft:text('บันทึกร่าง','Draft'),submitted:text('ส่งผลประเมินแล้ว','Submitted')}
+ // Present only actual assignment context and this reviewer's own actions from the authorized projection.
+ const events=[...(p.statusHistory||[])].reverse().filter(e=>assignment&&(e.action==='assign_reviewers'||(e.updatedBy||e.by)===currentUser.uid&&['save_evaluation','submit_evaluation','attach_document'].includes(e.action)))
+  .sort((a,b)=>(Date.parse(b.updatedAt||b.date)||0)-(Date.parse(a.updatedAt||a.date)||0))
+ const descriptions={assign_reviewers:text('ได้รับมอบหมายให้อ่านรายงานวิจัยฉบับที่ระบุในงานประเมิน','Assigned to review the report linked to this evaluation.'),save_evaluation:text('บันทึกผลประเมินเป็นร่าง ยังไม่ใช่การยืนยันส่งผลประเมิน','Evaluation saved as a draft; it has not been submitted.'),submit_evaluation:text('ยืนยันส่งผลประเมินให้เจ้าหน้าที่แล้ว ผลที่ส่งถูกล็อก','Evaluation submitted to staff. The submitted result is locked.'),attach_document:text('แนบเอกสารข้อเสนอแนะประกอบงานประเมิน','Attached a feedback document for this review.')}
+ const icons={assign_reviewers:UserCheck,save_evaluation:FilePenLine,submit_evaluation:Check,attach_document:FileText}
+ return <div className="reviewer-activity-history"><header className="so-header"><div><span>{projectReference(p)}</span><h1 id="page-title" tabIndex={-1}>{i18n.language==='en'&&p.titleEn||p.title}</h1><p>{text('ประวัติการดำเนินงานประเมินรายงานวิจัยของฉัน','Activity and history for my assigned research review')}</p></div><span className={'rv-status rv-'+status}>{labels[status]}</span></header>
+ <section className="so-summary va-history-summary" aria-label={text('สรุปงานประเมิน','Review Summary')}>{[[text('วันที่ได้รับมอบหมาย','Assignment Date'),displayDate(assignment?.assignedAt,i18n.language)],[text('วันที่ส่งผลประเมิน','Submission Date'),evaluation?.submitted?displayDate(evaluation.submittedAt,i18n.language):'—'],[text('สถานะการประเมิน','Evaluation Status'),labels[status]]].map(([label,value])=><div key={label}><span>{label}</span><strong>{value}</strong></div>)}</section>
+ <section className="vah-card"><header><h2>{text('ประวัติการประเมินของฉัน','My Evaluation History')}</h2><p>{text('แสดงกิจกรรมจริงล่าสุดก่อน เฉพาะงานของคุณ','Actual activities, newest first, limited to your review.')}</p></header>{events.length?<ol className="shared-history vah-timeline">{events.map((e,i)=>{const Icon=icons[e.action];return <li key={e.id||i} className={'vah-event vah-'+e.action}><span className="vah-icon" aria-hidden="true"><Icon size={16}/></span><div className="vah-content"><div className="vah-title"><h3>{e.action==='assign_reviewers'?text('ได้รับมอบหมายให้ประเมินรายงาน','Report Review Assigned'):eventLabel(e.action,i18n.language)}</h3><time>{displayDate(e.updatedAt||e.date,i18n.language,true)}</time></div><p>{descriptions[e.action]}</p>{e.action!=='assign_reviewers'&&(e.note||e.reason)&&<p className="vah-note">{e.note||e.reason}</p>}<small>{actorName(e.updatedBy||e.by)} · {e.action==='assign_reviewers'?text('เจ้าหน้าที่บริหารงานวิจัย','Research Administration Staff'):text('ผู้ทรงคุณวุฒิ','Expert Reviewer')}</small><details><summary>{text('รายละเอียดกิจกรรม','Activity Details')}</summary><dl><div><dt>{text('สถานะเดิม','Previous State')}</dt><dd>{e.previousStatus?statusLabel(e.previousStatus,i18n.language):'—'}</dd></div><div><dt>{text('สถานะใหม่','New State')}</dt><dd>{e.newStatus||e.status?statusLabel(e.newStatus||e.status,i18n.language):'—'}</dd></div><div><dt>{text('เวอร์ชันที่บันทึก','Recorded Version')}</dt><dd>{e.projectVersion||'—'}</dd></div></dl></details></div></li>})}</ol>:<Feedback title={text('ยังไม่มีกิจกรรมที่แสดงได้','No visible activity yet')}/>}</section></div>
+}

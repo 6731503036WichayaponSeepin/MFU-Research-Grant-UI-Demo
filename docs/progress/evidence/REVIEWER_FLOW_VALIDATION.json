@@ -1,0 +1,91 @@
+{
+  "executedAt": "2026-11-15T16:47:14.749Z",
+  "results": [
+    {
+      "file": "tests/reviewerDashboardUI.browser.mjs",
+      "status": "PASS",
+      "durationMs": 14817,
+      "output": "PASS Reviewer Dashboard UI 66 checks\n"
+    },
+    {
+      "file": "tests/reviewerReviewUI.browser.mjs",
+      "status": "PASS",
+      "durationMs": 9184,
+      "output": "PASS Evaluation Review UI 17 checks\n"
+    },
+    {
+      "file": "tests/reviewerOverviewUI.browser.mjs",
+      "status": "PASS",
+      "durationMs": 8531,
+      "output": "PASS Reviewer Overview UI 85 checks\n"
+    },
+    {
+      "file": "tests/reviewerDocumentsUI.browser.mjs",
+      "status": "PASS",
+      "durationMs": 14154,
+      "output": "PASS Reviewer Document Library UI 52 checks\n"
+    },
+    {
+      "file": "tests/reviewerHistoryUI.browser.mjs",
+      "status": "PASS",
+      "durationMs": 7980,
+      "output": "PASS Reviewer History UI 67 checks\n"
+    },
+    {
+      "file": "tests/reviewerNotificationsUI.browser.mjs",
+      "status": "PASS",
+      "durationMs": 15566,
+      "output": "PASS Reviewer Notifications UI 60 checks\n"
+    },
+    {
+      "file": "tmp/reviewer-flow-validation/phase1.mjs",
+      "status": "PASS",
+      "durationMs": 7684,
+      "output": "PASS Phase 1 browser: 44 checks; screenshots=tmp/staff-validation-common-screenshots; no external requests\n"
+    },
+    {
+      "file": "tmp/reviewer-flow-validation/phase2.mjs",
+      "status": "PASS",
+      "durationMs": 9787,
+      "output": "PASS Phase 2 browser: 29 checks\n23:44:55 [vite] (client) [console.error] Error: ไฟล์ PDF ไม่ถูกต้อง\n    at extractPDFText (http://127.0.0.1:5178/src/utils/rs1Extraction.js:74:9)\n    at async readDocument (http://127.0.0.1:5178/src/pages/UploadDocument.jsx:77:19)\n"
+    },
+    {
+      "file": "tmp/reviewer-flow-validation/phase3.mjs",
+      "status": "PASS",
+      "durationMs": 9764,
+      "output": "PASS Phase 3 browser: 42 checks\n"
+    },
+    {
+      "file": "tmp/reviewer-flow-validation/phase4.mjs",
+      "status": "PASS",
+      "durationMs": 7728,
+      "output": "PASS Phase 4 browser: 21 checks; PDF=tmp/pdfs/phase4-evaluation.pdf\n"
+    },
+    {
+      "file": "tmp/reviewer-flow-validation/phase5.mjs",
+      "status": "PASS",
+      "durationMs": 8575,
+      "output": "PASS Phase 5 browser: 25 checks; one shared project across three roles/personas\n"
+    },
+    {
+      "file": "tests/reviewerSubmittedUI.browser.mjs",
+      "status": "PASS",
+      "durationMs": 16450,
+      "output": "PASS Submitted Evaluation UI 58 checks\n",
+      "previousRun": {
+        "status": "FAIL",
+        "output": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\npage.evaluate: TypeError: pdf.destroy is not a function\r\n    at eval (eval at evaluate (:290:30), <anonymous>:7:99)\r\n    at async <anonymous>:316:30\r\n    at C:\\Users\\User\\mfu-research-system\\tests\\reviewerSubmittedUI.browser.mjs:21:29\r\n\r\nNode.js v24.18.0\r\n"
+      }
+    },
+    {
+      "file": "tests/reviewerEvaluationUI.browser.mjs",
+      "status": "PASS",
+      "durationMs": 8956,
+      "output": "PASS Unified Evaluation UI 26 checks\n",
+      "previousRun": {
+        "status": "PASS",
+        "output": "PASS Unified Evaluation UI 25 checks\n"
+      }
+    }
+  ]
+}

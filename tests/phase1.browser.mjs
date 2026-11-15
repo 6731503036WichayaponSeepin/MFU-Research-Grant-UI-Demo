@@ -82,7 +82,7 @@ try {
     await page.locator('.shared-role').last().getByRole('combobox').selectOption(`demo-reviewer-${i}`)
     await page.getByRole('button', { name: /เริ่มทดลอง.*reviewer/ }).click()
     await page.locator('#page-title').waitFor()
-    check(await page.locator('.sidebar-menu a').count() === 3, `reviewer ${i} navigation`)
+    check(await page.locator('.sidebar-menu a').count() === 2, `reviewer ${i} navigation`)
     check(await page.locator('.shared-project-row').count() === 6, `reviewer ${i} assigned visibility`)
     await route('/reviewer/projects/V16-AFFILIATION/documents')
     check(await page.getByRole('heading', { name: 'ไม่พบโครงการหรือไม่มีสิทธิ์เข้าถึง' }).count() === 1, `reviewer ${i} denied unassigned ID`)
@@ -100,7 +100,7 @@ try {
   check(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), 'tablet no horizontal page overflow')
   await page.screenshot({ path: `${screenshots}/phase1-overview-tablet.png`, fullPage: true })
   await page.getByRole('button', { name: 'EN', exact: true }).click()
-  check(await page.locator('#page-title').innerText() === 'Project Overview', 'English shared pages')
+  check(await page.locator('.reviewer-project-overview #page-title').innerText() === await page.evaluate(() => JSON.parse(localStorage.getItem('mfu-foundation-v16-demo-projects')).find(p => p.id === location.hash.split('/')[3]).titleEn), 'English shared pages')
   // Existing role workflow is only exercised against the explicitly selected legacy dataset.
   await page.setViewportSize({ width: 1440, height: 1000 })
   await page.goto(base + '#/roles')

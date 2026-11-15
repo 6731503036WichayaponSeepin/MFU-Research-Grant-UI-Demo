@@ -1,0 +1,42 @@
+.reviewer-evaluation-view .main{min-width:0}
+.reviewer-evaluation-view .main>.project-page-nav{margin-bottom:8px}
+.reviewer-evaluation-view .focused-page-heading{margin:0 0 8px}
+.reviewer-evaluation-view .focused-page-heading h1{font-size:24px}
+.reviewer-evaluation-view .shared-stack{gap:8px}
+.reviewer-evaluation-view .shared-stack>.shared-card{padding:12px 16px}
+.reviewer-evaluation-view .shared-stack>.shared-card h2{font-size:17px;margin:0 0 4px}
+.reviewer-evaluation-view .shared-stack>.shared-card p{margin:3px 0;font-size:12px}
+.reviewer-evaluation-view .shared-stack>.shared-card .shared-actions{margin-top:6px;font-size:12px}
+.reviewer-evaluation-view .shared-notice{margin:0;font-size:11px;padding:8px 12px}
+.ve-workspace{display:grid;grid-template-columns:minmax(0,calc(var(--ve-split) - 6px)) 12px minmax(0,1fr);height:clamp(450px,65dvh,850px);min-width:0;gap:0}
+.ve-report,.ve-editor>.shared-card{min-width:0;min-height:0;border:1px solid var(--border);border-radius:8px;background:var(--surface);overflow:hidden}
+.ve-report{display:flex;flex-direction:column}
+.ve-report>header{padding:12px 16px;border-bottom:1px solid var(--border);flex-shrink:0}
+.ve-report h2{font-size:13px;line-height:1.5;margin:0;overflow-wrap:anywhere}
+.ve-report header label{font-size:12px;display:grid;gap:4px;margin-top:8px}
+.ve-report header select{max-width:100%;font-size:12px}
+.ve-pdf-scroll{overflow:auto;min-height:0;flex:1;overscroll-behavior:contain;background:var(--background)}
+.ve-pdf-scroll .pdf-reader{margin:0;border:0;border-radius:0;padding:0}
+.ve-pdf-scroll .pdf-reader-toolbar{position:sticky;top:0;z-index:1;background:var(--surface);padding:8px;gap:8px;font-size:12px;flex-wrap:wrap}
+.ve-pdf-scroll .pdf-reader-toolbar button{font-size:11px;padding:5px 8px;min-height:30px}
+.ve-pdf-scroll .pdf-canvas-wrap{padding:12px}
+.ve-divider{cursor:col-resize;touch-action:none;display:flex;align-items:center;justify-content:center;outline-offset:-2px}
+.ve-divider:before{content:'';position:absolute;height:40px;width:2px;background:var(--border)}
+.ve-divider span{z-index:1;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text-muted);font-size:10px}
+.ve-divider:focus-visible{outline:2px solid var(--primary)}
+.ve-editor{min-width:0;min-height:0}
+.ve-editor>.shared-card{height:100%;display:flex;flex-direction:column;padding:0;margin:0}
+.ve-editor>.shared-card>h2{font-size:16px;margin:0;padding:12px 16px;border-bottom:1px solid var(--border)}
+.ve-editor form{display:flex;flex-direction:column;flex:1;min-height:0}
+.ve-form-scroll{overflow:auto;min-height:0;flex:1;padding:16px;overscroll-behavior:contain}
+.ve-form-scroll .reviewer-form{display:grid;gap:14px;padding:0;margin:0;border:0;min-width:0}
+.ve-form-scroll .reviewer-form>section{padding:0 0 14px;border-bottom:1px solid var(--border)}
+.ve-form-scroll label{font-size:13px}
+.ve-form-scroll :is(select,textarea,input){font-size:13px;max-width:100%}
+.ve-form-scroll textarea{min-height:80px}
+.ve-form-scroll .shared-table-wrap{overflow-x:auto}
+.ve-action-bar{position:sticky;bottom:0;margin:0;padding:12px 16px;border-top:1px solid var(--border);background:var(--surface);display:flex;justify-content:flex-end;gap:8px;flex-shrink:0;z-index:2}
+.ve-action-bar button{font-size:13px;padding:8px 14px}
+@media(max-width:900px){.ve-workspace{display:flex;flex-direction:column;height:auto;gap:12px}.ve-report{height:55dvh;min-height:320px}.ve-editor{height:75dvh;min-height:480px}.ve-divider{display:none}.ve-action-bar{flex-wrap:wrap}.ve-action-bar button{flex:1}}
+
+.ve-pdf-scroll canvas{max-width:100%;height:auto}.ve-report details{font-size:12px;margin-top:6px}.ve-report details p{line-height:1.6}

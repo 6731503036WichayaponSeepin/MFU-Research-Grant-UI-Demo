@@ -1,5 +1,6 @@
 import { jsPDF } from 'jspdf'
 import { evaluationRows } from './reviewerWorkspace.js'
+import { displayDate } from './researchDisplay.js'
 async function font(url) {
  const response=await fetch(url); if(!response.ok)throw new Error('PDF font unavailable')
  const bytes=new Uint8Array(await response.arrayBuffer()); let binary=''
@@ -7,7 +8,7 @@ async function font(url) {
  return btoa(binary)
 }
 // Only call with a capability-checked submittedPdfSnapshot. Never writes project data.
-export async function generateEvaluationPDF(snapshot) {
+export async function generateEvaluationPDF(snapshot,display) {
  if(!snapshot?.evaluation?.submitted)throw new Error('Submitted evaluation required')
  const doc=new jsPDF({unit:'mm',format:'a4',compress:true,putOnlyUsedFonts:true})
  const regular=await font('/fonts/Sarabun-Regular.ttf'),bold=await font('/fonts/Sarabun-Bold.ttf')
@@ -21,18 +22,33 @@ export async function generateEvaluationPDF(snapshot) {
   y+=3
  }
  text('MFU Research - Individual Evaluation',true)
- text('Demo rubric / แบบประเมิน Demo - official template OPEN-11')
- text(snapshot.projectId+' | '+snapshot.title,true)
- text('Reviewer: '+snapshot.reviewerId)
- text('Submitted: '+snapshot.evaluation.submittedAt)
- text('Assignment: '+snapshot.assignment.id+' | Report revision: '+snapshot.assignment.reportRevision)
- text('Assigned document IDs: '+snapshot.assignment.documentIds.join(', '))
+ text(display?'แบบประเมินสำหรับสาธิต / Demonstration evaluation form - official template pending confirmation':'Demo rubric / แบบประเมิน Demo - official template OPEN-11')
+ if(display){
+  // Local Demo presentation only. Preserve exact IDs/answers in PDF metadata, not normal reading pages.
+  doc.setProperties({title:snapshot.title,author:display.reviewerName,subject:JSON.stringify(snapshot)})
+  text(display.reference+' | '+snapshot.title,true)
+  text('ผู้ประเมิน / Reviewer: '+display.reviewerName)
+  text('วันที่ส่ง / Submitted: '+displayDate(snapshot.evaluation.submittedAt,display.language,true))
+  text('รายงานเวอร์ชัน / Report revision: '+snapshot.assignment.reportRevision)
+  for(const name of display.reportNames)text('รายงานที่ได้รับมอบหมาย / Assigned report: '+name)
+ }else{
+  text(snapshot.projectId+' | '+snapshot.title,true)
+  text('Reviewer: '+snapshot.reviewerId)
+  text('Submitted: '+snapshot.evaluation.submittedAt)
+  text('Assignment: '+snapshot.assignment.id+' | Report revision: '+snapshot.assignment.reportRevision)
+  text('Assigned document IDs: '+snapshot.assignment.documentIds.join(', '))
+ }
  for(const [label,value] of evaluationRows(snapshot.evaluation)){text(label,true);text(value)}
- text('Submission metadata',true)
- // Include exact recorded fields in addition to human-readable labels, without inventing signatures.
- for(const [key,value] of Object.entries(snapshot.evaluation))text(key+': '+(typeof value==='object'?JSON.stringify(value):String(value)))
+ if(display){
+  text('ข้อมูลการส่งผล / Submission information',true)
+  text('รอบประเมิน / Evaluation round: '+snapshot.evaluation.reviewRound)
+  text('ไฟล์ข้อเสนอแนะ / Feedback attachments: '+(snapshot.evaluation.documentIds||[]).length)
+ }else{
+  text('Submission metadata',true)
+  for(const [key,value] of Object.entries(snapshot.evaluation))text(key+': '+(typeof value==='object'?JSON.stringify(value):String(value)))
+ }
  text('No generated signature / ไม่มีการสร้างลายเซ็นแทนผู้ประเมิน')
  const pages=doc.getNumberOfPages()
- for(let i=1;i<=pages;i++){doc.setPage(i);doc.setFont('Sarabun','normal');doc.setFontSize(9);doc.setTextColor(102,115,134);doc.text(`${snapshot.projectId} | ${i}/${pages}`,20,287)}
+ for(let i=1;i<=pages;i++){doc.setPage(i);doc.setFont('Sarabun','normal');doc.setFontSize(9);doc.setTextColor(102,115,134);doc.text(`${display?.reference||snapshot.projectId} | ${i}/${pages}`,20,287)}
  return {blob:doc.output('blob'),filename:`Evaluation-${snapshot.projectId}-${snapshot.reviewerId}.pdf`}
 }
