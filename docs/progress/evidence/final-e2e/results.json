@@ -1,16 +1,6 @@
 {
-  "executedAt": "2026-11-15T18:19:28.770Z",
+  "executedAt": "2026-11-15T18:59:46.886Z",
   "results": [
-    {
-      "source": "tests/finalCrossRole.browser.mjs",
-      "status": "PASS",
-      "started": "2026-11-15T18:06:26.744Z",
-      "exitCode": 0,
-      "log": "docs/progress/evidence/final-e2e/finalCrossRole.browser.mjs.log",
-      "summary": [
-        "PASS Final Cross-role browser 55 checks; two new proposals completed through real UI, report + publication"
-      ]
-    },
     {
       "source": "tests/finalNegative.browser.mjs",
       "status": "PASS",
@@ -19,16 +9,6 @@
       "log": "docs/progress/evidence/final-e2e/finalNegative.browser.mjs.log",
       "summary": [
         "PASS Final Negative browser 17 checks; complete conditional rubric, feedback ACL and submitted lock"
-      ]
-    },
-    {
-      "source": "tests/phase2.browser.mjs",
-      "status": "PASS",
-      "started": "2026-11-15T18:07:23.830Z",
-      "exitCode": 0,
-      "log": "docs/progress/evidence/final-e2e/phase2.browser.mjs.log",
-      "summary": [
-        "PASS Phase 2 browser: 29 checks"
       ]
     },
     {
@@ -59,16 +39,6 @@
       "log": "docs/progress/evidence/final-e2e/phase6.browser.mjs.log",
       "summary": [
         "PASS Phase 6 browser: 240 route/language/viewport checks; sign-in separate; project data unchanged"
-      ]
-    },
-    {
-      "source": "tests/researcherFlow.browser.mjs",
-      "status": "PASS",
-      "started": "2026-11-15T18:09:47.737Z",
-      "exitCode": 0,
-      "log": "docs/progress/evidence/final-e2e/researcherFlow.browser.mjs.log",
-      "summary": [
-        "PASS Researcher validation: 168 checks; 72 field bindings/recovery; nine states; upload path switching; TH/EN responsive"
       ]
     },
     {
@@ -292,26 +262,6 @@
       }
     },
     {
-      "source": "tests/navigation.browser.mjs",
-      "status": "PASS",
-      "started": "2026-11-15T18:14:17.963Z",
-      "exitCode": 0,
-      "log": "docs/progress/evidence/final-e2e/navigation.browser.mjs.log",
-      "summary": [
-        "PASS Navigation v1.6 browser 61 checks; cancelled/accepted Back and role change, proposal/upload/closure/staff/reviewer drafts, saves, deep links and SPA navigation"
-      ],
-      "previousRun": {
-        "source": "tests/navigation.browser.mjs",
-        "status": "PASS",
-        "started": "2026-11-15T18:07:01.629Z",
-        "exitCode": 0,
-        "log": "docs/progress/evidence/final-e2e/navigation.browser.mjs.log",
-        "summary": [
-          "PASS Navigation v1.6 browser 61 checks; cancelled/accepted Back and role change, proposal/upload/closure/staff/reviewer drafts, saves, deep links and SPA navigation"
-        ]
-      }
-    },
-    {
       "source": "tests/phase1.browser.mjs",
       "status": "PASS",
       "started": "2026-11-15T18:17:27.115Z",
@@ -395,6 +345,170 @@
           "log": "docs/progress/evidence/final-e2e/reviewerDashboardUI.browser.mjs.log",
           "summary": [
             "PASS Reviewer Dashboard UI 66 checks"
+          ]
+        }
+      }
+    },
+    {
+      "source": "tests/researcherManualUI.browser.mjs",
+      "status": "PASS",
+      "started": "2026-11-15T18:57:47.567Z",
+      "exitCode": 0,
+      "log": "docs/progress/evidence/final-e2e/researcherManualUI.browser.mjs.log",
+      "summary": [
+        "PASS Researcher Manual UI 63 checks"
+      ],
+      "previousRun": {
+        "source": "tests/researcherManualUI.browser.mjs",
+        "status": "FAIL",
+        "started": "2026-11-15T18:56:51.257Z",
+        "exitCode": 1,
+        "log": "docs/progress/evidence/final-e2e/researcherManualUI.browser.mjs.log",
+        "summary": [],
+        "previousRun": {
+          "source": "tests/researcherManualUI.browser.mjs",
+          "status": "FAIL",
+          "started": "2026-11-15T18:56:22.838Z",
+          "exitCode": 1,
+          "log": "docs/progress/evidence/final-e2e/researcherManualUI.browser.mjs.log",
+          "summary": [],
+          "previousRun": {
+            "source": "tests/researcherManualUI.browser.mjs",
+            "status": "FAIL",
+            "started": "2026-11-15T18:55:26.461Z",
+            "exitCode": 1,
+            "log": "docs/progress/evidence/final-e2e/researcherManualUI.browser.mjs.log",
+            "summary": []
+          }
+        }
+      }
+    },
+    {
+      "source": "tests/finalCrossRole.browser.mjs",
+      "status": "PASS",
+      "started": "2026-11-15T18:58:55.926Z",
+      "exitCode": 0,
+      "log": "docs/progress/evidence/final-e2e/finalCrossRole.browser.mjs.log",
+      "summary": [
+        "PASS Final Cross-role browser 55 checks; two new proposals completed through real UI, report + publication"
+      ],
+      "previousRun": {
+        "source": "tests/finalCrossRole.browser.mjs",
+        "status": "PASS",
+        "started": "2026-11-15T18:54:17.848Z",
+        "exitCode": 0,
+        "log": "docs/progress/evidence/final-e2e/finalCrossRole.browser.mjs.log",
+        "summary": [
+          "PASS Final Cross-role browser 55 checks; two new proposals completed through real UI, report + publication"
+        ],
+        "previousRun": {
+          "source": "tests/finalCrossRole.browser.mjs",
+          "status": "PASS",
+          "started": "2026-11-15T18:06:26.744Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/finalCrossRole.browser.mjs.log",
+          "summary": [
+            "PASS Final Cross-role browser 55 checks; two new proposals completed through real UI, report + publication"
+          ]
+        }
+      }
+    },
+    {
+      "source": "tests/navigation.browser.mjs",
+      "status": "PASS",
+      "started": "2026-11-15T18:59:16.047Z",
+      "exitCode": 0,
+      "log": "docs/progress/evidence/final-e2e/navigation.browser.mjs.log",
+      "summary": [
+        "PASS Navigation v1.6 browser 61 checks; cancelled/accepted Back and role change, proposal/upload/closure/staff/reviewer drafts, saves, deep links and SPA navigation"
+      ],
+      "previousRun": {
+        "source": "tests/navigation.browser.mjs",
+        "status": "PASS",
+        "started": "2026-11-15T18:54:37.590Z",
+        "exitCode": 0,
+        "log": "docs/progress/evidence/final-e2e/navigation.browser.mjs.log",
+        "summary": [
+          "PASS Navigation v1.6 browser 61 checks; cancelled/accepted Back and role change, proposal/upload/closure/staff/reviewer drafts, saves, deep links and SPA navigation"
+        ],
+        "previousRun": {
+          "source": "tests/navigation.browser.mjs",
+          "status": "PASS",
+          "started": "2026-11-15T18:14:17.963Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/navigation.browser.mjs.log",
+          "summary": [
+            "PASS Navigation v1.6 browser 61 checks; cancelled/accepted Back and role change, proposal/upload/closure/staff/reviewer drafts, saves, deep links and SPA navigation"
+          ],
+          "previousRun": {
+            "source": "tests/navigation.browser.mjs",
+            "status": "PASS",
+            "started": "2026-11-15T18:07:01.629Z",
+            "exitCode": 0,
+            "log": "docs/progress/evidence/final-e2e/navigation.browser.mjs.log",
+            "summary": [
+              "PASS Navigation v1.6 browser 61 checks; cancelled/accepted Back and role change, proposal/upload/closure/staff/reviewer drafts, saves, deep links and SPA navigation"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "source": "tests/phase2.browser.mjs",
+      "status": "PASS",
+      "started": "2026-11-15T18:59:27.682Z",
+      "exitCode": 0,
+      "log": "docs/progress/evidence/final-e2e/phase2.browser.mjs.log",
+      "summary": [
+        "PASS Phase 2 browser: 29 checks"
+      ],
+      "previousRun": {
+        "source": "tests/phase2.browser.mjs",
+        "status": "PASS",
+        "started": "2026-11-15T18:54:49.308Z",
+        "exitCode": 0,
+        "log": "docs/progress/evidence/final-e2e/phase2.browser.mjs.log",
+        "summary": [
+          "PASS Phase 2 browser: 29 checks"
+        ],
+        "previousRun": {
+          "source": "tests/phase2.browser.mjs",
+          "status": "PASS",
+          "started": "2026-11-15T18:07:23.830Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/phase2.browser.mjs.log",
+          "summary": [
+            "PASS Phase 2 browser: 29 checks"
+          ]
+        }
+      }
+    },
+    {
+      "source": "tests/researcherFlow.browser.mjs",
+      "status": "PASS",
+      "started": "2026-11-15T18:59:37.794Z",
+      "exitCode": 0,
+      "log": "docs/progress/evidence/final-e2e/researcherFlow.browser.mjs.log",
+      "summary": [
+        "PASS Researcher validation: 168 checks; 72 field bindings/recovery; nine states; upload path switching; TH/EN responsive"
+      ],
+      "previousRun": {
+        "source": "tests/researcherFlow.browser.mjs",
+        "status": "PASS",
+        "started": "2026-11-15T18:54:59.335Z",
+        "exitCode": 0,
+        "log": "docs/progress/evidence/final-e2e/researcherFlow.browser.mjs.log",
+        "summary": [
+          "PASS Researcher validation: 168 checks; 72 field bindings/recovery; nine states; upload path switching; TH/EN responsive"
+        ],
+        "previousRun": {
+          "source": "tests/researcherFlow.browser.mjs",
+          "status": "PASS",
+          "started": "2026-11-15T18:09:47.737Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/researcherFlow.browser.mjs.log",
+          "summary": [
+            "PASS Researcher validation: 168 checks; 72 field bindings/recovery; nine states; upload path switching; TH/EN responsive"
           ]
         }
       }

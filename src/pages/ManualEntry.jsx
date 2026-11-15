@@ -692,6 +692,7 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved, w
       )}
 
       <div className="rs1-footer">
+        {workspace && <p className="rm-action-context">{workspace.editableFields ? label('ตรวจทานฉบับแก้ไขก่อนจัดทำ PDF','Review your corrections before preparing the PDF') : label('บันทึกร่างหรือทบทวนข้อเสนอเพื่อจัดทำ PDF','Save your draft or review the proposal to prepare its PDF')}</p>}
         {(!workspace || review) && <button className="outline-button" onClick={back}>
           ← {label('ย้อนกลับ', 'Back')}
         </button>}
