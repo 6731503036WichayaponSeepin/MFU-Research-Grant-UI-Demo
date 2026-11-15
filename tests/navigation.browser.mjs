@@ -1,118 +1,37 @@
+// Current v1.6 history/navigation/draft contracts; no retired wizard or approval flow.
 import assert from 'node:assert/strict'
-import { createRequire } from 'node:module'
-import { createServer } from 'vite'
-const require=createRequire(import.meta.url)
-const {chromium}=require(process.env.MFU_PLAYWRIGHT_MODULE||'playwright')
-const server=await createServer({envDir:'tmp/demo-no-env',server:{host:'127.0.0.1',port:5178,strictPort:true}})
-await server.listen()
-const browser=await chromium.launch({channel:process.env.MFU_BROWSER_CHANNEL||'chrome',headless:true})
-const page=await browser.newPage({viewport:{width:1280,height:900}})
-const errors=[],external=[]
-let documents=0,prompts=0,pendingDialog=null
-async function settleDialog(){const pending=pendingDialog;pendingDialog=null;if(pending){await pending.promise;if(!pending.accept)await page.waitForURL(pending.origin)}}
-async function browserBack(){await page.goBack();await settleDialog()}
-page.on('pageerror',e=>errors.push(e.message))
-page.on('request',r=>{if(r.isNavigationRequest()&&r.frame()===page.mainFrame())documents++;if(/^https?:/.test(r.url())&&(!r.url().startsWith('http://127.0.0.1:5178/')||r.url().includes('/api/')))external.push(r.url())})
-const list=async()=>{await page.locator('.sidebar-menu').getByRole('link',{name:'รายการโครงการ',exact:true}).click();await settleDialog()}
-const scenario=async text=>{await list();await page.locator('.demo-case').filter({hasText:text}).first().click()}
-const tab=text=>page.getByRole('navigation',{name:'หน้าโครงการ'}).getByRole('link',{name:text,exact:true}).click()
-const back=async()=>{await page.locator('.focused-page-heading').getByRole('button',{name:'← ย้อนกลับ',exact:true}).click();await settleDialog()}
-const role=async value=>{await page.getByLabel('เลือกบทบาท',{exact:true}).selectOption(value);await settleDialog()}
-const answer=accept=>{pendingDialog={accept,origin:page.url(),promise:page.waitForEvent('dialog').then(async d=>{prompts++;assert.equal(d.type(),'confirm');assert.ok(d.message().includes('ยังไม่ได้บันทึก'));await(accept?d.accept():d.dismiss())})}}
-const state=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('mfu-interactive-demo-v1-projects')))
+import {createRequire} from 'node:module'
+import {createServer} from 'vite'
+const {chromium}=createRequire(import.meta.url)(process.env.MFU_PLAYWRIGHT_MODULE||'playwright')
+const server=await createServer({envDir:'tmp/demo-no-env',server:{host:'127.0.0.1',port:5178,strictPort:true}});await server.listen()
+const browser=await chromium.launch({channel:process.env.MFU_BROWSER_CHANNEL||'chrome',headless:true}),context=await browser.newContext({viewport:{width:1280,height:900}}),page=await context.newPage(),base='http://127.0.0.1:5178/'
+const errors=[],external=[];let checks=0,prompts=0,decision=true,documentLoads=0
+const check=(v,m)=>{assert.ok(v,m);checks++},snapshot=()=>page.evaluate(()=>localStorage.getItem('mfu-foundation-v16-demo-projects'))
+page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.isNavigationRequest()&&r.frame()===page.mainFrame())documentLoads++;if(/^https?:/.test(r.url())&&(!r.url().startsWith(base)||r.url().includes('/api/')))external.push(r.url())});page.on('dialog',async d=>{prompts++;const accept=decision;decision=true;await(accept?d.accept():d.dismiss())})
+async function route(role,path){await page.goto(base+`#/${role}/`+path);await page.locator('#page-title').waitFor()}
+async function cancel(action,url){const count=prompts;decision=false;await action();await page.waitForTimeout(100);check(prompts===count+1,'unsaved confirmation displayed');check(page.url()===url,'cancel preserves route')}
+async function draftRoundTrip(role,path,control,value){
+ await route(role,path);const url=page.url(),before=await snapshot();await control().fill(value)
+ await cancel(()=>page.locator('.sidebar-menu a[href$="/notifications"]').click(),url);check(await control().inputValue()===value,'cancel keeps draft')
+ await page.locator('.sidebar-menu a[href$="/notifications"]').click();await page.waitForURL(/notifications$/);await page.goBack();await page.waitForURL(url);check(await control().inputValue()===value,'Back restores private draft');await page.goForward();await page.waitForURL(/notifications$/);await page.goBack();await page.waitForURL(url);check(await control().inputValue()===value,'Forward/Back draft recovery');await page.reload();await control().waitFor();check(await control().inputValue()===value,'reload restores private draft');check(await snapshot()===before,'navigation does not mutate canonical project')
+}
 try{
- await page.goto('http://127.0.0.1:5178/')
- await page.getByRole('button',{name:'นักวิจัย Researcher เริ่มทดลอง →'}).click()
- await scenario('พึ่งเริ่มยื่นข้อเสนอ')
- const details=page.url()
- await page.getByRole('button',{name:'แก้ไขข้อเสนอ',exact:true}).click()
- const manual=page.url(),titleInput=page.getByLabel('ชื่อโครงการ *',{exact:true}),newTitle='โครงการสมมติ — ร่างที่เก็บไว้เมื่อย้อนกลับ'
- await titleInput.fill(newTitle)
- answer(false);await back();assert.equal(page.url(),manual);assert.equal(await titleInput.inputValue(),newTitle)
- answer(false);await browserBack();await page.waitForURL(manual);assert.equal(await titleInput.inputValue(),newTitle)
- answer(false);await list();assert.equal(page.url(),manual)
- answer(false);await role('staff');assert.equal(await page.getByLabel('เลือกบทบาท',{exact:true}).inputValue(),'researcher');assert.equal(page.url(),manual)
- answer(true);await browserBack();await page.waitForURL(details)
- await page.goForward();await page.waitForURL(manual);assert.equal(await titleInput.inputValue(),newTitle)
- await page.getByRole('button',{name:'บันทึกร่าง',exact:true}).first().click()
- await page.waitForURL(details)
- assert.equal((await state()).find(p=>p.id==='MFU-DEMO-001').title,newTitle)
- // A completed save replaces the form entry; the visible Back button skips duplicate detail URLs.
- await back();assert.ok(page.url().endsWith('/projects'))
- const beforeForward=prompts
- await page.goForward();assert.equal(prompts,beforeForward)
- await page.locator('.sidebar-menu').getByRole('link',{name:'สร้างข้อเสนอโครงการใหม่',exact:true}).click()
- await page.locator('.submission-method-card .method-action').last().click()
- const upload=page.url()
- await page.locator('input[type="file"]').setInputFiles('C:/Users/User/mfu-research-system/public/MFU-Demonstration-Sample.pdf')
- await page.locator('.upload-result').waitFor()
- await page.locator('.upload-preview-field input').first().fill('ชื่อโครงการจากเอกสารที่เก็บไว้เป็นร่าง')
- answer(true);await back();await page.waitForURL(/\/choose$/)
- await page.goForward();await page.waitForURL(upload)
- assert.equal(await page.locator('.upload-preview-field input').first().inputValue(),'ชื่อโครงการจากเอกสารที่เก็บไว้เป็นร่าง')
- assert.ok(await page.locator('.upload-selected').getByText('MFU-Demonstration-Sample.pdf',{exact:true}).count())
- await page.locator('.upload-icon-button').click()
- await role('staff');assert.ok(page.url().endsWith('/staff/dashboard'))
- await scenario('พิจารณาคำขอ')
- const correction=page.url()
- await page.locator('.correction-page textarea').fill('ร่างความเห็นเจ้าหน้าที่ที่ยังไม่ได้บันทึก')
- answer(true);await back();assert.ok(page.url().endsWith('/staff/projects'))
- await page.goForward();await page.waitForURL(correction)
- assert.equal(await page.locator('.correction-page textarea').inputValue(),'ร่างความเห็นเจ้าหน้าที่ที่ยังไม่ได้บันทึก')
- await page.getByRole('button',{name:'อนุมัติคำขอแก้ไข',exact:true}).click()
- await page.waitForURL(/\/details$/)
- assert.equal((await state()).find(p=>p.correction).correction.state,'approved')
- await scenario('ตรวจเอกสารสุดท้าย')
- await page.getByLabel('ยืนยันว่าดำเนินการตามขั้นตอนปิดโครงการครบถ้วนแล้ว').check()
- await page.getByRole('button',{name:'บันทึกสถานะปิดโครงการ'}).click();await page.waitForURL(/\/details$/)
- assert.equal((await state()).find(p=>p.scenario==='ยื่นเอกสารขอปิดโครงการ').status,'completed')
- await role('researcher');await scenario('กำลังดำเนินการวิจัย');await tab('ยื่นปิดโครงการ')
- const closure=page.url()
- await page.locator('textarea[name="summary"]').fill('สรุปผลวิจัยฉบับร่างที่ต้องคงอยู่หลังย้อนกลับ')
- answer(true);await back();await page.waitForURL(/\/details$/)
- await page.goForward();await page.waitForURL(closure)
- assert.equal(await page.locator('textarea[name="summary"]').inputValue(),'สรุปผลวิจัยฉบับร่างที่ต้องคงอยู่หลังย้อนกลับ')
- await page.getByRole('button',{name:'บันทึกร่าง',exact:true}).click()
- await role('staff');assert.ok(page.url().endsWith('/staff/dashboard'))
- await page.locator('.sidebar-menu').getByRole('link',{name:'บันทึกผลพิจารณา',exact:true}).click()
- await page.locator('.recent-project').filter({hasText:'MFU-DEMO-011'}).click()
- const records=page.url()
- await page.locator('.admin-page textarea').fill('บันทึกประกอบการพิจารณาฉบับร่าง')
- answer(true);await back();await page.goForward();await page.waitForURL(records)
- assert.equal(await page.locator('.admin-page textarea').inputValue(),'บันทึกประกอบการพิจารณาฉบับร่าง')
- answer(true);await scenario('ติดตามความคืบหน้า');await tab('รายละเอียด')
- await page.getByRole('button',{name:'บันทึกการเปลี่ยนแปลง',exact:true}).click()
- const change=page.url()
- await page.locator('textarea[name="reason"]').fill('เหตุผลฉบับร่างสำหรับตรวจสอบการเก็บไฟล์')
- await page.locator('input[type="file"]').setInputFiles('C:/Users/User/mfu-research-system/public/MFU-Demonstration-Sample.pdf')
- answer(true);await back();await page.waitForURL(/\/details$/)
- await page.goForward();await page.waitForURL(change)
- assert.equal(await page.locator('textarea[name="reason"]').inputValue(),'เหตุผลฉบับร่างสำหรับตรวจสอบการเก็บไฟล์')
- assert.ok(await page.getByText('ไฟล์ร่าง: MFU-Demonstration-Sample.pdf',{exact:true}).count())
- assert.equal(await page.locator('input[type="file"]').evaluate(input=>input.required),false)
- await page.getByRole('button',{name:'ล้างแบบฟอร์ม',exact:true}).click()
- await role('reviewer');assert.ok(page.url().endsWith('/reviewer/dashboard'))
- await scenario('โครงการรอประเมิน');await tab('อ่านรายงาน');const report=page.url();await tab('ประเมิน')
- await page.locator('input[name="objectives"]').first().check()
- await page.getByRole('button',{name:'ถัดไป →',exact:true}).click()
- const beforeSection=prompts
- await back();await page.waitForURL(/\/evaluation$/);assert.equal(prompts,beforeSection)
- assert.ok(await page.locator('input[name="objectives"]').first().isChecked())
- await page.goForward();await page.waitForURL(/section=1$/)
- await browserBack();await page.waitForURL(/\/evaluation$/);assert.equal(prompts,beforeSection)
- const evaluation=page.url()
- answer(false);await back();assert.equal(page.url(),evaluation)
- answer(true);await back();await page.waitForURL(report)
- await page.goForward();assert.ok(await page.locator('input[name="objectives"]').first().isChecked())
- await page.getByRole('button',{name:'บันทึกร่าง',exact:true}).click()
- await back();await page.waitForURL(report)
- // Reload/direct entry has no trustworthy in-app predecessor: fall back to the relevant project list, then dashboard.
- const direct=await browser.newPage()
- await direct.goto('http://127.0.0.1:5178/#/researcher/projects/MFU-DEMO-011/timeline')
-  await direct.getByRole('button',{name:'← ย้อนกลับ',exact:true}).click();assert.ok(direct.url().endsWith('/researcher/projects'))
- await direct.getByRole('button',{name:'← ย้อนกลับ',exact:true}).click();assert.ok(direct.url().endsWith('/researcher/dashboard'))
- await direct.close()
- assert.equal(documents,1,'All main-page navigation must remain client-side')
- assert.ok(prompts>=10);assert.deepEqual(errors,[]);assert.deepEqual(external,[])
- console.log('PASS: visible history-aware Back buttons; cancel/accept for Back, browser Back, menus and role switching; proposal/correction/closure/admin/evaluation draft preservation; save/approve/close redirects; safe deep-link fallback; no navigation reloads, errors or external requests.')
-}catch(e){console.log('Failure URL:',page.url());console.log((await page.locator('body').innerText()).slice(-3500));throw e}finally{await browser.close();await server.close()}
+ await page.goto(base);await page.getByRole('button',{name:'EN',exact:true}).click();await page.getByRole('button',{name:/· researcher/}).click();await route('researcher','projects/V16-DRAFT/details')
+ await page.locator('a[href$="/manual"]').first().click();await page.getByLabel('Project Title *',{exact:true}).fill('ชื่อโครงการที่ยังไม่บันทึก');const manual=page.url()
+ await cancel(()=>page.goBack(),manual);check(await page.getByLabel('Project Title *',{exact:true}).inputValue()==='ชื่อโครงการที่ยังไม่บันทึก','browser Back cancel keeps answers')
+ await page.locator('.account-trigger').click();await cancel(()=>page.getByRole('button',{name:'Choose role',exact:true}).click(),manual);check(await page.locator('.researcher-shell-view').count()===1,'cancel role switch keeps identity')
+ await page.goBack();await page.waitForURL(/details$/);await page.goForward();await page.waitForURL(manual);check(await page.getByLabel('Project Title *',{exact:true}).inputValue()==='ชื่อโครงการที่ยังไม่บันทึก','accepted Back/Forward keeps manual draft');await page.getByRole('button',{name:'Save Draft',exact:true}).first().click();await page.waitForURL(/details$/);check(JSON.parse(await snapshot()).find(p=>p.id==='V16-DRAFT').title==='ชื่อโครงการที่ยังไม่บันทึก','save uses canonical current record');const beforeSavedNav=prompts;await page.locator('.sidebar-menu a[href$="/notifications"]').click();await page.waitForURL(/notifications$/);check(prompts===beforeSavedNav,'saved draft has no leave prompt')
+ await route('researcher','upload');await page.locator('input[type=file]').setInputFiles('public/MFU-Demonstration-Sample.pdf');await page.locator('.upload-result').waitFor();await page.getByLabel('Project Title',{exact:true}).fill('ชื่อโครงการที่ตรวจแก้จากเอกสาร');const upload=page.url();await page.locator('.sidebar-menu a[href$="/notifications"]').click();await page.waitForURL(/notifications$/);await page.goBack();await page.waitForURL(upload);check(await page.getByLabel('Project Title',{exact:true}).inputValue()==='ชื่อโครงการที่ตรวจแก้จากเอกสาร','extraction draft preserved');check(await page.locator('.upload-selected').getByText('MFU-Demonstration-Sample.pdf',{exact:true}).count()===1,'source file retained in browser draft')
+ await draftRoundTrip('researcher','projects/V16-ACTIVE/closure',()=>page.getByLabel('Research Summary',{exact:false}),'สรุปผลวิจัยฉบับร่างที่เก็บไว้เมื่อย้อนกลับ')
+ await page.getByRole('button',{name:'Save Draft',exact:true}).click();await page.getByText('Draft saved; project state unchanged',{exact:true}).waitFor();check(JSON.parse(await snapshot()).find(p=>p.id==='V16-ACTIVE').status==='IN_PROGRESS','closure save does not submit')
+ await draftRoundTrip('staff','projects/V16-STAFF/staff-review',()=>page.getByRole('heading',{name:'Request Correction',exact:true}).locator('..').getByLabel('Notes / Reason',{exact:false}),'เหตุผลขอแก้ไขข้อเสนอที่ยังไม่ยืนยัน')
+ await draftRoundTrip('staff','projects/V16-COMMITTEE/administrative-records',()=>page.getByRole('heading',{name:'Record Acknowledgement',exact:true}).locator('..').getByLabel('External Meeting Information',{exact:true}),'ข้อมูลประชุมเพื่อทราบฉบับร่าง')
+ await draftRoundTrip('staff','projects/V16-ACTIVE/project-change-record',()=>page.getByRole('heading',{name:'Record Change Outcome',exact:true}).locator('..').getByLabel('Reason',{exact:false}),'ผลภายนอก e-Office ที่ยังไม่ได้บันทึก')
+ const changeForm=page.getByRole('heading',{name:'Record Change Outcome',exact:true}).locator('..');await changeForm.locator('input[type=file]').setInputFiles('public/MFU-Demonstration-Sample.pdf');await page.getByText('Uploading…',{exact:true}).waitFor({state:'hidden'});const changeUrl=page.url();await page.locator('.sidebar-menu a[href$=\"/notifications\"]').click();await page.waitForURL(/notifications$/);await page.goBack();await page.waitForURL(changeUrl);check(await changeForm.locator('.shared-table input[type=checkbox]').last().isChecked(),'external evidence selection survives navigation');check(JSON.parse(await snapshot()).find(p=>p.id==='V16-ACTIVE').status==='IN_PROGRESS','external evidence upload does not transition')
+ await route('staff','projects/V16-ACTIVE/correction');check(await page.getByRole('heading',{name:'Legacy Web Correction Approval Retired'}).count()===1,'deprecated approval cannot be restored by navigation')
+ await draftRoundTrip('reviewer','projects/V16-EVALUATION-0/evaluation',()=>page.getByLabel('Additional Comments',{exact:true}),'ข้อเสนอแนะผู้ประเมินที่ต้องคงอยู่ใน split workspace')
+ for(const select of await page.locator('.reviewer-form select').all())await select.selectOption('0');const beforeReview=prompts;await page.getByRole('button',{name:'Review Answers',exact:true}).click();await page.waitForURL(/answers$/);check(prompts===beforeReview,'review/editor share the same working draft');await page.getByRole('link',{name:'Back to Editor',exact:true}).click();await page.waitForURL(/evaluation$/);check(prompts===beforeReview,'Return to Edit needs no leave prompt');check((await page.getByLabel('Additional Comments',{exact:true}).inputValue()).includes('split workspace'),'review round trip keeps answers');await page.getByRole('button',{name:'Save Draft',exact:true}).click();await page.getByText('Saved successfully',{exact:true}).waitFor();const saved=prompts;await page.locator('.sidebar-menu a[href$="/notifications"]').click();await page.waitForURL(/notifications$/);check(prompts===saved,'saved reviewer draft navigates without warning')
+ const loads=documentLoads;await page.locator('.sidebar-menu a[href$="/dashboard"]').click();await page.locator('#page-title').waitFor();await page.locator('.sidebar-menu a[href$="/notifications"]').click();await page.locator('#page-title').waitFor();check(documentLoads===loads,'normal link navigation is client-side')
+ const direct=await context.newPage();await direct.goto(base+'#/reviewer/projects/V16-EVALUATION-0/details');await direct.locator('.reviewer-project-overview').waitFor();check(await direct.locator('.focused-page-heading button').count()===0,'no obsolete Back on project overview');await direct.getByRole('navigation',{name:'Project pages',exact:true}).getByRole('link',{name:'Document Library',exact:true}).click();await direct.locator('.reviewer-document-library').waitFor();check(await direct.locator('h1').count()===1,'deep-link contextual navigation');await direct.close();const fallback=await context.newPage();await fallback.goto(base+'#/reviewer/projects/V16-EVALUATION-0/evaluation');await fallback.getByRole('button',{name:'← Back',exact:true}).click();await fallback.waitForURL(/reviewer\/dashboard$/);check(fallback.url().endsWith('/reviewer/dashboard'),'direct editor Back safely falls back to dashboard');await fallback.close()
+ check(prompts>=10,'meaningful leave-guard interactions');check(errors.length===0,JSON.stringify(errors));check(external.length===0,JSON.stringify(external));console.log(`PASS Navigation v1.6 browser ${checks} checks; cancelled/accepted Back and role change, proposal/upload/closure/staff/reviewer drafts, saves, deep links and SPA navigation`)
+}catch(error){console.log('Failure URL:',page.url());console.log((await page.locator('body').innerText()).slice(-2500));throw error}finally{await browser.close();await server.close()}

@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')).render(React.createElement(App));
 mkdirSync('tmp',{recursive:true})
 writeFileSync('tmp/reviewer-demo-preview.html',html)
 await server.listen()
-const browser=await chromium.launch({headless:true,...(process.env.MFU_BROWSER_PATH?{executablePath:process.env.MFU_BROWSER_PATH}:{})})
+const browser=await chromium.launch({headless:true,...(process.env.MFU_BROWSER_PATH?{executablePath:process.env.MFU_BROWSER_PATH}:{channel:process.env.MFU_BROWSER_CHANNEL||'chrome'})})
 const context=await browser.newContext({viewport:{width:1280,height:900}})
 const page=await context.newPage(),errors=[],external=[]
 page.on('pageerror',error=>errors.push(error.message))

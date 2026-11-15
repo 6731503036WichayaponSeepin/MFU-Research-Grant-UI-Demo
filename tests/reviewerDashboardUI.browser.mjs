@@ -47,6 +47,20 @@ try {
   await page.locator('.rv-workspace').waitFor()
   await page.waitForTimeout(350)
   await page.screenshot({path:`tmp/reviewer-dashboard-ui/persona-${i}.png`,fullPage:true})
+  check(await page.locator('.rv-strip').count()===1&&await page.locator('.rv-right>.rv-card').count()===2&&await page.locator('.rv-donut').count()===1,'Dashboard cards preserved')
+  await page.goto('http://127.0.0.1:5208/#/reviewer/projects');await page.locator('.rv-registry').waitFor()
+  check(await page.locator('.rv-strip,.rv-right,.rv-donut,.rv-card-heading>a').count()===0,'assigned page has no summary/task/progress/View All')
+  check(await page.locator('.rv-table tbody tr').count()===expected[0],'all assigned records retained')
+  check(await page.locator('.rv-sidebar a').count()===4,'sidebar counts retained')
+  for(const lang of ['TH','EN'])for(const width of [1440,768,390]){
+   await page.setViewportSize({width,height:900});await page.getByRole('button',{name:lang,exact:true}).click();await page.waitForTimeout(350)
+   check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'assigned-page responsive '+lang+width)
+   check(await page.locator('.rv-assigned').evaluate(el=>Math.abs(el.getBoundingClientRect().width-el.closest('.rv-grid').getBoundingClientRect().width)<2),'assigned table uses full grid width')
+  }
+  await page.setViewportSize({width:1440,height:900});await page.waitForTimeout(350);await page.screenshot({path:`tmp/reviewer-dashboard-ui/assigned-${i}.png`,fullPage:true})
+  const reference=await page.locator('.rv-project small').first().innerText();await page.getByLabel('Search projects',{exact:true}).fill(reference);await page.getByRole('button',{name:'Search',exact:true}).click()
+  check(await page.locator('.rv-table tbody tr').count()===1,'existing reference search')
+  check(await page.evaluate(()=>localStorage.getItem('mfu-foundation-v16-demo-projects'))===before,'assigned presentation never mutates data')
  }
  console.log(`PASS Reviewer Dashboard UI ${checks} checks`)
 } finally { await browser.close(); await server.close() }

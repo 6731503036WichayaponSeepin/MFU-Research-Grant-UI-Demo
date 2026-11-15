@@ -1,0 +1,144 @@
+[
+  {
+    "method": "report",
+    "events": [
+      {
+        "action": "TR-01 new proposal through UI",
+        "status": "DRAFT",
+        "version": 1
+      },
+      {
+        "action": "preview does not transition",
+        "status": "DRAFT",
+        "version": 1
+      },
+      {
+        "action": "temporary Demo TR-03",
+        "status": "AFFILIATION_REVIEW",
+        "version": 3
+      },
+      {
+        "action": "TR-05 evidence/consent submission",
+        "status": "STAFF_REVIEW",
+        "version": 6
+      },
+      {
+        "action": "TR-06 request correction",
+        "status": "STAFF_REVIEW",
+        "version": 7
+      },
+      {
+        "action": "TR-06 actual corrected proposal resubmitted",
+        "status": "STAFF_REVIEW",
+        "version": 11
+      },
+      {
+        "action": "TR-08 staff pass",
+        "status": "COMMITTEE_ACKNOWLEDGEMENT",
+        "version": 12
+      },
+      {
+        "action": "acknowledgement is separate",
+        "status": "COMMITTEE_ACKNOWLEDGEMENT",
+        "version": 13
+      },
+      {
+        "action": "TR-09 certification",
+        "status": "IN_PROGRESS",
+        "version": 14
+      },
+      {
+        "action": "closure uploads do not transition",
+        "status": "IN_PROGRESS",
+        "version": 15
+      },
+      {
+        "action": "TR-11 actual closure submission",
+        "status": "CLOSURE_REVIEW",
+        "version": 16
+      },
+      {
+        "action": "TR-13 exactly three assignments",
+        "status": "REPORT_EVALUATION",
+        "version": 18
+      },
+      {
+        "action": "TR-15 release without auto-close",
+        "status": "REPORT_EVALUATION",
+        "version": 25
+      },
+      {
+        "action": "revised report without reevaluation",
+        "status": "REPORT_EVALUATION",
+        "version": 27
+      },
+      {
+        "action": "verification does not auto-close",
+        "status": "REPORT_EVALUATION",
+        "version": 28
+      },
+      {
+        "action": "TR-16 explicit final close",
+        "status": "CLOSED",
+        "version": 29
+      }
+    ],
+    "projectId": "117fb87e-cb2f-49a7-8feb-3862a5424eeb"
+  },
+  {
+    "method": "publication",
+    "events": [
+      {
+        "action": "TR-01 new proposal through UI",
+        "status": "DRAFT",
+        "version": 1
+      },
+      {
+        "action": "preview does not transition",
+        "status": "DRAFT",
+        "version": 1
+      },
+      {
+        "action": "temporary Demo TR-03",
+        "status": "AFFILIATION_REVIEW",
+        "version": 3
+      },
+      {
+        "action": "TR-05 evidence/consent submission",
+        "status": "STAFF_REVIEW",
+        "version": 6
+      },
+      {
+        "action": "TR-08 staff pass",
+        "status": "COMMITTEE_ACKNOWLEDGEMENT",
+        "version": 7
+      },
+      {
+        "action": "acknowledgement is separate",
+        "status": "COMMITTEE_ACKNOWLEDGEMENT",
+        "version": 8
+      },
+      {
+        "action": "TR-09 certification",
+        "status": "IN_PROGRESS",
+        "version": 9
+      },
+      {
+        "action": "closure uploads do not transition",
+        "status": "IN_PROGRESS",
+        "version": 11
+      },
+      {
+        "action": "TR-11 actual closure submission",
+        "status": "CLOSURE_REVIEW",
+        "version": 12
+      },
+      {
+        "action": "TR-14 publication closure",
+        "status": "CLOSED",
+        "version": 14
+      }
+    ],
+    "projectId": "c593bb7c-efff-420a-88a4-d2f39727141e"
+  }
+]

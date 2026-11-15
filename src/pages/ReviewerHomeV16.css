@@ -25,3 +25,9 @@
 @media(max-width:700px){.app.focused-demo.reviewer-shell-view .sidebar{height:auto}.app.reviewer-shell-view .topbar{padding:8px 16px}.app.reviewer-shell-view .main{padding:16px}.rv-right{grid-template-columns:1fr}.rv-strip{grid-template-columns:1fr 1fr;gap:12px}.rv-strip a:nth-child(2){border:0}.rv-strip a{padding:0 10px}.rv-card{padding:16px}.rv-table{min-width:530px}.rv-welcome h1{font-size:22px}.rv-assigned .shared-filters{grid-template-columns:1fr}.rv-assigned .shared-filters button{grid-column:auto}}
 
 .rv-table td{padding:8px}.rv-table td:nth-child(2)>.shared-status{display:table;margin-top:5px;font-size:10px;padding:3px 7px}.rv-project strong{display:block;max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rv-project small{line-height:1.4}
+
+/* Assigned reviews only: Dashboard retains its existing 65:35 cards. */
+.rv-registry{gap:12px;grid-template-columns:minmax(0,1fr)}.rv-registry .rv-grid{display:block}.rv-registry .rv-welcome h1{font-size:26px;margin:0 0 4px}.rv-registry .rv-card{padding:16px}.rv-registry .rv-assigned .shared-filters{grid-template-columns:minmax(0,1fr) minmax(160px,.4fr) auto;gap:10px;margin-bottom:12px}.rv-registry .rv-assigned .shared-filters button{grid-column:auto}.rv-registry .rv-project strong{max-width:none;white-space:normal}.rv-registry .rv-record-count{font-size:12px;color:var(--text-secondary);white-space:nowrap}
+@media(max-width:600px){.rv-registry .rv-welcome h1{font-size:22px}.rv-registry .rv-assigned .shared-filters{grid-template-columns:1fr}.rv-registry .rv-assigned .shared-filters button{grid-column:auto}}
+
+.rv-registry .rv-table-scroll{min-width:0;max-width:100%}.rv-registry .rv-card-heading h2{min-width:0}

@@ -1,0 +1,6212 @@
+[
+  {
+    "id": "N-C01",
+    "role": "common",
+    "path": "#/roles",
+    "controls": [
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ชุดข้อมูลตัวอย่าง\nv1.6 — Canonical Demo (3 roles)\nLegacy — ข้อมูลและขั้นตอนเดิม ยังไม่ตรง v1.6",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "เริ่มทดลอง · researcher →",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "เริ่มทดลอง · staff →",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ผู้ทรงคุณวุฒิสมมติ (บทบาทเดียวกัน)",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "เริ่มทดลอง · reviewer →",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "คืนค่าเฉพาะ Local Demo v1.6",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "TH",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "EN",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-C03",
+    "role": "common",
+    "path": "#/researcher/projects/UNKNOWN/details",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กลับหน้าหลัก",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-X01",
+    "role": "shared",
+    "path": "#/researcher/projects/V16-ACTIVE/details",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายการโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูกิจกรรมและประวัติ →",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ยื่นเอกสารปิดโครงการ →",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/closure",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดคลังเอกสาร →",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/documents",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-X02",
+    "role": "shared",
+    "path": "#/researcher/projects/V16-ACTIVE/documents",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายการโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-005",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดู PDF",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/documents?document=fixture-doc-2",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดู PDF",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/documents?document=fixture-doc-4",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-X03",
+    "role": "shared",
+    "path": "#/researcher/projects/V16-ACTIVE/timeline",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายการโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-005",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "อว 7700/2569/041 · —",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-X04",
+    "role": "shared",
+    "path": "#/researcher/notifications",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ทำเครื่องหมายว่าอ่านทั้งหมด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-014",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-014",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-014",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-014",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-014",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-014",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-014",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-010",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-2/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-010",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-2/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-010",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-2/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-010",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-2/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-010",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-2/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-010",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-2/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-010",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-2/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-010",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-2/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-010",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-2/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-009",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-1/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-009",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-1/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-009",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-1/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-009",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-1/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-009",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-1/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-009",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-1/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-009",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-1/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-009",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-1/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-008",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-0/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-008",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-0/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-008",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-0/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-008",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-0/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-008",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-0/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-008",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-0/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-008",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-EVALUATION-0/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-007",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-007",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-007",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-007",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-007",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-006",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-006",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-006",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-006",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-005",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-005",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-005",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-005",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-004",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-COMMITTEE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-004",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-COMMITTEE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ · MFU-RG-2569-003",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-STAFF/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "อ่านแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-R01",
+    "role": "researcher",
+    "path": "#/researcher/dashboard",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "สร้างข้อเสนอใหม่ +",
+        "disabled": false,
+        "href": "#/researcher/choose",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "สร้างข้อเสนอใหม่",
+        "disabled": false,
+        "href": "#/researcher/choose",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูทั้งหมด",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "search",
+        "label": "ค้นหาโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "สถานะ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "hidden",
+        "label": "action",
+        "disabled": false,
+        "href": null,
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ค้นหา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ระบบวิเคราะห์โรคใบชาเพื่อสนับสนุนเกษตรกรรายย่อย\nMFU-RG-2569-005 · สำนักวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่ฟ้าหลวง",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ MFU-RG-2569-005",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รูปแบบการเรียนรู้ภาษาอังกฤษผ่านเรื่องเล่าชุมชนเชียงราย\nMFU-RG-2569-002 · สำนักวิชาศิลปศาสตร์ มหาวิทยาลัยแม่ฟ้าหลวง",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ MFU-RG-2569-002",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ปัจจัยการคงอยู่ของบุคลากรในธุรกิจท่องเที่ยวชุมชน\nMFU-RG-2569-006 · สำนักวิชาการจัดการ มหาวิทยาลัยแม่ฟ้าหลวง",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ MFU-RG-2569-006",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "องค์ความรู้ผ้าทอพื้นเมืองกับการออกแบบผลิตภัณฑ์ร่วมสมัย\nMFU-RG-2569-014 · สำนักวิชาศิลปศาสตร์ มหาวิทยาลัยแม่ฟ้าหลวง",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ MFU-RG-2569-014",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "แนวทางป้องกันภาวะหมดไฟในนักศึกษาวิทยาศาสตร์สุขภาพ\nMFU-RG-2569-013 · สำนักวิชาวิทยาศาสตร์สุขภาพ มหาวิทยาลัยแม่ฟ้าหลวง",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดโครงการ MFU-RG-2569-013",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูโครงการทั้งหมด",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ยื่นเอกสารปิด\nระบบวิเคราะห์โรคใบชาเพื่อสนับสนุนเกษตรกรรายย่อย",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/closure",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "แก้ไขข้อเสนอ\nรูปแบบการเรียนรู้ภาษาอังกฤษผ่านเรื่องเล่าชุมชนเชียงราย",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/manual",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "แก้ไขข้อเสนอ\nการพัฒนาบรรจุภัณฑ์ย่อยสลายได้จากกากกาแฟอาราบิกา",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-DRAFT/manual",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูงานทั้งหมด",
+        "disabled": false,
+        "href": "#/researcher/projects?action=required",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "1\nม.ค.\nระบบวิเคราะห์โรคใบชาเพื่อสนับสนุนเกษตรกรรายย่อย\n1 ม.ค. 2570",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "1\nม.ค.\nรูปแบบการเรียนรู้ภาษาอังกฤษผ่านเรื่องเล่าชุมชนเชียงราย\n1 ม.ค. 2570",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "1\nม.ค.\nการใช้สมุนไพรพื้นถิ่นเพื่อพัฒนาผลิตภัณฑ์ดูแลผิว\n1 ม.ค. 2570",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "เพิ่มสถานการณ์วิจัยตัวอย่าง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-R02",
+    "role": "researcher",
+    "path": "#/researcher/projects",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "สร้างข้อเสนอใหม่ +",
+        "disabled": false,
+        "href": "#/researcher/choose",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "search",
+        "label": "ค้นหาโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "สถานะ\nทั้งหมด\nร่างข้อเสนอโครงการ\nรอต้นสังกัดพิจารณา\nรอเจ้าหน้าที่ตรวจสอบ\nรอเสนอคณะกรรมการเพื่อทราบ\nดำเนินการวิจัย\nรอตรวจเอกสารปิดโครงการ\nอยู่ระหว่างประเมินรายงาน\nปิดโครงการแล้ว\nยกเลิกโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "งานที่ต้องดำเนินการ\nทั้งหมด\nต้องดำเนินการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ค้นหา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ล้างตัวกรอง",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-005\nระบบวิเคราะห์โรคใบชาเพื่อสนับสนุนเกษตรกรรายย่อย",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ยื่นเอกสารปิด →",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/closure",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-002\nรูปแบบการเรียนรู้ภาษาอังกฤษผ่านเรื่องเล่าชุมชนเชียงราย",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "แก้ไขข้อเสนอ →",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/manual",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-006\nปัจจัยการคงอยู่ของบุคลากรในธุรกิจท่องเที่ยวชุมชน",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามผล →",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-014\nองค์ความรู้ผ้าทอพื้นเมืองกับการออกแบบผลิตภัณฑ์ร่วมสมัย",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามผล →",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-013\nแนวทางป้องกันภาวะหมดไฟในนักศึกษาวิทยาศาสตร์สุขภาพ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามผล →",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-007\nการใช้สมุนไพรพื้นถิ่นเพื่อพัฒนาผลิตภัณฑ์ดูแลผิว",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามผล →",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ถัดไป",
+        "disabled": false,
+        "href": "#/researcher/projects?page=2",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-R03",
+    "role": "researcher",
+    "path": "#/researcher/projects/V16-DRAFT/manual",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายการโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-001",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-DRAFT/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-DRAFT/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-DRAFT/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-DRAFT/timeline",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "บันทึกร่าง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ชื่อโครงการ *",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ชื่อโครงการภาษาอังกฤษ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ยุทธศาสตร์มหาวิทยาลัย (เลือก 1 ข้อ)\nกรุณาเลือก\nเกี่ยวข้องกับคุณวุฒิ คณะ หรือหน้าที่ของนักวิจัย\nพัฒนาทรัพยากรมนุษย์และองค์ความรู้\nนวัตกรรมเพื่อแก้ปัญหาสังคม\nนวัตกรรมเพื่อเพิ่มขีดความสามารถในการแข่งขัน\nนวัตกรรมเชิงพื้นที่และลดความเหลื่อมล้ำ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ชื่อหัวหน้าโครงการ *",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "สังกัดหัวหน้าโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "โทรศัพท์หัวหน้าโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "email",
+        "label": "อีเมลหัวหน้าโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "label": "สัดส่วนความรับผิดชอบของหัวหน้า (%)",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "ผู้ร่วมวิจัย: ชื่อ สังกัด โทรศัพท์ อีเมล และสัดส่วนความรับผิดชอบ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ชื่อที่ปรึกษา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "คุณวุฒิ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ตำแหน่งทางวิชาการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "สังกัด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ชื่อผู้ประสานงาน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "สังกัด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "ที่อยู่",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "ลักษณะความร่วมมือ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ประเภทงานวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "คำสำคัญ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "ความเป็นมาและกรอบแนวคิด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "วัตถุประสงค์ของโครงการ *",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "การทบทวนวรรณกรรม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "เอกสารอ้างอิงตามรูปแบบสากล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "วิธีดำเนินการวิจัย (รวมการเก็บข้อมูล กลุ่มตัวอย่าง การสุ่ม และการวิเคราะห์) *",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "ขอบเขตและความสัมพันธ์กับชื่อและวัตถุประสงค์",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "วันที่เริ่มโครงการ *",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "วันที่สิ้นสุดโครงการ *",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "รายการงานและช่วงเวลาดำเนินการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "ผลลัพธ์ที่คาดหวังตามช่วงรายงานความก้าวหน้า",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทผลผลิต\nกรุณาเลือก\nตีพิมพ์วารสารวิชาการระดับนานาชาติ\nตีพิมพ์วารสารระดับชาติ TCI กลุ่ม 1 หรือ 2\nนำเสนอประชุมวิชาการนานาชาติแบบ Full Paper\nอนุสิทธิบัตรหรือสิทธิบัตร\nอื่น ๆ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "รายละเอียดผลผลิต",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "การบูรณาการศาสตร์อื่น",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ระดับการเผยแพร่\nกรุณาเลือก\nแนวทางระดับภูมิภาค ประเทศ หรือสากล\nแนวทางเฉพาะงาน หมู่บ้าน หรือจังหวัด\nไม่เผยแพร่สู่สังคม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "รายละเอียดค่าตอบแทน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "label": "ค่าตอบแทน (บาท)",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "รายละเอียดค่าใช้สอย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "label": "ค่าใช้สอย (บาท)",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "รายละเอียดค่าวัสดุ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "label": "ค่าวัสดุ (บาท)",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "รายละเอียดค่าสาธารณูปโภค",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "label": "ค่าสาธารณูปโภค (บาท)",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทมาตรฐานที่เกี่ยวข้อง\nกรุณาเลือก\nไม่มีการวิจัยในมนุษย์/สัตว์ หรือเทคโนโลยีชีวภาพสมัยใหม่ที่เกี่ยวข้อง\nวิจัยในมนุษย์\nใช้สัตว์ทดลอง\nศึกษาพืชพื้นเมือง/พืชป่า/เห็ด/รา ตามกฎหมายคุ้มครองพันธุ์พืช",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "คำชี้แจงเพิ่มเติม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ชื่อผู้ลงนาม: ที่ปรึกษาโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "วันที่ลงนามที่ปรึกษา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ชื่อผู้ลงนาม: หัวหน้าโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "วันที่ลงนามหัวหน้า",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "รายชื่อผู้ร่วมวิจัยที่ลงนามและวันที่",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "1. ชื่อ-นามสกุล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "2. ตำแหน่งทางวิชาการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "3. เลขประจำตัวนักวิจัยแห่งชาติ (ถ้ามี)",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "4. ประวัติการศึกษา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "5. ประสบการณ์ทำงาน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "6. สาขาที่เชี่ยวชาญ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "7. ประวัติการตีพิมพ์ผลงานวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "8. ประวัติการนำเสนอผลงาน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "9. ผลงานด้านทรัพย์สินทางปัญญา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "10. ประสบการณ์บริหารงานวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "10.1 งานวิจัยที่เสร็จสิ้นแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "10.2 งานวิจัยที่กำลังดำเนินการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "1. ชื่อ-นามสกุล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "1. ตำแหน่งทางวิชาการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "1. สังกัด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "email",
+        "label": "1. อีเมล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "2. ชื่อ-นามสกุล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "2. ตำแหน่งทางวิชาการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "2. สังกัด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "email",
+        "label": "2. อีเมล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "3. ชื่อ-นามสกุล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "3. ตำแหน่งทางวิชาการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "3. สังกัด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "email",
+        "label": "3. อีเมล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "บันทึกร่าง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ตรวจสอบข้อมูล →",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-R04",
+    "role": "researcher",
+    "path": "#/researcher/upload",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "button",
+        "label": "กรอกข้อมูลด้วยตนเองต่อ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "button",
+        "label": "กลับไปเลือกวิธีสร้างข้อเสนอ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "button",
+        "label": "เลือกไฟล์จากเครื่อง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-R05",
+    "role": "researcher",
+    "path": "#/researcher/projects/V16-DRAFT/proposal-pdf",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายการโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-001",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-DRAFT/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-DRAFT/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-DRAFT/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-DRAFT/timeline",
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "เวอร์ชันข้อเสนอ\nv1 · ข้อเสนอ · 15 พ.ย. 2569 10:00",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "สร้าง Preview PDF",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ยืนยันเอกสารพร้อมยื่นต้นสังกัด",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-R06",
+    "role": "researcher",
+    "path": "#/researcher/projects/V16-AFFILIATION/submission",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายการโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-002",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/timeline",
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทเอกสาร",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "label": "อัปโหลด PDF",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "เลือก ข้อเสนอโครงการ RS-1 ลงนามครบ ข้อเสนอโครงการ_RS-1_ลงนามครบ_MFU-RG-2569-002_v1.pdf v1",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดู PDF",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/documents?document=fixture-doc-2",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "เลือก หนังสือรับรองความเห็นชอบจากต้นสังกัด หนังสือรับรองความเห็นชอบจากต้นสังกัด_MFU-RG-2569-002_v1.pdf v1",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดู PDF",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-AFFILIATION/documents?document=fixture-doc-4",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "leader · ดร. ณัฐวุฒิ วัฒนกุล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ใช้ลายเซ็นอิเล็กทรอนิกส์ของบุคคลอื่นหรือไม่",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ยืนยันส่งข้อเสนอ",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-R07",
+    "role": "researcher",
+    "path": "#/researcher/projects/V16-ACTIVE/closure",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายการโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-005",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-ACTIVE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "เส้นทางปิดโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "สรุปผลวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "วันที่วิจัยแล้วเสร็จ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทเอกสาร",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "label": "อัปโหลด PDF",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "บันทึกร่าง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ยืนยันส่งเอกสาร",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-R08",
+    "role": "researcher",
+    "path": "#/researcher/projects/V16-RELEASED/revised-report",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายการโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/timeline",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูผลประเมินทั้ง 3 คน",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/results",
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทเอกสาร",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "label": "อัปโหลด PDF",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ยืนยันส่งเอกสาร",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-R09",
+    "role": "researcher",
+    "path": "#/researcher/projects/V16-RELEASED/results",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงาน",
+        "disabled": false,
+        "href": "#/researcher/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายการโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/timeline",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ส่งรายงานฉบับแก้ไข →",
+        "disabled": false,
+        "href": "#/researcher/projects/V16-RELEASED/revised-report",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "สร้างและดาวน์โหลด PDF รายบุคคล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "สร้างและดาวน์โหลด PDF รายบุคคล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "สร้างและดาวน์โหลด PDF รายบุคคล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-S01",
+    "role": "staff",
+    "path": "#/staff/dashboard",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานเจ้าหน้าที่",
+        "disabled": false,
+        "href": "#/staff/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "โครงการทั้งหมด\n14",
+        "disabled": false,
+        "href": "#/staff/projects?queue=total",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กำลังดำเนินงาน\n1",
+        "disabled": false,
+        "href": "#/staff/projects?queue=IN_PROGRESS",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "งานที่ต้องดำเนินการ\n4",
+        "disabled": false,
+        "href": "#/staff/projects?queue=action",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ปิดแล้ว\n2",
+        "disabled": false,
+        "href": "#/staff/projects?queue=CLOSED",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูทั้งหมด",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "search",
+        "label": "ค้นหา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "สถานะ\nทุกสถานะ\nร่างข้อเสนอโครงการ\nรอต้นสังกัดพิจารณา\nรอเจ้าหน้าที่ตรวจสอบ\nรอเสนอคณะกรรมการเพื่อทราบ\nดำเนินการวิจัย\nรอตรวจเอกสารปิดโครงการ\nอยู่ระหว่างประเมินรายงาน\nปิดโครงการแล้ว\nยกเลิกโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ค้นหา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-005\nระบบวิเคราะห์โรคใบชาเพื่อสนับสนุนเกษตรกรรายย่อย",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-006\nปัจจัยการคงอยู่ของบุคลากรในธุรกิจท่องเที่ยวชุมชน",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-014\nองค์ความรู้ผ้าทอพื้นเมืองกับการออกแบบผลิตภัณฑ์ร่วมสมัย",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-013\nแนวทางป้องกันภาวะหมดไฟในนักศึกษาวิทยาศาสตร์สุขภาพ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-007\nการใช้สมุนไพรพื้นถิ่นเพื่อพัฒนาผลิตภัณฑ์ดูแลผิว",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ตรวจเอกสารปิดโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/closure-review",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-004\nการส่งเสริมความรอบรู้ด้านสุขภาพของผู้สูงอายุในชุมชนเมือง",
+        "disabled": false,
+        "href": "#/staff/projects/V16-COMMITTEE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เสนอเพื่อทราบและรับรอง",
+        "disabled": false,
+        "href": "#/staff/projects/V16-COMMITTEE/administrative-records",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูโครงการทั้งหมด",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ตรวจเอกสารปิดโครงการ\nการใช้สมุนไพรพื้นถิ่นเพื่อพัฒนาผลิตภัณฑ์ดูแลผิว",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/closure-review",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "บันทึกเสนอเพื่อทราบและรับรอง\nการส่งเสริมความรอบรู้ด้านสุขภาพของผู้สูงอายุในชุมชนเมือง",
+        "disabled": false,
+        "href": "#/staff/projects/V16-COMMITTEE/administrative-records",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ตรวจและส่งผลประเมิน\nการจัดการต้นทุนโลจิสติกส์ของเกษตรกรบนพื้นที่สูง",
+        "disabled": false,
+        "href": "#/staff/projects/V16-EVALUATION-3/evaluation-tracking",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูงานทั้งหมด",
+        "disabled": false,
+        "href": "#/staff/projects?queue=action",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "1\nม.ค.\nระบบวิเคราะห์โรคใบชาเพื่อสนับสนุนเกษตรกรรายย่อย\n1 ม.ค. 2570",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "1\nม.ค.\nรูปแบบการเรียนรู้ภาษาอังกฤษผ่านเรื่องเล่าชุมชนเชียงราย\n1 ม.ค. 2570",
+        "disabled": false,
+        "href": "#/staff/projects/V16-AFFILIATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "1\nม.ค.\nการใช้สมุนไพรพื้นถิ่นเพื่อพัฒนาผลิตภัณฑ์ดูแลผิว\n1 ม.ค. 2570",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูทั้งหมด",
+        "disabled": false,
+        "href": "#/staff/projects?queue=upcoming",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "เพิ่มสถานการณ์ตรวจเอกสารตัวอย่าง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-S02",
+    "role": "staff",
+    "path": "#/staff/projects",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานเจ้าหน้าที่",
+        "disabled": false,
+        "href": "#/staff/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "search",
+        "label": "ค้นหา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "สถานะ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "คิวงาน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "เรียงตาม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ลำดับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ค้นหา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ล้างตัวกรอง",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-005\nระบบวิเคราะห์โรคใบชาเพื่อสนับสนุนเกษตรกรรายย่อย",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-002\nรูปแบบการเรียนรู้ภาษาอังกฤษผ่านเรื่องเล่าชุมชนเชียงราย",
+        "disabled": false,
+        "href": "#/staff/projects/V16-AFFILIATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-AFFILIATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-006\nปัจจัยการคงอยู่ของบุคลากรในธุรกิจท่องเที่ยวชุมชน",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CANCELLED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-014\nองค์ความรู้ผ้าทอพื้นเมืองกับการออกแบบผลิตภัณฑ์ร่วมสมัย",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSED-PUBLICATION/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-013\nแนวทางป้องกันภาวะหมดไฟในนักศึกษาวิทยาศาสตร์สุขภาพ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ติดตามโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSED-REPORT/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-007\nการใช้สมุนไพรพื้นถิ่นเพื่อพัฒนาผลิตภัณฑ์ดูแลผิว",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ตรวจเอกสารปิดโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/closure-review",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ถัดไป",
+        "disabled": false,
+        "href": "#/staff/projects?page=2",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-S03",
+    "role": "staff",
+    "path": "#/staff/projects/V16-STAFF/staff-review",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานเจ้าหน้าที่",
+        "disabled": false,
+        "href": "#/staff/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ทะเบียนโครงการวิจัย",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-003",
+        "disabled": false,
+        "href": "#/staff/projects/V16-STAFF/details",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-STAFF/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/staff/projects/V16-STAFF/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-STAFF/timeline",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "ข้อมูลทั่วไป",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "รายละเอียดการวิจัยและข้อมูลประกอบ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "งบประมาณ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดดู / ดาวน์โหลด →",
+        "disabled": false,
+        "href": "#/staff/projects/V16-STAFF/documents?document=fixture-doc-2",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดดู / ดาวน์โหลด →",
+        "disabled": false,
+        "href": "#/staff/projects/V16-STAFF/documents?document=fixture-doc-4",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "เวอร์ชันข้อเสนอและไฟล์นำเข้า",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ชื่อโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ข้อมูลนักวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ผู้ร่วมวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ที่ปรึกษา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "รายละเอียดการวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "วัตถุประสงค์",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "วิธีดำเนินการวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ขอบเขตการวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "แผนการวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ระยะเวลาวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ผลที่คาดว่าจะได้รับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "งบประมาณ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "เอกสารประกอบ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ส่งกลับให้นักวิจัยแก้ไข",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ยืนยันผลการตรวจผ่าน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-S04",
+    "role": "staff",
+    "path": "#/staff/projects/V16-COMMITTEE/administrative-records",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานเจ้าหน้าที่",
+        "disabled": false,
+        "href": "#/staff/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ทะเบียนโครงการวิจัย",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-004",
+        "disabled": false,
+        "href": "#/staff/projects/V16-COMMITTEE/details",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-COMMITTEE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/staff/projects/V16-COMMITTEE/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-COMMITTEE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ข้อมูลการประชุมภายนอก",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "วันที่หนังสือ / ประชุม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ข้อมูลอ้างอิงภายนอก",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทเอกสาร",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "label": "อัปโหลด PDF",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "บันทึกเสนอเพื่อทราบ",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ข้อมูลอ้างอิงภายนอก",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทเอกสาร",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "label": "อัปโหลด PDF",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "บันทึกรับรองโครงการ",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "ประวัติการเสนอเพื่อทราบและการรับรอง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูเอกสารที่เกี่ยวข้อง →",
+        "disabled": false,
+        "href": "#/staff/projects/V16-COMMITTEE/documents",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-S05",
+    "role": "staff",
+    "path": "#/staff/projects/V16-ACTIVE/project-change-record",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานเจ้าหน้าที่",
+        "disabled": false,
+        "href": "#/staff/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ทะเบียนโครงการวิจัย",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-005",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/details",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "button",
+        "label": "บันทึกการเปลี่ยนแปลง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "button",
+        "label": "บันทึกการขยายเวลา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทการเปลี่ยนแปลง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ผลการพิจารณาจาก e-Office",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "ค่าที่ขอเปลี่ยน / ได้รับอนุมัติ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ข้อมูลอ้างอิงภายนอก",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "วันที่หนังสือ / ประชุม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทเอกสาร",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "label": "อัปโหลด PDF",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "บันทึกผลเปลี่ยนแปลง",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ผลการขยายเวลา",
+        "disabled": false,
+        "href": null,
+        "visible": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "วันสิ้นสุดใหม่",
+        "disabled": false,
+        "href": null,
+        "visible": false
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ข้อมูลอ้างอิงภายนอก",
+        "disabled": false,
+        "href": null,
+        "visible": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "วันที่หนังสือ / ประชุม",
+        "disabled": false,
+        "href": null,
+        "visible": false
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทเอกสาร",
+        "disabled": false,
+        "href": null,
+        "visible": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "label": "อัปโหลด PDF",
+        "disabled": false,
+        "href": null,
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "บันทึกผลขยายเวลา",
+        "disabled": true,
+        "href": null,
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูประวัติทั้งหมด →",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "รายละเอียดบันทึกและค่าเดิม/ใหม่",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-S06",
+    "role": "staff",
+    "path": "#/staff/projects/V16-CLOSURE/closure-review",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานเจ้าหน้าที่",
+        "disabled": false,
+        "href": "#/staff/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ทะเบียนโครงการวิจัย",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-007",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/details",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดดู / ดาวน์โหลด →",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/documents?document=fixture-doc-10",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายงานวิจัยฉบับสมบูรณ์_5บท_MFU-RG-2569-007_v1.pdf",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/documents?document=fixture-doc-10",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "รายละเอียดการยื่นและผลตรวจเดิม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "กิจกรรมและประวัติทั้งหมด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ขอเอกสารปิดเพิ่มเติม",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "บันทึกตรวจเอกสารครบ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "บันทึกปิดเส้นทางเผยแพร่",
+        "disabled": true,
+        "href": null,
+        "visible": false
+      }
+    ]
+  },
+  {
+    "id": "N-S07",
+    "role": "staff",
+    "path": "#/staff/projects/V16-CLOSURE/reviewer-assignment",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานเจ้าหน้าที่",
+        "disabled": false,
+        "href": "#/staff/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ทะเบียนโครงการวิจัย",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-007",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/details",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ผู้ทรงคุณวุฒิ 1",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ผู้ทรงคุณวุฒิ 2",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ผู้ทรงคุณวุฒิ 3",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "กำหนดส่งผล (ถ้ามี)",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ยืนยันมอบหมายและส่งรายงาน",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "PDF",
+        "disabled": false,
+        "href": "#/staff/projects/V16-CLOSURE/documents?document=fixture-doc-10",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "รายงานเวอร์ชันและประวัติการมอบหมาย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-S08",
+    "role": "staff",
+    "path": "#/staff/projects/V16-EVALUATION-3/evaluation-tracking",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานเจ้าหน้าที่",
+        "disabled": false,
+        "href": "#/staff/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ทะเบียนโครงการวิจัย",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-011",
+        "disabled": false,
+        "href": "#/staff/projects/V16-EVALUATION-3/details",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-EVALUATION-3/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/staff/projects/V16-EVALUATION-3/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-EVALUATION-3/timeline",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "ดูผลประเมิน / รายละเอียด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "สร้างและดาวน์โหลด PDF รายบุคคล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "ดูผลประเมิน / รายละเอียด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "สร้างและดาวน์โหลด PDF รายบุคคล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "ดูผลประเมิน / รายละเอียด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "สร้างและดาวน์โหลด PDF รายบุคคล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ส่งผลประเมินให้นักวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-S09",
+    "role": "staff",
+    "path": "#/staff/projects/V16-RELEASED/final-verification",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานเจ้าหน้าที่",
+        "disabled": false,
+        "href": "#/staff/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ทะเบียนโครงการวิจัย",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-012",
+        "disabled": false,
+        "href": "#/staff/projects/V16-RELEASED/details",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-RELEASED/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/staff/projects/V16-RELEASED/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-RELEASED/timeline",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เปิดดู / ดาวน์โหลด →",
+        "disabled": false,
+        "href": "#/staff/projects/V16-RELEASED/documents?document=fixture-doc-10",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูผลประเมิน / PDF ตามสิทธิ์ →",
+        "disabled": false,
+        "href": "#/staff/projects/V16-RELEASED/evaluation-tracking",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "รายละเอียดเวอร์ชันและผลการตรวจ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "บันทึกกระบวนการภายนอกทั้งหมด",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ขอเอกสารรายงานแก้ไขเพิ่มเติม",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ยืนยันตรวจรายงานแก้ไขครบ",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ยืนยันบันทึกปิดโครงการ",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "label": "ข้อมูลอ้างอิงภายนอก",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "date",
+        "label": "วันที่หนังสือ / ประชุม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "หมายเหตุ / เหตุผล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ข้อเสนอโครงการ_RS-1_ลงนามครบ_MFU-RG-2569-012_v1.pdf · v1",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "หนังสือรับรองความเห็นชอบจากต้นสังกัด_MFU-RG-2569-012_v1.pdf · v1",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "รายงานวิจัยฉบับสมบูรณ์_5บท_MFU-RG-2569-012_v1.pdf · v1",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "บันทึกหนังสือแจ้งปิดภายนอก",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-S10",
+    "role": "staff",
+    "path": "#/staff/projects/V16-ACTIVE/cancellation",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานเจ้าหน้าที่",
+        "disabled": false,
+        "href": "#/staff/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ทะเบียนโครงการวิจัย",
+        "disabled": false,
+        "href": "#/staff/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-005",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/details",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/staff/projects/V16-ACTIVE/timeline",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "radio",
+        "label": "นักวิจัยลาออก",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "radio",
+        "label": "เกินระยะเวลาดำเนินโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "radio",
+        "label": "เหตุผลอื่น ๆ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "รายละเอียดเพิ่มเติม (เหตุผลอื่น ๆ ต้องระบุ)",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ข้อเสนอโครงการ_RS-1_ลงนามครบ_MFU-RG-2569-005_v1.pdf\nเวอร์ชัน 1",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "หนังสือรับรองความเห็นชอบจากต้นสังกัด_MFU-RG-2569-005_v1.pdf\nเวอร์ชัน 1",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ยืนยันเพื่อทดสอบรูปแบบ Contract เท่านั้น",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ตรวจ Contract โดยไม่เปลี่ยนข้อมูล",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ยืนยันยกเลิก — ปิดตาม OPEN-20",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-V01",
+    "role": "reviewer",
+    "path": "#/reviewer/dashboard",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานประเมิน",
+        "disabled": false,
+        "href": "#/reviewer/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "งานที่ได้รับมอบหมายทั้งหมด\n6",
+        "disabled": false,
+        "href": "#/reviewer/projects",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รอประเมิน\n1",
+        "disabled": false,
+        "href": "#/reviewer/projects?reviewStatus=pending",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "บันทึกร่าง\n0",
+        "disabled": false,
+        "href": "#/reviewer/projects?reviewStatus=draft",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ส่งผลประเมินแล้ว\n5",
+        "disabled": false,
+        "href": "#/reviewer/projects?reviewStatus=submitted",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูทั้งหมด →",
+        "disabled": false,
+        "href": "#/reviewer/projects",
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "search",
+        "label": "ค้นหาโครงการ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "สถานะการประเมิน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ค้นหา",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "แนวทางลดขยะอาหารในโรงอาหารมหาวิทยาลัย",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "อ่านรายงาน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เริ่มประเมิน →",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/evaluation",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "การพัฒนาทักษะดิจิทัลสำหรับผู้ประกอบการชุมชน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-1/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "อ่านรายงาน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-1/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ผลประเมิน / PDF →",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-1/my-evaluation",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "การออกแบบพื้นที่เรียนรู้ที่ส่งเสริมสุขภาวะนักศึกษา",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-2/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "อ่านรายงาน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-2/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ผลประเมิน / PDF →",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-2/my-evaluation",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "การจัดการต้นทุนโลจิสติกส์ของเกษตรกรบนพื้นที่สูง",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-3/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "อ่านรายงาน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-3/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ผลประเมิน / PDF →",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-3/my-evaluation",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "การฟื้นฟูดินเสื่อมโทรมด้วยวัสดุชีวภาพจากชุมชน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-RELEASED/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "อ่านรายงาน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-RELEASED/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ผลประเมิน / PDF →",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-RELEASED/my-evaluation",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "แนวทางป้องกันภาวะหมดไฟในนักศึกษาวิทยาศาสตร์สุขภาพ",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-CLOSED-REPORT/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "อ่านรายงาน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-CLOSED-REPORT/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ผลประเมิน / PDF →",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-CLOSED-REPORT/my-evaluation",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "เริ่มประเมิน →",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/evaluation",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดูงานทั้งหมด",
+        "disabled": false,
+        "href": "#/reviewer/projects",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ส่งแล้ว\n5",
+        "disabled": false,
+        "href": "#/reviewer/projects?reviewStatus=submitted",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รอประเมิน\n1",
+        "disabled": false,
+        "href": "#/reviewer/projects?reviewStatus=pending",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "บันทึกร่าง\n0",
+        "disabled": false,
+        "href": "#/reviewer/projects?reviewStatus=draft",
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-V02",
+    "role": "reviewer",
+    "path": "#/reviewer/projects/V16-EVALUATION-0/assigned-report",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานประเมิน",
+        "disabled": false,
+        "href": "#/reviewer/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "งานที่ได้รับมอบหมาย",
+        "disabled": false,
+        "href": "#/reviewer/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-008",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/timeline",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "อ่านรายงานที่มอบหมาย",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "แบบประเมิน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/evaluation",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "ข้อมูลประกอบการวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดาวน์โหลด PDF",
+        "disabled": false,
+        "href": "blob:http://127.0.0.1:5186/56d87720-1b89-4554-a409-e9fe7fe1ebf1",
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "1.1 การวิจัยบรรลุวัตถุประสงค์ของโครงการวิจัยหรือไม่",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "objectivesDetail",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "1.2 ผลการดำเนินงานเป็นไปตามข้อเสนอโครงการวิจัยหรือไม่",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "consistencyDetail",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "1.3 บทคัดย่อ มีความสมบูรณ์ ครอบคลุมครบถ้วน ทั้งทางด้านเนื้อหา ภาษาที่ใช้",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "abstractDetail",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "1.4 บทสรุปผู้บริหาร มีความสมบูรณ์ ครอบคลุมครบถ้วน ทั้งทางด้านเนื้อหา ภาษาที่ใช้",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "executiveDetail",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "1.5 ข้อเสนอแนะเพื่อปรับปรุงแก้ไขร่างรายงานวิจัยฉบับสมบูรณ์ ในแต่ละบท",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "1.6 ผลผลิต/ สิ่งที่ได้จากการวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "1.7 จุดเด่นของผลงานวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "3. ข้อเสนอแนะ เพื่อการพัฒนางานวิจัยต่อไป",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ควรวิจัยเพิ่มเติม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ถ่ายทอดแก่ผู้ใช้ / ชุมชน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "จดสิทธิบัตร / ลิขสิทธิ์",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ยุติการวิจัยแนวนี้",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "อื่น ๆ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "สรุปผลประเมิน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "เหตุผล / ข้อคิดเห็นต่อผลประเมิน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "ความคิดเห็นเพิ่มเติม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทเอกสาร",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "label": "อัปโหลด PDF",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "button",
+        "label": "บันทึกร่าง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ตรวจคำตอบก่อนส่ง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-V03",
+    "role": "reviewer",
+    "path": "#/reviewer/projects/V16-EVALUATION-0/evaluation",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานประเมิน",
+        "disabled": false,
+        "href": "#/reviewer/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "งานที่ได้รับมอบหมาย",
+        "disabled": false,
+        "href": "#/reviewer/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-008",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/timeline",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "อ่านรายงานที่มอบหมาย",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "แบบประเมิน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/evaluation",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "ข้อมูลประกอบการวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ดาวน์โหลด PDF",
+        "disabled": false,
+        "href": "blob:http://127.0.0.1:5186/47cd36fb-6874-4a85-a293-e667a13db48a",
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "1.1 การวิจัยบรรลุวัตถุประสงค์ของโครงการวิจัยหรือไม่",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "objectivesDetail",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "1.2 ผลการดำเนินงานเป็นไปตามข้อเสนอโครงการวิจัยหรือไม่",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "consistencyDetail",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "1.3 บทคัดย่อ มีความสมบูรณ์ ครอบคลุมครบถ้วน ทั้งทางด้านเนื้อหา ภาษาที่ใช้",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "abstractDetail",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "1.4 บทสรุปผู้บริหาร มีความสมบูรณ์ ครอบคลุมครบถ้วน ทั้งทางด้านเนื้อหา ภาษาที่ใช้",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "executiveDetail",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "1.5 ข้อเสนอแนะเพื่อปรับปรุงแก้ไขร่างรายงานวิจัยฉบับสมบูรณ์ ในแต่ละบท",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "1.6 ผลผลิต/ สิ่งที่ได้จากการวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "1.7 จุดเด่นของผลงานวิจัย",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "3. ข้อเสนอแนะ เพื่อการพัฒนางานวิจัยต่อไป",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ควรวิจัยเพิ่มเติม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ถ่ายทอดแก่ผู้ใช้ / ชุมชน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "จดสิทธิบัตร / ลิขสิทธิ์",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "ยุติการวิจัยแนวนี้",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "label": "อื่น ๆ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "สรุปผลประเมิน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "เหตุผล / ข้อคิดเห็นต่อผลประเมิน",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "TEXTAREA",
+        "type": "textarea",
+        "label": "ความคิดเห็นเพิ่มเติม",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "label": "ประเภทเอกสาร",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "INPUT",
+        "type": "file",
+        "label": "อัปโหลด PDF",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "button",
+        "label": "บันทึกร่าง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ตรวจคำตอบก่อนส่ง",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-V04",
+    "role": "reviewer",
+    "path": "#/reviewer/projects/V16-EVALUATION-0/answers",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานประเมิน",
+        "disabled": false,
+        "href": "#/reviewer/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "งานที่ได้รับมอบหมาย",
+        "disabled": false,
+        "href": "#/reviewer/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-008",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/timeline",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "แก้ไขแบบประเมิน",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/evaluation",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "รายงานวิจัยฉบับสมบูรณ์_5บท_MFU-RG-2569-008_v1.pdf",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กลับไปแก้คำตอบ",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-0/evaluation",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ยืนยันส่งผลประเมิน",
+        "disabled": true,
+        "href": null,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "N-V05",
+    "role": "reviewer",
+    "path": "#/reviewer/projects/V16-EVALUATION-1/my-evaluation",
+    "controls": [
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมงานประเมิน",
+        "disabled": false,
+        "href": "#/reviewer/dashboard",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "งานที่ได้รับมอบหมาย",
+        "disabled": false,
+        "href": "#/reviewer/projects",
+        "visible": false
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "MFU-RG-2569-009",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-1/details",
+        "visible": false
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "← ย้อนกลับ",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "ภาพรวมโครงการ",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-1/details",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "คลังเอกสาร",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-1/documents",
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "กิจกรรมและประวัติ",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-1/timeline",
+        "visible": true
+      },
+      {
+        "tag": "SUMMARY",
+        "type": null,
+        "label": "ดูคำตอบและเอกสารที่ส่งแล้ว",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "อ่านรายงานที่มอบหมาย",
+        "disabled": false,
+        "href": "#/reviewer/projects/V16-EVALUATION-1/assigned-report",
+        "visible": true
+      },
+      {
+        "tag": "BUTTON",
+        "type": "submit",
+        "label": "ดาวน์โหลด PDF",
+        "disabled": false,
+        "href": null,
+        "visible": true
+      },
+      {
+        "tag": "A",
+        "type": null,
+        "label": "← กลับไปงานประเมินของฉัน",
+        "disabled": false,
+        "href": "#/reviewer/projects",
+        "visible": true
+      }
+    ]
+  }
+]
