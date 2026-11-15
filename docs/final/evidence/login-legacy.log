@@ -1,0 +1,19 @@
+[2026-11-14T21:48:28.902Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x63642da8 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L57, false for 'update' @ L57
+[2026-11-14T21:48:28.911Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x63642da9 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L17, false for 'create' @ L57, false for 'update' @ L17, false for 'update' @ L57
+[2026-11-14T21:48:28.921Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x63642daa error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'update' @ L17, false for 'update' @ L57
+[2026-11-14T21:48:29.038Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x63642dac error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L57, false for 'update' @ L57
+[2026-11-14T21:48:29.050Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x63642dad error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L17, false for 'create' @ L57, false for 'update' @ L17, false for 'update' @ L57
+[2026-11-14T21:48:29.065Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x63642dae error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'update' @ L17, false for 'update' @ L57
+[2026-11-14T21:48:29.176Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x63642db0 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L57, false for 'update' @ L57
+[2026-11-14T21:48:29.189Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x63642db1 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L17, false for 'create' @ L57, false for 'update' @ L17, false for 'update' @ L57
+[2026-11-14T21:48:29.205Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x63642db2 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'update' @ L17, false for 'update' @ L57
+PASS: 46 login-only emulator checks: existing-account login, three protected roles, removed API, denied signup writes, retained legacy records, proposal submission, corrections and fresh sign-in persistence.

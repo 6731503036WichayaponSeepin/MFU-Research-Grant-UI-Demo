@@ -2,6 +2,7 @@
 // Never copy environment files, credentials, browser components or node_modules.
 import { mkdirSync, copyFileSync } from 'node:fs'
 const files = {
+  domain: ['contracts','permissions','model','actions','migration','localDemoPolicy'],
   utils: ['closure','closureRegistry','handoff','projectStorage','administrativeRecords','projectChanges','registry','evaluation','pdfAttachment','proposalValidation'],
   data: ['interactiveDemo','demoProjects','demoRegistry','demoAttachment','statuses','registry'],
 }

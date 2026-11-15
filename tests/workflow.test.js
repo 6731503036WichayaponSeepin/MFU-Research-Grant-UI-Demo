@@ -35,7 +35,7 @@ test('project changes append history and can be saved to the shared backend',()=
  assert.equal(next.changeRecords.length,2)
  assert.equal(next.statusHistory.at(-1).action,'project_change')
 })
-test('review corrections require staff notification and final verification, including incomplete final documents',()=>{
+test('legacy compatibility only: old rubric history retains its former re-evaluation behavior',()=>{
  let p=createDemoProjects()[17]
  // Preserve coverage for records saved with the previous prototype rubric.
  delete p.closure.evaluationVersion; delete p.closure.reviewers; delete p.closure.evaluations

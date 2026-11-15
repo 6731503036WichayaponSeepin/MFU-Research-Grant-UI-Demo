@@ -1,0 +1,66 @@
+import assert from 'node:assert/strict'
+import { createRequire } from 'node:module'
+import { createServer } from 'vite'
+import { mkdir } from 'node:fs/promises'
+const require = createRequire(import.meta.url), { chromium } = require(process.env.MFU_PLAYWRIGHT_MODULE || 'playwright')
+const server = await createServer({ envDir: 'tmp/phase2-no-env', server: { host: '127.0.0.1', port: 5178, strictPort: true } }); await server.listen()
+const browser = await chromium.launch({ channel: 'chrome', headless: true }), page = await browser.newPage({ viewport: { width: 1440, height: 1000 } })
+const errors = [], external = [], dir = 'docs/progress/screenshots', base = 'http://127.0.0.1:5178/'
+page.on('pageerror', e => errors.push(e.message)); page.on('request', r => { if (/^https?:/.test(r.url()) && !r.url().startsWith(base)) external.push(r.url()) })
+page.on('dialog', d => d.accept())
+await mkdir(dir, { recursive: true })
+let checks = 0; const check = (ok, msg) => { assert.ok(ok, msg); checks++ }
+const route = async path => { await page.goto(base + '#/researcher/' + path); await page.locator('#page-title').waitFor() }
+const project = id => page.evaluate(id => JSON.parse(localStorage.getItem('mfu-foundation-v16-demo-projects')).find(p => p.id === id), id)
+const confirm = async () => page.getByRole('dialog').getByRole('button', { name: 'Confirm', exact: true }).click()
+const upload = async kind => { await page.getByLabel('Document Type', { exact: true }).selectOption(kind); await page.getByLabel('Upload PDF', { exact: true }).setInputFiles('public/MFU-Demonstration-Sample.pdf'); await page.getByText('Uploading…', { exact: true }).waitFor({ state: 'hidden' }) }
+async function attest() { await page.getByLabel('leader · ดร. ณัฐวุฒิ วัฒนกุล', { exact: true }).check(); await page.getByLabel("Are other people's electronic signatures used?", { exact: true }).selectOption('yes') }
+try {
+  await page.goto(base); await page.getByRole('button', { name: 'EN', exact: true }).click(); await page.getByRole('button', { name: /researcher/ }).click(); await page.locator('#page-title').waitFor()
+  check(await page.locator('[data-researcher-total="14"]').count() === 1, 'owner total')
+  await page.screenshot({ path: `${dir}/phase2-dashboard-desktop.png`, fullPage: true })
+  await page.locator('.researcher-summary a').filter({ hasText: 'Cancelled Projects' }).click(); check(await page.locator('.shared-project-row').count() === 1, 'summary filter matches')
+  await route('projects'); await page.getByRole('link', { name: 'Next', exact: true }).click(); check(page.url().includes('page=2'), 'pagination')
+  await route('choose'); await page.getByRole('link', { name: 'Manual Entry', exact: true }).click(); await page.getByLabel('Project Title *', { exact: true }).fill('Phase 2 manual draft')
+  await page.getByRole('button', { name: 'Save Draft', exact: true }).first().click(); await page.waitForURL(/details$/)
+  const created = await page.evaluate(() => JSON.parse(localStorage.getItem('mfu-foundation-v16-demo-projects')).find(p => p.title === 'Phase 2 manual draft'))
+  check(created?.status === 'DRAFT' && created.ownerUid === 'demo-user', 'create partial draft')
+  await route(`projects/${created.id}/manual`); await page.getByLabel('Project Title *', { exact: true }).fill('Recovered text'); await page.reload(); await page.getByLabel('Project Title *', { exact: true }).waitFor(); check(await page.getByLabel('Project Title *', { exact: true }).inputValue() === 'Recovered text', 'draft recovery')
+  await route('projects/V16-DRAFT/proposal-pdf'); const initial = await project('V16-DRAFT')
+  await page.getByRole('button', { name: 'Generate PDF Preview', exact: true }).click(); await page.locator('canvas[data-rendered="true"]').waitFor()
+  check(JSON.stringify(await project('V16-DRAFT')) === JSON.stringify(initial), 'PDF preview no mutation')
+  await page.getByRole('button', { name: 'Save latest PDF to library', exact: true }).click(); await page.getByText('Latest stored PDF', { exact: false }).waitFor(); check((await project('V16-DRAFT')).status === 'DRAFT', 'PDF archive no state change')
+  await page.screenshot({ path: `${dir}/phase2-pdf-desktop.png`, fullPage: true })
+  await page.getByRole('button', { name: 'Confirm Ready for Affiliation', exact: true }).click(); await confirm(); await page.waitForURL(/details$/)
+  check((await project('V16-DRAFT')).status === 'AFFILIATION_REVIEW', 'local temporary TR03')
+  await route('projects/V16-DRAFT/submission'); check(await page.getByRole('button', { name: 'Confirm Submission', exact: true }).isDisabled(), 'signed gate')
+  await upload('signed_rs1'); await upload('affiliation_evidence'); await attest(); check(await page.getByRole('button', { name: 'Confirm Submission', exact: true }).isDisabled(), 'consent gate')
+  await page.getByLabel('I obtained consent from all other signature owners', { exact: true }).check(); await page.getByRole('button', { name: 'Confirm Submission', exact: true }).click(); await confirm(); await page.getByRole('heading', { name: 'Submission Receipt', exact: true }).waitFor()
+  const submitted = await project('V16-DRAFT'); check(submitted.status === 'STAFF_REVIEW' && submitted.signatureConsent.projectId === submitted.id, 'signed submission and consent provenance')
+  await route('dashboard'); await page.getByRole('button', { name: 'Add Research Scenarios', exact: true }).click()
+  await route('projects/V16-OTHER-OWNER/details'); check(await page.getByRole('heading', {name:'Project not found or access denied',exact:true}).count() === 1, 'other owner inaccessible')
+  await route('projects/V16-CORRECTION/manual'); check(await page.getByLabel('Project Title *', { exact: true }).isEnabled(), 'requested title enabled'); await page.getByLabel('Project Title *', { exact: true }).fill('Corrected project title')
+  await page.screenshot({ path: `${dir}/phase2-correction-desktop.png`, fullPage: true }); await page.getByRole('button', { name: 'Save Draft', exact: true }).first().click(); await page.waitForURL(/details$/)
+  await route('projects/V16-CORRECTION/submission'); await upload('signed_rs1'); await upload('affiliation_evidence'); await attest(); await page.getByLabel('I obtained consent from all other signature owners', { exact: true }).check(); await page.getByRole('button', { name: 'Confirm Resubmission', exact: true }).click(); await confirm(); await page.getByRole('heading', { name: 'Submission Receipt', exact: true }).waitFor()
+  check((await project('V16-CORRECTION')).status === 'STAFF_REVIEW', 'TR06 resubmission self transition')
+  await route('projects/V16-PUBLICATION-ACTIVE/closure'); await page.getByLabel('Closure path', {exact:true}).selectOption('publication'); await page.getByLabel('Research Summary',{exact:true}).fill('Publication summary'); await page.getByLabel('Research Finished Date',{exact:true}).fill('2026-11-15'); await upload('summary_report'); await upload('publication')
+  await page.screenshot({path:`${dir}/phase2-publication-desktop.png`,fullPage:true})
+  await page.getByRole('button',{name:'Confirm Submission',exact:true}).click(); await confirm(); await page.getByRole('heading',{name:'Submission Receipt',exact:true}).waitFor(); check((await project('V16-PUBLICATION-ACTIVE')).status === 'CLOSURE_REVIEW', 'publication submission without reviewer assignment')
+  await route('projects/V16-ACTIVE/closure'); await page.getByLabel('Research Summary', { exact: true }).fill('Closure report summary'); await page.getByLabel('Research Finished Date', { exact: true }).fill('2026-11-15'); await upload('report')
+  const selectedReport = page.locator('.shared-table input[type=checkbox]').last(); await selectedReport.uncheck(); check(await page.getByRole('button',{name:'Confirm Submission',exact:true}).isDisabled(), 'remove deselects required report'); await selectedReport.check(); check((await project('V16-ACTIVE')).documents.some(d=>d.kind==='report'), 'remove preserves original document')
+  await page.getByRole('button', { name: 'Save Draft', exact: true }).click(); await page.getByRole('status').filter({ hasText: 'Draft saved' }).waitFor(); check((await project('V16-ACTIVE')).status === 'IN_PROGRESS', 'closure draft self state')
+  await page.getByRole('button', { name: 'Confirm Submission', exact: true }).click(); await confirm(); await page.getByRole('heading', { name: 'Submission Receipt', exact: true }).waitFor(); check((await project('V16-ACTIVE')).status === 'CLOSURE_REVIEW', 'TR11 report')
+  await route('projects/V16-CLOSURE-MORE/closure'); await upload('support'); await page.getByRole('button', { name: 'Confirm Submission', exact: true }).click(); await confirm(); await page.getByRole('heading', { name: 'Submission Receipt', exact: true }).waitFor(); check((await project('V16-CLOSURE-MORE')).status === 'CLOSURE_REVIEW', 'TR12 supplementary')
+  await route('projects/V16-EVALUATION-3/results'); check(await page.getByRole('heading', { name: 'Evaluations have not been released', exact: true }).count() === 1, '3/3 not released is hidden')
+  await route('projects/V16-RELEASED/results'); check(await page.getByRole('heading', { name: /^Expert Reviewer ·/ }).count() === 3, '3 released results'); check(await page.getByRole('button', { name: 'Generate Individual PDF', exact: true }).first().isEnabled(), 'released individual PDF service available')
+  await page.screenshot({ path: `${dir}/phase2-results-desktop.png`, fullPage: true })
+  const before = await project('V16-RELEASED'); await route('projects/V16-RELEASED/revised-report'); await upload('revised_report'); await page.getByRole('button', { name: 'Confirm Submission', exact: true }).click(); await confirm(); await page.getByRole('heading', { name: 'Submission Receipt', exact: true }).waitFor()
+  const after = await project('V16-RELEASED'); check(after.status === 'REPORT_EVALUATION' && JSON.stringify(after.closure.evaluations) === JSON.stringify(before.closure.evaluations) && JSON.stringify(after.closure.assignments) === JSON.stringify(before.closure.assignments), 'revised submission no second review')
+  await route('choose'); await page.getByRole('link', { name: 'Upload & Text Extraction', exact: true }).click(); await page.locator('input[type=file]').setInputFiles('public/MFU-Demonstration-Sample.pdf'); await page.locator('.upload-result').waitFor(); const importKey = await page.evaluate(() => Object.keys(localStorage).filter(k => k.startsWith('mfu-researcher-v16:') && k.endsWith(':new')).map(k => localStorage.getItem(k)))
+  await page.locator('input[type=file]').setInputFiles({ name: 'broken.pdf', mimeType: 'application/pdf', buffer: Buffer.from('broken-pdf') }); await page.getByRole('alert').waitFor(); check(JSON.stringify(await page.evaluate(() => Object.keys(localStorage).filter(k => k.startsWith('mfu-researcher-v16:') && k.endsWith(':new')).map(k => localStorage.getItem(k)))) === JSON.stringify(importKey), 'failed extraction preserves existing private draft')
+  await page.locator('input[type=file]').setInputFiles('public/MFU-Demonstration-Sample.pdf'); await page.locator('.upload-result').waitFor(); await page.getByLabel('Project Title', { exact: true }).fill('Imported and reviewed'); await page.getByLabel('I have reviewed and corrected the extracted values', { exact: true }).check(); await page.getByRole('button', { name: 'Continue to RS-1 Form', exact: true }).click(); await page.getByLabel('Project Title *', { exact: true }).waitFor(); check(await page.getByLabel('Project Title *', { exact: true }).inputValue() === 'Imported and reviewed', 'confirmed extraction transfer')
+  await page.screenshot({ path: `${dir}/phase2-editor-desktop.png`, fullPage: true })
+  await page.setViewportSize({ width: 390, height: 844 }); await page.waitForTimeout(350); check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'mobile editor layout'); await page.screenshot({ path: `${dir}/phase2-editor-mobile.png`, fullPage: true })
+  check(errors.length === 0, JSON.stringify(errors)); check(external.length === 0, 'no external requests'); console.log(`PASS Phase 2 browser: ${checks} checks`)
+} catch (e) { await page.screenshot({ path: `${dir}/phase2-debug.png`, fullPage: true }); console.log((await page.locator('body').innerText()).slice(-2400)); throw e }
+finally { await browser.close(); await server.close() }

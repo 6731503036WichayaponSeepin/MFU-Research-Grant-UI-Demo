@@ -1,0 +1,21 @@
+/* Researcher notification presentation only; existing read/link handlers stay shared. */
+.researcher-notifications > .shared-card { padding:20px; border:1px solid var(--border); border-radius:10px; box-shadow:none; margin:0; }
+.researcher-notifications .shared-project-heading { align-items:center; gap:12px; padding-bottom:16px; }
+.researcher-notifications h1 { margin:0; font-size:22px; line-height:1.4; font-weight:600; }
+.researcher-notifications h1:focus { outline:none; }
+.researcher-notifications .shared-notification { position:relative; gap:16px; padding:12px 0; border-top:1px solid var(--border); }
+.researcher-notifications .shared-notification > div { position:relative; min-width:0; padding-left:16px; }
+.researcher-notifications .shared-notification strong { display:block; color:var(--text-primary); font-size:14px; line-height:1.6; font-weight:500; overflow-wrap:anywhere; }
+.researcher-notifications .rn-unread strong { font-weight:600; }
+.researcher-notifications .rn-unread-dot { position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--primary); }
+.researcher-notifications .shared-notification p { margin:4px 0; color:var(--text-secondary); font-size:12px; line-height:1.5; }
+.researcher-notifications .shared-notification a { font-size:13px; text-decoration:none; overflow-wrap:anywhere; }
+.researcher-notifications .shared-notification a:hover { text-decoration:underline; }
+.researcher-notifications .shared-notification > button { flex-shrink:0; min-height:36px; padding:6px 12px; font-size:12px; }
+.researcher-notifications .shared-feedback { margin:8px 0; }
+@media(max-width:600px) {
+ .researcher-notifications > .shared-card { padding:16px; }
+ .researcher-notifications .shared-project-heading { align-items:flex-start; }
+ .researcher-notifications .shared-notification { gap:8px; }
+ .researcher-notifications .shared-notification > button { align-self:flex-start; margin-left:16px; }
+}

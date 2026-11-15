@@ -1,0 +1,4 @@
+04:47:46 [vite] (client) [console.error] Error: ไฟล์ PDF ไม่ถูกต้อง
+    at extractPDFText (http://127.0.0.1:5178/src/utils/rs1Extraction.js:74:9)
+    at async readDocument (http://127.0.0.1:5178/src/pages/UploadDocument.jsx:77:19)
+PASS Phase 2 browser: 29 checks

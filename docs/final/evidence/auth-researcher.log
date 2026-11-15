@@ -1,0 +1,3 @@
+04:48:33 [vite] (client) Re-optimizing dependencies because vite config has changed
+04:48:36 [vite] (client) [optimizer] bundling dependencies...
+PASS Phase 1 Auth browser: 17 checks; 3 server-profile roles; emulators only

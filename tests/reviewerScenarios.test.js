@@ -56,7 +56,7 @@ test('new report and revised report scenarios are listed as pending reviewer wor
   assert.equal(reviewerTask(notSubmitted,reviewer.username).label,'รอเจ้าหน้าที่ดำเนินการ')
 })
 
-test('reviewer can reassess a resubmitted report without losing earlier submissions or evaluation history',()=>{
+test('legacy compatibility only: preserve repeated-review history before an explicitly reviewed migration',()=>{
   const revised=scenarios().find(p=>p.reviewerScenarioLabel==='ส่งรายงานฉบับแก้ไขกลับมา')
   const beforeHistory=revised.closure.history.length,beforeSubmissions=revised.closure.submissions.length
   const updated=transition(revised,'review',evaluation,reviewer,'2026-11-04T03:00:00.000Z')

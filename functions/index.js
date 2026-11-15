@@ -5,6 +5,8 @@ import { getStorage } from 'firebase-admin/storage'
 import { onRequest } from 'firebase-functions/v2/https'
 import { randomUUID } from 'node:crypto'
 import { databaseRecords } from './records.js'
+import { executeFoundationCommand, canUploadFoundation } from './foundationPolicy.js'
+import { isFoundationProject } from './domain/src/domain/contracts.js'
 import { authorizeProfile, requireThat, validId, mayRead, replayProject, projectView, collectFiles, rejectInlineFiles } from './securePolicy.js'
 
 initializeApp()
@@ -31,6 +33,7 @@ export const researchApi = onRequest(options, async (req,res) => {
       requireThat(validId(body.projectId) && typeof body.name === 'string' && body.name.length <= 200 && /\.pdf$/i.test(body.name) && Number.isInteger(body.size) && body.size > 0 && body.size <= 2*1024*1024,'PDF up to 2 MB required',400)
       const p = (await db.doc('workspaces/'+actor.workspace+'/projects/'+body.projectId).get()).data()
       requireThat(p ? mayRead(p,actor) : actor.role === 'researcher','Project access denied')
+      if (isFoundationProject(p)) requireThat(canUploadFoundation(p,actor),'Upload denied at this project state')
       const purpose = actor.role === 'reviewer' ? 'feedback' : actor.role === 'staff' ? 'administrative' : 'research'
       if (actor.role === 'reviewer') requireThat(p.closure?.state === 'awaiting_review' && !p.closure?.evaluations?.[actor.uid]?.submitted,'Evaluation is locked')
       const ticketId = randomUUID()
@@ -39,21 +42,27 @@ export const researchApi = onRequest(options, async (req,res) => {
       await db.doc('uploadTickets/'+ticketId).create(ticket)
       return res.json({file:ticket})
     }
-    requireThat(body.action === 'save' && validId(body.project?.id),'Invalid operation',400)
-    requireThat(Number.isInteger(body.expectedVersion) && body.expectedVersion >= 0,'Expected version required',400)
-    rejectInlineFiles(body.project)
+    const foundation = body.action === 'execute'
+    const projectId = foundation ? body.projectId : body.project?.id
+    const expectedVersion = foundation ? body.command?.expectedVersion : body.expectedVersion
+    requireThat((foundation || body.action === 'save') && validId(projectId),'Invalid operation',400)
+    requireThat(Number.isInteger(expectedVersion) && expectedVersion >= 0,'Expected version required',400)
+    rejectInlineFiles(foundation ? body.command : body.project)
     const result = await db.runTransaction(async tx => {
       // Re-read authoritative roles inside the transaction to handle revocation races.
       const profile = (await tx.get(db.doc('users/'+identity.uid))).data()
       const currentActor = authorizeProfile(profile,identity.uid)
       requireThat(currentActor.workspace === actor.workspace,'Workspace changed; sign in again')
-      const ref = db.doc('workspaces/'+actor.workspace+'/projects/'+body.project.id)
+      const ref = db.doc('workspaces/'+actor.workspace+'/projects/'+projectId)
       const previous = (await tx.get(ref)).data()
-      requireThat((previous?._version || 0) === body.expectedVersion,'This project changed. Reload the latest data before saving again.',409)
+      requireThat((previous?._version || 0) === expectedVersion,'This project changed. Reload the latest data before saving again.',409)
       const profiles = await tx.get(db.collection('users').where('workspace','==',actor.workspace).limit(101))
       requireThat(profiles.size <= 100,'Workspace account limit reached; configure scalable projection fanout before adding accounts',409)
       const users = Object.fromEntries(profiles.docs.map(d => [d.id,d.data()]))
-      const next = replayProject(previous,body.project,currentActor,users)
+      if (foundation && !previous) requireThat(body.command?.payload?.projectId === projectId,'Project ID mismatch',400)
+      const next = foundation
+        ? executeFoundationCommand(previous,body.command,currentActor,users)
+        : replayProject(previous,body.project,currentActor,users)
       const oldFiles = new Set(collectFiles(previous).map(f=>f.storagePath))
       const files = [...new Map(collectFiles(next).map(f=>[f.storagePath,f])).values()]
       requireThat(files.length <= 100,'Too many attachments',400)
@@ -90,7 +99,7 @@ export const researchApi = onRequest(options, async (req,res) => {
         const view = projectView(next,{uid,role:user.role,workspace:actor.workspace})
         delete view.viewUids
         tx.set(viewRef,view)
-        if (!['save_proposal','save_draft','review_draft','check_draft'].includes(event.action)) {
+        if (!['save_proposal','save_draft','review_draft','check_draft','create_project','save_closure_draft','save_evaluation','attach_document'].includes(event.action)) {
           tx.create(db.doc('workspaces/'+actor.workspace+'/users/'+uid+'/notifications/'+eventId),{notificationId:eventId,recipientId:uid,projectId:next.id,title:event.action,message:event.note || event.action,isRead:false,action:event.action,status:next.status,createdAt:next.serverUpdatedAt,readAt:null})
         }
       }

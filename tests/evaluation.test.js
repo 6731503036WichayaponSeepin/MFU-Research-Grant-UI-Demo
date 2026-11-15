@@ -29,7 +29,7 @@ test('official draft validates choices, conditional explanations, rejection and 
   }
   assert.throws(()=>validateEvaluation({...evaluation,documents:[{dataUrl:'javascript:alert(1)'}]}))
 })
-test('new proposal through three independent evaluations, staff feedback, final report and closure persists',()=>{
+test('legacy compatibility only: repeated report evaluation and closure persist for the old contract',()=>{
   storage()
   let p=saveProposal({projectTitle:'Fictional garden study',leaderName:'Alice',objectives:'Study learning',methodology:'Survey',startDate:'2026-01-01',endDate:'2026-12-31',compensation:'1000'},researcher,true)
   const form={date:'2026-10-27',responsible:'Staff',notes:'Simulated external outcome',unitOutcome:'endorsed'}

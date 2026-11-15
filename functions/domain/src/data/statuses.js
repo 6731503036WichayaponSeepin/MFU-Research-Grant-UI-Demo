@@ -1,3 +1,7 @@
+import { PROJECT_STATES } from '../domain/contracts.js'
+export { PROJECT_STATES, TRANSITIONS } from '../domain/contracts.js'
+
+// Compatibility presentation for legacy records only. Not a v1.6 transition contract.
 export const workflow = [
   ['draft', 'ร่างข้อเสนอโครงการ', 'Draft Proposal'],
   ['unit_review', 'รอส่วนงานต้นสังกัดพิจารณา', 'Pending Unit Review'],
@@ -15,4 +19,11 @@ statusConfig.revision_required = { th: 'มีประเด็นต้อง�
 for (const key of ['submitted', 'review', 'closure']) statusConfig[key] = statusConfig[normalizeStatus(key)]
 export const statusLabels = Object.fromEntries(Object.entries(statusConfig).map(([key, value]) => [key, [value.th, value.en]]))
 export const timelineSteps = workflow.map(([, th, en]) => [th, en])
-export const statusLabel = (status, language = 'th') => statusConfig[status]?.[language === 'en' ? 'en' : 'th'] || (language === 'en' ? 'Unknown status' : 'ไม่ทราบสถานะ')
+const canonicalLabels = [
+  ['ร่างข้อเสนอโครงการ', 'Draft Proposal'], ['รอต้นสังกัดพิจารณา', 'Affiliation Review'],
+  ['รอเจ้าหน้าที่ตรวจสอบ', 'Staff Review'], ['รอเสนอคณะกรรมการเพื่อทราบ', 'Committee Acknowledgement'],
+  ['ดำเนินการวิจัย', 'In Progress'], ['รอตรวจเอกสารปิดโครงการ', 'Closure Review'],
+  ['อยู่ระหว่างประเมินรายงาน', 'Report Evaluation'], ['ปิดโครงการแล้ว', 'Closed'], ['ยกเลิกโครงการ', 'Cancelled'],
+]
+export const projectStateLabels = Object.freeze(Object.fromEntries(PROJECT_STATES.map((s, i) => [s, Object.freeze({ th: canonicalLabels[i][0], en: canonicalLabels[i][1] })])))
+export const statusLabel = (status, language = 'th') => (projectStateLabels[status] || statusConfig[status])?.[language === 'en' ? 'en' : 'th'] || (language === 'en' ? 'Unknown status' : 'ไม่ทราบสถานะ')

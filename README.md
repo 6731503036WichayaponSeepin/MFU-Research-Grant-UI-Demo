@@ -1,66 +1,58 @@
-# MFU Research Grant — Interactive Demo
+# MFU Research Grant Management — v1.6 Demo
 
-Frontend-only React + Vite prototype. No login, Firebase initialization, API, environment file, or internet connection is needed to use the installed application. All data is fictional and stored in this browser's localStorage.
+Personal Research Grant Management System for Mae Fah Luang University · **404 Team Found**
 
-## Run and verify
+Local Demo และ Firebase mode ใช้ canonical v1.6 contract ร่วมกัน: 3 roles, 9 main states, TR-01–TR-17. Theme และ UI มาตรฐานอยู่ใน [DESIGN_SYSTEM.md](docs/design/DESIGN_SYSTEM.md)
+
+## Run Local Demo
 
 ```sh
 npm ci
 npm run dev
+```
+
+ใช้ dependencies ที่มีอยู่ได้โดยไม่ต้องติดตั้งใหม่ เปิด localhost ตามที่ Vite แสดง เลือก **v1.6 — Canonical Demo (3 roles)** และบทบาท Researcher / Research Administration Staff / Expert Reviewer มี Reviewer personas สมมติ 3 คนในบทบาทเดียว Local Demo ไม่ต้องเข้าสู่ระบบและไม่เชื่อม Firebase จริง
+
+ข้อมูลเริ่มต้นเป็น fictional 14 projects ใน localStorage มี opt-in contract fixtures แยกจาก legacy dataset การ Reset ต้องยืนยันและเปลี่ยนเฉพาะ namespace ของ Local Demo ไม่ใช่บัญชี/ข้อมูล Firebase หรือ private working copies ทั้งหมด ดู [Demo User Guide](docs/final/DEMO_USER_GUIDE.md)
+
+## Current workflows
+
+- RS-1 manual/import/review/draft, proposal PDF, signed RS-1 + affiliation evidence + conditional consent
+- Staff correction, acknowledgement **เพื่อทราบ**, certification และ external changes/extensions ผ่านผลจาก e-Office โดยไม่มี API
+- Publication closure ไม่ผ่าน Reviewer; report closure ใช้ exactly 3 unique reviewers, independent drafts, one-time submit, Staff release เมื่อ 3/3, revised report แล้ว Staff verify/close เอง ไม่ประเมินซ้ำ
+- Actual document reader และ individual on-demand evaluation PDF ตามสิทธิ์; in-app notifications/audit history ไม่อ้างว่าส่ง email จริง
+- Minimal MFU shared theme รองรับ TH/EN และ mobile/tablet/desktop
+
+ตัวอย่าง route: `#/researcher/projects/V16-DRAFT/manual`, `#/staff/projects/V16-CLOSURE/closure-review`, `#/reviewer/projects/V16-EVALUATION-0/evaluation` หน้าย่อยเข้าผ่าน Project Overview/Assigned Reviews; tabs/modals ไม่ใช่หน้าใหม่
+
+**ขอบเขตที่ยัง BLOCKED:** TR-03/OPEN-04 และ correction OPEN-13 ใช้ temporary Local Demo decision เท่านั้น Backend ยังไม่เปิด; TR-07 และ cancellation OPEN-20 ไม่เปิด mutation; official rubrics/checklists, Excel mapping, standards policy, combined/post-CLOSED PDF และ retention ยังรอยืนยัน Web Correction Approval เดิมยุติแล้วโดยรักษาประวัติ ไม่ใช้ legacy workflow เป็นหลักฐาน v1.6
+
+## Verification
+
+```sh
 npm test
 npm run lint
 npm run build
-npm run preview
+npm run test:phase6
+npm run test:phase6:emulator
 ```
 
-Dependency installation requires the packages to be available. Running the frontend afterwards needs only localhost. Local fonts and PDF workers are bundled.
+Browser suites ต้องมี installed Chrome + Playwright (`MFU_PLAYWRIGHT_MODULE` ระบุตำแหน่ง package ได้) Emulator suite ต้องมี Java 21+, Firebase CLI และ cached emulator binaries; ใช้เฉพาะ `demo-mfu-secure` บน localhost โดยสร้าง fictional accounts/data ใน Emulator เท่านั้น
 
-Choose Researcher, Staff, or Reviewer on the opening page. The visible role selector switches roles at any time. Scenario cards provide five researcher, four staff, and two reviewer demonstrations over one shared dataset. Existing RS-1 forms, nine-stage timeline, official draft evaluation rubric, document preview, staff records, and closure forms remain in use. The existing rubric uses categorical judgments rather than numerical scores; completed evaluations preserve those judgments and comments.
+`test:phase6` รัน maintained unit/lint/build/role browser suites + 240 TH/EN responsive checks + **read-only** legacy migration dry-run; ไม่ apply migration ผล JSON/logs เก็บที่ `docs/final/evidence/` ไม่มีคำสั่ง deploy ใน workflow นี้
 
-## Focused page navigation
+Firebase mode: `npm run dev -- --mode firebase` ใช้ Firebase Authentication และ role จาก Server Profile ไม่มี public registration หรือ role picker การทดสอบ Phase 6 ใช้ Emulator config เท่านั้น [firebase-setup.md](docs/firebase-setup.md) เป็นคู่มือเทคนิคเดิม ต้องอ่าน readiness/OPEN constraints ล่าสุดก่อนใช้งาน ไม่ใช่การอนุญาตแก้ production
 
-The existing demo router now uses static-host-compatible hash URLs. Browser Back/Forward and refresh restore the role, project, screen, and URL-based tabs/filters. Examples:
+## Final documentation
 
-- `#/researcher/dashboard` — summary counts, three recent projects, quick links.
-- `#/staff/projects` — staff's four example scenarios; an All Projects tab includes filtering and pagination.
-- `#/researcher/projects/MFU-DEMO-001/details` — focused details with information/research/budget tabs.
-- `#/researcher/projects/MFU-DEMO-001/timeline` — nine stages and paginated history.
-- `#/reviewer/projects/MFU-DEMO-018/documents` — report chapters or one PDF viewer.
-- `#/reviewer/projects/MFU-DEMO-018/evaluation?section=0` — one of seven evaluation sections.
-- `#/reviewer/projects/MFU-DEMO-018/answers` — review saved answers before simulated submission.
-- `#/reviewer/projects/MFU-DEMO-018/results` — evaluation answers or submission history.
+- [Phase 6 Report](docs/progress/PHASE_6_REPORT.md)
+- [Final Page Inventory — 31 functional definitions](docs/final/FINAL_PAGE_INVENTORY.md)
+- [Requirement Traceability — 75 FRs / 17 TRs](docs/final/REQUIREMENT_TRACEABILITY_MATRIX.md)
+- [Test Cases & Results](docs/final/TEST_CASES_RESULTS.md)
+- [Known Issues](docs/final/KNOWN_ISSUES.md)
+- [Demo User Guide](docs/final/DEMO_USER_GUIDE.md)
+- [Deployment Readiness — BLOCKED for Production](docs/final/DEPLOYMENT_READINESS.md)
 
-Proposal forms, staff review/approval, closure, correction requests, external records and project changes each have their own project route. Dashboards contain no scenario grids or embedded forms. Project cards and sidebar links navigate to dedicated screens. The role in the URL is restored when navigating through browser history. RS-1 review is divided by part and Part A topic; notifications and status histories are paginated.
+Requirements v1.6 วันที่ 14 November 2026 เป็นแหล่งอ้างอิงหลัก ตำแหน่งเอกสารจริง/กฎการทำงานอยู่ใน [AGENTS.md](AGENTS.md) Audit เป็น baseline ก่อนการพัฒนา และรายงานแต่ละ Phase เป็นหลักฐานการเปลี่ยนแปลง ไม่แปลง DESIGN/OPEN เป็น stakeholder CONFIRMED
 
-Every detail, form, review and evaluation screen has a visible **← ย้อนกลับ** button. It follows the current role's recorded browser history, skipping duplicate URLs; directly opened pages fall back to the relevant project list, then Dashboard. Breadcrumbs link Dashboard → Projects → Project Details → the current task.
-
-Unsaved edits trigger a confirmation before following links, switching roles, or using the page/browser Back button. Browser reload/close also uses the standard unsaved-changes warning. Cancel keeps the current screen and inputs. Accept keeps working copies for Back/Forward; text/form drafts use localStorage, and unsubmitted File objects stay in memory while the tab is open. Evaluation sections and answer review share one draft and can be navigated without repeated warnings.
-
-Saving a proposal opens Project Details. Approving a correction request or closing a project opens Project Details. Submitting an evaluation opens Evaluation Results. Role selection always opens the selected role's Dashboard after any unsaved-change confirmation. Reset also clears navigation working copies.
-
-Reviewer flow: Project Details → Report → Evaluation (seven sections) → Review Answers → Submit → Evaluation Results. Drafts remain available when changing sections or refreshing.
-
-The correction example starts with a pending request. Staff can reject it, the researcher can request again, and staff can approve. After approval, open the correction request page as researcher to edit RS-1 and confirm the corrected submission. Other projects retain their existing workflow. Staff can close the prepared closure case immediately after confirming final checks. Pending reviewer work supports draft, refresh, review answers and simulated submission; switch to staff to inspect results.
-
-Reset Demo Data restores the original seven shared projects and clears demo working drafts. It only changes local demo data. Language preference and selected role are retained. No remote records, accounts or files are modified. Legacy local keys are separate from this demo dataset.
-
-## Browser verification
-
-The browser test uses Playwright with installed Chrome (or set MFU_BROWSER_CHANNEL=edge). Provide Playwright through the normal module path, or set MFU_PLAYWRIGHT_MODULE to its installed package directory.
-
-```sh
-npm run test:demo:browser
-npm run test:navigation:browser
-```
-
-It covers all 11 dedicated scenario routes, compact dashboards, every role menu, URL/role synchronization, browser Back/Forward and deep links, accessible skip navigation, RS-1 submission, correction rejection/request/approval/edit, closure across roles, evaluation draft/refresh/review/submission, persistence, reset, mobile, and absence of external/API requests. The navigation suite additionally checks warning cancellation/acceptance, draft and selected-file restoration, action redirects, fallback routes and absence of page reloads. Screenshots are written to output/demo-qa.
-
-## Build and optional frontend-only deployment
-
-```sh
-npm run build
-npm run preview
-npx firebase deploy --only hosting --config firebase.demo.json
-```
-
-Deployment is manual. The optional hosting configuration serves only static dist files and has no API rewrites. The original Firebase configuration, backend adapters and functions remain in the repository for future development; they are not imported by the demo entry point. Historical Firebase setup guides describe that inactive backend implementation.
+Phase 6 หยุดแล้ว ไม่มี deployment, live migration หรือ Firebase จริงถูกแก้ไข Build ที่ผ่านไม่ใช่ Production/UAT approval

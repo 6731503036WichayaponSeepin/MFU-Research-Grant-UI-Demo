@@ -9,3 +9,4 @@ export const getReviewerDirectory = () => reviewers
 export const getNotifications = () => notifications
 export function startSharedStore() { initializeDemo(); return () => {} }
 export async function markNotificationsRead() {}
+export async function executeSharedFoundation() { throw new Error('Firebase mode is not active') }

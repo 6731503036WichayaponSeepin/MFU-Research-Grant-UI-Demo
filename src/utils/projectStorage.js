@@ -93,7 +93,8 @@ export function saveProposal(data, user, submit = false) {
 export function buildProposal(existing, data, user, submit = false, id = data._projectId || crypto.randomUUID(), now = new Date().toISOString()) {
   if (user?.role !== 'researcher' || !user.username) throw new Error('Researcher required')
   if (existing?.ownerUsername && existing.ownerUsername !== user.username) throw new Error('Proposal owner mismatch')
-  if (existing && !['draft','revision_required'].includes(existing.status) && existing.correction?.state !== 'approved') {
+  if (existing && !['draft','revision_required'].includes(existing.status) && existing.correction?.state === 'approved') throw new Error('Legacy Web Correction Approval is retired; use staff external outcome records')
+  if (existing && !['draft','revision_required'].includes(existing.status)) {
     if (submit) return existing
     throw new Error('Submitted proposal is locked')
   }
@@ -108,7 +109,6 @@ export function buildProposal(existing, data, user, submit = false, id = data._p
       project.registryHistory = [{ by:user.username, role:user.role, at:now, source:'demo_sample', changes:[{field:'notes',label:'ข้อมูลสมมุติสำหรับเดโม',before:'',after:project.registry.notes}] }]
     }
   }
-  if (existing?.correction?.state === 'approved') { project.status = existing.status; project.correction = {...existing.correction,state:submit?'saved':'approved'} }
   if (submit) project.submittedAt = now
   return project
 }

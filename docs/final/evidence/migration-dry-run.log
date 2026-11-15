@@ -1,0 +1,159 @@
+{
+  "source": "createInteractiveDemo() legacy fixtures",
+  "sourceSha256": "bafd9ad939dec19621f5eb9bd82e463cc2c7fac56041e351699820558b1ed194",
+  "dryRun": true,
+  "writes": 0,
+  "applyAllowed": false,
+  "total": 12,
+  "counts": {
+    "candidate": 1,
+    "needs_review": 11,
+    "already_current": 0,
+    "invalid": 0
+  },
+  "results": [
+    {
+      "projectId": "MFU-DEMO-001",
+      "status": "candidate",
+      "suggestedState": "DRAFT",
+      "reasons": [],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-011",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "Missing external acknowledgement/certification evidence for TR-09"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-015",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "Ambiguous closure subtask: inspect assignment, release and revised report"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-016",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "Legacy completed label lacks staff closure audit/check evidence"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-012",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "Missing external acknowledgement/certification evidence for TR-09"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-006",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "Legacy staff queue does not prove signed RS-1, affiliation evidence and consent"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-018",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "Evaluation stage lacks exactly three valid assignments and checked report"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-REVIEWER-FIRST-02",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "Evaluation stage lacks exactly three valid assignments and checked report"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-REVIEWER-FIRST-03",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "Evaluation stage lacks exactly three valid assignments and checked report"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-REVIEWER-REVISION",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "Evaluation stage lacks exactly three valid assignments and checked report",
+        "Legacy repeated evaluation must be preserved and reviewed; never fabricate a one-round history"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-REVIEWER-NOT-APPROVED",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "Evaluation stage lacks exactly three valid assignments and checked report"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    },
+    {
+      "projectId": "MFU-DEMO-REVIEWER-NO-SUBMISSION",
+      "status": "needs_review",
+      "suggestedState": null,
+      "reasons": [
+        "No confirmed closure submission with source documents"
+      ],
+      "warnings": [
+        "Workspace binding requires explicit review before any migration",
+        "All original fields, document bytes and histories retained in original; no write performed"
+      ]
+    }
+  ]
+}

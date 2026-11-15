@@ -40,3 +40,6 @@ accounts*.local.json
 .env.emulator
 .firebase/
 tmp/
+
+# Deliberate, fictional/local-only final QA evidence.
+!docs/final/evidence/*.log

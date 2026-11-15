@@ -9,8 +9,19 @@ service firebase.storage {
       return member(workspace) && (profile().role == 'staff' ||
         request.auth.uid == t.uploaderUid && (profile().role != 'reviewer' || request.auth.uid in project(workspace,id).reviewerUids) ||
         profile().role == 'researcher' && project(workspace,id).ownerUid == request.auth.uid &&
-          (t.purpose != 'feedback' || project(workspace,id).closure.feedbackReleasedAt is string) ||
-        profile().role == 'reviewer' && request.auth.uid in project(workspace,id).reviewerUids && t.purpose == 'research');
+          (t.purpose != 'feedback' || feedbackReleased(workspace,id,t)) ||
+        profile().role == 'reviewer' && request.auth.uid in project(workspace,id).reviewerUids && t.purpose == 'research'
+          && assignedReport(workspace,id,t));
+    }
+    function feedbackReleased(workspace,id,t) {
+      let p = project(workspace,id);
+      return ('schemaVersion' in p && p.schemaVersion == '1.6')
+        ? p.closure.release is map && p.closure.release.releasedAt is string && t.id in p.closure.releasedFeedbackDocumentIds
+        : p.closure.feedbackReleasedAt is string;
+    }
+    function assignedReport(workspace,id,t) {
+      let p = project(workspace,id);
+      return !('schemaVersion' in p) || p.schemaVersion != '1.6' || t.id in p.closure.reportDocumentIds;
     }
     match /workspaces/{workspace}/projects/{projectId}/{uploaderUid}/{ticketId} {
       allow get: if canRead(workspace,projectId,ticket(ticketId));

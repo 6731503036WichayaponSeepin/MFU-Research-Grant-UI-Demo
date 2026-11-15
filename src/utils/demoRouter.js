@@ -1,7 +1,7 @@
 import { confirmNavigation, hasUnsavedChanges } from './navigationGuard.js'
 // Extend the demo's existing page router with URL history; hash routes also work on static hosting.
 export const demoRoles = ['researcher','staff','reviewer']
-export const demoPages = ['dashboard','projects','details','timeline','documents','manual','submission','choose','upload','staff-review','closure','correction','evaluation','answers','results','administrative-records','project-change-record','notifications']
+export const demoPages = ['dashboard','projects','details','timeline','documents','manual','submission','choose','upload','proposal-pdf','revised-report','staff-review','closure','closure-review','reviewer-assignment','evaluation-tracking','final-verification','cancellation','correction','assigned-report','my-evaluation','evaluation','answers','results','administrative-records','project-change-record','notifications']
 export function parseDemoRoute(hash) {
   try {
     const url=new URL((hash || '#/roles').replace(/^#/,''),'http://demo.local')

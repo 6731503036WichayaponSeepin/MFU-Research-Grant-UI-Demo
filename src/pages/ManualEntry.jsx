@@ -1,3 +1,4 @@
+import './ResearcherManualEntry.css'
 import { useUnsavedChanges } from '../utils/useFormDraft'
 import { getProjects } from '../utils/projectStorage'
 import { readProposalDraft, writeProposalDraft } from '../utils/proposalDraft'
@@ -260,9 +261,9 @@ const initial = Object.fromEntries(
   allFields.map(f => [f.key, ''])
 )
 
-function loadDraft() {
+function loadDraft(workspace) {
   try {
-    const saved = readProposalDraft()
+    const saved = workspace ? workspace.read() : readProposalDraft()
     if (saved !== null && (typeof saved !== 'object' || Array.isArray(saved))) throw new Error('Invalid draft')
     return {...initial,...saved,_projectId:saved?._projectId || crypto.randomUUID()}
   } catch {
@@ -270,7 +271,7 @@ function loadDraft() {
   }
 }
 
-export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved }) {
+export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved, workspace }) {
   const { i18n } = useTranslation()
   const th = i18n.language !== 'en'
   const label = (thai, english) => th ? thai : english
@@ -279,8 +280,8 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
   const [section, setSection] = useState(0)
   const [review, setReview] = useState(false)
   const [reviewPart,setReviewPart]=useState(0),[reviewSection,setReviewSection]=useState(0)
-  const [data, setData] = useState(loadDraft)
-  const savedProposal=getProjects().find(p=>p.id===data._projectId)?.proposal||{}
+  const [data, setData] = useState(() => loadDraft(workspace))
+  const savedProposal=workspace ? workspace.savedProposal || {} : getProjects().find(p=>p.id===data._projectId)?.proposal||{}
   const markSaved=useUnsavedChanges(data,{...initial,...savedProposal,_projectId:data._projectId})
   const [notice, setNotice] = useState('')
   const [confirmed, setConfirmed] = useState(false)
@@ -288,9 +289,10 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
 
 
   const setValue = (key, value) => {
+    if (workspace?.editableFields && !workspace.editableFields.includes(key)) return
     const next = {...data,[key]:value}
     setData(next); setConfirmed(false); setNotice('')
-    try { if (!data._loadError) writeProposalDraft(next) }
+    try { if (!data._loadError) (workspace ? workspace.write(next) : writeProposalDraft(next)) }
     catch { setNotice(label('บันทึกอัตโนมัติไม่ได้ โปรดตรวจสอบพื้นที่จัดเก็บ', 'Autosave failed. Check browser storage before leaving.')) }
   }
 
@@ -314,6 +316,7 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
 
         {options ? (
           <select
+            disabled={!!workspace?.editableFields && !workspace.editableFields.includes(f.key)}
             value={data[f.key]}
             onChange={e => setValue(f.key, e.target.value)}
           >
@@ -326,12 +329,14 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
           </select>
         ) : f.type === 'textarea' ? (
           <textarea
+            disabled={!!workspace?.editableFields && !workspace.editableFields.includes(f.key)}
             rows={4}
             value={data[f.key]}
             onChange={e => setValue(f.key, e.target.value)}
           />
         ) : (
           <input
+            disabled={!!workspace?.editableFields && !workspace.editableFields.includes(f.key)}
             type={
               f.type === 'number' ? 'number'
               : f.type === 'date' ? 'date'
@@ -393,9 +398,11 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
     if (saving) return false
     setSaving(true)
     try {
-      const project = await saveProposal(data, currentUser)
+      const project = await (workspace ? workspace.save(data) : saveProposal(data, currentUser))
       const saved = {...data,...project.proposal,_projectId:project.id}
-      writeProposalDraft(saved); setData(saved); markSaved(saved)
+      if (workspace) workspace.write(saved)
+      else writeProposalDraft(saved)
+      setData(saved); markSaved(saved)
       if(redirect!==false)onSaved?.(project)
     } catch (error) { setNotice(label('บันทึกร่างไม่สำเร็จ: ', 'Unable to save draft: ')+error.message); return false }
     finally { setSaving(false) }
@@ -423,11 +430,11 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
     : reviewerFields
 
   return (
-    <div className="rs1-page">
+    <div className={`rs1-page${workspace ? ' rs1-continuous' : ''}`}>
       {data._loadError && <p role="alert">{label('อ่านร่างเดิมไม่ได้ กรุณาตรวจสอบข้อมูลที่จัดเก็บ', 'Existing draft cannot be read. Check browser storage.')}</p>}
 
       <div className="rs1-heading">
-        <div>
+        {!workspace && <div>
           <span className="rs1-eyebrow">
             RS-1 · Personal Research Grant
           </span>
@@ -443,14 +450,14 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
               'Complete the RS-1 form by part'
             )}
           </p>
-        </div>
+        </div>}
 
-        <div className="heading-actions"><ProposalPDF proposal={data} /><button className="outline-button" disabled={saving} onClick={save}>
+        <div className="heading-actions">{!workspace && <ProposalPDF proposal={data} />}<button className="outline-button" disabled={saving} onClick={save}>
           <Save size={16} /> {label('บันทึกร่าง', 'Save Draft')}
         </button></div>
       </div>
 
-      <section className="panel rs1-progress">
+      {!workspace && <section className="panel rs1-progress">
         <div className="rs1-progress-heading">
           <strong>
             {review
@@ -486,9 +493,9 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
             </button>
           ))}
         </div>
-      </section>
+      </section>}
 
-      <section className="panel rs1-form-panel">
+      <section className={`panel rs1-form-panel${workspace && !review ? ' rs1-continuous-sections' : ''}`}>
         {review ? (
           <>
             <div className="rs1-section-header">
@@ -554,6 +561,62 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
             </label>
           </>
         ) : (
+          workspace ? parts.map((_, part) => {
+            const activeFields = part === 0 ? overview : part === 2 ? bFields : reviewerFields
+            return (
+          <section className="panel rs1-continuous-card" key={part}>
+            <div className="rs1-section-header">
+              <span>{parts[part][th ? 0 : 1]}</span>
+              <h2>
+                {parts[part][th ? 0 : 1]}
+              </h2>
+            </div>
+
+            {part === 3 && (
+              <p className="rs1-note">
+                {label(
+                  'สำหรับกรณีส่งรายงานฉบับสมบูรณ์ 5 บท: ผู้ทรงคุณวุฒิ 3 คน ต้องจบปริญญาเอก ไม่เป็นที่ปรึกษาหรือผู้ร่วมวิจัย และหัวหน้าโครงการติดต่อก่อนเสนอชื่อ',
+                  'For a five-chapter final report: three PhD-qualified reviewers, not project advisors or participants, contacted in advance by the project leader.'
+                )}
+              </p>
+            )}
+
+            {(part === 1 ? aSections : [{ fields: activeFields }]).map((subsection, section) => {
+              const activeFields = subsection.fields
+              return <div className="rs1-continuous-subsection" key={section}>
+                {part === 1 && <h3>{subsection[th ? 'th' : 'en']}</h3>}
+            {part === 1 && section === 11 && (
+              <p className="rs1-note">
+                {label(
+                  'ตามแบบฟอร์ม ระยะเวลาดำเนินงานไม่เกิน 2 ปี',
+                  'The form specifies a research duration not exceeding two years.'
+                )}
+              </p>
+            )}
+
+            <div className="rs1-fields">
+              {activeFields.map(renderField)}
+            </div>
+
+            {part === 1 && section === 16 && (
+              <div className="rs1-total">
+                <span>{label('งบประมาณรวม', 'Total Budget')}</span>
+                <strong>{budget.toLocaleString()} ฿</strong>
+              </div>
+            )}
+
+            {part === 1 && section === 18 && (
+              <p className="rs1-note">
+                {label(
+                  'แบบฟอร์มกำหนดส่วนลงนามจริง โปรดตรวจสอบขั้นตอนการลงนามกับหน่วยงานก่อนใช้ระบบจริง',
+                  'The source form includes actual signatures. Confirm signature workflow before production use.'
+                )}
+              </p>
+            )}
+              </div>
+            })}
+          </section>            )
+          }) : (
           <>
             <div className="rs1-section-header">
               <span>{parts[part][th ? 0 : 1]}</span>
@@ -618,6 +681,7 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
               </p>
             )}
           </>
+          )
         )}
       </section>
 
@@ -628,9 +692,9 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
       )}
 
       <div className="rs1-footer">
-        <button className="outline-button" onClick={back}>
+        {(!workspace || review) && <button className="outline-button" onClick={back}>
           ← {label('ย้อนกลับ', 'Back')}
-        </button>
+        </button>}
 
         <div className="rs1-footer-right">
           <button className="outline-button" onClick={save}>
@@ -643,14 +707,14 @@ export default function ManualEntry({ onBack, onConfirm, currentUser, onSaved })
             className="primary"
             disabled={!confirmed || saving}
             onClick={async () => {
-                if (await save(false)) onConfirm()
+                if (await save(false)) onConfirm(data._projectId)
             }}
             >
               {label('ยืนยันการตรวจสอบ', 'Confirm Review')}
             </button>
           ) : (
-            <button className="primary" onClick={next}>
-              {part === 3
+            <button className="primary" onClick={workspace ? () => { setReview(true); window.scrollTo({ top: 0, behavior: 'smooth' }) } : next}>
+              {workspace || part === 3
                 ? label('ตรวจสอบข้อมูล', 'Review')
                 : label('ถัดไป', 'Next')} →
             </button>

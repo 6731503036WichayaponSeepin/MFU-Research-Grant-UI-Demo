@@ -1,0 +1,90 @@
+[
+  {
+    "id": "unit",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:47:15.963Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe --test tests/*.test.js",
+    "log": "evidence/unit.log"
+  },
+  {
+    "id": "lint",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:47:17.273Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe node_modules/eslint/bin/eslint.js .",
+    "log": "evidence/lint.log"
+  },
+  {
+    "id": "build",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:47:25.696Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe node_modules/vite/bin/vite.js build",
+    "log": "evidence/build.log"
+  },
+  {
+    "id": "build-firebase",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:47:26.983Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe node_modules/vite/bin/vite.js build --mode firebase --outDir dist/firebase-final",
+    "log": "evidence/build-firebase.log"
+  },
+  {
+    "id": "phase1-browser",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:47:28.345Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/phase1.browser.mjs",
+    "log": "evidence/phase1-browser.log"
+  },
+  {
+    "id": "phase2-browser",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:47:37.890Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/phase2.browser.mjs",
+    "log": "evidence/phase2-browser.log"
+  },
+  {
+    "id": "phase3-browser",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:47:47.689Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/phase3.browser.mjs",
+    "log": "evidence/phase3-browser.log"
+  },
+  {
+    "id": "phase4-browser",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:47:58.065Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/phase4.browser.mjs",
+    "log": "evidence/phase4-browser.log"
+  },
+  {
+    "id": "phase5-browser",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:48:05.932Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/phase5.browser.mjs",
+    "log": "evidence/phase5-browser.log"
+  },
+  {
+    "id": "phase6-browser",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:48:14.525Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/phase6.browser.mjs",
+    "log": "evidence/phase6-browser.log"
+  },
+  {
+    "id": "migration-dry-run",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:49:43.517Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe scripts/foundation-migration-dry-run.mjs",
+    "log": "evidence/migration-dry-run.log"
+  }
+]

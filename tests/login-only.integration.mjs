@@ -4,7 +4,7 @@ import { createRequire } from 'node:module'
 import { randomUUID } from 'node:crypto'
 import { initializeApp, deleteApp } from 'firebase/app'
 import { getAuth, connectAuthEmulator, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { getFirestore, connectFirestoreEmulator, doc, getDoc, getDocs, collection, setDoc, updateDoc } from 'firebase/firestore'
+import { getFirestore, connectFirestoreEmulator, doc, getDoc, getDocs, collection, setDoc, updateDoc, serverTimestamp } from 'firebase/firestore'
 import { getStorage, connectStorageEmulator, ref, uploadBytes } from 'firebase/storage'
 import { demoDocument } from '../src/data/demoAttachment.js'
 import { buildProposal } from '../src/utils/projectStorage.js'
@@ -74,6 +74,15 @@ try {
   await save('test-staff',{...p,status:'revision_required',statusHistory:[...p.statusHistory,{action:'proposal_check',note:'Clarify methodology'}]})
   await save('test-researcher',buildProposal(p,{...proposal,methodology:'Revised survey'},actor('test-researcher'),true,p.id))
   assert.equal(p.status,'admin_review');check()
+  const staffNotifications=collection(clients['test-staff'].db,'workspaces/testing/users/test-staff/notifications')
+  const readProposalEvents=async()=> (await getDocs(staffNotifications)).docs.filter(
+    event=>event.data().projectId===p.id && event.data().action==='submit_proposal')
+  const proposalEvents=await readProposalEvents()
+  assert.equal(proposalEvents.length,2);check()
+  assert.deepEqual((await readProposalEvents()).map(event=>event.id),proposalEvents.map(event=>event.id));check()
+  assert.equal(proposalEvents[0].data().isRead,false)
+  await updateDoc(proposalEvents[0].ref,{readAt:serverTimestamp(),isRead:true})
+  assert.equal((await getDoc(proposalEvents[0].ref)).data().isRead,true);check()
   await assert.rejects(getDoc(doc(clients['test-reviewer'].db,`workspaces/testing/projects/${p.id}`)));check()
   assert.equal((await send('test-reviewer',{action:'save',project:p,expectedVersion:p._version})).httpStatus,403);check()
   await signOut(clients['test-researcher'].auth)

@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Bell, ChevronDown, LogOut } from 'lucide-react'
+import { hasUnsavedChanges, unsavedMessage } from '../utils/navigationGuard'
 
 import { useTranslation } from 'react-i18next'
 
-function Header({ pageTitle, page, onNavigate, currentUser, onLogout }) {
+function Header({ pageTitle, page, onNavigate, currentUser, onLogout, shared, unreadCount = 0, breadcrumb }) {
   const { t, i18n } = useTranslation()
 
   const [accountOpen, setAccountOpen] = useState(false)
@@ -15,7 +16,7 @@ function Header({ pageTitle, page, onNavigate, currentUser, onLogout }) {
     : currentUser?.role === 'reviewer'
       ? (th ? 'ผู้ทรงคุณวุฒิ' : 'Reviewer')
       : (th ? 'นักวิจัย' : 'Researcher')
-  const userName = currentUser?.username || roleName
+  const userName = currentUser?.displayName || currentUser?.username || currentUser?.email || roleName
 
   useEffect(() => {
     if (!accountOpen) return
@@ -64,7 +65,7 @@ function Header({ pageTitle, page, onNavigate, currentUser, onLogout }) {
 
   return (
     <header className="topbar">
-      <h2>{pageTitle || titles[page] || t('dashboard')}</h2>
+      {breadcrumb || <h2>{pageTitle || titles[page] || t('dashboard')}</h2>}
 
       <div className="topbar-actions">
         <div className="language-switch" aria-label={t('language')}>
@@ -88,10 +89,11 @@ function Header({ pageTitle, page, onNavigate, currentUser, onLogout }) {
         <button
           className="header-icon"
           title={t('notifications')}
-          aria-label={t('notifications')}
+          aria-label={t('notifications') + (unreadCount ? ` (${unreadCount})` : '')}
           onClick={() => onNavigate('notifications')}
         >
           <Bell size={20} />
+          {unreadCount > 0 && <span className="shared-notification-count">{unreadCount > 99 ? '99+' : unreadCount}</span>}
         </button>
 
         <div className="account" ref={accountRef} onBlur={event => {
@@ -107,8 +109,8 @@ function Header({ pageTitle, page, onNavigate, currentUser, onLogout }) {
           </button>
           {accountOpen && <div className="account-panel" id="account-panel">
             <div className="account-summary"><strong>{userName}</strong><span>{roleName}</span></div>
-            <button type="button" className="account-logout" onClick={onLogout}>
-              <LogOut size={17} />{th ? 'กลับไปเลือกบทบาท' : 'Choose role'}
+            <button type="button" className="account-logout" onClick={() => { if (!shared || !hasUnsavedChanges() || window.confirm(unsavedMessage)) onLogout() }}>
+              <LogOut size={17} />{shared ? (th ? 'ออกจากระบบ' : 'Sign out') : (th ? 'กลับไปเลือกบทบาท' : 'Choose role')}
             </button>
           </div>}
         </div>

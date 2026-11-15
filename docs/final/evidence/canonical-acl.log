@@ -1,0 +1,26 @@
+[2026-11-14T21:48:24.332Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da709 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L57, false for 'update' @ L57
+[2026-11-14T21:48:24.370Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da70a error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L57, false for 'update' @ L57
+[2026-11-14T21:48:24.413Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da70c error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'update' @ L57
+[2026-11-14T21:48:24.422Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da70d error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'delete' @ L57
+[2026-11-14T21:48:24.433Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da70e error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L17, false for 'create' @ L57, false for 'update' @ L17, false for 'update' @ L57
+[2026-11-14T21:48:24.440Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da70f error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'update' @ L17, false for 'update' @ L57
+[2026-11-14T21:48:24.604Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da711 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'update' @ L38, false for 'update' @ L57
+[2026-11-14T21:48:24.894Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da714 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L50, false for 'create' @ L57, false for 'update' @ L50, false for 'update' @ L57
+[2026-11-14T21:48:24.908Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da715 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L54, false for 'create' @ L57, false for 'update' @ L54, false for 'update' @ L57
+[2026-11-14T21:48:24.916Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da716 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'delete' @ L54, false for 'delete' @ L57
+[2026-11-14T21:48:24.932Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da717 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for 'create' @ L34, false for 'create' @ L57, evaluation error at L30:24 for 'update' @ L30, false for 'update' @ L57, false for 'create' @ L34, false for 'create' @ L57
+[2026-11-14T21:48:24.999Z]  @firebase/firestore: Firestore (13.0.0): GrpcConnection RPC 'Write' stream 0x8d4da718 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+evaluation error at L30:24 for 'update' @ L30, false for 'update' @ L57, false for 'update' @ L30, false for 'update' @ L57
+PASS: 28 Firestore emulator access-control checks
+PASS: 17 v1.6 Storage emulator access-control checks

@@ -1,5 +1,6 @@
 import { useFormDraft,useWorkingFile } from '../utils/useFormDraft'
 import { DRAFT_KEY } from '../utils/projectStorage'
+import { mergeImportedDraft } from '../utils/researcherWorkspace'
 
 import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -14,187 +15,11 @@ import {
   UploadCloud,
   X
 } from 'lucide-react'
-import * as pdfjsLib from 'pdfjs-dist'
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
-import mammoth from 'mammoth'
-
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker
+import { previewFields, validateFile, extractDocumentText } from '../utils/rs1Extraction'
+import { extractRS1Fields } from '../utils/rs1FieldMapping'
 
 
-const MAX_SIZE = 10 * 1024 * 1024
 const MAX_LOCAL_ATTACHMENT_SIZE = 2 * 1024 * 1024
-
-const previewFields = [
-  ['projectTitle', 'ชื่อโครงการ', 'Project Title'],
-  ['leaderName', 'หัวหน้าโครงการ', 'Project Leader'],
-  ['leaderAffiliation', 'หน่วยงาน', 'Affiliation'],
-  ['leaderPhone', 'โทรศัพท์', 'Telephone'],
-  ['leaderEmail', 'อีเมล', 'Email'],
-  ['advisorName', 'ที่ปรึกษาโครงการ', 'Project Advisor'],
-  ['researchType', 'ประเภทงานวิจัย', 'Research Type'],
-  ['keywords', 'คำสำคัญ', 'Keywords'],
-  ['objectives', 'วัตถุประสงค์', 'Objectives']
-]
-
-const validateFile = (file) => {
-  if (!file) {
-    throw new Error('กรุณาเลือกไฟล์')
-  }
-
-  const extension = '.' + file.name.split('.').pop().toLowerCase()
-
-  if (!['.pdf', '.docx'].includes(extension)) {
-    throw new Error('รองรับเฉพาะไฟล์ PDF และ DOCX')
-  }
-
-  if (file.size > MAX_SIZE) {
-    throw new Error('ไฟล์ต้องมีขนาดไม่เกิน 10 MB')
-  }
-
-  if (file.size === 0) {
-    throw new Error('ไฟล์ว่างเปล่า')
-  }
-
-  return extension
-}
-
-function findValue(text, patterns) {
-  for (const pattern of patterns) {
-    const match = text.match(pattern)
-
-    if (match?.[1]?.trim()) {
-      return match[1].trim()
-    }
-  }
-
-  return ''
-}
-
-// Extract preliminary RS-1 fields.
-// Users must review the extracted information before saving.
-function extractRS1Fields(text) {
-  const normalized = text
-    .split('\n')
-    .map(line => line.trim())
-    .filter(Boolean)
-    .join('\n')
-
-  const result = {
-    projectTitle: findValue(normalized, [
-      /(?:Project Title|ชื่อโครงการ)\s*[:：]\s*([^\n]+)/i
-    ]),
-    leaderName: findValue(normalized, [
-      /(?:Project Leader|หัวหน้าโครงการ)\s*[:：]\s*([^\n]+)/i
-    ]),
-    leaderAffiliation: findValue(normalized, [
-      /(?:Affiliation|สังกัด|หน่วยงาน)\s*[:：]\s*([^\n]+)/i
-    ]),
-    leaderPhone: findValue(normalized, [
-      /(?:Telephone|Mobile|โทรศัพท์)\s*[:：]\s*([+\d()\-\s]+)/i
-    ]),
-    leaderEmail: findValue(normalized, [
-      /(?:E-mail|Email|อีเมล)\s*[:：]\s*([^\s]+)/i
-    ]),
-    advisorName: findValue(normalized, [
-      /(?:Project Advisor|ที่ปรึกษาโครงการ)\s*[:：]\s*([^\n]+)/i
-    ]),
-    researchType: findValue(normalized, [
-      /(?:Type of the Research|ประเภทงานวิจัย)\s*[:：]\s*([^\n]+)/i
-    ]),
-    keywords: findValue(normalized, [
-      /(?:Keywords of the Project|Keywords|คำสำคัญ)\s*[:：]\s*([^\n]+)/i
-    ]),
-    objectives: findValue(normalized, [
-      /(?:Objectives of the Research Project|วัตถุประสงค์)\s*[:：]\s*([^\n]+)/i
-    ])
-  }
-
-  return Object.fromEntries(
-    Object.entries(result).filter(([, value]) => value)
-  )
-}
-
-async function extractPDFText(file) {
-  const bytes = new Uint8Array(await file.arrayBuffer())
-
-  // Verify PDF signature before parsing.
-  const signature = new TextDecoder('ascii').decode(bytes.slice(0, 5))
-
-  if (signature !== '%PDF-') {
-    throw new Error('ไฟล์ PDF ไม่ถูกต้อง')
-  }
-
-  const pdf = await pdfjsLib.getDocument({ data: bytes }).promise
-
-  try {
-    const pages = []
-
-    for (let i = 1; i <= pdf.numPages; i++) {
-      const page = await pdf.getPage(i)
-      const content = await page.getTextContent()
-
-      let pageText = ''
-      let previousY = null
-
-      for (const item of content.items) {
-        if (!('str' in item)) continue
-
-        const y = item.transform?.[5]
-
-        if (
-          previousY !== null &&
-          y !== undefined &&
-          Math.abs(y - previousY) > 3
-        ) {
-          pageText += '\n'
-        } else if (pageText) {
-          pageText += ' '
-        }
-
-        pageText += item.str
-
-        if (y !== undefined) {
-          previousY = y
-        }
-      }
-
-      pages.push(pageText)
-    }
-
-    return {
-      text: pages.join('\n\n'),
-      pageCount: pdf.numPages
-    }
-  } finally {
-    await pdf.loadingTask.destroy().catch(() => {})
-  }
-}
-
-async function extractDOCXText(file) {
-  const arrayBuffer = await file.arrayBuffer()
-
-  // Mammoth extracts text from DOCX documents.
-  const result = await mammoth.extractRawText({ arrayBuffer })
-
-  return {
-    text: result.value || '',
-    pageCount: 0
-  }
-}
-
-async function extractDocumentText(file) {
-  const extension = validateFile(file)
-
-  if (extension === '.pdf') {
-    return extractPDFText(file)
-  }
-
-  if (extension === '.docx') {
-    return extractDOCXText(file)
-  }
-
-  throw new Error('ไม่รองรับไฟล์ประเภทนี้')
-}
 
 function fileToDataURL(file) {
   return new Promise((resolve, reject) => {
@@ -207,18 +32,19 @@ function fileToDataURL(file) {
   })
 }
 
-export default function UploadDocument({ onBack, onEdit }) {
+export default function UploadDocument({ onBack, onEdit, workspace }) {
   const { i18n } = useTranslation()
   const isThai = i18n.language !== 'en'
   const t = (th, en) => isThai ? th : en
 
   const fileInputRef = useRef(null)
 
-  const [file,setFile]=useWorkingFile('proposal-upload')
+  const [file,setFile]=useWorkingFile(workspace?.key || 'proposal-upload')
   const [dragging, setDragging] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [draft,setDraft,markSaved]=useFormDraft('proposal-upload',{rawText:'',extracted:{},pageCount:0,done:false})
+  const [reviewed,setReviewed] = useState(false)
+  const [draft,setDraft,markSaved]=useFormDraft(workspace?.key || 'proposal-upload',{rawText:'',extracted:{},pageCount:0,done:false})
   const {rawText,extracted,pageCount,done}=draft
   const setRawText=rawText=>setDraft(d=>({...d,rawText})),setPageCount=pageCount=>setDraft(d=>({...d,pageCount})),setDone=done=>setDraft(d=>({...d,done}))
   const setExtracted=change=>setDraft(d=>({...d,extracted:typeof change==='function'?change(d.extracted):change}))
@@ -236,7 +62,7 @@ export default function UploadDocument({ onBack, onEdit }) {
   async function readDocument(selectedFile) {
     if (!selectedFile) return
 
-    reset()
+    setReviewed(false)
 
     try {
       validateFile(selectedFile)
@@ -245,14 +71,11 @@ export default function UploadDocument({ onBack, onEdit }) {
       return
     }
 
-    setFile(selectedFile)
     setLoading(true)
 
     try {
       const result = await extractDocumentText(selectedFile)
 
-      setRawText(result.text)
-      setPageCount(result.pageCount)
 
       if (!result.text.trim()) {
         setError(t(
@@ -262,6 +85,8 @@ export default function UploadDocument({ onBack, onEdit }) {
         return
       }
 
+      setFile(selectedFile)
+      setRawText(result.text); setPageCount(result.pageCount)
       setExtracted(extractRS1Fields(result.text))
       setDone(true)
     } catch (err) {
@@ -290,6 +115,7 @@ export default function UploadDocument({ onBack, onEdit }) {
   }
 
   function updateExtracted(key, value) {
+    setReviewed(false)
     setExtracted(old => ({
       ...old,
       [key]: value
@@ -298,9 +124,9 @@ export default function UploadDocument({ onBack, onEdit }) {
 
   async function continueToForm() {
     try {
-      const saved = JSON.parse(
-        localStorage.getItem(DRAFT_KEY) || '{}'
-      )
+      if (workspace && !reviewed) throw new Error('Review and confirm the extracted values first')
+      if (workspace && !file) throw new Error('Reselect the source file after refresh before confirming import')
+      const saved = workspace ? workspace.read() : JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}')
 
       if (
         !saved ||
@@ -312,7 +138,7 @@ export default function UploadDocument({ onBack, onEdit }) {
 
       const cleaned = Object.fromEntries(
         Object.entries(extracted).filter(([, value]) =>
-          String(value).trim()
+          workspace || String(value).trim()
         )
       )
 
@@ -353,10 +179,8 @@ export default function UploadDocument({ onBack, onEdit }) {
         _importSource:file ? {name:file.name,size:file.size} : saved._importSource
       }
 
-      localStorage.setItem(
-        DRAFT_KEY,
-        JSON.stringify(merged)
-      )
+      if (workspace) workspace.write({...mergeImportedDraft(saved,cleaned),_sourceDocument:attachment,_importSource:{id:crypto.randomUUID(),name:file?.name || '',size:file?.size || 0,type:file?.name?.split('.').pop()?.toLowerCase(),fields:Object.keys(cleaned),reviewed:true}})
+      else localStorage.setItem(DRAFT_KEY,JSON.stringify(merged))
 
       markSaved({rawText:'',extracted:{},pageCount:0,done:false});setFile(null)
       onEdit()
@@ -387,7 +211,7 @@ export default function UploadDocument({ onBack, onEdit }) {
       <button
         className="outline-button"
         type="button"
-        onClick={continueToForm}
+        onClick={workspace ? workspace.manual : continueToForm}
         disabled={loading}
       >
         {t(
@@ -622,7 +446,7 @@ export default function UploadDocument({ onBack, onEdit }) {
           <div className="upload-preview-grid">
             {previewFields.map(([key, thai, english]) => (
               <label
-                className="upload-preview-field"
+                className={`upload-preview-field ${!extracted[key] ? "extraction-missing" : ""}`}
                 key={key}
               >
                 <span>{t(thai, english)}</span>
@@ -667,7 +491,7 @@ export default function UploadDocument({ onBack, onEdit }) {
             <pre>{rawText}</pre>
           </details>
 
-          <div className="upload-result-actions">
+          <div className="upload-result-actions">{workspace && <label><input type="checkbox" checked={reviewed} onChange={e=>setReviewed(e.target.checked)} />{t("ฉันตรวจสอบและแก้ไขข้อมูลที่สกัดแล้ว", "I have reviewed and corrected the extracted values")}</label>}
             <button
               type="button"
               className="upload-secondary"
@@ -679,6 +503,7 @@ export default function UploadDocument({ onBack, onEdit }) {
             <button
               type="button"
               className="upload-primary"
+              disabled={workspace && !reviewed}
               onClick={continueToForm}
             >
               {t(

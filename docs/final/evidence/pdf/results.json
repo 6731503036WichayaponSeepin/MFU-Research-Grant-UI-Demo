@@ -1,0 +1,14 @@
+[
+  {
+    "source": "tmp\\pdfs\\phase5-staff.pdf",
+    "status": "PASS",
+    "pages": 2,
+    "scope": "Thai/English text, exact reviewer, no other result, submitted metadata; all pages rendered"
+  },
+  {
+    "source": "tmp\\pdfs\\phase5-researcher.pdf",
+    "status": "PASS",
+    "pages": 2,
+    "scope": "Thai/English text, exact reviewer, no other result, submitted metadata; all pages rendered"
+  }
+]

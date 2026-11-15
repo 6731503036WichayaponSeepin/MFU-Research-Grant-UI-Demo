@@ -6,6 +6,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc=pdfWorker
 export default function DocumentPreview({url,filename='proposal.pdf',title}) {
   const {i18n}=useTranslation(),th=i18n.language!=='en'
   const [loaded,setLoaded]=useState(null),[page,setPage]=useState(1),[rendered,setRendered]=useState(''),[renderError,setRenderError]=useState(null)
+  const [attempt,setAttempt]=useState(0)
   const canvas=useRef(null),container=useRef(null)
   const current=loaded?.url===url?loaded:null,pdf=current?.pdf,key=url+'#'+page
   useEffect(()=>{
@@ -20,7 +21,7 @@ export default function DocumentPreview({url,filename='proposal.pdf',title}) {
       if(active){setLoaded({url,pdf,download:objectUrl});setPage(1)}else await task.destroy()
     }).catch(()=>{if(active)setLoaded({url,error:true})})
     return ()=>{active=false;if(objectUrl)URL.revokeObjectURL(objectUrl);task?.destroy().catch(()=>{})}
-  },[url])
+  },[url,attempt])
   useEffect(()=>{
     if(!pdf || !canvas.current)return
     let active=true,task
@@ -36,6 +37,6 @@ export default function DocumentPreview({url,filename='proposal.pdf',title}) {
     return ()=>{active=false;task?.cancel()}
   },[pdf,page,key,th])
   if(!current)return <p role="status">{th?'กำลังเปิดไฟล์ PDF…':'Opening PDF…'}</p>
-  if(current.error)return <p role="alert">{th?'ไม่สามารถเปิดไฟล์ PDF ได้ กรุณาตรวจสอบการเชื่อมต่อ':'Unable to open PDF. Check the connection.'}</p>
+  if(current.error)return <div role="alert"><p>{th?'ไม่สามารถเปิดไฟล์ PDF ได้ กรุณาตรวจสอบการเชื่อมต่อ':'Unable to open PDF. Check the connection.'}</p><button className="outline-button" onClick={()=>{setLoaded(null);setAttempt(n=>n+1)}}>{th?'ลองอีกครั้ง':'Retry'}</button></div>
   return <section className="pdf-reader" aria-label={title || (th?'เอกสาร PDF':'PDF document')}><div className="pdf-reader-toolbar"><span>{th?'หน้า':'Page'} {page} / {pdf.numPages}</span>{pdf.numPages>1&&<div><button type="button" className="outline-button" disabled={page<=1} onClick={()=>setPage(page-1)}>{th?'ก่อนหน้า':'Previous'}</button><button type="button" className="outline-button" disabled={page>=pdf.numPages} onClick={()=>setPage(page+1)}>{th?'ถัดไป':'Next'}</button></div>}<a href={current.download} download={filename}>{th?'ดาวน์โหลด PDF':'Download PDF'}</a></div>{rendered!==key&&<p role="status">{th?'กำลังแสดงหน้าเอกสาร…':'Rendering page…'}</p>}{renderError?.key===key&&<p role="alert">{renderError.message}</p>}<div className="pdf-canvas-wrap" ref={container}><canvas ref={canvas} data-rendered={rendered===key} role="img" aria-label={(title || 'PDF')+' '+page}/></div></section>
 }

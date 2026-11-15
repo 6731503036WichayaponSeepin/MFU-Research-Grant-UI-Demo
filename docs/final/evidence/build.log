@@ -1,0 +1,31 @@
+
+> mfu-research-system@0.0.0 build
+> vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 2504 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                0.72 kB │ gzip:   0.37 kB
+dist/assets/pdf.worker.min-CjEcRF4W.mjs    1,264.34 kB
+dist/assets/index-CViqjwqE.css                 0.16 kB │ gzip:   0.15 kB
+dist/assets/theme-CJ1caVui.css                10.31 kB │ gzip:   2.85 kB
+dist/assets/DemoEntry-BPgrQUzS.css           116.92 kB │ gzip:  22.68 kB
+dist/assets/typeof-B5XbjTb1.js                 0.27 kB │ gzip:   0.16 kB
+dist/assets/rolldown-runtime-BCiCTKAo.js       1.30 kB │ gzip:   0.71 kB
+dist/assets/preload-helper-BLdHbfdN.js         1.51 kB │ gzip:   0.79 kB
+dist/assets/evaluationPDF-C4qQgNiD.js          1.90 kB │ gzip:   1.08 kB
+dist/assets/contracts-Cc-3ICr6.js              4.69 kB │ gzip:   1.45 kB
+dist/assets/generateRS1PDF-BK0XdL53.js         5.00 kB │ gzip:   2.19 kB
+dist/assets/jsx-runtime-BjLx7v8f.js            8.24 kB │ gzip:   3.11 kB
+dist/assets/reviewerWorkspace-ByARdWyz.js     11.24 kB │ gzip:   3.70 kB
+dist/assets/purify.es-BZxk_wWO.js             29.02 kB │ gzip:  11.45 kB
+dist/assets/projectStorage-Y5bU6bqm.js        36.96 kB │ gzip:  12.20 kB
+dist/assets/index.es-IhlHHWJf.js             151.42 kB │ gzip:  48.91 kB
+dist/assets/html2canvas-ChSblxV2.js          199.47 kB │ gzip:  46.77 kB
+dist/assets/index-UrE_kOww.js                212.67 kB │ gzip:  66.83 kB
+dist/assets/jspdf.es.min-Driavx3n.js         398.75 kB │ gzip: 129.54 kB
+dist/assets/DemoEntry-CRitUDDI.js          1,215.38 kB │ gzip: 349.28 kB
+
+✓ built in 1.39s

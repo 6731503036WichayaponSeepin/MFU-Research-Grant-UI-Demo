@@ -1,0 +1,66 @@
+[
+  {
+    "id": "foundation-http",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:48:03.692Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/foundation.api.integration.mjs",
+    "log": "evidence/foundation-http.log"
+  },
+  {
+    "id": "staff-reviewer-http",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:48:15.388Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/phase3.api.integration.mjs",
+    "log": "evidence/staff-reviewer-http.log"
+  },
+  {
+    "id": "canonical-acl",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:48:23.222Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/foundation.rules.integration.mjs",
+    "log": "evidence/canonical-acl.log"
+  },
+  {
+    "id": "login-legacy",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:48:26.842Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/login-only.integration.mjs",
+    "log": "evidence/login-legacy.log"
+  },
+  {
+    "id": "legacy-acl",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:48:30.346Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/rules.integration.mjs",
+    "log": "evidence/legacy-acl.log"
+  },
+  {
+    "id": "auth-researcher",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:48:31.620Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/phase1.auth.browser.mjs",
+    "log": "evidence/auth-researcher.log"
+  },
+  {
+    "id": "auth-staff",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:48:41.158Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/phase1.auth.browser.mjs",
+    "log": "evidence/auth-staff.log"
+  },
+  {
+    "id": "auth-reviewer",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-11-14T21:48:49.629Z",
+    "command": "C:\\Program Files\\nodejs\\node.exe tests/phase1.auth.browser.mjs",
+    "log": "evidence/auth-reviewer.log"
+  }
+]

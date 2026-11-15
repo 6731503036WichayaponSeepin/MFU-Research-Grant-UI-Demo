@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { initializeTestEnvironment, assertFails, assertSucceeds } from '@firebase/rules-unit-testing'
-import { doc, setDoc, getDoc, updateDoc, deleteDoc, serverTimestamp } from 'firebase/firestore'
+import assert from 'node:assert/strict'
+import { collection, doc, setDoc, getDoc, getDocs, updateDoc, deleteDoc, serverTimestamp } from 'firebase/firestore'
 const env=await initializeTestEnvironment({projectId:'demo-mfu-secure',firestore:{host:'127.0.0.1',port:8080,rules:readFileSync(new URL('../firestore.rules',import.meta.url),'utf8')}})
 let checks=0
 const succeeds=async p=>{await assertSucceeds(p);checks++}
@@ -10,6 +11,8 @@ try {
     const db=c.firestore()
     for(const [uid,role] of Object.entries({owner:'researcher',outsider:'researcher',staff:'staff',expert:'reviewer'})) await setDoc(doc(db,'users/'+uid),{role,active:true,workspace:'testing'})
     await setDoc(doc(db,'workspaces/testing/projects/rules-project'),{ownerUid:'owner',reviewerUids:['expert']})
+    await setDoc(doc(db,'workspaces/testing/projects/other-owner-project'),{ownerUid:'outsider',reviewerUids:[]})
+    await setDoc(doc(db,'workspaces/other/projects/other-workspace-project'),{ownerUid:'outsider',reviewerUids:[]})
     for(const [uid,role] of Object.entries({owner:'researcher',staff:'staff',expert:'reviewer'})) await setDoc(doc(db,`workspaces/testing/users/${uid}/projects/rules-project`),{viewerRole:role})
     await setDoc(doc(db,'projects/testing~rules-project'),{workspace:'testing',researcherId:'owner'})
     await setDoc(doc(db,'reviews/rules-review'),{workspace:'testing',projectId:'rules-project',reviewerId:'expert',released:false})
@@ -32,6 +35,12 @@ try {
   await fails(getDoc(doc(expert,'workspaces/testing/users/owner/projects/rules-project')))
   await fails(getDoc(doc(owner,'workspaces/testing/projects/rules-project')))
   await succeeds(getDoc(doc(staff,'workspaces/testing/projects/rules-project')))
+  const staffProjects=await assertSucceeds(getDocs(collection(staff,'workspaces/testing/projects')))
+  assert.ok(staffProjects.docs.some(project=>project.id==='rules-project'))
+  assert.ok(staffProjects.docs.some(project=>project.id==='other-owner-project'))
+  checks++
+  await fails(getDocs(collection(owner,'workspaces/testing/projects')))
+  await fails(getDocs(collection(staff,'workspaces/other/projects')))
   await succeeds(getDoc(doc(expert,'reviews/rules-review')))
   await fails(getDoc(doc(owner,'reviews/rules-review')))
   await fails(setDoc(doc(expert,'reviews/forged'),{reviewerId:'expert'}))

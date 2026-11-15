@@ -5,6 +5,8 @@ import { recordAdministrativeResult } from './domain/src/utils/administrativeRec
 import { applyRegistry, applyStaffStatus } from './domain/src/utils/registry.js'
 import { applyChange } from './domain/src/utils/projectChanges.js'
 import { assignedReviewers } from './domain/src/utils/evaluation.js'
+import { isFoundationProject, PROJECT_STATES } from './domain/src/domain/contracts.js'
+import { foundationView } from './foundationPolicy.js'
 
 export function requireThat(condition, message, status = 403) {
   if (!condition) throw Object.assign(new Error(message), {status})
@@ -24,6 +26,7 @@ export function mayRead(project, actor) {
 // The candidate is only an input form envelope. Never write it or trust its ACL,
 // status, history, timestamps, owner, role, or other reviewers' evaluations.
 export function replayProject(previous, candidate, actor, reviewerProfiles = {}, now = new Date().toISOString()) {
+  requireThat(!isFoundationProject(previous) && !isFoundationProject(candidate) && !PROJECT_STATES.includes(candidate?.status), 'Use the v1.6 execute action; legacy save cannot change a foundation project', 409)
   requireThat(validId(candidate?.id), 'Invalid project ID', 400)
   if (previous) requireThat(mayRead(previous, actor), 'Project access denied')
   const last = candidate.statusHistory?.at(-1) || {}
@@ -32,6 +35,7 @@ export function replayProject(previous, candidate, actor, reviewerProfiles = {},
   let next
   if (['save_proposal','submit_proposal'].includes(action)) {
     requireThat(actor.role === 'researcher' && (!previous || previous.ownerUid === actor.uid), 'Proposal owner required')
+    requireThat(!previous || ['draft', 'revision_required'].includes(previous.status), 'Legacy Web Correction Approval is retired; record approved changes through the staff external-results workflow', 409)
     const proposal = {...candidate.proposal, _projectId:candidate.id}
     delete proposal._demoScenario
     if (action === 'submit_proposal') assertProposalValid(proposal,{documents:true,mode:'storage'})
@@ -93,6 +97,7 @@ export function replayProject(previous, candidate, actor, reviewerProfiles = {},
 // Firestore rules cannot hide fields in a readable document, so publish a
 // deliberately restricted view per account, never the canonical draft map.
 export function projectView(project, actor) {
+  if (isFoundationProject(project)) return foundationView(project, actor)
   requireThat(mayRead(project, actor), 'Project access denied')
   const p = {...structuredClone(project),viewerRole:actor.role}
   delete p.viewUids

@@ -1,0 +1,2 @@
+PASS Phase 3 HTTP: 33 authenticated requests; rejected commands preserve full records; emulators only
+PASS Phase 4 HTTP: 13 authenticated requests; independent drafts, submitted locks and response projections

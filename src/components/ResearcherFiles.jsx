@@ -1,0 +1,16 @@
+import { actorName, displayDate, documentLabel } from '../utils/researchDisplay'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { pdfAttachment } from '../utils/researcherWorkspace'
+export default function ResearcherFiles({ project: p, kinds, selected, onSelection, commit, go, proposalVersionId, disabled }) {
+  const { i18n } = useTranslation(), th = i18n.language !== 'en', text = (a, b) => th ? a : b
+  const [kind, setKind] = useState(kinds[0]), [busy, setBusy] = useState(false), [error, setError] = useState('')
+  const selectedKind = kinds.includes(kind) ? kind : kinds[0]
+  async function upload(file) {
+    if (!file) return
+    setBusy(true); setError('')
+    try { const document = await pdfAttachment(file, selectedKind, p.documents.filter(d => d.kind === selectedKind).length + 1, proposalVersionId); const next = await commit(p, 'attach_document', { document }); const added = next.documents.filter(d => !p.documents.some(old => old.id === d.id)); onSelection([...selected, ...added.map(d => d.id)]) }
+    catch (e) { setError(e.message) } finally { setBusy(false) }
+  }
+  return <section><p className="shared-note">{text('PDF ไม่เกิน 2 MB ตาม adapter ปัจจุบัน ชนิดไฟล์จริงยัง OPEN การอัปโหลดไม่เปลี่ยนสถานะ และ Remove นำออกจากชุดส่งเท่านั้น ไม่ลบประวัติหรือไฟล์เดิม', 'Current adapter: PDF up to 2 MB; final file policy remains OPEN. Upload does not change state. Remove only deselects a file; history and original files remain.')}</p><fieldset className="researcher-upload" disabled={disabled || busy}><label>{text('ประเภทเอกสาร', 'Document Type')}<select aria-label={text("ประเภทเอกสาร", "Document Type")} value={selectedKind} onChange={e => setKind(e.target.value)}>{kinds.map(k => <option key={k} value={k}>{documentLabel(k, i18n.language)}</option>)}</select></label><label>{text('อัปโหลด PDF', 'Upload PDF')}<input type="file" accept="application/pdf,.pdf" onChange={e => { upload(e.target.files?.[0]); e.target.value = '' }} /></label></fieldset>{busy && <p role="status">{text('กำลังอัปโหลด…', 'Uploading…')}</p>}{error && <p role="alert">{error}</p>}<div className="shared-table-wrap"><table className="shared-table"><thead><tr><th>{text('เลือก / Remove', 'Select / Remove')}</th><th>{text('เอกสารและเวอร์ชัน', 'Document and version')}</th><th>{text('ดูไฟล์', 'Preview')}</th></tr></thead><tbody>{p.documents.filter(d => kinds.includes(d.kind)).map(d => <tr key={d.id}><td><input aria-label={`${text('เลือก', 'Select')} ${documentLabel(d.kind, i18n.language)} ${d.name} v${d.version}`} type="checkbox" disabled={disabled || busy} checked={selected.includes(d.id)} onChange={e => onSelection(e.target.checked ? [...selected, d.id] : selected.filter(id => id !== d.id))} /></td><td><strong>{d.name}</strong>{documentLabel(d.kind, i18n.language)} · v{d.version}<small>{actorName(d.uploadedBy)} · {displayDate(d.uploadedAt, i18n.language, true)}</small></td><td><a href={go.href('documents', p.id, { document: d.id })}>{text('ดู PDF', 'Preview PDF')}</a></td></tr>)}</tbody></table></div>{proposalVersionId && <p>{text('ไฟล์ใหม่อ้างข้อเสนอเวอร์ชัน', 'New files reference proposal version')}: {p.proposalVersions.find(v => v.id === proposalVersionId)?.version || '—'}</p>}</section>
+}

@@ -2,18 +2,18 @@
 import { FilePenLine, FileUp } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
-function ChooseSubmissionMethod({ onBack, onManual, onUpload }) {
-  const { t } = useTranslation()
+function ChooseSubmissionMethod({ onBack, onManual, onUpload, manualHref, uploadHref, headingId, hideBack = false }) {
+  const { t, i18n } = useTranslation()
 
   return (
     <div className="choose-method-page">
-      <button className="back-link" onClick={onBack}>
+      {!hideBack && <button className="back-link" onClick={onBack}>
         ← {t('back')}
-      </button>
+      </button>}
 
       <div className="choose-heading">
         <span className="section-label">RS-1 · Personal Research Grant</span>
-        <h1>{t('chooseMethod')}</h1>
+        <h1 id={headingId} tabIndex={headingId ? -1 : undefined}>{t('chooseMethod')}</h1>
         <p>{t('chooseDescription')}</p>
       </div>
 
@@ -32,9 +32,9 @@ function ChooseSubmissionMethod({ onBack, onManual, onUpload }) {
             <span>✓ {t('manualFeature3')}</span>
           </div>
 
-          <button className="primary method-action" onClick={onManual}>
+          {manualHref ? <a className="primary method-action" aria-label={i18n.language === 'en' ? 'Manual Entry' : 'กรอกด้วยตนเอง'} href={manualHref}>{t('startManual')} →</a> : <button className="primary method-action" onClick={onManual}>
             {t('startManual')} →
-          </button>
+          </button>}
         </article>
 
         <article className="submission-method-card">
@@ -51,9 +51,9 @@ function ChooseSubmissionMethod({ onBack, onManual, onUpload }) {
             <span>✓ {t('uploadFeature3')}</span>
           </div>
 
-          <button className="primary method-action" onClick={onUpload}>
+          {uploadHref ? <a className="primary method-action" aria-label={i18n.language === 'en' ? 'Upload & Text Extraction' : 'อัปโหลดและสกัดข้อความ'} href={uploadHref}>{t('startUpload')} →</a> : <button className="primary method-action" onClick={onUpload}>
             {t('startUpload')} →
-          </button>
+          </button>}
         </article>
       </div>
 

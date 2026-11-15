@@ -1,0 +1,29 @@
+vite v8.3.4 building client environment for firebase...
+transforming...
+✓ 2527 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/firebase-final/index.html                                0.72 kB │ gzip:   0.37 kB
+dist/firebase-final/assets/pdf.worker.min-CjEcRF4W.mjs    1,264.34 kB
+dist/firebase-final/assets/index-CViqjwqE.css                 0.16 kB │ gzip:   0.15 kB
+dist/firebase-final/assets/theme-CJ1caVui.css                10.31 kB │ gzip:   2.85 kB
+dist/firebase-final/assets/FirebaseGate-BPgrQUzS.css        116.92 kB │ gzip:  22.68 kB
+dist/firebase-final/assets/typeof-B5XbjTb1.js                 0.27 kB │ gzip:   0.16 kB
+dist/firebase-final/assets/foundationApi-CLYTNcWp.js          0.54 kB │ gzip:   0.37 kB
+dist/firebase-final/assets/rolldown-runtime-BCiCTKAo.js       1.30 kB │ gzip:   0.71 kB
+dist/firebase-final/assets/preload-helper-BLdHbfdN.js         1.51 kB │ gzip:   0.79 kB
+dist/firebase-final/assets/evaluationPDF-C4qQgNiD.js          1.90 kB │ gzip:   1.08 kB
+dist/firebase-final/assets/contracts-Cc-3ICr6.js              4.69 kB │ gzip:   1.45 kB
+dist/firebase-final/assets/generateRS1PDF-DDxpTNyP.js         5.00 kB │ gzip:   2.19 kB
+dist/firebase-final/assets/jsx-runtime-BjLx7v8f.js            8.24 kB │ gzip:   3.11 kB
+dist/firebase-final/assets/reviewerWorkspace-ByARdWyz.js     11.24 kB │ gzip:   3.70 kB
+dist/firebase-final/assets/projectStorage-CHPDXjLM.js        13.77 kB │ gzip:   5.27 kB
+dist/firebase-final/assets/purify.es-BZxk_wWO.js             29.02 kB │ gzip:  11.45 kB
+dist/firebase-final/assets/index.es-IhlHHWJf.js             151.42 kB │ gzip:  48.91 kB
+dist/firebase-final/assets/html2canvas-ChSblxV2.js          199.47 kB │ gzip:  46.77 kB
+dist/firebase-final/assets/index-LA8MRWAK.js                212.71 kB │ gzip:  66.85 kB
+dist/firebase-final/assets/jspdf.es.min-Driavx3n.js         398.75 kB │ gzip: 129.54 kB
+dist/firebase-final/assets/firebaseFiles-C_LXyGyB.js        584.02 kB │ gzip: 175.54 kB
+dist/firebase-final/assets/FirebaseGate-X3RFzi1h.js       1,222.76 kB │ gzip: 352.48 kB
+
+✓ built in 1.32s
