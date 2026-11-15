@@ -1,0 +1,48 @@
+.staff-certification { display:grid; gap:16px; min-width:0; }
+.sc-heading { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.sc-heading > div { min-width:0; }
+.sc-heading > div > span { color:var(--primary); font-size:12px; }
+.sc-heading h1 { font-size:26px; line-height:1.4; margin:4px 0; }
+.sc-heading p { margin:0; font-size:14px; color:var(--text-secondary); }
+.sc-progress { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); padding:14px; margin:0; list-style:none; background:var(--surface,#fff); border:1px solid var(--border); border-radius:10px; }
+.sc-progress li { display:flex; align-items:center; flex-direction:column; gap:6px; text-align:center; position:relative; min-width:0; }
+.sc-progress li:not(:first-child)::before { content:''; position:absolute; width:calc(100% - 32px); height:1px; top:13px; right:calc(50% + 16px); background:var(--border); }
+.sc-progress li > span { display:grid; place-items:center; width:26px; height:26px; border-radius:50%; background:var(--bg,#F5F6F8); color:var(--text-secondary); font-size:12px; }
+.sc-progress strong { font-weight:500; font-size:12px; color:var(--text-secondary); }
+.sc-progress .complete > span { background:var(--success); color:#fff; }
+.sc-progress [aria-current] > span { background:var(--primary); color:#fff; }
+.sc-progress [aria-current] strong { color:var(--primary); }
+.sc-grid { display:grid; grid-template-columns:minmax(0,65fr) minmax(0,35fr); gap:16px; align-items:start; }
+.sc-left,.sc-right { display:grid; gap:16px; min-width:0; }
+.staff-shell-view .staff-certification .shared-card { margin:0; padding:18px; box-shadow:none; min-width:0; }
+.staff-certification .shared-card h2 { margin:0 0 12px; font-size:18px; line-height:1.4; }
+.staff-certification .sc-left form > fieldset { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:0; margin:0 0 12px; border:0; min-width:0; }
+.staff-certification .sc-left form > fieldset > label { font-size:13px; min-width:0; }
+.staff-certification .sc-left form > fieldset > :not(label) { grid-column:1/-1; min-width:0; }
+.staff-certification .sc-left form > fieldset > label:has(textarea) { grid-column:1/-1; }
+.staff-certification textarea { min-height:64px; font-size:13px; }
+.staff-certification :is(input:not([type=checkbox]),select) { min-height:36px; font-size:13px; }
+.staff-certification form > button { display:block; margin-left:auto; min-height:38px; font-size:13px; }
+.staff-certification .shared-note { font-size:12px; line-height:1.6; margin:8px 0; }
+.staff-certification .researcher-upload { padding:0; border:0; }
+.staff-certification .researcher-upload label { font-size:12px; }
+.staff-certification .shared-table { min-width:500px; font-size:12px; }
+.staff-certification .shared-table :is(td,th) { padding:8px; }
+.staff-certification .shared-table small { font-size:11px; }
+.sc-summary { display:grid; gap:12px; margin:0; }
+.sc-summary dt { font-size:12px; color:var(--text-secondary); margin-bottom:3px; }
+.sc-summary dd { margin:0; font-size:13px; line-height:1.6; overflow-wrap:anywhere; white-space:pre-wrap; }
+.sc-right a { font-size:13px; text-decoration:none; }
+.sc-records summary { font-size:13px; cursor:pointer; font-weight:600; }
+.staff-certification-view .project-page-nav { padding:4px 0; margin-bottom:12px; }
+@media(max-width:1100px) { .sc-grid { grid-template-columns:minmax(0,1fr); } .sc-right { grid-template-columns:repeat(2,minmax(0,1fr)); } .sc-external-note { grid-column:1/-1; } }
+@media(max-width:600px) { .sc-heading { flex-direction:column; align-items:flex-start; gap:10px; } .sc-heading h1 { font-size:24px; } .staff-certification .sc-left form > fieldset,.sc-right { grid-template-columns:1fr; } .sc-progress { padding:12px 8px; } .sc-progress strong { font-size:11px; } }
+.app.staff-shell-view .staff-certification .sc-left form { display:flex; flex-direction:column; gap:0; }
+.app.staff-shell-view .staff-certification .sc-left form > fieldset { gap:10px; margin:0 0 12px; padding:0; }
+.app.staff-shell-view .staff-certification .sc-left form > fieldset > label { display:flex; flex-direction:column; gap:4px; margin:0; }
+.app.staff-shell-view .staff-certification :is(input:not([type=checkbox]),select) { height:36px; min-height:36px; padding:6px 10px; box-sizing:border-box; }
+.app.staff-shell-view .staff-certification textarea { height:64px; min-height:64px; margin:0; }
+.app.staff-shell-view .staff-certification .researcher-upload { margin:8px 0; padding:0; gap:10px; }
+.app.staff-shell-view .staff-certification .researcher-upload label { margin:0; gap:4px; }
+.app.staff-shell-view .staff-certification .shared-table-wrap { margin:8px 0; }
+.app.staff-shell-view .staff-certification form > button { margin:0 0 0 auto; }

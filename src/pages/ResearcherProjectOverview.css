@@ -1,0 +1,10 @@
+.researcher-project-overview { display:contents; }
+.app.researcher-overview-view .main { display:flex; flex-direction:column; gap:16px; }
+.researcher-overview-view .project-page-nav { order:1; }
+.app.researcher-shell-view.researcher-project-tabs-view .project-page-nav { display:flex; gap:20px; padding:0; margin:0; border:0; border-bottom:1px solid var(--border); border-radius:0; background:transparent; }
+.app.researcher-shell-view.researcher-project-tabs-view .project-page-nav a { padding:9px 0; border:0; border-bottom:2px solid transparent; border-radius:0; background:transparent; color:var(--text-secondary); font-size:13px; min-height:36px; text-decoration:none; }
+.app.researcher-shell-view.researcher-project-tabs-view .project-page-nav a[aria-current=page] { border-bottom-color:var(--primary); color:var(--primary); font-weight:600; }
+.app.researcher-overview-view .shared-card { padding:16px; margin:0; min-width:0; box-shadow:none; }
+.researcher-overview-view .shared-card h2 { font-size:16px; line-height:1.4; margin:0 0 12px; }
+.researcher-overview-view .shared-note { margin:8px 0 0; font-size:11px; line-height:1.6; color:var(--text-secondary); }
+@media(max-width:760px) { .app.researcher-shell-view.researcher-project-tabs-view .project-page-nav { gap:14px; } }

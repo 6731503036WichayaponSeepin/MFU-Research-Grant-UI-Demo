@@ -11,7 +11,7 @@ export function createStaffScenarios() {
     for (const e of p.statusHistory) e.projectId = id
     for (const n of p.notifications) n.projectId = id
     for (const a of p.closure?.assignments || []) { a.id = `${id}-${a.reviewerId}`; if (p.closure.evaluations[a.reviewerId]) p.closure.evaluations[a.reviewerId].assignmentId = a.id }
-    p.fixtureSetup = { synthetic: true, reason: 'Phase 3 Contract Fixture: Reviewer/Researcher actions prepared by script; not completed through UI' }
+    p.fixtureSetup = { synthetic: true, reason: 'ข้อมูลสมมติสำหรับตรวจเอกสารปิดโครงการ ติดตามผลประเมิน และตรวจรายงานฉบับแก้ไข ไม่ใช่การดำเนินการจริง' }
     if (p.signatureConsent) p.signatureConsent.projectId = id
     if (p.proposalSubmission?.consent) p.proposalSubmission.consent.projectId = id
     for (const version of p.proposalVersions) for (const submission of version.submissions || []) if (submission.consent) submission.consent.projectId = id

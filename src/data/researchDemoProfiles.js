@@ -5,6 +5,14 @@ export const demoNames = Object.freeze({
   'demo-reviewer-3': 'รศ. ดร. อรพรรณ จันทร์แก้ว', 'demo-other-researcher': 'ดร. พิมพ์ชนก อินทร์ประเสริฐ',
   'fixture-setup': 'ผู้จัดเตรียมข้อมูลสมมติ',
 })
+export const demoAffiliations = Object.freeze({
+  'demo-user': 'สำนักวิชาวิทยาศาสตร์ มหาวิทยาลัยแม่ฟ้าหลวง',
+  'demo-staff': 'หน่วยบริหารงานวิจัย มหาวิทยาลัยแม่ฟ้าหลวง',
+  'demo-reviewer-1': 'สำนักวิชาวิทยาศาสตร์ มหาวิทยาลัยแม่ฟ้าหลวง',
+  'demo-reviewer-2': 'สำนักวิชาการจัดการ มหาวิทยาลัยแม่ฟ้าหลวง',
+  'demo-reviewer-3': 'สำนักวิชาวิทยาศาสตร์สุขภาพ มหาวิทยาลัยแม่ฟ้าหลวง',
+  'demo-other-researcher': 'สำนักวิชาศิลปศาสตร์ มหาวิทยาลัยแม่ฟ้าหลวง',
+})
 const ids = ['DRAFT','AFFILIATION','STAFF','COMMITTEE','ACTIVE','CANCELLED','CLOSURE','EVALUATION-0','EVALUATION-1','EVALUATION-2','EVALUATION-3','RELEASED','CLOSED-REPORT','CLOSED-PUBLICATION','CORRECTION','PUBLICATION-ACTIVE','OTHER-OWNER','CLOSURE-MORE','PUBLICATION-REVIEW','FINAL-VERIFY','EVALUATION-DRAFT','REPORT-ASSIGN']
 const topics = [
  ['การพัฒนาบรรจุภัณฑ์ย่อยสลายได้จากกากกาแฟอาราบิกา','Biodegradable Packaging from Arabica Coffee Waste','วิทยาศาสตร์'],
@@ -42,17 +50,24 @@ export function refineDemoProject(p) {
   Object.assign(p.proposal,info)
   for(const v of p.proposalVersions) Object.assign(v.proposal,info)
   Object.assign(p,{referenceNumber:reference,title,titleEn,leader:info.leaderName,affiliation:info.leaderAffiliation,budget:info.compensation+45000,demoDisplayVersion:1})
-  for(const d of p.documents) d.name=`${demoDocumentNames[d.kind] || 'เอกสารการวิจัย'}_${reference}_v${d.version}.pdf`
+  for(const d of p.documents) d.name=`${demoDocumentNames[d.kind] || 'เอกสารการวิจัย'}_${reference}${d.kind === 'feedback' ? `_${demoNames[d.uploadedBy] || 'ผู้ประเมิน'}` : ''}_v${d.version}.pdf`
   for(const event of p.statusHistory) {
     const doc=p.documents.find(d=>d.id===event.details?.document?.id)
     if(doc) event.details.document.name=doc.name
+    if(event.action === 'fixture_snapshot') event.note = event.newStatus === 'CANCELLED'
+      ? 'ข้อมูลสมมติสำหรับดูประวัติโครงการยกเลิก ไม่ใช่การดำเนินการยกเลิกผ่านระบบ'
+      : 'ข้อมูลสมมติสำหรับแสดงขั้นตอนยื่นข้อเสนอให้ต้นสังกัดพิจารณา'
   }
   if(p.closure) {
     p.closure.summary=`ผลการศึกษาเรื่อง${title} พร้อมข้อเสนอแนะเพื่อการนำไปใช้ประโยชน์`
     for(const submission of p.closure.submissions || []) if(submission.summary) submission.summary=p.closure.summary
-    for(const e of Object.values(p.closure.evaluations || {})) {
+    for(const [reviewerId,e] of Object.entries(p.closure.evaluations || {})) {
       const data=e.answers || e
-      if(data.chapters) data.chapters='ควรเชื่อมโยงผลการวิเคราะห์กับวัตถุประสงค์ให้ชัดเจน และเพิ่มเติมข้อจำกัดของการศึกษาในบทสรุป'
+      if(data.chapters) data.chapters={
+        'demo-reviewer-1':'ควรเชื่อมโยงผลการวิเคราะห์กับวัตถุประสงค์ให้ชัดเจน และเพิ่มเติมข้อจำกัดของการศึกษาในบทสรุป',
+        'demo-reviewer-2':'ควรอธิบายวิธีคัดเลือกกลุ่มตัวอย่างและแนวทางนำผลวิจัยไปใช้ประโยชน์ในชุมชนให้ชัดเจน',
+        'demo-reviewer-3':'ควรตรวจสอบความสอดคล้องของตารางผลการศึกษา อภิปรายผลเปรียบเทียบกับงานวิจัยที่เกี่ยวข้อง และปรับรูปแบบเอกสารอ้างอิง',
+      }[reviewerId] || data.chapters
     }
   }
   return p

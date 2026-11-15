@@ -1,3 +1,5 @@
+import ResearcherProjectOverview from './ResearcherProjectOverview'
+import StaffProjectOverview from './StaffProjectOverview'
 import { projectReference, displayDate } from '../utils/researchDisplay'
 import { staffTask } from '../utils/staffWorkspace'
 import { staffTaskLinks } from '../utils/staffLinks'
@@ -14,6 +16,8 @@ export default function SharedProjectOverview({ project: p, currentUser, go, res
   const task = nextRequiredAction(p, currentUser), canonical = isFoundationProject(p)
   const actionNames = { editProposal: text('จัดทำข้อเสนอ', 'Prepare proposal'), submitProposal: text('ส่งข้อเสนอพร้อมหลักฐาน', 'Submit proposal and evidence'), reviseReport: text('ส่งรายงานฉบับแก้ไข', 'Submit revised report'), submitClosure: text('ยื่นเอกสารปิดโครงการ', 'Submit closure documents'), reviewProposal: text('ตรวจข้อเสนอ', 'Review proposal'), certify: text('บันทึกรับรองหลังเสนอเพื่อทราบ', 'Record certification after acknowledgement'), changeProject: text('บันทึกผลจาก e-Office / ติดตามโครงการ', 'Record external outcomes / monitor research'), reviewClosure: text('ตรวจเอกสารปิดโครงการ', 'Check closure documents'), release: text('ตรวจและส่งผลประเมิน', 'Check and release evaluations'), close: text('ตรวจครบและบันทึกปิด', 'Verify and close project'), evaluate: text('ประเมินรายงาน', 'Evaluate assigned report'), waiting: text('รอผู้รับผิดชอบดำเนินการ', 'Waiting for the responsible user'), terminal: text('สิ้นสุดกระบวนการ', 'Terminal project'), legacy: text('ข้อมูลเดิม — ใช้หน้าดำเนินงานเดิม', 'Legacy record — use the existing workspace') }
   const field = (label, value) => <div><dt>{label}</dt><dd>{value || text('ยังไม่ระบุ', 'Not specified')}</dd></div>
+  if (staffEnabled && canonical && currentUser.role === 'staff') return <StaffProjectOverview project={p} currentUser={currentUser} go={go} task={task} actionNames={actionNames} />
+  if (researcherEnabled && canonical && currentUser.role === 'researcher') return <ResearcherProjectOverview project={p} currentUser={currentUser} go={go} task={task} actionNames={actionNames} />
   return <div className="shared-stack">
     <section className="panel shared-card"><div className="shared-project-heading"><div><span className="section-kicker">{projectReference(p)}</span><h2>{(!th && p.titleEn) || p.title || text('โครงการไม่มีชื่อ', 'Untitled project')}</h2></div><ProjectStateBadge status={p.status} /></div>
       <p className="shared-note">{canonical ? text('ข้อมูลโครงการ v1.6', 'Project record v1.6') : text('ข้อมูลเดิม: ไม่แปลงสถานะเป็น v1.6 โดยอัตโนมัติ', 'Legacy record: no automatic state migration')}</p>

@@ -1,0 +1,47 @@
+.staff-change-extension { display:grid; gap:16px; min-width:0; }
+.sx-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.sx-heading > div { min-width:0; }
+.sx-heading > div > span { font-size:12px; color:var(--primary); }
+.sx-heading h1 { margin:4px 0; font-size:26px; line-height:1.4; }
+.sx-heading p { margin:0; font-size:14px; color:var(--text-secondary); }
+.sx-summary-strip { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); padding:14px 0; border:1px solid var(--border); border-radius:10px; background:var(--surface,#fff); }
+.sx-summary-strip > div { padding:0 16px; min-width:0; }
+.sx-summary-strip > div + div { border-left:1px solid var(--border); }
+.sx-summary-strip span { display:block; font-size:12px; color:var(--text-secondary); margin-bottom:4px; }
+.sx-summary-strip strong { font-size:16px; font-weight:500; }
+.sx-grid { display:grid; grid-template-columns:minmax(0,65fr) minmax(0,35fr); gap:16px; align-items:start; }
+.sx-left { min-width:0; border:1px solid var(--border); border-radius:10px; background:var(--surface,#fff); padding:16px; }
+.sx-right { display:grid; gap:16px; min-width:0; }
+.sx-tabs { display:flex; gap:8px; margin-bottom:16px; }
+.sx-tabs button { flex:1; min-height:36px; padding:6px 10px; font-size:13px; border:0; border-radius:5px; background:transparent; color:var(--text-secondary); }
+.sx-tabs button[aria-selected=true] { background:var(--primary-light); color:var(--primary); font-weight:600; }
+.app.staff-shell-view .staff-change-extension .shared-card { padding:18px; margin:0; box-shadow:none; min-width:0; }
+.app.staff-shell-view .staff-change-extension .sx-left .shared-card { padding:0; border:0; }
+.staff-change-extension .shared-card h2 { font-size:18px; margin:0 0 12px; }
+.staff-change-extension .sx-left .shared-card h2 { font-size:16px; }
+.app.staff-shell-view .staff-change-extension .sx-left form { display:flex; flex-direction:column; gap:0; }
+.app.staff-shell-view .staff-change-extension .sx-left form > fieldset { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; padding:0; margin:0 0 12px; border:0; min-width:0; }
+.app.staff-shell-view .staff-change-extension .sx-left form > fieldset > label { display:flex; flex-direction:column; margin:0; gap:4px; min-width:0; font-size:13px; }
+.staff-change-extension .sx-left form > fieldset > :not(label) { grid-column:1/-1; min-width:0; }
+.staff-change-extension .sx-left form > fieldset > label:has(textarea) { grid-column:1/-1; }
+.app.staff-shell-view .staff-change-extension :is(input:not([type=checkbox]),select) { min-height:36px; height:36px; padding:6px 10px; font-size:13px; box-sizing:border-box; }
+.app.staff-shell-view .staff-change-extension textarea { height:64px; min-height:64px; font-size:13px; }
+.app.staff-shell-view .staff-change-extension form > button { margin:0 0 0 auto; min-height:38px; font-size:13px; }
+.staff-change-extension .shared-note,.staff-change-extension fieldset p { font-size:12px; margin:6px 0; line-height:1.6; }
+.app.staff-shell-view .staff-change-extension .researcher-upload { margin:8px 0; padding:0; gap:10px; border:0; }
+.staff-change-extension .researcher-upload label { font-size:12px; margin:0; }
+.staff-change-extension .shared-table { min-width:500px; font-size:12px; }
+.staff-change-extension .shared-table :is(td,th) { padding:8px; }
+.sx-right dl { display:grid; gap:12px; margin:0 0 12px; }
+.sx-right dt { font-size:12px; color:var(--text-secondary); margin-bottom:3px; }
+.sx-right dd { margin:0; font-size:13px; overflow-wrap:anywhere; }
+.sx-history { list-style:none; padding:0; margin:0 0 12px; }
+.sx-history li { border-left:2px solid var(--border); padding:0 0 12px 12px; overflow-wrap:anywhere; }
+.sx-history strong { font-size:13px; }
+.sx-history p,.sx-history small { font-size:12px; line-height:1.6; margin:4px 0; color:var(--text-secondary); }
+.sx-right a,.sx-records summary { font-size:13px; text-decoration:none; }
+.sx-records { margin-top:12px; }
+.sx-records summary { cursor:pointer; }
+.staff-change-view .project-page-nav { padding:4px 0; margin-bottom:12px; }
+@media(max-width:1100px) { .sx-grid { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:600px) { .sx-heading { flex-direction:column; align-items:flex-start; gap:10px; } .sx-heading h1 { font-size:24px; } .sx-summary-strip strong { font-size:14px; } .sx-summary-strip > div { padding:0 10px; } .app.staff-shell-view .staff-change-extension .sx-left form > fieldset { grid-template-columns:1fr; } }

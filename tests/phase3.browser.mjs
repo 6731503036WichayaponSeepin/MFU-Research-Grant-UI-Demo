@@ -5,7 +5,7 @@ import { mkdir } from 'node:fs/promises'
 const require = createRequire(import.meta.url), { chromium } = require(process.env.MFU_PLAYWRIGHT_MODULE || 'playwright')
 const server = await createServer({ envDir: 'tmp/phase3-no-env', server: { host: '127.0.0.1', port: 5178, strictPort: true } }); await server.listen()
 const browser = await chromium.launch({ channel: 'chrome', headless: true }), context = await browser.newContext({ viewport: { width: 1440, height: 1000 } }), page = await context.newPage()
-const base = 'http://127.0.0.1:5178/', dir = 'docs/progress/screenshots', errors = [], external = []
+const base = 'http://127.0.0.1:5178/', dir = 'tmp/cancellation-regression-screenshots', errors = [], external = []
 page.on('pageerror', e => errors.push(e.message)); page.on('request', r => { if (/^https?:/.test(r.url()) && !r.url().startsWith(base)) external.push(r.url()) }); page.on('dialog', d => d.accept())
 await mkdir(dir, { recursive: true })
 let checks = 0; const check = (ok, message) => { assert.ok(ok, message); checks++ }
@@ -16,7 +16,7 @@ const submit = async title => { await form(title).getByRole('button', { name: ti
 try {
   await page.goto(base); await page.getByRole('button', { name: 'EN', exact: true }).click(); await page.getByRole('button', { name: /staff/ }).click(); await page.locator('#page-title').waitFor()
   check(await page.locator('[data-staff-total="14"]').count() === 1, 'scoped dashboard total')
-  check(await page.locator('.sidebar-menu a').count() === 3, 'only role-level navigation')
+  check(await page.locator('.sidebar-menu a').count() === 2, 'only role-level navigation')
   await page.screenshot({ path: `${dir}/phase3-dashboard-desktop.png`, fullPage: true })
   await page.locator('.researcher-summary a').filter({ hasText: 'Pending Proposal Reviews' }).click(); check(await page.locator('.shared-table tbody tr').count() === 1, 'summary queue matches registry')
   await route('projects'); await page.getByRole('link', { name: 'Next', exact: true }).click(); check(page.url().includes('page=2'), 'registry pagination')
@@ -25,7 +25,7 @@ try {
   await page.screenshot({path:`${dir}/phase3-registry-desktop.png`,fullPage:true})
   await page.getByLabel('Status',{exact:true}).selectOption(''); await page.getByLabel('Sort By',{exact:true}).selectOption('id'); await page.getByLabel('Order',{exact:true}).selectOption('asc'); await page.getByRole('button',{name:'Search',exact:true}).click(); check((await page.locator('.shared-table tbody tr').first().innerText()).includes('MFU-RG-2569-005'),'registry sorting')
   await route('projects/V16-STAFF/staff-review'); check(await form('Request Correction').getByRole('button', { name: 'Request Correction', exact: true }).isDisabled(), 'missing reason/scope denied')
-  await form('Request Correction').getByLabel('Notes / Reason', { exact: true }).fill('Correct title and budget'); await form('Request Correction').getByLabel('projectTitle', { exact: true }).check(); await submit('Request Correction')
+  await form('Request Correction').getByLabel('Notes / Reason', { exact: true }).fill('Correct title and budget'); await form('Request Correction').getByLabel('Project Title', { exact: true }).check(); await submit('Request Correction')
   const correction = await project('V16-STAFF'); check(correction.status === 'STAFF_REVIEW' && correction.proposalReview.editableSections.includes('projectTitle'), 'TR06 scope recorded')
   await page.screenshot({ path: `${dir}/phase3-proposal-review-desktop.png`, fullPage: true })
   await route('dashboard'); await page.getByRole('button', { name: 'Add Staff Research Scenarios', exact: true }).click()
@@ -34,6 +34,7 @@ try {
   check((await project('V16-COMMITTEE')).status === 'COMMITTEE_ACKNOWLEDGEMENT', 'acknowledgement self state')
   await page.screenshot({ path: `${dir}/phase3-certification-desktop.png`, fullPage: true })
   await form('Record Certification').getByLabel('External Reference', { exact: true }).fill('MOCK/CERT/3')
+  await page.locator('.sc-records > summary').click()
   await form('Record Certification').getByRole('button',{name:'Record Certification',exact:true}).click()
   const peer = await page.context().newPage(); await peer.goto(base+'#/staff/projects/V16-COMMITTEE/administrative-records')
   const peerAck = peer.getByRole('heading',{name:'Record Acknowledgement',exact:true}).locator('..')
@@ -42,10 +43,10 @@ try {
   check((await project('V16-COMMITTEE')).status === 'COMMITTEE_ACKNOWLEDGEMENT','stale modal approval is rejected rather than adopting a newer version')
   await submit('Record Certification'); check((await project('V16-COMMITTEE')).status === 'IN_PROGRESS', 'TR09 certification')
   await route('projects/V16-ACTIVE/project-change-record'); const change = form('Record Change Outcome')
-  await change.getByLabel('Approval Result', { exact: true }).selectOption('rejected'); await change.getByLabel('Requested / Approved New Value', { exact: true }).fill('External changed title'); await change.getByLabel('Reason', { exact: true }).fill('External review'); await change.getByLabel('External Reference', { exact: true }).fill('CHANGE/3')
+  await change.getByLabel('External Result', { exact: true }).selectOption('rejected'); await change.getByLabel('Requested / Approved New Value', { exact: true }).fill('External changed title'); await change.getByLabel('Reason', { exact: true }).fill('External review'); await change.getByLabel('External Reference', { exact: true }).fill('CHANGE/3')
   const originalTitle = (await project('V16-ACTIVE')).title; await submit('Record Change Outcome'); check((await project('V16-ACTIVE')).title === originalTitle, 'denied change retains old value')
-  await change.getByLabel('Approval Result', { exact: true }).selectOption('approved'); await submit('Record Change Outcome'); check((await project('V16-ACTIVE')).title === 'External changed title', 'approved change updates only allowed field')
-  const ext = form('Record Extension Outcome'); await ext.getByLabel('New End Date', { exact: true }).fill('2027-06-01'); await ext.getByLabel('Reason', { exact: true }).fill('Externally approved'); await ext.getByLabel('External Reference', { exact: true }).fill('EXT/3'); await ext.getByLabel('External Date', { exact: true }).fill('2026-11-15'); await submit('Record Extension Outcome')
+  await change.getByLabel('External Result', { exact: true }).selectOption('approved'); await submit('Record Change Outcome'); check((await project('V16-ACTIVE')).title === 'External changed title', 'approved change updates only allowed field')
+  await page.getByRole('tab',{name:'Extension Records',exact:true}).click(); const ext = form('Record Extension Outcome'); await ext.getByLabel('New End Date', { exact: true }).fill('2027-06-01'); await ext.getByLabel('Reason', { exact: true }).fill('Externally approved'); await ext.getByLabel('External Reference', { exact: true }).fill('EXT/3'); await ext.getByLabel('External Date', { exact: true }).fill('2026-11-15'); await submit('Record Extension Outcome')
   check((await project('V16-ACTIVE')).status === 'IN_PROGRESS' && (await project('V16-ACTIVE')).endDate === '2027-06-01', 'extension self state/new end date')
   await page.screenshot({ path: `${dir}/phase3-change-extension-desktop.png`, fullPage: true })
   await route('projects/V16-CLOSURE/closure-review'); await form('Request Additional Closure Documents').getByLabel('Notes / Reason', { exact: true }).fill('Add supporting evidence'); await submit('Request Additional Closure Documents'); check((await project('V16-CLOSURE')).status === 'CLOSURE_REVIEW' && (await project('V16-CLOSURE')).closure.actionRequiredBy === 'researcher', 'additional docs self state')
@@ -66,7 +67,7 @@ try {
   await route('projects/V16-FINAL-VERIFY/final-verification'); check(await form('Confirm Project Closure').getByRole('button', { name: 'Confirm Project Closure', exact: true }).isDisabled(), 'close requires explicit verify'); await form('Verify Final Report').getByLabel('Notes / Reason', { exact: true }).fill('Actual revised report verified'); await submit('Verify Final Report'); check((await project('V16-FINAL-VERIFY')).status === 'REPORT_EVALUATION', 'verify does not close'); await submit('Confirm Project Closure'); check((await project('V16-FINAL-VERIFY')).status === 'CLOSED', 'TR16 explicit closure')
   const notice = form('Record External Closure Notice'); await notice.getByLabel('External Reference', { exact: true }).fill('NOTICE/3'); await notice.getByLabel('External Date', { exact: true }).fill('2026-11-15'); await submit('Record External Closure Notice'); check((await project('V16-FINAL-VERIFY')).administrativeRecords.at(-1).reference === 'NOTICE/3', 'external closure notice preserved')
   await page.screenshot({ path: `${dir}/phase3-final-closure-desktop.png`, fullPage: true })
-  await route('projects/V16-ACTIVE/cancellation'); const before = JSON.stringify(await project('V16-ACTIVE')); await page.getByLabel('Cancellation Reason', { exact: true }).selectOption('OTHER'); await page.getByLabel('Confirm contract preview only', { exact: true }).check(); await page.getByRole('button', { name: 'Validate Contract Without Mutation', exact: true }).click(); check(await page.getByRole('alert').count() === 1, 'OTHER requires details'); await page.getByLabel('Additional Details (required for OTHER)', { exact: true }).fill('Contract-only preview'); await page.getByRole('button', { name: 'Validate Contract Without Mutation', exact: true }).click(); check(await page.getByRole('button', { name: 'Confirm Cancellation — disabled by OPEN-20', exact: true }).isDisabled(), 'cancellation disabled'); check(JSON.stringify(await project('V16-ACTIVE')) === before, 'cancellation preview no project mutation')
+  await route('projects/V16-ACTIVE/cancellation'); const before = JSON.stringify(await project('V16-ACTIVE')); await page.getByRole('radio', { name: 'Other reasons', exact: true }).check(); await page.getByLabel('Confirm contract preview only', { exact: true }).check(); await page.getByRole('button', { name: 'Validate Contract Without Mutation', exact: true }).click(); check(await page.getByRole('alert').count() === 1, 'OTHER requires details'); await page.getByLabel('Additional Details (required for OTHER)', { exact: true }).fill('Contract-only preview'); await page.getByRole('button', { name: 'Validate Contract Without Mutation', exact: true }).click(); check(await page.getByRole('button', { name: 'Confirm Cancellation — disabled by OPEN-20', exact: true }).isDisabled(), 'cancellation disabled'); check(JSON.stringify(await project('V16-ACTIVE')) === before, 'cancellation preview no project mutation')
   await page.screenshot({ path: `${dir}/phase3-cancellation-desktop.png`, fullPage: true })
   await page.setViewportSize({ width: 390, height: 844 }); await page.waitForTimeout(350); check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'mobile no page overflow'); await page.screenshot({ path: `${dir}/phase3-cancellation-mobile.png`, fullPage: true })
   await route('projects'); check(await page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth),'mobile registry contains horizontal table scrolling'); await page.screenshot({path:`${dir}/phase3-registry-mobile.png`,fullPage:true})
@@ -75,3 +76,4 @@ try {
   check(errors.length === 0, JSON.stringify(errors)); check(external.length === 0, 'no external requests'); console.log(`PASS Phase 3 browser: ${checks} checks`)
 } catch (e) { await page.screenshot({ path: `${dir}/phase3-debug.png`, fullPage: true }); console.log((await page.locator('body').innerText()).slice(-2000)); throw e }
 finally { await browser.close(); await server.close() }
+

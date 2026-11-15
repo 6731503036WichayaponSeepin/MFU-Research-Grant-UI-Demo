@@ -12,7 +12,7 @@ export function createResearcherScenarios() {
     if (p.signatureConsent) p.signatureConsent.projectId = id
     if (p.proposalSubmission?.consent) p.proposalSubmission.consent.projectId = id
     for (const version of p.proposalVersions) for (const submission of version.submissions || []) if (submission.consent) submission.consent.projectId = id
-    p.fixtureSetup = { synthetic: true, reason: 'Phase 2 contract fixture prepared by script, not Staff UI' }
+    p.fixtureSetup = { synthetic: true, reason: 'ข้อมูลสมมติสำหรับแก้ไขข้อเสนอและส่งเอกสารประกอบเพิ่มเติม ไม่ใช่การดำเนินการจริง' }
     if (!action) { if (id === 'V16-OTHER-OWNER') { p.ownerUid = 'demo-other-researcher'; p.ownerUsername = p.ownerUid } return refineDemoProject(p) }
     return refineDemoProject(executeProjectAction(p, { id: `setup-${id}`, action, payload, expectedVersion: p._version }, foundationContext('demo-staff')))
   })

@@ -1,0 +1,47 @@
+.staff-closure-review { display:grid; gap:16px; min-width:0; }
+.sl-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.sl-heading > div { min-width:0; }
+.sl-heading > div > span { font-size:12px; color:var(--primary); }
+.sl-heading h1 { font-size:26px; line-height:1.4; margin:4px 0; }
+.sl-heading p { margin:0; font-size:14px; color:var(--text-secondary); }
+.sl-path { display:flex; align-items:center; gap:12px; padding:12px 16px; background:var(--surface,#fff); border:1px solid var(--border); border-radius:10px; }
+.sl-path > svg { color:var(--primary); flex-shrink:0; }
+.sl-path span { display:block; font-size:11px; color:var(--text-secondary); margin-bottom:3px; }
+.sl-path strong { font-size:14px; font-weight:600; }
+.sl-grid { display:grid; grid-template-columns:minmax(0,65fr) minmax(0,35fr); gap:16px; align-items:start; }
+.sl-left,.sl-actions { min-width:0; }
+.sl-actions { display:grid; gap:12px; }
+.app.staff-shell-view .staff-closure-review .shared-card { padding:18px; margin:0; box-shadow:none; min-width:0; }
+.staff-closure-review .shared-card h2 { font-size:18px; line-height:1.4; margin:0 0 12px; }
+.staff-closure-review h3 { font-size:15px; margin:0 0 10px; }
+.sl-document { display:flex; align-items:center; gap:10px; padding:10px 0; }
+.sl-document + .sl-document { border-top:1px solid var(--border); }
+.sl-document > svg { flex-shrink:0; color:var(--primary); }
+.sl-document > div { flex:1; min-width:0; }
+.sl-document strong { display:block; font-size:13px; font-weight:500; overflow-wrap:anywhere; }
+.sl-document small { display:block; margin-top:3px; font-size:11px; color:var(--text-secondary); }
+.sl-document a { flex-shrink:0; font-size:12px; text-decoration:none; }
+.sl-submission,.sl-history { border-top:1px solid var(--border); margin-top:14px; padding-top:14px; }
+.sl-submission dl { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 16px; margin:0; }
+.sl-submission dt { font-size:12px; color:var(--text-secondary); margin-bottom:3px; }
+.sl-submission dd { font-size:13px; margin:0; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; }
+.sl-wide { grid-column:1/-1; }
+.sl-history ol { padding-left:18px; margin:0 0 12px; }
+.sl-history li { font-size:13px; margin-bottom:12px; }
+.sl-history li > span { display:block; font-size:12px; color:var(--text-secondary); margin-top:3px; }
+.sl-history li p { font-size:12px; margin:5px 0; }
+.sl-history li a { display:block; font-size:12px; overflow-wrap:anywhere; text-decoration:none; }
+.sl-history summary { font-size:12px; cursor:pointer; }
+.sl-history details + details { margin-top:10px; }
+.sl-action-heading { font-size:14px; font-weight:600; margin:0; }
+.app.staff-shell-view .staff-closure-review .sl-actions form { display:flex; flex-direction:column; gap:0; }
+.app.staff-shell-view .staff-closure-review .sl-actions fieldset { padding:0; border:0; margin:0 0 12px; min-width:0; }
+.app.staff-shell-view .staff-closure-review .sl-actions label { margin:0; gap:5px; font-size:13px; }
+.app.staff-shell-view .staff-closure-review textarea { min-height:76px; height:76px; font-size:13px; margin:0; }
+.staff-closure-review .sl-actions form > button,.staff-closure-review .sl-actions > a { width:100%; min-height:38px; font-size:13px; text-align:center; }
+.app.staff-shell-view .staff-closure-review .sl-request form > button { background:transparent; color:var(--primary); border:1px solid var(--primary); }
+.app.staff-shell-view .staff-closure-review .sl-request form > button:hover:not(:disabled) { background:var(--primary-light); }
+.staff-closure-review .shared-note { margin:0; font-size:12px; line-height:1.6; }
+.staff-closure-view .project-page-nav { padding:4px 0; margin-bottom:12px; }
+@media(max-width:1100px) { .sl-grid { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:600px) { .sl-heading { flex-direction:column; align-items:flex-start; gap:10px; } .sl-heading h1 { font-size:24px; } .sl-document { flex-wrap:wrap; } .sl-document a { margin-left:30px; } .sl-submission dl { grid-template-columns:1fr; } }

@@ -5,6 +5,30 @@ import {createFoundationFixtures} from '../src/data/foundationDemo.js'
 import {createResearcherScenarios} from '../src/data/researcherScenarios.js'
 import {createStaffScenarios} from '../src/data/staffScenarios.js'
 import {PROJECT_STATES} from '../src/domain/contracts.js'
+import {foundationActors,foundationContext} from '../src/data/foundationDemo.js'
+import {readProjectResource} from '../src/domain/actions.js'
+import {refineDemoProject} from '../src/data/researchDemoProfiles.js'
+
+test('shared fictional identities and display refinements preserve workflow relationships and role views',()=>{
+ for(const actor of Object.values(foundationActors)) {
+  assert.match(actor.displayName,/[ก-๙]/)
+  assert.match(actor.affiliation,/มหาวิทยาลัยแม่ฟ้าหลวง/)
+ }
+ const rows=[...createFoundationFixtures(),...createResearcherScenarios(),...createStaffScenarios()]
+ const shape=p=>JSON.stringify({id:p.id,status:p.status,owner:p.ownerUid,reviewers:p.reviewerUids,version:p._version,documents:p.documents.map(d=>[d.id,d.kind,d.version,d.dataUrl]),history:p.statusHistory.map(e=>[e.id,e.projectId,e.action,e.previousStatus,e.newStatus,e.updatedAt]),closure:p.closure&&{assignments:p.closure.assignments,release:p.closure.release,state:p.closure.state},notifications:p.notifications})
+ for(const p of rows){
+  const before=shape(p)
+  refineDemoProject(p)
+  assert.equal(shape(p),before)
+  assert.ok(p.statusHistory.every(e=>!e.note?.includes('Synthetic setup')))
+  for(const uid of ['demo-staff',...(p.ownerUid==='demo-user'?['demo-user']:[]),...p.reviewerUids]){
+   const view=readProjectResource(p,foundationContext(uid).actor,{type:'project'},'local-demo')
+   assert.equal(view.title,p.title)
+   assert.equal(view.referenceNumber,p.referenceNumber)
+   assert.equal(view.status,p.status)
+  }
+ }
+})
 test('fictional fixture consent references always belong to their cloned project',()=>{
  for(const p of [...createFoundationFixtures(),...createResearcherScenarios(),...createStaffScenarios()]){
   for(const consent of [p.signatureConsent,p.proposalSubmission?.consent,...p.proposalVersions.flatMap(v=>(v.submissions||[]).map(s=>s.consent))].filter(Boolean)) assert.equal(consent.projectId,p.id)

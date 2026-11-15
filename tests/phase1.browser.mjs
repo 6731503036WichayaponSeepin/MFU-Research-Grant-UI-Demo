@@ -12,7 +12,7 @@ const page = await context.newPage(), errors = [], external = []
 page.on('pageerror', e => errors.push(e.message))
 page.on('request', r => { if (/^https?:/.test(r.url()) && !r.url().startsWith('http://127.0.0.1:5178/')) external.push(r.url()) })
 const base = 'http://127.0.0.1:5178/'
-const screenshots = 'docs/progress/screenshots'
+const screenshots = 'tmp/staff-validation-common-screenshots'
 await mkdir(screenshots, { recursive: true })
 let checks = 0
 const check = (value, message) => { assert.ok(value, message); checks++ }
@@ -44,9 +44,9 @@ try {
   await page.waitForURL(/projects$/)
   check(await page.getByLabel('ค้นหาโครงการ', { exact: true }).inputValue() === '', 'Back restores filter fields')
   await route('/researcher/projects/V16-CLOSED-PUBLICATION/details')
-  check(!(await page.locator('.shared-timeline').innerText()).includes('ประเมินรายงาน'), 'publication timeline')
+  check(!(await page.locator('.so-timeline').innerText()).includes('ประเมินรายงาน'), 'publication timeline')
   await route('/researcher/projects/V16-CANCELLED/details')
-  check(!(await page.locator('.shared-timeline').innerText()).includes('ปิดโครงการแล้ว'), 'cancellation timeline')
+  check(!(await page.locator('.so-timeline').innerText()).includes('ปิดโครงการแล้ว'), 'cancellation timeline')
   await page.screenshot({ path: `${screenshots}/phase1-cancelled-desktop.png`, fullPage: true })
   await route('/researcher/projects/V16-AFFILIATION/documents')
   await page.locator('.shared-table a').first().click()
@@ -70,9 +70,9 @@ try {
   await page.goto(base + '#/roles')
   await page.getByRole('button', { name: /เริ่มทดลอง.*staff/ }).click()
   await page.locator('#page-title').waitFor()
-  check(await page.locator('.sidebar-menu a').count() === 3, 'staff contextual navigation')
+  check(await page.locator('.sidebar-menu a').count() === 2, 'staff contextual navigation')
   await route('/staff/notifications')
-  const mark = page.getByRole('button', { name: 'อ่านทั้งหมด', exact: true })
+  const mark = page.getByRole('button', { name: /อ่านทั้งหมด/ })
   await mark.click()
   check(await page.getByRole('status').filter({ hasText: 'บันทึกสถานะอ่านแล้ว' }).count() === 1, 'mark all read')
   check(await mark.isDisabled(), 'read acknowledgement')

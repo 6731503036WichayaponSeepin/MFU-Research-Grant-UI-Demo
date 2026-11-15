@@ -1,0 +1,37 @@
+.staff-registry { display:grid; gap:16px; min-width:0; }
+.staff-registry .sr-heading .section-kicker { margin:0 0 4px; font-size:11px; letter-spacing:.06em; color:var(--text-secondary); }
+.staff-registry .sr-heading h1 { margin:0 0 4px; font-size:28px; line-height:1.4; }
+.staff-registry .sr-heading > p:last-child { margin:0; font-size:13px; color:var(--text-secondary); }
+.staff-shell-view .staff-registry .shared-card { padding:16px; margin:0; box-shadow:none; }
+.staff-registry .sr-toolbar .shared-filters { display:grid; grid-template-columns:minmax(180px,2fr) repeat(4,minmax(110px,1fr)) auto auto; gap:10px; align-items:end; margin:0; }
+.staff-registry .shared-filters label { min-width:0; gap:4px; font-size:12px; }
+.staff-registry .shared-filters :is(input,select,button) { width:100%; font-size:13px; min-height:36px; padding:6px 10px; }
+.staff-registry .shared-filters > a { font-size:12px; white-space:nowrap; padding:8px 0; }
+.staff-shell-view .staff-registry .sr-results { padding:0; overflow:hidden; }
+.staff-registry .sr-results-heading { padding:16px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.staff-registry .sr-results-heading h2 { font-size:17px; margin:0; }
+.staff-registry .sr-results-heading p,.staff-registry .sr-total { margin:2px 0 0; color:var(--text-secondary); font-size:12px; }
+.staff-registry .shared-table-wrap { border:0; border-radius:0; margin:0; }
+.staff-registry .shared-table { width:100%; min-width:800px; table-layout:fixed; }
+.staff-registry .shared-table :is(th,td) { padding:12px 16px; font-size:13px; line-height:1.5; vertical-align:middle; }
+.staff-registry .shared-table th { font-size:12px; background:var(--bg,#F5F6F8); color:var(--text-secondary); font-weight:500; }
+.staff-registry .shared-table th:nth-child(1) { width:29%; }
+.staff-registry .shared-table th:nth-child(2) { width:20%; }
+.staff-registry .shared-table th:nth-child(3) { width:20%; }
+.staff-registry .shared-table th:nth-child(4) { width:16%; }
+.staff-registry .shared-table th:nth-child(5) { width:15%; }
+.staff-registry .shared-table td:first-child a { display:flex; flex-direction:column; font-size:11px; color:var(--text-secondary); text-decoration:none; }
+.staff-registry .shared-table td:first-child strong { order:-1; font-size:13px; font-weight:600; color:var(--text-primary); display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.staff-registry .shared-table td:first-child a:hover strong { color:var(--primary); }
+.staff-registry .shared-table td small { display:block; font-size:11px; color:var(--text-secondary); margin-top:3px; line-height:1.5; }
+.staff-registry .shared-table td:nth-child(2) small { overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.staff-registry .shared-table td:last-child a { font-size:12px; text-decoration:none; }
+.staff-registry .shared-status { font-size:11px; line-height:1.5; padding:4px 9px; }
+.staff-registry .sr-results-footer { padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:12px; color:var(--text-secondary); }
+.staff-registry .sr-results-footer nav { margin:0; align-items:center; gap:8px; }
+.staff-registry .sr-results-footer nav a { display:inline-flex; justify-content:center; align-items:center; min-height:32px; padding:4px 10px; border:1px solid var(--border); border-radius:5px; text-decoration:none; font-size:12px; }
+.staff-registry .sr-policy-note .shared-note { margin:0; font-size:11px; line-height:1.5; }
+@media(max-width:1300px) { .staff-registry .sr-toolbar .shared-filters { grid-template-columns:repeat(4,minmax(0,1fr)); } .staff-registry .shared-filters label:first-child { grid-column:span 2; } }
+@media(max-width:760px) { .staff-registry .sr-toolbar .shared-filters { grid-template-columns:repeat(2,minmax(0,1fr)); } .staff-registry .sr-heading h1 { font-size:24px; } .staff-registry .sr-results-heading,.staff-registry .sr-results-footer { flex-wrap:wrap; gap:8px; } }
+.staff-registry .sr-toolbar .shared-filters { padding:0; border:0; }
+.staff-shell-view .staff-registry .sr-toolbar .shared-filters :is(input,select,button) { height:36px; min-height:36px; box-sizing:border-box; }

@@ -1,0 +1,65 @@
+{
+  "executedAt": "2026-11-15T12:05:43.585Z",
+  "results": [
+    {
+      "file": "assignment-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Reviewer Assignment UI 27 checks\n"
+    },
+    {
+      "file": "cancellation-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Cancellation UI 25 checks\n"
+    },
+    {
+      "file": "certification-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Certification UI 20 checks\n"
+    },
+    {
+      "file": "change-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Change & Extension UI 20 checks\n"
+    },
+    {
+      "file": "closure-review-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Closure Review UI 24 checks\n"
+    },
+    {
+      "file": "evaluation-tracking-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Evaluation Tracking UI 47 checks\n"
+    },
+    {
+      "file": "final-verification-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Final Verification UI 25 checks\n"
+    },
+    {
+      "file": "proposal-review-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Proposal Review UI 19 checks\n"
+    },
+    {
+      "file": "registry-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Registry UI 21 checks\n"
+    },
+    {
+      "file": "staff-overview-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Staff Overview UI 108 checks\n"
+    },
+    {
+      "file": "staff-shared-ui.mjs",
+      "status": "PASS",
+      "output": "PASS Staff Shared UI 22 checks\n"
+    },
+    {
+      "file": "staff-ui.mjs",
+      "status": "PASS",
+      "output": "1440 900 { client: 900, scroll: 900 }\n1280 720 { client: 720, scroll: 720 }\n1440 900 { client: 900, scroll: 900 }\n1280 720 { client: 720, scroll: 720 }\nPASS Staff UI 32 checks\n"
+    }
+  ]
+}

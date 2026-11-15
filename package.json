@@ -35,7 +35,8 @@
     "demo:reviewer": "node scripts/sync-server-domain.mjs && node functions/scripts/seed-advisor-demo.mjs --reviewer-example --preview",
     "test:reviewer-example": "node scripts/sync-server-domain.mjs && firebase emulators:exec --project demo-mfu-secure --only auth,firestore,functions,storage \"node tests/reviewerExample.integration.mjs\"",
     "test:demo:browser": "node tests/demo.browser.mjs",
-    "test:navigation:browser": "node tests/navigation.browser.mjs"
+    "test:navigation:browser": "node tests/navigation.browser.mjs",
+    "test:staff:ui": "node scripts/test-staff-ui.mjs"
   },
   "dependencies": {
     "firebase": "^13.0.0",

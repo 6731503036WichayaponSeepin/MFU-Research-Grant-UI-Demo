@@ -1,0 +1,21 @@
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import ProjectStateBadge from '../components/ProjectStateBadge'
+import { projectReference, displayDate, actorName } from '../utils/researchDisplay'
+import './StaffChangeExtension.css'
+
+export default function StaffChangeExtensionView({project:p,go,change,extension,records}) {
+ const {i18n}=useTranslation(),th=i18n.language!=='en',text=(a,b)=>th?a:b
+ const [tab,setTab]=useState('change')
+ const approved=p.extensionRecords.filter(r=>r.outcome==='approved').length
+ const history=[...p.changeRecords.map(r=>({...r,displayType:'change'})),...p.extensionRecords.map(r=>({...r,displayType:'extension'}))]
+ const fieldLabels={projectTitle:text('ชื่อโครงการ','Project Title'),leaderName:text('หัวหน้าโครงการ','Project Leader'),methodology:text('วิธีดำเนินการวิจัย','Methodology')}
+ return <div className="staff-change-extension"><header className="sx-heading"><div><span>{projectReference(p)}</span><h1 id="page-title" tabIndex={-1}>{text('บันทึกการเปลี่ยนแปลงและขยายเวลา','Change & Extension Records')}</h1><p>{!th&&p.titleEn||p.title}</p></div><ProjectStateBadge status={p.status}/></header>
+  <div className="sx-summary-strip">{[[text('วันเริ่มต้น','Start date'),displayDate(p.startDate,i18n.language)],[text('วันสิ้นสุดปัจจุบัน','Current end date'),displayDate(p.endDate,i18n.language)],[text('ขยายเวลาแล้ว','Approved extensions'),`${approved} / 2 ${text('ครั้ง','times')}`]].map(([label,value])=><div key={label}><span>{label}</span><strong>{value}</strong></div>)}</div>
+  <div className="sx-grid"><section className="sx-left"><div className="sx-tabs" role="tablist" aria-label={text('ประเภทการบันทึกผลจาก e-Office','External e-Office record type')}>{[['change',text('บันทึกการเปลี่ยนแปลง','Change Records')],['extension',text('บันทึกการขยายเวลา','Extension Records')]].map(([id,label])=><button type="button" key={id} role="tab" id={`sx-tab-${id}`} aria-controls={`sx-panel-${id}`} aria-selected={tab===id} onClick={()=>setTab(id)}>{label}</button>)}</div>
+   <div id="sx-panel-change" role="tabpanel" aria-labelledby="sx-tab-change" hidden={tab!=='change'}>{change}</div><div id="sx-panel-extension" role="tabpanel" aria-labelledby="sx-tab-extension" hidden={tab!=='extension'}>{extension}</div>
+  </section><aside className="sx-right"><section className="panel shared-card"><h2>{text('ข้อมูลโครงการ','Project Summary')}</h2><dl><div><dt>{text('หัวหน้าโครงการ','Project leader')}</dt><dd>{p.leader||'—'}</dd></div><div><dt>{text('หน่วยงาน','Affiliation')}</dt><dd>{p.affiliation||'—'}</dd></div><div><dt>{text('สถานะ','Status')}</dt><dd><ProjectStateBadge status={p.status}/></dd></div></dl><p className="shared-note">{text('บันทึกผลภายนอกเท่านั้น ไม่ยื่นหรืออนุมัติแทน e-Office สถานะหลักไม่เปลี่ยน','Record external outcomes only. This Web does not submit or approve e-Office requests; the main state is unchanged.')}</p></section>
+   <section className="panel shared-card"><h2>{text('ประวัติการเปลี่ยนแปลงและขยายเวลา','Change & Extension History')}</h2>{history.length?<ol className="sx-history">{history.map((r,i)=><li key={i}><strong>{r.displayType==='change'?text('บันทึกเปลี่ยนแปลงโครงการ','Project change recorded'):text('บันทึกขยายเวลา','Extension recorded')}</strong><p>{r.reference} · {displayDate(r.date||r.recordedAt,i18n.language)}</p><p>{r.outcome==='approved'?text('อนุมัติจากภายนอก','Approved externally'):text('ไม่ได้รับอนุมัติจากภายนอก','Denied externally')}</p>{r.reason&&<p>{r.reason}</p>}{r.displayType==='change'&&Object.keys(r.before||{}).map(key=><p key={key}>{fieldLabels[key]||key}: {r.before[key]||'—'} → {r.after?.[key]||'—'}</p>)}{r.displayType==='extension'&&<p>{displayDate(r.before,i18n.language)} → {displayDate(r.after,i18n.language)}</p>}{r.recordedBy&&<small>{actorName(r.recordedBy)}</small>}</li>)}</ol>:<p className="shared-note">{text('ยังไม่มีบันทึกการเปลี่ยนแปลงหรือขยายเวลา','No change or extension records yet')}</p>}<a href={go.href('timeline',p.id)}>{text('ดูประวัติทั้งหมด','View all history')} →</a><details className="sx-records"><summary>{text('รายละเอียดบันทึกและค่าเดิม/ใหม่','Record details & previous/updated values')}</summary>{records}</details></section>
+  </aside></div>
+ </div>
+}

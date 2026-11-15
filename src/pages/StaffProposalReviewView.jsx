@@ -1,0 +1,69 @@
+import { useTranslation } from 'react-i18next'
+import { FileText } from 'lucide-react'
+import ProjectStateBadge from '../components/ProjectStateBadge'
+import { projectReference, displayDate, actorName, documentLabel } from '../utils/researchDisplay'
+import './StaffProposalReview.css'
+// Display labels copied from the existing RS-1 form; no field or policy changes.
+const proposalLabels = {"projectTitle": ["ชื่อโครงการ", "Project Title"], "projectTitleEn": ["ชื่อโครงการภาษาอังกฤษ", "English Project Title"], "strategy": ["ยุทธศาสตร์มหาวิทยาลัย (เลือก 1 ข้อ)", "University Strategy (choose one)"], "leaderName": ["ชื่อหัวหน้าโครงการ", "Project Leader Name"], "leaderAffiliation": ["สังกัดหัวหน้าโครงการ", "Leader Affiliation"], "leaderPhone": ["โทรศัพท์หัวหน้าโครงการ", "Leader Telephone"], "leaderEmail": ["อีเมลหัวหน้าโครงการ", "Leader Email"], "leaderPercent": ["สัดส่วนความรับผิดชอบของหัวหน้า (%)", "Leader Responsibility (%)"], "participants": ["ผู้ร่วมวิจัย: ชื่อ สังกัด โทรศัพท์ อีเมล และสัดส่วนความรับผิดชอบ", "Project Participants: name, affiliation, phone, email, responsibility"], "advisorName": ["ชื่อที่ปรึกษา", "Advisor Name"], "advisorQualification": ["คุณวุฒิ", "Educational Qualification"], "advisorPosition": ["ตำแหน่งทางวิชาการ", "Academic Position"], "advisorAffiliation": ["สังกัด", "Affiliation"], "cooperationName": ["ชื่อผู้ประสานงาน", "Contact Name"], "cooperationAffiliation": ["สังกัด", "Affiliation"], "cooperationAddress": ["ที่อยู่", "Address"], "cooperationType": ["ลักษณะความร่วมมือ", "Type of Cooperation"], "researchType": ["ประเภทงานวิจัย", "Type of Research"], "keywords": ["คำสำคัญ", "Keywords"], "background": ["ความเป็นมาและกรอบแนวคิด", "Background and Conceptual Framework"], "objectives": ["วัตถุประสงค์ของโครงการ", "Research Objectives"], "literature": ["การทบทวนวรรณกรรม", "Literature Review"], "references": ["เอกสารอ้างอิงตามรูปแบบสากล", "References (International Format)"], "methodology": ["วิธีดำเนินการวิจัย (รวมการเก็บข้อมูล กลุ่มตัวอย่าง การสุ่ม และการวิเคราะห์)", "Methodology (data collection, samples, randomization, analysis)"], "scope": ["ขอบเขตและความสัมพันธ์กับชื่อและวัตถุประสงค์", "Scope and relevance to title and objectives"], "startDate": ["วันที่เริ่มโครงการ", "Start Date"], "endDate": ["วันที่สิ้นสุดโครงการ", "End Date"], "workPlan": ["รายการงานและช่วงเวลาดำเนินการ", "Tasks and Periods"], "progress": ["ผลลัพธ์ที่คาดหวังตามช่วงรายงานความก้าวหน้า", "Expected Outcomes by Reporting Period"], "outcomeType": ["ประเภทผลผลิต", "Outcome Type"], "outcomeDetail": ["รายละเอียดผลผลิต", "Outcome Details"], "integration": ["การบูรณาการศาสตร์อื่น", "Integration with Other Disciplines"], "publicationLevel": ["ระดับการเผยแพร่", "Dissemination Level"], "compensationDetail": ["รายละเอียดค่าตอบแทน", "Compensation Details"], "compensation": ["ค่าตอบแทน (บาท)", "Compensation (THB)"], "directDetail": ["รายละเอียดค่าใช้สอย", "Direct Cost Details"], "directCost": ["ค่าใช้สอย (บาท)", "Direct Cost (THB)"], "materialsDetail": ["รายละเอียดค่าวัสดุ", "Materials and Supplies Details"], "materials": ["ค่าวัสดุ (บาท)", "Materials and Supplies (THB)"], "utilityDetail": ["รายละเอียดค่าสาธารณูปโภค", "Utility Details"], "utility": ["ค่าสาธารณูปโภค (บาท)", "Utility (THB)"], "standards": ["ประเภทมาตรฐานที่เกี่ยวข้อง", "Applicable Research Standards"], "clarifications": ["คำชี้แจงเพิ่มเติม", "Other Clarifications"], "advisorSignature": ["ชื่อผู้ลงนาม: ที่ปรึกษาโครงการ", "Advisor Signatory Name"], "advisorSignDate": ["วันที่ลงนามที่ปรึกษา", "Advisor Signature Date"], "leaderSignature": ["ชื่อผู้ลงนาม: หัวหน้าโครงการ", "Leader Signatory Name"], "leaderSignDate": ["วันที่ลงนามหัวหน้า", "Leader Signature Date"], "teamSignatures": ["รายชื่อผู้ร่วมวิจัยที่ลงนามและวันที่", "Team Signatories and Dates"], "bioName": ["1. ชื่อ-นามสกุล", "1. Full Name"], "bioPosition": ["2. ตำแหน่งทางวิชาการ", "2. Academic Position"], "bioResearchId": ["3. เลขประจำตัวนักวิจัยแห่งชาติ (ถ้ามี)", "3. National Researcher ID (if any)"], "bioEducation": ["4. ประวัติการศึกษา", "4. Educational Background"], "bioExperience": ["5. ประสบการณ์ทำงาน", "5. Working Experiences"], "bioExpertise": ["6. สาขาที่เชี่ยวชาญ", "6. Areas of Expertise"], "bioPublications": ["7. ประวัติการตีพิมพ์ผลงานวิจัย", "7. Research Publications"], "bioPresentations": ["8. ประวัติการนำเสนอผลงาน", "8. Research Presentations"], "bioIP": ["9. ผลงานด้านทรัพย์สินทางปัญญา", "9. Intellectual Property"], "bioManagement": ["10. ประสบการณ์บริหารงานวิจัย", "10. Research Management Experience"], "bioCompleted": ["10.1 งานวิจัยที่เสร็จสิ้นแล้ว", "10.1 Completed Research"], "bioOngoing": ["10.2 งานวิจัยที่กำลังดำเนินการ", "10.2 Research in Progress"], "reviewer1Name": ["ผู้ทรงคุณวุฒิ 1: ชื่อ-นามสกุล", "Reviewer 1: Full Name"], "reviewer1Position": ["ผู้ทรงคุณวุฒิ 1: ตำแหน่งทางวิชาการ", "Reviewer 1: Academic Position"], "reviewer1Affiliation": ["ผู้ทรงคุณวุฒิ 1: สังกัด", "Reviewer 1: Affiliation"], "reviewer1Email": ["ผู้ทรงคุณวุฒิ 1: อีเมล", "Reviewer 1: Email"], "reviewer2Name": ["ผู้ทรงคุณวุฒิ 2: ชื่อ-นามสกุล", "Reviewer 2: Full Name"], "reviewer2Position": ["ผู้ทรงคุณวุฒิ 2: ตำแหน่งทางวิชาการ", "Reviewer 2: Academic Position"], "reviewer2Affiliation": ["ผู้ทรงคุณวุฒิ 2: สังกัด", "Reviewer 2: Affiliation"], "reviewer2Email": ["ผู้ทรงคุณวุฒิ 2: อีเมล", "Reviewer 2: Email"], "reviewer3Name": ["ผู้ทรงคุณวุฒิ 3: ชื่อ-นามสกุล", "Reviewer 3: Full Name"], "reviewer3Position": ["ผู้ทรงคุณวุฒิ 3: ตำแหน่งทางวิชาการ", "Reviewer 3: Academic Position"], "reviewer3Affiliation": ["ผู้ทรงคุณวุฒิ 3: สังกัด", "Reviewer 3: Affiliation"], "reviewer3Email": ["ผู้ทรงคุณวุฒิ 3: อีเมล", "Reviewer 3: Email"]}
+const strategies = [
+  ['1', 'เกี่ยวข้องกับคุณวุฒิ คณะ หรือหน้าที่ของนักวิจัย', 'Relevant to researcher qualification, faculty, or duties'],
+  ['2', 'พัฒนาทรัพยากรมนุษย์และองค์ความรู้', 'Human resources and knowledge development'],
+  ['3', 'นวัตกรรมเพื่อแก้ปัญหาสังคม', 'Innovation for solving social issues'],
+  ['4', 'นวัตกรรมเพื่อเพิ่มขีดความสามารถในการแข่งขัน', 'Innovation for competitiveness'],
+  ['5', 'นวัตกรรมเชิงพื้นที่และลดความเหลื่อมล้ำ', 'Spatial development and reducing inequality']
+]
+
+const outcomes = [
+  ['international', 'ตีพิมพ์วารสารวิชาการระดับนานาชาติ', 'International journal publication'],
+  ['national', 'ตีพิมพ์วารสารระดับชาติ TCI กลุ่ม 1 หรือ 2', 'National journal (TCI 1 or 2)'],
+  ['conference', 'นำเสนอประชุมวิชาการนานาชาติแบบ Full Paper', 'International conference full paper'],
+  ['patent', 'อนุสิทธิบัตรหรือสิทธิบัตร', 'Petty patent or patent'],
+  ['other', 'อื่น ๆ', 'Other']
+]
+
+const publicationLevels = [
+  ['broad', 'แนวทางระดับภูมิภาค ประเทศ หรือสากล', 'Regional, national, or international guideline'],
+  ['local', 'แนวทางเฉพาะงาน หมู่บ้าน หรือจังหวัด', 'Guideline for jobs, villages, or provinces'],
+  ['none', 'ไม่เผยแพร่สู่สังคม', 'Not disseminated to society']
+]
+
+const standardOptions = [
+  ['none', 'ไม่มีการวิจัยในมนุษย์/สัตว์ หรือเทคโนโลยีชีวภาพสมัยใหม่ที่เกี่ยวข้อง', 'No relevant human/animal/modern biotechnology research'],
+  ['human', 'วิจัยในมนุษย์', 'Human research'],
+  ['animal', 'ใช้สัตว์ทดลอง', 'Experimental animals'],
+  ['plants', 'ศึกษาพืชพื้นเมือง/พืชป่า/เห็ด/รา ตามกฎหมายคุ้มครองพันธุ์พืช', 'Native or wild plants, mushrooms, or fungi under plant protection law']
+]
+
+
+const recordLabels={proposalVersions:['เวอร์ชันข้อเสนอ','Proposal versions'],importSources:['ไฟล์นำเข้า','Import sources'],proposalVersionId:['เวอร์ชันข้อเสนอ','Proposal version'],documentIds:['เอกสารที่ยื่น','Submitted documents'],signaturesComplete:['ลงนามครบ','All signatures complete'],requiredSignatories:['ผู้ลงนามที่จำเป็น','Required signatories'],consent:['ความยินยอม','Signature consent'],submittedAt:['วันที่ยื่น','Submitted at'],submittedBy:['ผู้ยื่น','Submitted by'],projectId:['เลขโครงการ','Project reference'],confirmed:['ยืนยันแล้ว','Confirmed'],usesOthersElectronicSignatures:['ใช้ลายเซ็นอิเล็กทรอนิกส์ของผู้อื่น','Other electronic signatures used'],consentConfirmed:['ยืนยันความยินยอม','Consent confirmed'],confirmedBy:['ผู้ยืนยัน','Confirmed by'],confirmedAt:['วันที่ยืนยัน','Confirmed at'],actorId:['ผู้ดำเนินการ','Actor'],recordedBy:['ผู้บันทึก','Recorded by'],recordedAt:['วันที่บันทึก','Recorded at'],role:['บทบาทผู้ลงนาม','Signatory role'],name:['ชื่อ','Name'],description:['รายละเอียด','Description'],id:['ลำดับเวอร์ชัน','Version'],version:['เวอร์ชัน','Version'],kind:['ประเภท','Type'],proposal:['ข้อมูลข้อเสนอ','Proposal'],createdBy:['ผู้จัดทำ','Created by'],createdAt:['วันที่จัดทำ','Created at'],submissions:['ประวัติการยื่น','Submissions'],reviewedBy:['ผู้ตรวจข้อมูลนำเข้า','Import reviewed by'],reviewedAt:['วันที่ตรวจ','Reviewed at'],size:['ขนาดไฟล์ (ไบต์)','File size (bytes)'],type:['ประเภทไฟล์','File type'],fields:['ฟิลด์ที่นำเข้า','Imported fields'],extraction:['วิธีอ่านข้อความ','Text extraction method']}
+export default function StaffProposalReviewView({project:p,go,correction,passed,history}) {
+ const {i18n}=useTranslation(),th=i18n.language!=='en',text=(a,b)=>th?a:b
+ const label=key=>(proposalLabels[key]||recordLabels[key])?.[th?0:1] || key.replace(/([a-z])([A-Z])/g,'$1 $2').replaceAll('_',' ')
+ const value=(key,v)=>{
+  if(v===null||v===undefined||v==='')return '—'
+  if(typeof v==='boolean')return v?text('ใช่','Yes'):text('ไม่ใช่','No')
+  if(typeof v==='object')return <Readable data={v} fieldKey={key}/>
+  if(['projectId'].includes(key))return projectReference(p)
+  if(key==='proposalVersionId'||key==='id')return p.proposalVersions.find(item=>item.id===v)?.version || v
+  if(key==='documentIds')return p.documents.find(d=>d.id===v)?.name || text('ไฟล์ไม่พร้อมใช้งาน','File unavailable')
+  if(/At$|Date$/.test(key)&&Number.isFinite(Date.parse(v)))return displayDate(v,i18n.language,/At$/.test(key))
+  if(/By$|actorId/.test(key))return actorName(v)
+  if(key==='role')return ({leader:text('หัวหน้าโครงการ','Project leader'),advisor:text('ที่ปรึกษา','Advisor'),participants:text('ผู้ร่วมวิจัย','Co-researchers')})[v]||v
+  const options=({strategy:strategies,outcomeType:outcomes,publicationLevel:publicationLevels,standards:standardOptions})[key]
+  const option=options?.find(item=>item[0]===String(v));return option?option[th?1:2]:String(v)
+ }
+ function Readable({data,fieldKey}) { return Array.isArray(data)?<div className="sp-record-array">{data.map((v,i)=><div key={i}>{typeof v==='object'?<Readable data={v}/>:fieldKey==='fields'?label(v):value(fieldKey||'',v)}</div>)}</div>:<dl className="sp-fields">{Object.entries(data||{}).map(([key,v])=><div key={key}><dt>{label(key)}</dt><dd>{value(key,v)}</dd></div>)}</dl> }
+ const budgetKeys=['compensation','directCost','materials','utility','compensationDetail','directDetail','materialsDetail','utilityDetail']
+ const generalKeys=['projectTitle','projectTitleEn','leaderName','leaderAffiliation','leaderPhone','leaderEmail','leaderPercent','participants','advisorName','advisorQualification','advisorPosition','advisorAffiliation','startDate','endDate']
+ const sections=[[text('ข้อมูลทั่วไป','General Information'),generalKeys],[text('รายละเอียดการวิจัยและข้อมูลประกอบ','Research Details & Supporting Information'),Object.keys(p.proposal||{}).filter(k=>!generalKeys.includes(k)&&!budgetKeys.includes(k))],[text('งบประมาณ','Budget'),budgetKeys]]
+ return <div className="staff-proposal-review">
+  <header className="sp-page-heading"><div><span>{projectReference(p)}</span><h1 id="page-title" tabIndex={-1}>{text('ตรวจสอบข้อเสนอโครงการ','Proposal Review')}</h1><p>{!th&&p.titleEn||p.title}</p></div><ProjectStateBadge status={p.status}/></header>
+  <div className="sp-grid"><div className="sp-left">
+   <section className="panel shared-card"><h2>{text('ข้อมูลข้อเสนอโครงการ','Proposal Information')}</h2>{sections.map(([title,keys],i)=><details className="sp-section" key={title} open={i===0}><summary>{title}</summary><Readable data={Object.fromEntries(keys.filter(k=>Object.hasOwn(p.proposal||{},k)).map(k=>[k,p.proposal[k]]))}/>{i===2&&<p className="sp-budget-total">{text('งบประมาณรวม','Total budget')}: {new Intl.NumberFormat(th?'th-TH':'en-GB').format(p.budget||0)} {text('บาท','THB')}</p>}</details>)}</section>
+   <section className="panel shared-card"><h2>{text('เอกสารประกอบการยื่น','Submitted Documents')}</h2>{(p.proposalSubmission?.documentIds||[]).map(id=>{const d=p.documents.find(d=>d.id===id);return <div className="sp-document" key={id}><FileText size={20}/><div><strong>{d?.name||text('ไฟล์ไม่พร้อมใช้งาน','File unavailable')}</strong>{d&&<small>{documentLabel(d.kind,i18n.language)} · v{d.version} · {actorName(d.uploadedBy)} · {displayDate(d.uploadedAt,i18n.language,true)}</small>}</div>{d&&<a href={go.href('documents',p.id,{document:id})}>{text('เปิดดู / ดาวน์โหลด','Preview / Download')} →</a>}</div>})}{!p.proposalSubmission?.documentIds?.length&&<p className="shared-note">{text('ยังไม่มีเอกสารที่ยื่น','No submitted documents')}</p>}</section>
+   <section className="panel shared-card"><h2>{text('การยื่น ลายเซ็น และความยินยอม','Submission, Signatures & Consent')}</h2><Readable data={p.proposalSubmission}/></section>
+   <details className="panel shared-card"><summary>{text('เวอร์ชันข้อเสนอและไฟล์นำเข้า','Proposal Versions / Import Sources')}</summary><Readable data={{proposalVersions:p.proposalVersions,importSources:p.importSources}}/></details>
+  </div><aside className="sp-right"><section className="panel shared-card"><h2>{text('รายการประกอบการตรวจสอบ','Review Guidance')}</h2><p className="shared-note">{text('Checklist ทางการยัง OPEN-06 ข้อมูลนี้เป็นรายการประกอบการตรวจ ไม่ใช่เกณฑ์ที่ Stakeholder ยืนยันแล้ว','Official checklist remains OPEN-06. These are review aids, not confirmed stakeholder criteria.')}</p></section><div className="sp-correction">{correction}</div><div className="sp-pass">{passed}</div></aside></div>
+  <details className="sp-history"><summary>{text('กิจกรรมและประวัติ','Activity & History')}</summary>{history}</details>
+ </div>
+}

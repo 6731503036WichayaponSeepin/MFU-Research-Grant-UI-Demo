@@ -1,0 +1,40 @@
+.staff-shared-page .focused-page-heading { margin:0 0 16px; }
+.staff-shared-page .focused-page-heading h1 { font-size:26px; line-height:1.4; margin:0; }
+.staff-shared-page .focused-page-heading > button { display:none; }
+.app.staff-shared-page .main > .shared-card,.app.staff-shared-page .staff-notifications > .shared-card { padding:16px; margin:0; box-shadow:none; }
+.staff-documents > .shared-note,.staff-activity > .shared-note { font-size:12px; margin:0 0 12px; }
+.staff-documents .shared-table { min-width:700px; }
+.staff-documents .shared-table :is(th,td) { padding:10px 12px; font-size:13px; line-height:1.5; }
+.staff-documents .shared-table td:first-child strong { font-size:13px; font-weight:500; overflow-wrap:anywhere; }
+.staff-documents .shared-table td:first-child small { font-size:11px; }
+.staff-documents .shared-table a { font-size:12px; text-decoration:none; }
+.staff-documents .shared-document-preview { margin-top:16px; }
+.staff-activity .shared-history { gap:0; list-style:none; margin:0; padding:0 0 0 12px; }
+.staff-activity .shared-history > li { position:relative; border:0; border-left:2px solid var(--border); padding:0 0 18px 20px; margin:0; background:transparent; border-radius:0; }
+.staff-activity .shared-history > li::before { content:''; position:absolute; top:5px; left:-5px; width:8px; height:8px; border-radius:50%; background:var(--primary); }
+.staff-activity .shared-history h3 { margin:0 0 8px; font-size:15px; }
+.staff-activity .shared-fields { margin:0; gap:8px 16px; grid-template-columns:repeat(2,minmax(0,1fr)); }
+.staff-activity .shared-fields dt { font-size:11px; }
+.staff-activity .shared-fields dd { font-size:12px; margin:2px 0 0; line-height:1.6; }
+.staff-activity details { margin-top:8px; }
+.staff-activity summary { font-size:12px; cursor:pointer; }
+.staff-activity pre { font-size:11px; }
+.staff-notifications { gap:12px; }
+.staff-notifications > .sn-secondary { order:1; }
+.staff-notifications .sn-secondary summary { font-size:13px; font-weight:600; cursor:pointer; }
+.staff-notifications .sn-secondary .shared-project-row { padding:8px 0; font-size:12px; }
+.staff-notifications .sn-secondary .shared-note { font-size:11px; }
+.staff-notifications .shared-project-heading { gap:12px; margin-bottom:8px; }
+.staff-notifications .shared-project-heading h2 { margin:0; font-size:16px; }
+.staff-notifications .shared-project-heading button { font-size:12px; min-height:36px; }
+.staff-notifications .shared-notification { padding:12px 0; margin:0; border:0; border-bottom:1px solid var(--border); border-radius:0; background:transparent; }
+.staff-notifications .shared-notification:last-child { border-bottom:0; }
+.staff-notifications .shared-notification > div { position:relative; flex:1; min-width:0; padding-left:14px; }
+.staff-notifications .rn-unread-dot { position:absolute; top:7px; left:0; width:6px; height:6px; background:var(--primary); border-radius:50%; }
+.staff-notifications .shared-notification strong { font-size:13px; font-weight:500; }
+.staff-notifications .shared-notification.rn-unread strong { font-weight:600; }
+.staff-notifications .shared-notification p { font-size:12px; margin:4px 0; color:var(--text-secondary); }
+.staff-notifications .shared-notification a { font-size:12px; text-decoration:none; }
+.staff-notifications .shared-notification button { min-height:32px; font-size:12px; padding:4px 8px; }
+.staff-notifications .shared-card > .shared-note { font-size:11px; }
+@media(max-width:600px) { .staff-activity .shared-fields { grid-template-columns:1fr; } .staff-notifications .shared-project-heading { align-items:flex-start; flex-wrap:wrap; } .staff-notifications .shared-notification { flex-wrap:wrap; gap:8px; } }

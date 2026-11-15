@@ -1,0 +1,41 @@
+.staff-proposal-review { display:grid; gap:16px; min-width:0; }
+.staff-proposal-review .sp-page-heading { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.sp-page-heading > div { min-width:0; }
+.staff-proposal-review .sp-page-heading span { font-size:12px; color:var(--primary); }
+.staff-proposal-review .sp-page-heading h1 { margin:4px 0; font-size:26px; line-height:1.4; }
+.staff-proposal-review .sp-page-heading p { margin:0; font-size:14px; color:var(--text-secondary); }
+.sp-grid { display:grid; grid-template-columns:minmax(0,65fr) minmax(0,35fr); gap:16px; align-items:start; }
+.sp-left,.sp-right { display:grid; gap:16px; min-width:0; }
+.staff-shell-view .staff-proposal-review .shared-card { padding:18px; margin:0; box-shadow:none; min-width:0; }
+.staff-proposal-review .shared-card h2 { margin:0 0 12px; font-size:18px; line-height:1.4; }
+.staff-proposal-review .shared-card h3 { font-size:15px; }
+.staff-proposal-review summary { cursor:pointer; font-size:14px; font-weight:600; }
+.sp-section { padding:12px 0; border-top:1px solid var(--border); }
+.sp-section:first-of-type { border-top:0; padding-top:0; }
+.sp-section summary { color:var(--primary); margin-bottom:8px; }
+.sp-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 16px; margin:10px 0 0; }
+.sp-fields > div { min-width:0; }
+.sp-fields dt { color:var(--text-secondary); font-size:12px; margin-bottom:3px; }
+.sp-fields dd { margin:0; font-size:13px; white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.6; }
+.sp-fields .sp-fields { grid-template-columns:1fr; padding-left:10px; border-left:1px solid var(--border); }
+.sp-record-array { display:grid; gap:8px; }
+.sp-budget-total { font-size:14px; font-weight:600; }
+.sp-document { display:flex; align-items:center; gap:10px; padding:10px 0; border-top:1px solid var(--border); }
+.sp-document > svg { flex-shrink:0; color:var(--primary); }
+.sp-document > div { flex:1; min-width:0; }
+.sp-document strong { display:block; font-size:13px; font-weight:500; overflow-wrap:anywhere; }
+.sp-document small { display:block; margin-top:3px; font-size:11px; color:var(--text-secondary); }
+.sp-document a { flex-shrink:0; font-size:12px; text-decoration:none; }
+.staff-proposal-review .shared-note { margin:0; font-size:12px; line-height:1.6; }
+.staff-proposal-review fieldset { padding:0; border:0; margin:0 0 12px; min-width:0; }
+.staff-proposal-review fieldset > label { font-size:13px; }
+.staff-proposal-review textarea { min-height:90px; font-size:13px; }
+.staff-proposal-review .researcher-check { display:flex; align-items:center; gap:8px; margin:7px 0; font-size:12px; }
+.staff-proposal-review .researcher-check input { flex-shrink:0; }
+.sp-right form > button { width:100%; min-height:38px; font-size:13px; }
+.staff-shell-view .sp-correction form > button { background:transparent; color:var(--primary); border:1px solid var(--primary); }
+.staff-shell-view .sp-correction form > button:hover:not(:disabled) { background:var(--primary-light); }
+.sp-history > summary { margin-bottom:12px; }
+.staff-proposal-view .project-page-nav { margin-bottom:12px; padding:4px 0; }
+@media(max-width:1100px) { .sp-grid { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:600px) { .sp-fields { grid-template-columns:1fr; } .staff-proposal-review .sp-page-heading { align-items:flex-start; flex-direction:column; gap:10px; } .sp-document { flex-wrap:wrap; } .sp-document a { margin-left:30px; } }

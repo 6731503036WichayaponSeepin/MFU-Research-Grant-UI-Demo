@@ -1,0 +1,57 @@
+.staff-evaluation-tracking { display:grid; gap:16px; min-width:0; }
+.et-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.et-heading > div { min-width:0; }
+.et-heading > div > span { font-size:12px; color:var(--primary); }
+.et-heading h1 { font-size:26px; line-height:1.4; margin:4px 0; }
+.et-heading p { margin:0; font-size:14px; color:var(--text-secondary); }
+.et-progress-strip { display:flex; align-items:center; gap:32px; background:var(--surface,#fff); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+.et-progress-strip h2 { flex:1; margin:0; font-weight:500; }
+.et-progress-strip h2 span { display:block; font-size:12px; color:var(--text-secondary); margin-bottom:4px; }
+.et-progress-strip h2 strong { font-size:28px; line-height:1.3; }
+.et-progress-context { flex:1; min-width:0; }
+.et-progress-bar { height:7px; border-radius:8px; background:var(--border); overflow:hidden; }
+.et-progress-bar > span { display:block; height:100%; background:var(--success); }
+.et-progress-caption { display:flex; justify-content:space-between; gap:10px; font-size:11px; color:var(--text-secondary); margin-top:7px; }
+.et-grid { display:grid; grid-template-columns:minmax(0,65fr) minmax(0,35fr); gap:16px; align-items:start; }
+.app.staff-shell-view .staff-evaluation-tracking .shared-card { padding:18px; margin:0; box-shadow:none; min-width:0; }
+.staff-evaluation-tracking .shared-card h2 { font-size:18px; line-height:1.4; margin:0 0 12px; }
+.et-reviewer { padding:14px 0; border-bottom:1px solid var(--border); }
+.et-reviewer-heading { display:flex; align-items:center; gap:10px; }
+.et-avatar { display:grid; place-items:center; width:30px; height:30px; flex:0 0 30px; border-radius:50%; background:var(--primary-light); color:var(--primary); font-size:12px; }
+.et-reviewer-heading > div { flex:1; min-width:0; }
+.et-reviewer-heading h3 { font-size:14px; font-weight:500; margin:0 0 3px; }
+.et-reviewer-heading p { font-size:12px; margin:0; color:var(--text-secondary); }
+.et-review-status { font-size:12px; padding:4px 10px; border-radius:20px; white-space:nowrap; }
+.et-pending { background:var(--bg,#F5F6F8); color:var(--text-secondary); }
+.et-draft { background:#fbf4e9; color:#8a6522; }
+.et-submitted { background:#edf4ef; color:#3e664c; }
+.et-reviewer-content { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin:10px 0 0 40px; }
+.et-reviewer-content > details { flex:1; min-width:0; }
+.et-reviewer-content > .shared-actions { display:grid; justify-items:end; margin:0; max-width:50%; gap:4px; }
+.staff-evaluation-tracking .shared-actions button { min-height:32px; font-size:12px; padding:4px 8px; }
+.staff-evaluation-tracking summary { font-size:12px; cursor:pointer; }
+.staff-evaluation-tracking .shared-note { font-size:11px; line-height:1.6; margin:8px 0 0; }
+.et-reviewer-content .shared-note { text-align:right; }
+.et-answers { display:grid; gap:10px; margin:12px 0; }
+.et-answers dt { font-size:12px; color:var(--text-secondary); }
+.et-answers dd { font-size:13px; margin:3px 0 0; white-space:pre-wrap; overflow-wrap:anywhere; }
+.et-reviewer-content .shared-table { min-width:500px; }
+.et-release-notice { background:#fbf4e9; color:#8a6522; border-radius:6px; padding:12px; font-size:12px; line-height:1.6; }
+.et-release-notice strong { font-weight:600; }
+.et-release-notice p { margin:5px 0 0; }
+.et-release-notice.et-ready { background:#edf4ef; color:#3e664c; }
+.et-release-state { display:grid; gap:4px; margin:14px 0; }
+.et-release-state span { font-size:12px; color:var(--text-secondary); }
+.et-release-state strong { font-size:13px; font-weight:500; }
+.app.staff-shell-view .staff-evaluation-tracking .et-release-panel > .shared-card { padding:0; border:0; }
+.et-release-panel > .shared-card h2 { font-size:15px; }
+.app.staff-shell-view .staff-evaluation-tracking .et-release-panel form { display:flex; flex-direction:column; gap:0; }
+.app.staff-shell-view .staff-evaluation-tracking .et-release-panel fieldset { border:0; padding:0; margin:0 0 12px; min-width:0; }
+.app.staff-shell-view .staff-evaluation-tracking .et-release-panel label { margin:0; gap:5px; font-size:13px; }
+.app.staff-shell-view .staff-evaluation-tracking textarea { min-height:76px; height:76px; font-size:13px; }
+.et-release-panel form > button { width:100%; min-height:38px; font-size:13px; }
+.et-release-panel > a { display:block; margin-top:12px; font-size:13px; text-decoration:none; }
+.et-release-details { margin-top:12px; }
+.staff-evaluation-view .project-page-nav { padding:4px 0; margin-bottom:12px; }
+@media(max-width:1100px) { .et-grid { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:600px) { .et-heading { flex-direction:column; align-items:flex-start; gap:10px; } .et-heading h1 { font-size:24px; } .et-progress-strip { gap:16px; padding:14px; } .et-progress-strip h2 strong { font-size:24px; } .et-reviewer-heading { flex-wrap:wrap; } .et-reviewer-content { flex-direction:column; margin-left:0; } .et-reviewer-content > .shared-actions { max-width:100%; justify-items:start; } .et-reviewer-content .shared-note { text-align:left; } }

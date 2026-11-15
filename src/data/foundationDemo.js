@@ -1,4 +1,4 @@
-import { demoNames, refineDemoProject } from './researchDemoProfiles.js'
+import { demoNames, demoAffiliations, refineDemoProject } from './researchDemoProfiles.js'
 import { executeProjectAction } from '../domain/actions.js'
 import { clone } from '../domain/model.js'
 import { demoDocument } from './demoAttachment.js'
@@ -7,7 +7,7 @@ export const FOUNDATION_DEMO_WORKSPACE = 'local-demo-v16'
 export const foundationActors = Object.freeze(Object.fromEntries([
   ['demo-user', 'researcher'], ['demo-staff', 'staff'],
   ['demo-reviewer-1', 'reviewer'], ['demo-reviewer-2', 'reviewer'], ['demo-reviewer-3', 'reviewer'],
-].map(([uid, role]) => [uid, Object.freeze({ uid, username: uid, displayName: demoNames[uid], role, workspace: FOUNDATION_DEMO_WORKSPACE, active: true, simulation: true })])))
+].map(([uid, role]) => [uid, Object.freeze({ uid, username: uid, displayName: demoNames[uid], affiliation: demoAffiliations[uid], role, workspace: FOUNDATION_DEMO_WORKSPACE, active: true, simulation: true })])))
 export const foundationContext = uid => ({ mode: 'local-demo', actor: foundationActors[uid], profiles: foundationActors, now: '2026-11-15T03:00:00.000Z' })
 const proposal = { projectTitle: 'การพัฒนาบรรจุภัณฑ์ย่อยสลายได้จากกากกาแฟอาราบิกา', leaderName: demoNames['demo-user'], objectives: 'ศึกษาข้อมูลสมมติ',
   methodology: 'ใช้ข้อมูลสังเคราะห์', startDate: '2026-01-01', endDate: '2027-01-01', compensation: 1000 }
