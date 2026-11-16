@@ -6,13 +6,22 @@ import { readFoundationProjects } from '../utils/foundationStore'
 import { sharedMode } from '../utils/sharedStore'
 import { hasCapability } from '../domain/permissions'
 import { actorName, projectReference } from '../utils/researchDisplay'
+import DocumentPreview from './DocumentPreview'
+import './EvaluationPdfAction.css'
+function PdfPreviewDialog({preview,onClose}){
+ const ref=useRef(null),{i18n}=useTranslation()
+ useEffect(()=>{const previous=document.activeElement,dialog=ref.current;dialog.showModal();return()=>{dialog.close();previous?.focus()}},[])
+ return <dialog ref={ref} className="shared-dialog evaluation-pdf-dialog" aria-label={i18n.language==='en'?'Evaluation PDF Preview':'ตัวอย่าง PDF ผลประเมิน'} onCancel={e=>{e.preventDefault();onClose()}}><header><h2>{i18n.language==='en'?'Evaluation PDF Preview':'ตัวอย่าง PDF ผลประเมิน'}</h2><button type="button" className="outline-button" onClick={onClose}>{i18n.language==='en'?'Close':'ปิด'}</button></header><div className="evaluation-pdf-scroll"><DocumentPreview enhanced url={preview.url} filename={preview.filename}/></div></dialog>
+}
 export default function EvaluationPdfAction({project,currentUser,reviewerId=currentUser.uid,onGenerated,buttonLabel}) {
  const {i18n}=useTranslation(),text=(a,b)=>i18n.language==='en'?b:a
  const [busy,setBusy]=useState(false),[error,setError]=useState('')
+ const [preview,setPreview]=useState(null)
+ useEffect(()=>()=>{if(preview?.url)URL.revokeObjectURL(preview.url)},[preview])
  const active=useRef(false)
  useEffect(()=>{active.current=true;return()=>{active.current=false}},[])
  const allowed=hasCapability(project,currentUser,'evaluationPdf',{evaluationReviewerId:reviewerId})
- async function download(){setBusy(true);setError('');try{
+ async function download(action='download'){setBusy(true);setError('');try{
   const fresh=()=> {if(!active.current)throw new Error('Account or page changed; PDF download cancelled');return (sharedMode?getProjects():readFoundationProjects()).find(p=>p.id===project.id)}
   const source=fresh(),snapshot=submittedPdfSnapshot(source,currentUser,reviewerId)
   const display=!sharedMode&&source.fictional&&source.simulationOnly&&source.workspace==='local-demo-v16'?{
@@ -23,8 +32,9 @@ export default function EvaluationPdfAction({project,currentUser,reviewerId=curr
   const result=await generateEvaluationPDF(snapshot,display)
   // Recheck access/immutable result after asynchronous font loading, before exposing bytes.
   if(JSON.stringify(submittedPdfSnapshot(fresh(),currentUser,reviewerId))!==JSON.stringify(snapshot))throw new Error('Evaluation changed; reload before generating PDF')
+  if(action==='preview'){if(onGenerated)onGenerated(result);else setPreview({url:URL.createObjectURL(result.blob),filename:result.filename,version:project._version,uid:currentUser.uid,reviewerId});return}
   onGenerated?.(result)
   const url=URL.createObjectURL(result.blob),link=document.createElement('a');link.href=url;link.download=result.filename;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000)
  }catch(e){if(active.current)setError(e.message)}finally{if(active.current)setBusy(false)}}
- return <div className="shared-actions"><button className="outline-button" disabled={busy||!allowed} onClick={download}>{busy?text('กำลังสร้าง PDF…','Generating PDF…'):buttonLabel||text('สร้างและดาวน์โหลด PDF รายบุคคล','Generate Individual PDF')}</button>{!allowed&&<p className="shared-note">{text('ดาวน์โหลดหลัง CLOSED ยัง OPEN; ต้องเป็นผลที่ส่งแล้วตามสิทธิ์','Post-CLOSED PDF access remains OPEN; an authorized submitted result is required.')}</p>}{error&&<p role="alert">{error}</p>}</div>
+ return <div className="shared-actions">{<button type="button" className="outline-button" disabled={busy||!allowed} onClick={()=>download('preview')}>{text('ดู PDF รายบุคคล','Preview Individual PDF')}</button>}<button className="outline-button" disabled={busy||!allowed} onClick={()=>download()}>{busy?text('กำลังสร้าง PDF…','Generating PDF…'):buttonLabel||text('สร้างและดาวน์โหลด PDF รายบุคคล','Generate Individual PDF')}</button>{!allowed&&<p className="shared-note">{text('ดาวน์โหลดหลัง CLOSED ยัง OPEN; ต้องเป็นผลที่ส่งแล้วตามสิทธิ์','Post-CLOSED PDF access remains OPEN; an authorized submitted result is required.')}</p>}{error&&<p role="alert">{error}</p>}{preview&&allowed&&preview.version===project._version&&preview.uid===currentUser.uid&&preview.reviewerId===reviewerId&&<PdfPreviewDialog preview={preview} onClose={()=>setPreview(null)}/>}</div>
 }

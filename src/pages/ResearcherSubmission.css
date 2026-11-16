@@ -1,0 +1,29 @@
+.r06-submission { padding: 20px; }
+.r06-submission > h2 { font-size: 19px; margin: 0 0 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.r06-submission > section { padding: 16px 0; border-bottom: 1px solid var(--border); }
+.r06-submission h3 { font-size: 15px; margin: 0 0 12px; }
+.r06-submission .r06-version { font-size: 12px; color: var(--text-secondary); margin: 0; }
+.r06-submission fieldset { border: 0; margin: 12px 0 0; padding: 0; min-width: 0; }
+.r06-submission fieldset > legend { font-size: 13px; padding: 0; margin-bottom: 8px; }
+.r06-files > .shared-note,.r06-files > p:last-child { display: none; }
+.r06-files .r06-upload { position: relative; display: block; margin: 0; }
+.r06-type { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.r06-dropzone { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 116px; border: 1px dashed var(--border); border-radius: 8px; padding: 16px; color: var(--primary); cursor: pointer; }
+.r06-dropzone:hover { background: var(--primary-light); border-color: var(--primary); }
+.r06-dropzone:focus-within { outline: 2px solid var(--primary); outline-offset: 2px; }
+.r06-dropzone strong { font-size: 14px; }
+.r06-dropzone small { color: var(--text-secondary); font-size: 12px; }
+.r06-dropzone input[type=file] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.r06-files .shared-table-wrap { margin-top: 10px; }
+.r06-files .shared-table-wrap:has(tbody:empty) { display: none; }
+.r06-files .shared-table th,.r06-files .shared-table td { padding: 8px 10px; font-size: 13px; }
+.r06-submission .researcher-check { display: flex; align-items: center; gap: 8px; margin: 10px 0; font-size: 14px; }
+.r06-submission input[type=checkbox],.r06-submission input[type=radio] { width: 17px; height: 17px; min-height: 0; flex-shrink: 0; accent-color: var(--primary); }
+.r06-declaration p { margin: 12px 0 8px; font-size: 14px; }
+.r06-radios { display: flex; gap: 20px; }
+.r06-radios label { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.r06-signature-tools { margin-bottom: 12px; font-size: 13px; }
+.r06-signature-tools summary { color: var(--primary); cursor: pointer; }
+.r06-submission > section > p,.r06-submission .shared-note { font-size: 12px; color: var(--text-secondary); }
+.r06-submission .r06-submit { width: 100%; margin-top: 16px; }
+@media(max-width:600px) { .r06-submission { padding: 16px; } .r06-dropzone { min-height: 108px; } }

@@ -1,8 +1,9 @@
+import { signatureErrors } from '../utils/rs1Signatures.js'
 import { ACTIONS, TRANSITIONS, TERMINAL_STATES, CANCELLATION_REASONS, actorId, requireDomain } from './contracts.js'
 import { assertActor, assertCapability, hasCapability, projectProjection } from './permissions.js'
 import { newProject, assertProject, clone, pick, text, validId, proposalData, syncProposalInfo, emptyClosure,
   validateDocument, assertDate, assertProposalComplete, addMonthsClamped, evaluationProgress, requiredSignatories } from './model.js'
-import { validateEvaluation } from '../utils/evaluation.js'
+import { validateEvaluation,cleanEvaluationAnswers,EVALUATION_RUBRIC_VERSION } from '../utils/evaluation.js'
 import { localDemoPolicyEnabled, correctionFields, EDITABLE_SECTIONS, DEMO_POLICY_ID } from './localDemoPolicy.js'
 
 const evaluationFields = ['objectives', 'objectivesDetail', 'consistency', 'consistencyDetail', 'abstract', 'abstractDetail',
@@ -103,9 +104,10 @@ export function executeProjectAction(previous, command, context) {
     case 'create_project': immutableProposal(p, 'draft', now, uid); break
     case 'save_proposal': {
       const proposal = proposalData(data.proposal || {})
+      requireDomain(!(proposal.electronicSignatures?.length)||proposal.signatureDocumentId===p.id,'SIGNATURE_DOCUMENT_MISMATCH','Signature document reference must match this project')
       if (p.status === 'STAFF_REVIEW') {
         const allowed = correctionFields(p, actor, mode)
-        const changed = [...new Set([...Object.keys(p.proposal), ...Object.keys(proposal)])].filter(key => (p.proposal[key] ?? '') !== (proposal[key] ?? ''))
+        const changed = [...new Set([...Object.keys(p.proposal), ...Object.keys(proposal)])].filter(key => JSON.stringify(p.proposal[key] ?? '') !== JSON.stringify(proposal[key] ?? ''))
         requireDomain(changed.every(key => allowed.includes(key)), 'EDIT_SCOPE_DENIED', 'Only requested Local Demo sections may be edited; production field policy remains OPEN-13', 403)
         eventDetails.correction = { fields: changed, before: pick(p.proposal, changed), after: pick(proposal, changed), temporaryDecision: DEMO_POLICY_ID }
       }
@@ -115,7 +117,7 @@ export function executeProjectAction(previous, command, context) {
     }
     case 'confirm_ready': {
       requireDomain(localDemoPolicyEnabled(p, actor, mode) && data.confirmed === true, 'CONFIRMATION_REQUIRED', 'Local Demo confirmation required')
-      assertProposalComplete(p.proposal)
+      requireDomain(!signatureErrors(p.proposal).length, 'SIGNATURE_CONSENT_REQUIRED', 'Signature images still require valid images, names, dates and consent')
       const source = p.proposalVersions.at(-1), pdf = p.documents.find(d => d.id === data.documentId && d.kind === 'proposal_pdf')
       requireDomain(source && JSON.stringify(source.proposal) === JSON.stringify(p.proposal) && pdf?.proposalVersionId === source.id, 'LATEST_PDF_REQUIRED', 'Generate the PDF for the latest saved proposal version')
       const ready = immutableProposal(p, 'ready', now, uid)
@@ -219,7 +221,7 @@ export function executeProjectAction(previous, command, context) {
     case 'submit_evaluation': {
       requireDomain(c?.method === 'report' && c.assignments.some(a => a.reviewerId === uid), 'ASSIGNMENT_REQUIRED', 'Assigned report required')
         requireDomain(c.reviewers.length === 3 && new Set(c.reviewers).size === 3 && c.assignments.length === 3 && new Set(c.assignments.map(a => a.reviewerId)).size === 3 && c.reviewers.every(id => c.assignments.some(a => a.reviewerId === id)), 'THREE_REVIEWERS_REQUIRED', 'Exactly three unique reviewer assignments required')
-      const evaluation = pick(data.evaluation || {}, evaluationFields)
+      const evaluation = {...cleanEvaluationAnswers(pick(data.evaluation || {}, evaluationFields)),rubricVersion:EVALUATION_RUBRIC_VERSION}
       assertEvaluationTypes(evaluation)
       const documentIds = data.documentIds || []
       requireDomain(documents(p, documentIds, []).every(d => d.kind === 'feedback' && d.uploadedBy === uid), 'ACCESS_DENIED', 'Only the evaluator’s own feedback files are allowed', 403)

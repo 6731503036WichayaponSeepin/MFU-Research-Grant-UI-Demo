@@ -1,3 +1,6 @@
+import { projectParticipants, participantPatch, PARTICIPANT_FIELDS, PARTICIPANT_LEGACY_KEYS } from '../utils/rs1Participants'
+import {workPlanPatch,workTasks} from '../utils/rs1WorkPlan'
+import RS1WorkPlan from '../components/RS1WorkPlan'
 import { useFormDraft,useWorkingFile } from '../utils/useFormDraft'
 import { DRAFT_KEY } from '../utils/projectStorage'
 import { mergeImportedDraft } from '../utils/researcherWorkspace'
@@ -87,7 +90,7 @@ export default function UploadDocument({ onBack, onEdit, workspace }) {
 
       setFile(selectedFile)
       setRawText(result.text); setPageCount(result.pageCount)
-      setExtracted(extractRS1Fields(result.text))
+      setExtracted({...extractRS1Fields(result.text),...result.fields})
       setDone(true)
     } catch (err) {
       console.error(err)
@@ -118,7 +121,9 @@ export default function UploadDocument({ onBack, onEdit, workspace }) {
     setReviewed(false)
     setExtracted(old => ({
       ...old,
-      [key]: value
+      [key]: value,
+      ...(key==='workTasks'?workPlanPatch(old,value):['startDate','endDate'].includes(key)&&Array.isArray(old.workTasks)?workPlanPatch({...old,[key]:value},workTasks(old)):{}),
+      ...(key==='participantRecords'?participantPatch(value):PARTICIPANT_LEGACY_KEYS.includes(key)&&Array.isArray(old.participantRecords)?participantPatch(old.participantRecords.map((row,i)=>i===0?{...row,[PARTICIPANT_FIELDS[PARTICIPANT_LEGACY_KEYS.indexOf(key)]]:value}:row)):{})
     }))
   }
 
@@ -444,7 +449,7 @@ export default function UploadDocument({ onBack, onEdit, workspace }) {
           </div>
 
           <div className="upload-preview-grid">
-            {previewFields.map(([key, thai, english]) => (
+            {previewFields.filter(([key])=>!Array.isArray(extracted.workTasks)||!/^work(?:Task|Period)[1-3]$/.test(key)).map(([key, thai, english, ariaTh, ariaEn]) => (
               <label
                 className={`upload-preview-field ${!extracted[key] ? "extraction-missing" : ""}`}
                 key={key}
@@ -454,6 +459,7 @@ export default function UploadDocument({ onBack, onEdit, workspace }) {
                 {key === 'objectives' || key === 'keywords' ? (
                   <textarea
                     rows={3}
+                    aria-label={t(ariaTh||thai,ariaEn||english)}
                     value={extracted[key] || ''}
                     placeholder={t(
                       'ไม่พบข้อมูล สามารถกรอกเองได้',
@@ -466,6 +472,7 @@ export default function UploadDocument({ onBack, onEdit, workspace }) {
                 ) : (
                   <input
                     type="text"
+                    aria-label={t(ariaTh||thai,ariaEn||english)}
                     value={extracted[key] || ''}
                     placeholder={t(
                       'ไม่พบข้อมูล สามารถกรอกเองได้',
@@ -480,6 +487,8 @@ export default function UploadDocument({ onBack, onEdit, workspace }) {
             ))}
           </div>
 
+          {Array.isArray(extracted.workTasks)&&<section><h3>{t('12. แผนการดำเนินงานตลอดโครงการวิจัย','12. Working plan throughout the Research Project')}</h3><RS1WorkPlan data={extracted} onChange={rows=>updateExtracted('workTasks',rows)}/></section>}
+          {projectParticipants(extracted).length>1&&<section><h3>{t('1.2 ผู้ร่วมโครงการเพิ่มเติม','1.2 Additional Project Participants')}</h3>{projectParticipants(extracted).slice(1).map((person,index)=><div className="upload-preview-grid" key={index}>{PARTICIPANT_FIELDS.map((key,i)=><label key={key}><span>{previewFields.find(([field])=>field===PARTICIPANT_LEGACY_KEYS[i])?.[i18n.language!=='en'?1:2]||key} ({index+2})</span><input aria-label={(previewFields.find(([field])=>field===PARTICIPANT_LEGACY_KEYS[i])?.[isThai?3:4]||key)+' ('+(index+2)+')'} value={person[key]??''} onChange={e=>updateExtracted('participantRecords',projectParticipants(extracted).map((row,n)=>n===index+1?{...row,[key]:e.target.value}:row))}/></label>)}</div>)}</section>}
           <details className="upload-raw-text">
             <summary>
               {t(

@@ -1,0 +1,65 @@
+import assert from 'node:assert/strict'
+import {createRequire} from 'node:module'
+import {mkdir,writeFile,readFile} from 'node:fs/promises'
+import {createServer} from 'vite'
+const {chromium}=createRequire(import.meta.url)(process.env.MFU_PLAYWRIGHT_MODULE||'playwright')
+const server=await createServer({envDir:'tmp/rs1-no-env',server:{host:'127.0.0.1',port:5220,strictPort:true}});await server.listen()
+const browser=await chromium.launch({channel:'chrome',headless:true}),page=await browser.newPage({viewport:{width:1440,height:1000}})
+let n=0;const check=(v,m)=>{assert.ok(v,m);n++},base='http://127.0.0.1:5220/',dir='tmp/rs1-alignment',errors=[]
+page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept())
+try{
+ await mkdir(dir,{recursive:true});await page.goto(base+'#/researcher/dashboard');await page.getByRole('button',{name:'EN',exact:true}).click()
+ await page.goto(base+'#/researcher/projects/V16-DRAFT/manual');await page.locator('.rs1-field').first().waitFor()
+ check(await page.locator('.rs1-field').count()===69,'original static fields plus dynamic work plan')
+ check(await page.locator('.rs1-reference-table').count()===2,'work plan and budget tables')
+ await page.getByLabel('Participant Full Name',{exact:true}).fill('ดร. มาลี ใจดี')
+ await page.getByLabel('Participant Email',{exact:true}).fill('malee.fictional@example.org')
+ await page.getByLabel('Task 1',{exact:true}).fill('เก็บข้อมูลสวนชา');await page.getByLabel('Task 1 end date',{exact:true}).fill('2026-03-31')
+ await page.getByLabel('Compensation: Expense item 1 (multipliers)',{exact:true}).fill('ผู้ช่วยวิจัย 3 วัน × 500 บาท');await page.getByLabel('Compensation: Item 1 amount',{exact:true}).fill('1500');check(await page.locator('.rs1-budget-actions output').first().innerText()==='1,500.00','itemized budget updates category total')
+ const png=await page.evaluate(()=>{const c=document.createElement('canvas');c.width=240;c.height=60;const x=c.getContext('2d');x.fillText('TEST IMAGE ONLY',10,30);return c.toDataURL('image/png').split(',')[1]})
+ const image={name:'test-only.png',mimeType:'image/png',buffer:Buffer.from(png,'base64')}
+ await page.getByLabel('Advisor Name',{exact:true}).fill('ศ. ดร. นภา สมมติ')
+ for(const role of ['Project Advisor','Project Leader','Project Team Members'])await page.getByLabel('Upload signature image — '+role,{exact:true}).setInputFiles(image)
+ await page.locator('.rs1-signature img').nth(2).waitFor();check(await page.locator('.rs1-signature img').count()===3,'all three signatory image previews')
+ await page.getByLabel('Advisor Signature Date',{exact:true}).fill('2026-11-16')
+ await page.getByLabel('Leader Signature Date',{exact:true}).fill('2026-11-16')
+ await page.getByLabel('Team Signature Date',{exact:true}).fill('2026-11-16')
+ const result=await page.evaluate(async()=>{const {generateRS1PDF}=await import('/src/utils/generateRS1PDF.js');const draft=JSON.parse(localStorage.getItem('mfu-researcher-v16:local-demo-v16:demo-user:V16-DRAFT'));try{await generateRS1PDF(draft);return false}catch(e){return /consent/i.test(e.message)||e.fieldErrors?.some(x=>/consent/i.test(x.messageEn))}})
+ check(result,'PDF blocked without electronic image consent')
+ await page.getByLabel('I obtained consent from all other signature owners',{exact:true}).check();await page.reload();await page.locator('.rs1-signature img').nth(2).waitFor()
+ check(await page.getByLabel('Participant Full Name',{exact:true}).inputValue()==='ดร. มาลี ใจดี','participant recovery')
+ check(await page.getByLabel('I obtained consent from all other signature owners',{exact:true}).isChecked(),'consent recovery')
+ await page.getByRole('button',{name:'Remove signature image — Project Advisor',exact:true}).click();check(await page.locator('.rs1-signature img').count()===2,'remove image')
+ check(await page.getByLabel('I obtained consent from all other signature owners',{exact:true}).isChecked(),'removing an image preserves consent for unchanged signers')
+ await page.getByLabel('Upload signature image — Project Advisor',{exact:true}).setInputFiles(image);await page.locator('.rs1-signature img').nth(2).waitFor()
+ await page.getByLabel('Advisor Signature Date',{exact:true}).fill('2026-11-16');await page.getByLabel('Replace signature image — Project Leader',{exact:true}).setInputFiles(image);await page.getByLabel('I obtained consent from all other signature owners',{exact:true}).check()
+ const pdf=await page.evaluate(async()=>{const {generateRS1PDF}=await import('/src/utils/generateRS1PDF.js');const {extractDocumentText}=await import('/src/utils/rs1Extraction.js');const draft=JSON.parse(localStorage.getItem('mfu-researcher-v16:local-demo-v16:demo-user:V16-DRAFT'));const result=await generateRS1PDF(draft),bytes=new Uint8Array(await result.blob.arrayBuffer());const parsed=await extractDocumentText(new File([result.blob],'RS1.pdf',{type:'application/pdf'}));let binary='';for(const b of bytes)binary+=String.fromCharCode(b);return {base64:btoa(binary),...parsed}})
+ check(pdf.pageCount>=7,'PDF retains seven reference sections/pages without clipping overflow')
+ for(const title of ['Part A','Part B','Part C','Category 1','Category 4','Project Team Members','TEST'])if(title!=='TEST')check(pdf.text.includes(title),'PDF '+title)
+ check(pdf.text.includes('มาลี')&&pdf.text.includes('2026-11-16'),'PDF signatory names/dates')
+ check(Buffer.from(pdf.base64,'base64').toString('latin1').includes('/Subtype /Image'),'PDF embeds real uploaded image bytes')
+ await writeFile(dir+'/signed-proposal.pdf',Buffer.from(pdf.base64,'base64'));await writeFile(dir+'/pdf-text.txt',pdf.text)
+ await page.getByRole('button',{name:'Save Draft',exact:true}).last().click();await page.waitForURL(/details$/)
+ const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('mfu-foundation-v16-demo-projects')).find(p=>p.id==='V16-DRAFT'))
+ check(saved.status==='DRAFT'&&saved.proposal.electronicSignatures.every(r=>r.consent),'save does not transition')
+ check(JSON.stringify(saved.proposalVersions.at(-1).proposal.electronicSignatures)===JSON.stringify(saved.proposal.electronicSignatures),'immutable version contains image consent snapshot')
+ await page.goto(base+'#/researcher/projects/V16-DRAFT/manual');await page.locator('.rs1-signature img').nth(2).waitFor();check(await page.locator('.rs1-signature img').count()===3,'saved image recovery')
+ for(const width of [1440,768,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(350);check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'responsive '+width);await page.screenshot({path:dir+`/editor-${width}.png`,fullPage:false})}
+ await page.goto(base+'#/researcher/dashboard');await page.getByRole('button',{name:'Add Research Scenarios',exact:true}).click();await page.goto(base+'#/researcher/projects/V16-CORRECTION/manual');await page.locator('.rs1-field').first().waitFor()
+ check(await page.getByLabel('Participant Full Name',{exact:true}).isDisabled(),'unrequested participant correction remains locked')
+ check(await page.getByLabel('Upload signature image — Project Leader',{exact:true}).isDisabled(),'no new signature correction permissions')
+ await page.goto(base+'#/staff/projects/V16-DRAFT/staff-review');await page.locator('.staff-proposal-review').waitFor();check(await page.locator('.sp-left>section').first().locator('.rs1-signature img').count()===3,'Staff sees submitted proposal image fields as previews')
+ const reference=process.env.MFU_RS1_REFERENCE_DOCX
+ if(reference){
+  const bytes=(await readFile(reference)).toString('base64')
+  const extracted=await page.evaluate(async base64=>{const {extractDocumentText}=await import('/src/utils/rs1Extraction.js');const {extractRS1Fields}=await import('/src/utils/rs1FieldMapping.js');const bytes=Uint8Array.from(atob(base64),c=>c.charCodeAt(0));const value=await extractDocumentText(new File([bytes],'RS1.docx',{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'}));return extractRS1Fields(value.text)},bytes)
+  check(extracted.projectTitle==='โครงการทดสอบการนำเข้า RS-1','DOCX project title extraction')
+  check(extracted.leaderName==='ดร. กานต์ สมมติ'&&extracted.participantName==='ดร. มาลี สมมติ'&&extracted.advisorName==='ศ. ดร. นภา สมมติ','DOCX contextual repeated name mapping')
+  await page.goto(base+'#/researcher/upload');await page.locator('input[type=file]').setInputFiles(reference);await page.locator('.upload-result').waitFor()
+  check(await page.getByLabel('Participant Full Name',{exact:true}).inputValue()==='ดร. มาลี สมมติ','actual DOCX UI preview')
+  await page.getByLabel('I have reviewed and corrected the extracted values',{exact:true}).check();await page.getByRole('button',{name:'Continue to RS-1 Form',exact:true}).click();await page.locator('.rs1-field').first().waitFor()
+  check(await page.getByLabel('Participant Full Name',{exact:true}).inputValue()==='ดร. มาลี สมมติ','DOCX reviewed transfer preserves added fields')
+ }
+ check(errors.length===0,'no browser runtime errors')
+ console.log(`PASS RS-1 alignment ${n} checks; PDF ${pdf.pageCount} pages`)
+}finally{await browser.close();await server.close()}

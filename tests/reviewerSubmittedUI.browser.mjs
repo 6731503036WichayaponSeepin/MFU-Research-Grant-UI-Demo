@@ -29,7 +29,7 @@ try{
   check(rendered.text.includes('MFU-RG-2569-011'),'readable project reference in generated PDF')
   check(!/V16-EVALUATION|demo-reviewer-|fixture-doc-|T03:00:00/.test(rendered.text),'no developer identifiers in normal PDF pages')
   check(rendered.snapshot.reviewerId===`demo-reviewer-${i}`&&rendered.snapshot.projectId==='V16-EVALUATION-3','exact internal identities retained in PDF metadata')
-  check(JSON.stringify(rendered.snapshot.evaluation)===JSON.stringify(evaluation),'exact submitted answers retained in PDF metadata')
+  check(JSON.stringify(rendered.snapshot.evaluation)===JSON.stringify((await page.evaluate(async e=>(await import('/src/utils/evaluation.js')).cleanEvaluationAnswers(e),evaluation))),'submitted snapshot projected without inactive answers in PDF metadata')
   check(await page.evaluate(()=>localStorage.getItem('mfu-foundation-v16-demo-projects'))===original,'no project mutation')
   for(const lang of ['TH','EN'])for(const width of [1440,768,390]){await page.setViewportSize({width,height:900});await page.getByRole('button',{name:lang,exact:true}).click();await page.waitForTimeout(350);check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'responsive '+lang+width);if(i===1)await page.screenshot({path:`tmp/reviewer-submitted-ui/${lang}-${width}.png`,fullPage:true})}
   await page.getByRole('link',{name:'← Return to Assigned Reviews',exact:true}).click();await page.locator('.rv-workspace').waitFor();check(page.url().endsWith('/projects'),'return assigned reviews')

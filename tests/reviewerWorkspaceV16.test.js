@@ -40,8 +40,8 @@ test('PDF snapshot is submitted-only, private, immutable and excludes post-termi
  assert.throws(()=>submittedPdfSnapshot(submitted,foundationActors['demo-user'],actor.uid),/unavailable/)
  assert.throws(()=>submittedPdfSnapshot({...submitted,status:'CLOSED'},actor),/unavailable/)
  assert.equal(JSON.stringify(submitted),before);snapshot.evaluation.chapters='Changed';assert.notEqual(snapshot.evaluation.chapters,submitted.closure.evaluations[actor.uid].chapters)
- assert.ok(evaluationRows(evaluation).some(([k,v])=>k==='เหตุผล / Reason'&&v===evaluation.reason))
- assert.deepEqual(evaluationPayload({...evaluation,by:'spoof',result:undefined}),Object.fromEntries(Object.entries(evaluation).filter(([k])=>k!=='result')))
+ assert.ok(!evaluationRows(evaluation).some(([k])=>k==='เหตุผล / Reason'));assert.ok(!evaluationRows({...evaluation,submitted:true}).some(([k])=>k==='เหตุผล / Reason'));assert.equal(evaluation.reason,'Preserved optional reason')
+ assert.deepEqual(evaluationPayload({...evaluation,by:'spoof',result:undefined}),{objectives:0,consistency:0,abstract:0,executive:0,chapters:evaluation.chapters,utilization:evaluation.utilization,rubricVersion:'SOURCE-DRAFT-2026-11'})
 })
 test('reviewer can read own staged feedback but never another reviewer feedback',()=>{
  const p=base(),doc={id:'feedback',kind:'feedback',uploadedBy:actor.uid}

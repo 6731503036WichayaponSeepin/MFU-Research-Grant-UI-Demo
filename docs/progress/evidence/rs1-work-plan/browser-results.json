@@ -1,0 +1,328 @@
+[
+  {
+    "source": "tests/finalCrossRole.browser.mjs",
+    "status": "PASS",
+    "started": "2026-11-16T16:38:31.451Z",
+    "exitCode": 0,
+    "log": "docs/progress/evidence/final-e2e/finalCrossRole.browser.mjs.log",
+    "summary": [
+      "PASS Final Cross-role browser 55 checks; two new proposals completed through real UI, report + publication"
+    ],
+    "previousRun": {
+      "source": "tests/finalCrossRole.browser.mjs",
+      "status": "FAIL",
+      "started": "2026-11-16T16:34:49.932Z",
+      "exitCode": 1,
+      "log": "docs/progress/evidence/final-e2e/finalCrossRole.browser.mjs.log",
+      "summary": [],
+      "previousRun": {
+        "source": "tests/finalCrossRole.browser.mjs",
+        "status": "FAIL",
+        "started": "2026-11-16T16:29:23.271Z",
+        "exitCode": 1,
+        "log": "docs/progress/evidence/final-e2e/finalCrossRole.browser.mjs.log",
+        "summary": [],
+        "previousRun": {
+          "source": "tests/finalCrossRole.browser.mjs",
+          "status": "PASS",
+          "started": "2026-11-16T15:42:11.111Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/finalCrossRole.browser.mjs.log",
+          "summary": [
+            "PASS Final Cross-role browser 55 checks; two new proposals completed through real UI, report + publication"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "source": "tests/researcherFlow.browser.mjs",
+    "status": "PASS",
+    "started": "2026-11-16T16:38:58.292Z",
+    "exitCode": 0,
+    "log": "docs/progress/evidence/final-e2e/researcherFlow.browser.mjs.log",
+    "summary": [
+      "PASS Researcher validation: 162 checks; 69 field bindings/recovery; nine states; upload path switching; TH/EN responsive"
+    ],
+    "previousRun": {
+      "source": "tests/researcherFlow.browser.mjs",
+      "status": "FAIL",
+      "started": "2026-11-16T16:35:24.599Z",
+      "exitCode": 1,
+      "log": "docs/progress/evidence/final-e2e/researcherFlow.browser.mjs.log",
+      "summary": [],
+      "previousRun": {
+        "source": "tests/researcherFlow.browser.mjs",
+        "status": "PASS",
+        "started": "2026-11-16T16:30:28.069Z",
+        "exitCode": 0,
+        "log": "docs/progress/evidence/final-e2e/researcherFlow.browser.mjs.log",
+        "summary": [
+          "PASS Researcher validation: 162 checks; 69 field bindings/recovery; nine states; upload path switching; TH/EN responsive"
+        ],
+        "previousRun": {
+          "source": "tests/researcherFlow.browser.mjs",
+          "status": "PASS",
+          "started": "2026-11-16T15:45:46.203Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/researcherFlow.browser.mjs.log",
+          "summary": [
+            "PASS Researcher validation: 174 checks; 75 field bindings/recovery; nine states; upload path switching; TH/EN responsive"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "source": "tests/researcherManualUI.browser.mjs",
+    "status": "PASS",
+    "started": "2026-11-16T16:39:10.141Z",
+    "exitCode": 0,
+    "log": "docs/progress/evidence/final-e2e/researcherManualUI.browser.mjs.log",
+    "summary": [
+      "PASS Researcher Manual UI 63 checks"
+    ],
+    "previousRun": {
+      "source": "tests/researcherManualUI.browser.mjs",
+      "status": "PASS",
+      "started": "2026-11-16T16:35:59.266Z",
+      "exitCode": 0,
+      "log": "docs/progress/evidence/final-e2e/researcherManualUI.browser.mjs.log",
+      "summary": [
+        "PASS Researcher Manual UI 63 checks"
+      ],
+      "previousRun": {
+        "source": "tests/researcherManualUI.browser.mjs",
+        "status": "FAIL",
+        "started": "2026-11-16T16:30:38.517Z",
+        "exitCode": 1,
+        "log": "docs/progress/evidence/final-e2e/researcherManualUI.browser.mjs.log",
+        "summary": [],
+        "previousRun": {
+          "source": "tests/researcherManualUI.browser.mjs",
+          "status": "PASS",
+          "started": "2026-11-16T15:45:56.986Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/researcherManualUI.browser.mjs.log",
+          "summary": [
+            "PASS Researcher Manual UI 63 checks"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "source": "tests/rs1Budget.browser.mjs",
+    "status": "PASS",
+    "started": "2026-11-16T16:39:26.966Z",
+    "exitCode": 0,
+    "log": "docs/progress/evidence/final-e2e/rs1Budget.browser.mjs.log",
+    "summary": [
+      "PASS RS-1 dynamic budget 22 checks"
+    ],
+    "previousRun": {
+      "source": "tests/rs1Budget.browser.mjs",
+      "status": "PASS",
+      "started": "2026-11-16T16:36:47.956Z",
+      "exitCode": 0,
+      "log": "docs/progress/evidence/final-e2e/rs1Budget.browser.mjs.log",
+      "summary": [
+        "PASS RS-1 dynamic budget 22 checks"
+      ],
+      "previousRun": {
+        "source": "tests/rs1Budget.browser.mjs",
+        "status": "FAIL",
+        "started": "2026-11-16T16:31:18.724Z",
+        "exitCode": 1,
+        "log": "docs/progress/evidence/final-e2e/rs1Budget.browser.mjs.log",
+        "summary": [],
+        "previousRun": {
+          "source": "tests/rs1Budget.browser.mjs",
+          "status": "PASS",
+          "started": "2026-11-16T15:51:07.198Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/rs1Budget.browser.mjs.log",
+          "summary": [
+            "PASS RS-1 dynamic budget 22 checks"
+          ],
+          "previousRun": {
+            "source": "tests/rs1Budget.browser.mjs",
+            "status": "PASS",
+            "started": "2026-11-16T15:48:14.063Z",
+            "exitCode": 0,
+            "log": "docs/progress/evidence/final-e2e/rs1Budget.browser.mjs.log",
+            "summary": [
+              "PASS RS-1 dynamic budget 21 checks"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "source": "tests/rs1Strict.browser.mjs",
+    "status": "PASS",
+    "started": "2026-11-16T16:39:35.727Z",
+    "exitCode": 0,
+    "log": "docs/progress/evidence/final-e2e/rs1Strict.browser.mjs.log",
+    "summary": [
+      "PASS Strict RS-1 203 checks; 97 original fields; 7 source pages"
+    ],
+    "previousRun": {
+      "source": "tests/rs1Strict.browser.mjs",
+      "status": "FAIL",
+      "started": "2026-11-16T16:36:56.786Z",
+      "exitCode": 1,
+      "log": "docs/progress/evidence/final-e2e/rs1Strict.browser.mjs.log",
+      "summary": [],
+      "previousRun": {
+        "source": "tests/rs1Strict.browser.mjs",
+        "status": "PASS",
+        "started": "2026-11-16T16:31:51.976Z",
+        "exitCode": 0,
+        "log": "docs/progress/evidence/final-e2e/rs1Strict.browser.mjs.log",
+        "summary": [
+          "PASS Strict RS-1 203 checks; 97 original fields; 7 source pages"
+        ],
+        "previousRun": {
+          "source": "tests/rs1Strict.browser.mjs",
+          "status": "PASS",
+          "started": "2026-11-16T15:48:29.638Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/rs1Strict.browser.mjs.log",
+          "summary": [
+            "PASS Strict RS-1 203 checks; 97 original fields; 7 source pages"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "source": "tests/rs1Alignment.browser.mjs",
+    "status": "PASS",
+    "started": "2026-11-16T16:41:55.685Z",
+    "exitCode": 0,
+    "log": "docs/progress/evidence/final-e2e/rs1Alignment.browser.mjs.log",
+    "summary": [
+      "PASS RS-1 alignment 28 checks; PDF 7 pages"
+    ],
+    "previousRun": {
+      "source": "tests/rs1Alignment.browser.mjs",
+      "status": "FAIL",
+      "started": "2026-11-16T16:39:23.138Z",
+      "exitCode": 1,
+      "log": "docs/progress/evidence/final-e2e/rs1Alignment.browser.mjs.log",
+      "summary": [],
+      "previousRun": {
+        "source": "tests/rs1Alignment.browser.mjs",
+        "status": "FAIL",
+        "started": "2026-11-16T16:36:13.227Z",
+        "exitCode": 1,
+        "log": "docs/progress/evidence/final-e2e/rs1Alignment.browser.mjs.log",
+        "summary": [],
+        "previousRun": {
+          "source": "tests/rs1Alignment.browser.mjs",
+          "status": "PASS",
+          "started": "2026-11-16T16:31:11.349Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/rs1Alignment.browser.mjs.log",
+          "summary": [
+            "PASS RS-1 alignment 28 checks; PDF 7 pages"
+          ],
+          "previousRun": {
+            "source": "tests/rs1Alignment.browser.mjs",
+            "status": "PASS",
+            "started": "2026-11-16T15:48:06.025Z",
+            "exitCode": 0,
+            "log": "docs/progress/evidence/final-e2e/rs1Alignment.browser.mjs.log",
+            "summary": [
+              "PASS RS-1 alignment 28 checks; PDF 7 pages"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "source": "tests/rs1WorkPlan.browser.mjs",
+    "status": "PASS",
+    "started": "2026-11-16T16:42:11.167Z",
+    "exitCode": 0,
+    "log": "docs/progress/evidence/final-e2e/rs1WorkPlan.browser.mjs.log",
+    "summary": [
+      "PASS RS-1 dynamic working plan 38 checks"
+    ],
+    "previousRun": {
+      "source": "tests/rs1WorkPlan.browser.mjs",
+      "status": "PASS",
+      "started": "2026-11-16T16:39:45.816Z",
+      "exitCode": 0,
+      "log": "docs/progress/evidence/final-e2e/rs1WorkPlan.browser.mjs.log",
+      "summary": [
+        "PASS RS-1 dynamic working plan 35 checks"
+      ],
+      "previousRun": {
+        "source": "tests/rs1WorkPlan.browser.mjs",
+        "status": "FAIL",
+        "started": "2026-11-16T16:37:31.784Z",
+        "exitCode": 1,
+        "log": "docs/progress/evidence/final-e2e/rs1WorkPlan.browser.mjs.log",
+        "summary": [],
+        "previousRun": {
+          "source": "tests/rs1WorkPlan.browser.mjs",
+          "status": "FAIL",
+          "started": "2026-11-16T16:32:00.148Z",
+          "exitCode": 1,
+          "log": "docs/progress/evidence/final-e2e/rs1WorkPlan.browser.mjs.log",
+          "summary": []
+        }
+      }
+    }
+  },
+  {
+    "source": "tests/staff-ui/proposal-review-ui.mjs",
+    "status": "PASS",
+    "started": "2026-11-16T16:42:24.761Z",
+    "exitCode": 0,
+    "log": "docs/progress/evidence/final-e2e/staff-ui-proposal-review-ui.mjs.log",
+    "summary": [
+      "PASS Proposal Review UI 19 checks"
+    ],
+    "previousRun": {
+      "source": "tests/staff-ui/proposal-review-ui.mjs",
+      "status": "FAIL",
+      "started": "2026-11-16T16:40:01.648Z",
+      "exitCode": 1,
+      "log": "docs/progress/evidence/final-e2e/staff-ui-proposal-review-ui.mjs.log",
+      "summary": [],
+      "previousRun": {
+        "source": "tests/staff-ui/proposal-review-ui.mjs",
+        "status": "FAIL",
+        "started": "2026-11-16T16:38:06.866Z",
+        "exitCode": 1,
+        "log": "docs/progress/evidence/final-e2e/staff-ui-proposal-review-ui.mjs.log",
+        "summary": [],
+        "previousRun": {
+          "source": "tests/staff-ui/proposal-review-ui.mjs",
+          "status": "PASS",
+          "started": "2026-11-16T16:32:32.899Z",
+          "exitCode": 0,
+          "log": "docs/progress/evidence/final-e2e/staff-ui-proposal-review-ui.mjs.log",
+          "summary": [
+            "PASS Proposal Review UI 19 checks"
+          ],
+          "previousRun": {
+            "source": "tests/staff-ui/proposal-review-ui.mjs",
+            "status": "PASS",
+            "started": "2026-11-16T15:49:54.649Z",
+            "exitCode": 0,
+            "log": "docs/progress/evidence/final-e2e/staff-ui-proposal-review-ui.mjs.log",
+            "summary": [
+              "PASS Proposal Review UI 19 checks"
+            ]
+          }
+        }
+      }
+    }
+  }
+]

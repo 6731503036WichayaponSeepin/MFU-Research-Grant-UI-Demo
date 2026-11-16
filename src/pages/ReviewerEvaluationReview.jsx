@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Check, CircleAlert } from 'lucide-react'
 import { evaluationRows } from '../utils/reviewerWorkspace'
-import { evaluationQuestions, narrativeFields, utilizationOptions, evaluationResults } from '../utils/evaluation'
+import { evaluationQuestions, narrativeFields, utilizationOptions,utilizationFormOptions, evaluationResults } from '../utils/evaluation'
 import { projectReference, actorName, displayDate } from '../utils/researchDisplay'
 import './ReviewerEvaluationReview.css'
 
@@ -15,6 +15,7 @@ const outcomesEn=['Report quality certified without revisions','Report quality c
 export default function ReviewerEvaluationReview({project:p,currentUser,assignment,evaluation,documentIds,validation,saved,go,actions}) {
  const {i18n}=useTranslation(), en=i18n.language==='en', text=(th,english)=>en?english:th
  const labelMap=Object.fromEntries([...evaluationQuestions.map(([,label],i)=>[label,questionsEn[i]]),...narrativeFields.map(([,label],i)=>[label,narrativesEn[i]||label]),...utilizationOptions.map((label,i)=>[label,utilizationEn[i]]),['ผลประเมิน / Result','Final Result'],['เหตุผล / Reason','Result Reason'],['ข้อเสนอแนะเพิ่มเติม / Additional comments','Additional Comments']])
+ utilizationFormOptions.forEach((title,i)=>{labelMap[title]='2.'+(i+1)+' '+utilizationEn[i]})
  const label=value=>{const suffix=' — รายละเอียด / Details';return en?(labelMap[value]||value.endsWith(suffix)&&`${labelMap[value.slice(0,-suffix.length)]||value.slice(0,-suffix.length)} — Details`||value):value}
  const rows=evaluationRows(evaluation), criteriaLabels=new Set(evaluationQuestions.map(([,name])=>name))
  const criteria=rows.filter(([name])=>criteriaLabels.has(name)), comments=rows.filter(([name])=>!criteriaLabels.has(name)&&name!=='ผลประเมิน / Result'), result=rows.filter(([name])=>name==='ผลประเมิน / Result')

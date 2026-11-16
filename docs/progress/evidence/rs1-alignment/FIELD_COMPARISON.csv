@@ -1,0 +1,98 @@
+﻿key,original_english,thai_translation,type
+projectTitle,1. Project Title,1. ชื่อโครงการ,text
+strategy,"2. The project corresponds to the strategies of the university in the fields of (Selecting exactly one choice from a list, mark ✓ in □)",2. โครงการสอดคล้องกับยุทธศาสตร์มหาวิทยาลัยด้านใด (เลือกเพียงหนึ่งข้อ โดยทำเครื่องหมาย ✓ ใน □),choices
+leaderName,Full name:,ชื่อ-นามสกุล:,text
+leaderAffiliation,Affiliation:,สังกัด:,text
+leaderPhone,Telephone number/Mobile number:,หมายเลขโทรศัพท์ / หมายเลขโทรศัพท์มือถือ:,text
+leaderEmail,E-mail:,อีเมล:,email
+leaderPercent,Percentage of the responsibility toward the project:,ร้อยละความรับผิดชอบต่อโครงการ:,number
+participantName,Full name:,ชื่อ-นามสกุล:,text
+participantAffiliation,Affiliation:,สังกัด:,text
+participantPhone,Telephone number/Mobile number:,หมายเลขโทรศัพท์ / หมายเลขโทรศัพท์มือถือ:,text
+participantEmail,E-mail:,อีเมล:,email
+participantPercent,Percentage of the responsibility toward the project:,ร้อยละความรับผิดชอบต่อโครงการ:,number
+advisorName,Full name:,ชื่อ-นามสกุล:,text
+advisorQualification,Educational qualification:,คุณวุฒิการศึกษา:,text
+advisorPosition,Academic positions:,ตำแหน่งทางวิชาการ:,text
+advisorAffiliation,Affiliation:,สังกัด:,text
+cooperationName,Full name:,ชื่อ-นามสกุล:,text
+cooperationAffiliation,Affiliation:,สังกัด:,text
+cooperationAddress,Address:,ที่อยู่:,text
+cooperationType,The type of research cooperation:,ลักษณะความร่วมมือด้านการวิจัย:,text
+researchType,4. Type of the Research,4. ประเภทของการวิจัย,text
+keywords,5. Keywords of the Project,5. คำสำคัญของโครงการ,textarea
+background,6. The Background of the Research and the Conceptual Framework,6. ความเป็นมาของการวิจัยและกรอบแนวคิด,textarea
+objectives,7. Objectives of the Research Project,7. วัตถุประสงค์ของโครงการวิจัย,textarea
+literature,8. Literature Review,8. การทบทวนวรรณกรรม,textarea
+references,9. References (please specify according to the international format),9. เอกสารอ้างอิง (โปรดระบุตามรูปแบบสากล),textarea
+methodology,10. Methodology,10. ระเบียบวิธีวิจัย,textarea
+scope,11. Scope of the Research,11. ขอบเขตการวิจัย,textarea
+startDate,The duration,ระยะเวลาเริ่มต้น,date
+endDate,to,ถึง,date
+workTask1,Task,งาน,text
+workPeriod1,Period,ช่วงเวลา,text
+workTask2,Task,งาน,text
+workPeriod2,Period,ช่วงเวลา,text
+workTask3,Task,งาน,text
+workPeriod3,Period,ช่วงเวลา,text
+progress,13. Research Progress According to the Duration of Reporting the Progress of the Research,13. ความก้าวหน้าของการวิจัยตามระยะเวลารายงานความก้าวหน้าการวิจัย,textarea
+outcomeType,14. Expected Outcomes of the Research,14. ผลผลิตที่คาดว่าจะได้รับจากการวิจัย,choices
+outcomeDetail,,,textarea
+integration,15. Integration of Research,15. การบูรณาการงานวิจัย,textarea
+publicationLevel,16. Level of Publishing to Societies,16. ระดับการเผยแพร่สู่สังคม,choices
+compensationItem1,,,text
+compensationAmount1,,,number
+compensationItem2,,,text
+compensationAmount2,,,number
+compensationItem3,,,text
+compensationAmount3,,,number
+directCostItem1,,,text
+directCostAmount1,,,number
+directCostItem2,,,text
+directCostAmount2,,,number
+directCostItem3,,,text
+directCostAmount3,,,number
+materialsItem1,,,text
+materialsAmount1,,,number
+materialsItem2,,,text
+materialsAmount2,,,number
+materialsItem3,,,text
+materialsAmount3,,,number
+utilityItem1,,,text
+utilityAmount1,,,number
+utilityItem2,,,text
+utilityAmount2,,,number
+utilityItem3,,,text
+utilityAmount3,,,number
+standards,18. Research standards,18. มาตรฐานการวิจัย,choices
+clarifications,19. Other clarifications (if any),19. คำชี้แจงอื่น ๆ (ถ้ามี),textarea
+advisorSignature,(...........................................................),(...........................................................),text
+advisorSignDate,Date ...................................................,วันที่ ...................................................,date
+leaderSignature,(...........................................................),(...........................................................),text
+leaderSignDate,Date ...................................................,วันที่ ...................................................,date
+teamSignatureName,(.................................................),(.................................................),text
+teamSignDate,Date ...................................................,วันที่ ...................................................,date
+bioName,1. Full name:,1. ชื่อ-นามสกุล:,text
+bioPosition,2. Academic position:,2. ตำแหน่งทางวิชาการ:,text
+bioResearchId,3. National Researcher Identification Number (if any):,3. เลขประจำตัวนักวิจัยแห่งชาติ (ถ้ามี):,text
+bioEducation,4. Educational background:,4. ประวัติการศึกษา:,textarea
+bioExperience,5. Working experiences:,5. ประสบการณ์ทำงาน:,textarea
+bioExpertise,6. Academic disciplines with special expertise (different from educational qualifications) specify academic fields.,6. สาขาวิชาที่มีความเชี่ยวชาญเป็นพิเศษ (แตกต่างจากคุณวุฒิการศึกษา) โปรดระบุสาขาวิชาการ,textarea
+bioPublications,"7. History of publishing research both inside and outside the country. Please specify the title of the work, the name of the journal according to the international system.",7. ประวัติการตีพิมพ์ผลงานวิจัยทั้งในและต่างประเทศ โปรดระบุชื่อผลงานและชื่อวารสารตามรูปแบบสากล,textarea
+bioPresentations,"8. History of research presentations both inside and outside the country. Please specify the title of the work. Meeting name, place, date, and time according to the international system.",8. ประวัติการนำเสนอผลงานวิจัยทั้งในและต่างประเทศ โปรดระบุชื่อผลงาน ชื่อการประชุม สถานที่ วันที่ และเวลาตามรูปแบบสากล,textarea
+bioIP,9. Research that has been registered with intellectual property or research results that are in the process of applying for intellectual property registration.,9. ผลงานวิจัยที่จดทะเบียนทรัพย์สินทางปัญญาแล้ว หรือผลงานวิจัยที่อยู่ระหว่างยื่นขอจดทะเบียนทรัพย์สินทางปัญญา,textarea
+bioManagement,"10. Experience related to research management both domestically and internationally, indicating the research position as the director of the research plan, the head of the research project, or co-researchers in each research proposal, and state the research status as well.",10. ประสบการณ์ด้านการบริหารงานวิจัยทั้งในและต่างประเทศ โดยระบุบทบาทผู้อำนวยการแผนงานวิจัย หัวหน้าโครงการวิจัย หรือผู้ร่วมวิจัยของแต่ละข้อเสนอโครงการ พร้อมระบุสถานะการวิจัย,textarea
+bioCompleted,"10.1 Completed Research: Research title, research proportion (%), research team and co-institution, funding source, year of funding, and publishing research results.",10.1 งานวิจัยที่เสร็จสิ้น: ชื่อเรื่อง สัดส่วนการวิจัย (%) ทีมวิจัยและสถาบันร่วม แหล่งทุน ปีที่ได้รับทุน และการเผยแพร่ผลการวิจัย,textarea
+bioOngoing,"10.2 Research in progress: Research title, research proportion (%), research team and co-institution, funding source, year of funding, and research status.",10.2 งานวิจัยที่กำลังดำเนินการ: ชื่อเรื่อง สัดส่วนการวิจัย (%) ทีมวิจัยและสถาบันร่วม แหล่งทุน ปีที่ได้รับทุน และสถานะการวิจัย,textarea
+reviewer1Name,1. Full name:,1. ชื่อ-นามสกุล:,text
+reviewer1Position,Academic position:,ตำแหน่งทางวิชาการ:,text
+reviewer1Affiliation,Affiliation:,สังกัด:,text
+reviewer1Email,E-mail:,อีเมล:,email
+reviewer2Name,2. Full name:,2. ชื่อ-นามสกุล:,text
+reviewer2Position,Academic position:,ตำแหน่งทางวิชาการ:,text
+reviewer2Affiliation,Affiliation:,สังกัด:,text
+reviewer2Email,E-mail:,อีเมล:,email
+reviewer3Name,3. Full name:,3. ชื่อ-นามสกุล:,text
+reviewer3Position,Academic position:,ตำแหน่งทางวิชาการ:,text
+reviewer3Affiliation,Affiliation:,สังกัด:,text
+reviewer3Email,E-mail:,อีเมล:,email

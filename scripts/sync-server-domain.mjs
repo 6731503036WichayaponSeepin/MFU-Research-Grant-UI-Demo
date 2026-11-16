@@ -3,7 +3,7 @@
 import { mkdirSync, copyFileSync } from 'node:fs'
 const files = {
   domain: ['contracts','permissions','model','actions','migration','localDemoPolicy'],
-  utils: ['closure','closureRegistry','handoff','projectStorage','administrativeRecords','projectChanges','registry','evaluation','pdfAttachment','proposalValidation'],
+  utils: ['closure','closureRegistry','handoff','projectStorage','administrativeRecords','projectChanges','registry','evaluation','pdfAttachment','proposalValidation','rs1Signatures','rs1Participants','rs1Budget','rs1WorkPlan'],
   data: ['interactiveDemo','demoProjects','demoRegistry','demoAttachment','statuses','registry'],
 }
 for (const [folder,names] of Object.entries(files)) {

@@ -13,7 +13,7 @@ try{
   await page.goto(base+`#/researcher/projects/${id}/manual`);await page.locator('.rs1-field').first().waitFor()
   const before=await page.evaluate(()=>localStorage.getItem('mfu-foundation-v16-demo-projects')),p=JSON.parse(before).find(p=>p.id===id)
   check(await page.locator('.project-page-nav').count()===0,'tabs hidden only on manual')
-  check(await page.locator('.rs1-field').count()===72&&await page.locator('.rs1-continuous-card').count()===4,'all original fields/four sections')
+  check(await page.locator('.rs1-field').count()===69&&await page.locator('.rs1-task-row').count()>=1&&await page.locator('.rs1-continuous-card').count()===4,'all original static fields, dynamic tasks and four sections')
   check(await page.locator('.rs1-progress,.rs1-step').count()===0,'continuous form')
   check(await page.locator('.rm-context .state-'+p.status).count()===1,'actual project state')
   if(id==='V16-CORRECTION'){check((await page.locator('.researcher-editor>.shared-notice').innerText()).includes(p.proposalReview.notes),'existing correction instructions');check(await page.getByLabel('Project Title *',{exact:true}).isEnabled(),'requested field editable');check(await page.getByLabel('Research Objectives *',{exact:false}).isDisabled(),'unrequested field read only')}

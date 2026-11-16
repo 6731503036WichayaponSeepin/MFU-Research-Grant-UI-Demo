@@ -1,3 +1,6 @@
+import {BUDGET_CATEGORIES} from '../utils/rs1Budget.js'
+import { projectParticipants, PARTICIPANT_FIELDS } from '../utils/rs1Participants.js'
+import { signatureErrors } from '../utils/rs1Signatures.js'
 import { SCHEMA_VERSION, PROJECT_STATES, DOCUMENT_KINDS, requireDomain, actorId } from './contracts.js'
 import { proposalFieldErrors, validProposalDate } from '../utils/proposalValidation.js'
 
@@ -7,6 +10,10 @@ export const clone = value => structuredClone(value)
 export const pick = (value, keys) => Object.fromEntries(keys.filter(k => value?.[k] !== undefined).map(k => [k, clone(value[k])]))
 export const PROPOSAL_FIELDS = Object.freeze([
   'projectTitle', 'projectTitleEn', 'strategy', 'leaderName', 'leaderAffiliation', 'leaderPhone', 'leaderEmail', 'leaderPercent',
+  'participantRecords','participantName','participantAffiliation','participantPhone','participantEmail','participantPercent',
+  ...[1,2,3].flatMap(n=>[`workTask${n}`,`workPeriod${n}`]),
+  'workTasks','budgetItems','electronicSignatures','signatureDocumentId','teamSignatureName','teamSignDate','advisorSignatureImage','leaderSignatureImage','teamSignatureImage','electronicSignatureConsent',
+  ...['compensation','directCost','materials','utility'].flatMap(category=>[1,2,3].flatMap(n=>[`${category}Item${n}`,`${category}Amount${n}`])),
   'participants', 'advisorName', 'advisorQualification', 'advisorPosition', 'advisorAffiliation',
   'cooperationName', 'cooperationAffiliation', 'cooperationAddress', 'cooperationType', 'researchType', 'keywords',
   'background', 'objectives', 'literature', 'references', 'methodology', 'scope', 'startDate', 'endDate', 'workPlan', 'progress',
@@ -19,8 +26,12 @@ export const PROPOSAL_FIELDS = Object.freeze([
 ])
 export function proposalData(value) {
   const data = pick(value, PROPOSAL_FIELDS)
-  requireDomain(Object.values(data).every(v => ['string', 'number'].includes(typeof v) && String(v).length <= 100000),
+  requireDomain(Object.entries(data).filter(([key])=>!['workTasks','participantRecords','electronicSignatures','budgetItems'].includes(key)).every(([,v]) => ['string', 'number'].includes(typeof v) && String(v).length <= 100000),
     'INVALID_PROPOSAL', 'Proposal fields must be text or numeric values')
+  if(data.participantRecords!==undefined)requireDomain(Array.isArray(data.participantRecords)&&data.participantRecords.every(row=>row&&typeof row==='object'&&!Array.isArray(row)&&Object.keys(row).every(key=>PARTICIPANT_FIELDS.includes(key))&&Object.values(row).every(v=>['string','number'].includes(typeof v)&&String(v).length<=100000)), 'INVALID_PROPOSAL', 'Invalid participant records')
+  if(data.workTasks!==undefined)requireDomain(Array.isArray(data.workTasks)&&data.workTasks.every(row=>row&&typeof row==='object'&&!Array.isArray(row)&&Object.keys(row).every(key=>['name','startDate','endDate','legacyPeriod'].includes(key))&&Object.values(row).every(v=>typeof v==='string'&&v.length<=100000)), 'INVALID_PROPOSAL','Invalid working plan tasks')
+  if(data.budgetItems!==undefined)requireDomain(data.budgetItems&&typeof data.budgetItems==='object'&&!Array.isArray(data.budgetItems)&&Object.entries(data.budgetItems).every(([category,rows])=>BUDGET_CATEGORIES.includes(category)&&Array.isArray(rows)&&rows.every(row=>row&&typeof row==='object'&&!Array.isArray(row)&&Object.keys(row).every(key=>['description','amount'].includes(key))&&Object.values(row).every(value=>['string','number'].includes(typeof value)&&String(value).length<=100000))), 'INVALID_PROPOSAL','Invalid budget items')
+  requireDomain(!signatureErrors(data,false).length, 'INVALID_SIGNATURE_IMAGE', 'Invalid signature image')
   return data
 }
 export function syncProposalInfo(p) {
@@ -42,6 +53,7 @@ export function newProject(id, actor, proposal, now) {
     closure: null, reviewerUids: [], cancellation: null, notifications: [], statusHistory: [],
     createdAt: now, updatedAt: now, _version: 0,
   }
+  requireDomain(!(p.proposal.electronicSignatures?.length)||p.proposal.signatureDocumentId===id,'SIGNATURE_DOCUMENT_MISMATCH','Signature document reference must match this project')
   syncProposalInfo(p)
   return p
 }
@@ -66,7 +78,8 @@ export function requiredSignatories(proposal) {
   return [
     { role: 'leader', name: proposal.leaderName || '' },
     ...(text(proposal.advisorName) ? [{ role: 'advisor', name: proposal.advisorName }] : []),
-    // Existing RS-1 stores participants as free text. Do not invent a parsed identity list (OPEN-01).
+    // Structured participants are user-entered; preserve legacy notes without parsing identities.
+    ...projectParticipants(proposal).filter(person=>text(person.name)).map(person=>({role:'participants',name:person.name})),
     ...(text(proposal.participants) ? [{ role: 'participants', description: proposal.participants }] : []),
   ]
 }

@@ -36,6 +36,17 @@ test('temporary TR-03 needs latest version PDF, explicit confirmation and local-
   p = action(p, 'save_proposal', { proposal: { ...p.proposal, projectTitle: 'new version' } })
   assert.throws(() => action(p, 'confirm_ready', { documentId: document.id, confirmed: true }), /latest saved/)
 })
+
+test('local reviewed incomplete draft may reach affiliation but Staff submission still validates completeness',()=>{
+  let p=action(null,'create_project',{projectId:'incomplete-ready',proposal:{projectTitle:'Reviewed partial data'}})
+  const document={...demoDocument,id:'partial-pdf',kind:'proposal_pdf',version:1,proposalVersionId:p.proposalVersions.at(-1).id}
+  p=action(p,'attach_document',{document})
+  p=action(p,'confirm_ready',{documentId:document.id,confirmed:true})
+  assert.equal(p.status,'AFFILIATION_REVIEW')
+  assert.equal(p.proposal.leaderName,undefined)
+  assert.throws(()=>action(p,'submit_proposal',{proposalVersionId:p.proposalVersions.at(-1).id,documentIds:[],signaturesComplete:true,usesOthersElectronicSignatures:false}))
+  assert.equal(p.status,'AFFILIATION_REVIEW')
+})
 test('correction edits only requested sections; protected identities, state and history cannot be modified', () => {
   let p = createResearcherScenarios().find(p => p.id === 'V16-CORRECTION')
   assert.ok(correctionFields(p, foundationActors['demo-user'], 'local-demo').includes('methodology'))

@@ -6,7 +6,15 @@ const files=[...readdirSync('tests').filter(f=>f.endsWith('.browser.mjs')&&!['ad
 const requested=new Set(process.argv.slice(2)),results=[]
 for(const source of files.filter(f=>!requested.size||requested.has(f))){
  const id=source.replace(/^tests\//,'').replaceAll('/','-'),path=`${root}/tests/${id}`
- writeFileSync(path,readFileSync(source,'utf8').replaceAll('docs/progress/screenshots',`${root}/screenshots`).replaceAll('docs/final/evidence',`${root}/phase6-evidence`))
+ let preparedSource=readFileSync(source,'utf8').replaceAll('docs/progress/screenshots',`${root}/screenshots`).replaceAll('docs/final/evidence',`${root}/phase6-evidence`)
+ // Opt-in transport workaround for Chrome ERR_NETWORK_ACCESS_DENIED on local
+ // Vite static resources. Deliver the actual local HTTP response unchanged: no fixtures,
+ // API interception, retries or skipped assertions. Default runner is unchanged.
+ if(process.env.MFU_BROWSER_LOCAL_SCRIPT_PROXY==='1'){
+  preparedSource=preparedSource.replace(/await createServer\(/g,'await createPreparedTestServer(').replace(/(^[^\n]*\bpage\s*=\s*await[^\n]*\n)/m,'$1await proxyLocalTestScripts(page);\n')
+  preparedSource+=`\nasync function createPreparedTestServer(config){return createServer({...config,cacheDir:${JSON.stringify(`node_modules/.vite-tests/${id}`)},server:{...config.server,hmr:false}})}\nasync function proxyLocalTestScripts(page){page.context().on('requestfailed',request=>console.log('LOCAL_NETWORK_FAILURE',request.failure()?.errorText,request.url()));await page.context().route(/^http:\\/\\/(?:127\\.0\\.0\\.1|localhost):\\d+\\//,async route=>{if(!['script','document','stylesheet','font','image','media'].includes(route.request().resourceType())&&!/^\\/(?:src|node_modules|fonts|assets|public|@vite)\\//.test(new URL(route.request().url()).pathname))return route.continue();try{const response=await fetch(route.request().url());await route.fulfill({status:response.status,contentType:response.headers.get('content-type')||'text/javascript',body:Buffer.from(await response.arrayBuffer())})}catch{return route.continue()}})}\n`
+ }
+ writeFileSync(path,preparedSource)
  if(source==='tests/phase6.browser.mjs')writeFileSync(`${root}/tests/phase6.pages.mjs`,readFileSync('tests/phase6.pages.mjs'))
  const started=new Date().toISOString(),run=spawnSync(process.execPath,[path],{encoding:'utf8',timeout:300000})
  const output=(run.stdout||'')+(run.stderr||'');writeFileSync(`${evidence}/${id}.log`,output)

@@ -9,18 +9,18 @@ async function persona(i){await page.goto(base+'#/roles');await page.getByRole('
 page.on('dialog',d=>d.accept())
 try{
  await persona(1);await page.goto(base+'#/reviewer/projects/V16-EVALUATION-0/evaluation');await page.locator('.reviewer-form').waitFor()
- await page.getByRole('button',{name:'Review Answers',exact:true}).click();check(await page.getByRole('alert').count()===1,'missing required answers rejected')
+ await page.getByRole('button',{name:'Review Answers',exact:true}).click();check(await page.getByRole('alert').count()===5,'missing required answers rejected inline')
  for(const [i,key]of ['objectives','consistency','abstract','executive'].entries()){
-  await page.locator('.reviewer-form select').nth(i).selectOption('1');await page.getByLabel(key+'Detail',{exact:true}).fill('เหตุผลประกอบหัวข้อ '+key)
+  await page.locator('.reviewer-form input[name='+key+'][value="1"]').check();await page.getByLabel(key+'Detail',{exact:true}).fill('เหตุผลประกอบหัวข้อ '+key)
  }
  const narratives=page.locator('.reviewer-form > label textarea')
  for(let i=0;i<4;i++)await narratives.nth(i).fill(`ข้อเสนอแนะส่วนที่ ${i+1}`)
- const utilization=page.locator('.reviewer-form > section').last()
+ const utilization=page.locator('.ve-utilization')
  for(let i=0;i<5;i++){const row=utilization.locator(':scope > div').nth(i);await row.getByRole('checkbox').check();if(await row.locator('textarea').count())await row.locator('textarea').fill(`แนวทางใช้ประโยชน์ ${i+1}`)}
  check(await utilization.getByRole('checkbox',{checked:true}).count()===5,'all utilization options')
  check(await utilization.locator('textarea').count()===4,'all conditional utilization details')
- await page.getByLabel('Evaluation Result',{exact:true}).selectOption('2');await page.getByRole('button',{name:'Review Answers',exact:true}).click();check(await page.getByRole('alert').count()===1,'non-certified outcome requires reason')
- await page.getByLabel('Result reason',{exact:true}).fill('ต้องปรับปรุงการอภิปรายผลและตรวจสอบความสอดคล้องของข้อมูล');await page.getByLabel('Additional Comments',{exact:true}).fill('ข้อคิดเห็นเพิ่มเติมฉบับสมบูรณ์')
+ await page.locator('input[name=result][value="2"]').check();await page.getByRole('button',{name:'Review Answers',exact:true}).click();check(await page.getByRole('alert').count()===1,'non-certified outcome requires reason')
+ await page.getByLabel('reason',{exact:true}).fill('ต้องปรับปรุงการอภิปรายผลและตรวจสอบความสอดคล้องของข้อมูล')
  await page.getByLabel('Upload PDF',{exact:true}).setInputFiles('public/MFU-Demonstration-Sample.pdf');await page.getByText('Uploading…',{exact:true}).waitFor({state:'hidden'});const feedback=(await project()).documents.find(d=>d.kind==='feedback')
  await page.getByRole('button',{name:'Save Draft',exact:true}).click();await page.getByText('Saved successfully',{exact:true}).waitFor();let p=await project();check(JSON.stringify(p.closure.evaluations['demo-reviewer-1'].documentIds)===JSON.stringify([feedback.id]),'only the actual uploaded feedback is selected; no hidden aggregate document IDs')
  check(Object.keys(p.closure.evaluations['demo-reviewer-1'].utilization).length===5,'all utilization values saved');check(!p.closure.evaluations['demo-reviewer-1'].submitted,'draft remains unsubmitted')
@@ -30,7 +30,7 @@ try{
  check(e.submitted&&e.result===2&&e.reviewRound===1,'actual non-certified submitted result in one round');check(Object.keys(e.utilization).length===5&&e.documentIds.includes(feedback.id),'conditional data and attachment retained');check(p.status==='REPORT_EVALUATION'&&!p.closure.release,'submission does not auto-release or change project state')
  check(['chapters','outputs','strengths','future'].every((key,i)=>e[key]===`ข้อเสนอแนะส่วนที่ ${i+1}`),'every narrative field persisted exactly')
  check(['objectives','consistency','abstract','executive'].every(key=>e[key+'Detail']==='เหตุผลประกอบหัวข้อ '+key),'every conditional categorical reason persisted exactly')
- check(e.reason==='ต้องปรับปรุงการอภิปรายผลและตรวจสอบความสอดคล้องของข้อมูล'&&e.additionalComments==='ข้อคิดเห็นเพิ่มเติมฉบับสมบูรณ์','final reason and additional comments persisted exactly')
+ check(e.reason==='ต้องปรับปรุงการอภิปรายผลและตรวจสอบความสอดคล้องของข้อมูล'&&e.additionalComments===undefined,'final reason and additional comments persisted exactly')
  await page.goto(base+'#/reviewer/projects/V16-EVALUATION-0/answers');await page.locator('.vs-submitted').waitFor();check(await page.getByRole('button',{name:'Submit Evaluation',exact:true}).count()===0,'submitted result cannot be submitted again')
  await page.goto(base+'#/reviewer/projects/V16-EVALUATION-0/evaluation');await page.locator('.vs-submitted').waitFor();check(await page.getByRole('button',{name:'Save Draft',exact:true}).count()===0,'post-submission editing restricted')
  console.log(`PASS Final Negative browser ${n} checks; complete conditional rubric, feedback ACL and submitted lock`)

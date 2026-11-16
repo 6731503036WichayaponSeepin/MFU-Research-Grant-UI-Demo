@@ -58,3 +58,7 @@ Contract fixtures สำหรับ correction/additional closure/active public
 ทดสอบ positive/negative ของ latest PDF, explicit confirmation, immutable ready provenance, scoped correction, stale signed evidence, conditional consent, unchanged main state, wrong owner และ denial ใน backend context รวม browser/modal flow
 
 รอ Stakeholder ยืนยัน production Trigger และ edit policy ก่อนนำ decision นี้ไปใช้ใน Firebase/Production ห้ามเปลี่ยน Requirements เป็น CONFIRMED และไม่ deploy จากงาน Phase 2
+
+## Amendment — 16 November 2026: incomplete-data walkthrough
+
+ตามคำสั่งผู้ใช้ล่าสุด Local Demo ไม่บังคับ completeness ที่ TR-03 แล้ว นักวิจัยติ๊กยืนยันความถูกต้องของข้อมูลที่กรอกและยืนยันผ่าน modal ได้ แม้ข้อมูลยังไม่ครบ UI สร้างและแนบ PDF ล่าสุดอัตโนมัติหากยังไม่มี Domain ยังคงตรวจ owner/state/explicit confirmation/latest PDF/immutable version และ image-signature consent เช่นเดิม การส่งถึง Staff (TR-05/TR-06) ยังตรวจ completeness และ signed evidence ตามเดิม Backend TR-03 ยังปิด ไม่แก้ Requirements ให้เป็น CONFIRMED ข้อความ amendment นี้แทนเงื่อนไข “ผ่าน Validation ของ Demo” ของ TR-03 ข้างต้นเท่านั้น

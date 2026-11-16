@@ -1,3 +1,5 @@
+import {extractRS1Tables} from './rs1FieldMapping.js'
+import { rs1Fields } from './rs1Fields.js'
 import * as pdfjsLib from 'pdfjs-dist'
 import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 import mammoth from 'mammoth'
@@ -5,17 +7,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker
 const MAX_SIZE = 10 * 1024 * 1024
 
 
-export const previewFields = [
-  ['projectTitle', 'ชื่อโครงการ', 'Project Title'],
-  ['leaderName', 'หัวหน้าโครงการ', 'Project Leader'],
-  ['leaderAffiliation', 'หน่วยงาน', 'Affiliation'],
-  ['leaderPhone', 'โทรศัพท์', 'Telephone'],
-  ['leaderEmail', 'อีเมล', 'Email'],
-  ['advisorName', 'ที่ปรึกษาโครงการ', 'Project Advisor'],
-  ['researchType', 'ประเภทงานวิจัย', 'Research Type'],
-  ['keywords', 'คำสำคัญ', 'Keywords'],
-  ['objectives', 'วัตถุประสงค์', 'Objectives']
-]
+export const previewFields = rs1Fields.map(f=>[f.key,f.th,f.en,f.ariaTh?.replace(/ \*$/,''),f.ariaEn?.replace(/ \*$/,'')])
 
 export const validateFile = (file) => {
   if (!file) {
@@ -100,10 +92,14 @@ async function extractDOCXText(file) {
 
   // Mammoth extracts text from DOCX documents.
   const result = await mammoth.extractRawText({ arrayBuffer })
+  const html=await mammoth.convertToHtml({arrayBuffer},{convertImage:mammoth.images.imgElement(async()=>({src:''}))})
+  const parsed=new DOMParser().parseFromString(html.value,'text/html')
+  const tables=Array.from(parsed.querySelectorAll('table')).map(table=>Array.from(table.rows).map(row=>Array.from(row.cells).map(cell=>cell.textContent||'')))
 
   return {
     text: result.value || '',
-    pageCount: 0
+    pageCount: 0,
+    fields:extractRS1Tables(tables)
   }
 }
 

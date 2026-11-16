@@ -1,3 +1,6 @@
+import {budgetRows,budgetSubtotal,invalidBudgetAmount} from './rs1Budget.js'
+import {workPlanErrors} from './rs1WorkPlan.js'
+import { signatureErrors } from './rs1Signatures.js'
 export const MAX_PROPOSAL_PDF_SIZE = 2 * 1024 * 1024
 const textFields = [
   ['projectTitle','ชื่อโครงการ','Project title'],
@@ -20,14 +23,21 @@ export function proposalFieldErrors(data = {}) {
     if (!validProposalDate(data[key])) add(key,`กรุณาระบุ${th}ให้ถูกต้อง`,`Enter a valid ${en}.`)
   }
   if (validProposalDate(data.startDate) && validProposalDate(data.endDate) && data.endDate <= data.startDate) add('endDate','วันที่สิ้นสุดโครงการต้องอยู่หลังวันที่เริ่มโครงการ','End date must be after start date.')
+  errors.push(...workPlanErrors(data))
   let total = 0
   for (const [key,th,en] of budgetFields) {
     const raw = data[key] ?? ''
     const amount = Number(raw)
     if (!['number','string'].includes(typeof raw) || !Number.isFinite(amount) || amount < 0) add(key,`${th}ต้องเป็นตัวเลขตั้งแต่ 0 ขึ้นไป`,`${en} must be a nonnegative number.`)
     else total += amount
+    const rows=budgetRows(data,key)
+    if(rows.some(row=>invalidBudgetAmount(row.amount)))add(key,'จำนวนเงินรายการต้องไม่ติดลบ','Expense item amounts must be nonnegative.')
+    if(rows.length&&Math.abs(budgetSubtotal(rows)-amount)>0.005)add(key,'ยอดรวมหมวดงบประมาณต้องตรงกับรายการย่อย','Category total must match its itemized amounts.')
   }
   if (!Number.isFinite(total) || total <= 0) add('budget','งบประมาณรวมต้องมากกว่า 0 บาท','Total budget must be greater than zero.')
+  errors.push(...signatureErrors(data))
+  for (const key of ['leaderPercent','participantPercent']) if (data[key] !== undefined && data[key] !== '' && (!Number.isFinite(Number(data[key])) || Number(data[key]) < 0 || Number(data[key]) > 100)) add(key,'สัดส่วนความรับผิดชอบต้องอยู่ระหว่าง 0–100','Responsibility must be between 0 and 100.')
+  for(const [index,person] of (Array.isArray(data.participantRecords)?data.participantRecords:[]).entries()){const v=person.percent;if(v!==undefined&&v!==''&&(!Number.isFinite(Number(v))||Number(v)<0||Number(v)>100))add('participantRecords',`สัดส่วนผู้ร่วมโครงการ ${index+1} ต้องอยู่ระหว่าง 0–100`,`Participant ${index+1} responsibility must be between 0 and 100.`)}
   return errors
 }
 export function proposalDocumentErrors(document, {mode = 'local',field = '_document',required = true} = {}) {

@@ -1,6 +1,6 @@
+const {rs1WebFields:fields}=await import(new URL('file:///'+process.cwd().replaceAll('\\','/')+'/src/data/rs1Document.js'))
 import assert from 'node:assert/strict'
 import {createRequire} from 'node:module'
-import {readFile} from 'node:fs/promises'
 import {createServer} from 'vite'
 const {chromium}=createRequire(import.meta.url)(process.env.MFU_PLAYWRIGHT_MODULE||'playwright')
 const server=await createServer({envDir:'tmp/researcher-validation-no-env',server:{host:'127.0.0.1',port:5194,strictPort:true}});await server.listen()
@@ -10,17 +10,17 @@ const route=async(path,role='researcher')=>{await page.goto(base+`#/${role}/${pa
 const rows=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('mfu-foundation-v16-demo-projects')))
 try{
  await route('manual');await page.getByRole('button',{name:'EN',exact:true}).click()
- const source=await readFile('src/pages/ManualEntry.jsx','utf8'),fields=Function(source.slice(source.indexOf('const parts ='),source.indexOf('function loadDraft'))+';return allFields')()
  check(await page.locator('.rs1-field').count()===fields.length,'every original field exists')
  const expected={}
  for(const [i,f]of fields.entries()){
-  const control=page.locator('.rs1-field').nth(i).locator('input,textarea,select'),tag=await control.evaluate(e=>e.tagName)
+  const field=page.locator('.rs1-field').nth(i),control=field.locator('input,textarea,select').first(),tag=await control.evaluate(e=>e.tagName)
   let value=f.key==='leaderName'?'ดร. ณัฐวุฒิ วัฒนกุล':f.type==='date'?(f.key==='endDate'?'2027-01-01':'2026-01-01'):f.type==='number'?'50':f.type==='email'?'researcher@example.org':`ข้อมูลวิจัย ${i+1}`
-  if(tag==='SELECT'){value=await control.locator('option').nth(1).getAttribute('value');await control.selectOption(value)}else await control.fill(value)
+  if(f.type==='choices'){value=f.options[0].value;await control.check()}else if(tag==='SELECT'){value=await control.locator('option').nth(1).getAttribute('value');await control.selectOption(value)}else await control.fill(value)
   expected[f.key]=value
  }
+ for(const key of ['compensation','directCost','materials','utility'])expected[key]='50'
  await page.reload();await page.locator('.rs1-field').first().waitFor()
- for(const [i,f]of fields.entries())check(await page.locator('.rs1-field').nth(i).locator('input,textarea,select').inputValue()===expected[f.key],`recovery ${f.key}`)
+ for(const [i,f]of fields.entries())check(await page.locator('.rs1-field').nth(i).locator('input,textarea,select').first().inputValue()===expected[f.key],`recovery ${f.key}`)
  await page.getByRole('button',{name:'Review →',exact:true}).click();await page.getByLabel('I have reviewed the information',{exact:true}).check();await page.getByRole('button',{name:'Confirm Review',exact:true}).click();await page.waitForURL(/proposal-pdf$/)
  const created=(await rows()).find(p=>p.title===expected.projectTitle);check(created?.status==='DRAFT','review saves without transition')
  for(const f of fields)check(String(created.proposal[f.key])===expected[f.key],`saved binding ${f.key}`)

@@ -3,11 +3,11 @@ export const DEMO_POLICY_ID = 'LOCAL-V16-OPEN04-13'
 export const EDITABLE_SECTIONS = Object.freeze({
   projectTitle: ['projectTitle', 'projectTitleEn'],
   researcherInformation: ['leaderName', 'leaderAffiliation', 'leaderPhone', 'leaderEmail', 'leaderPercent', 'bioName', 'bioPosition', 'bioResearchId', 'bioEducation', 'bioExperience', 'bioExpertise', 'bioPublications', 'bioPresentations', 'bioIP', 'bioManagement', 'bioCompleted', 'bioOngoing'],
-  coResearchers: ['participants'], advisor: ['advisorName', 'advisorQualification', 'advisorPosition', 'advisorAffiliation'],
+  coResearchers: ['participantRecords','participants','participantName','participantAffiliation','participantPhone','participantEmail','participantPercent'], advisor: ['advisorName', 'advisorQualification', 'advisorPosition', 'advisorAffiliation'],
   researchDetails: ['strategy', 'researchType', 'keywords', 'background', 'literature', 'references', 'cooperationName', 'cooperationAffiliation', 'cooperationAddress', 'cooperationType', 'standards', 'clarifications'],
-  objectives: ['objectives'], methodology: ['methodology'], researchScope: ['scope'], researchPlan: ['workPlan', 'progress'],
+  objectives: ['objectives'], methodology: ['methodology'], researchScope: ['scope'], researchPlan: ['workTasks','workPlan', 'progress', ...[1,2,3].flatMap(n=>[`workTask${n}`,`workPeriod${n}`])],
   researchDuration: ['startDate', 'endDate'], expectedOutcomes: ['outcomeType', 'outcomeDetail', 'integration', 'publicationLevel'],
-  budget: ['compensation', 'compensationDetail', 'directCost', 'directDetail', 'materials', 'materialsDetail', 'utility', 'utilityDetail'],
+  budget: ['budgetItems','compensation', 'compensationDetail', 'directCost', 'directDetail', 'materials', 'materialsDetail', 'utility', 'utilityDetail', ...['compensation','directCost','materials','utility'].flatMap(category=>[1,2,3].flatMap(n=>[`${category}Item${n}`,`${category}Amount${n}`]))],
   supportingDocuments: [],
 })
 for (const fields of Object.values(EDITABLE_SECTIONS)) Object.freeze(fields)
