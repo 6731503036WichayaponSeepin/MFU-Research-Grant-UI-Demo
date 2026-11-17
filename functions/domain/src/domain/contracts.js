@@ -58,6 +58,7 @@ export const ACTIONS = Object.freeze({
   close_report: { rule: 'TR-16', capability: 'close' },
   cancel_project: { rule: 'TR-17', capability: 'cancel' },
   attach_document: { states: PROJECT_STATES.filter(s => !TERMINAL_STATES.includes(s)), capability: 'upload' },
+  hide_demo_document: { states: PROJECT_STATES.filter(s => !TERMINAL_STATES.includes(s)), capability: 'upload' },
   record_notice: { states: ['IN_PROGRESS', 'CLOSED'], capability: 'recordNotice', terminalRecord: true },
 })
 for (const contract of Object.values(ACTIONS)) {

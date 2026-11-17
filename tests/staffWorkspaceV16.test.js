@@ -45,7 +45,7 @@ test('proposal pass requires actual submitted evidence and correction remains a 
 })
 test('acknowledgement and certification are separate guarded records; optional metadata is preserved', () => {
   let p = fixture('V16-COMMITTEE')
-  assert.throws(() => act(p, 'certify_project', { confirmed: true, reference: 'CERT' }), /acknowledgement/)
+  assert.throws(() => act(p, 'certify_project', { confirmed: false }), /Confirm external/)
   p = act(p, 'record_acknowledgement', { reference: 'MEETING/1', date: '2026-11-15', meeting: 'External meeting', notes: 'For acknowledgement', documentIds: [], acknowledged: true })
   assert.equal(p.status, 'COMMITTEE_ACKNOWLEDGEMENT'); assert.equal(p.administrativeRecords.at(-1).meeting, 'External meeting')
   p = act(p, 'certify_project', { reference: 'CERT/1', notes: 'Staff certification', documentIds: [], confirmed: true })

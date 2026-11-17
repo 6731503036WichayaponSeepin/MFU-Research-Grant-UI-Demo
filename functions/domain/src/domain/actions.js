@@ -29,22 +29,18 @@ function documents(p, ids, kinds) {
   for (const kind of kinds) requireDomain(found.some(d => d.kind === kind), 'DOCUMENTS_REQUIRED', `Required document: ${kind}`)
   return found
 }
-function validateDemoBundle(p, data) {
-  requireDomain(p.proposalVersions.at(-1)?.id === data.proposalVersionId, 'PROPOSAL_VERSION_REQUIRED', 'Select the latest saved version')
-  const files = documents(p, data.documentIds, ['signed_rs1', 'affiliation_evidence'])
-  requireDomain(files.filter(d => ['signed_rs1', 'affiliation_evidence'].includes(d.kind)).every(d => d.proposalVersionId === data.proposalVersionId), 'DOCUMENT_VERSION_REQUIRED', 'Signed RS-1 and affiliation evidence must reference this proposal version')
-}
-function submissionBundle(p, data, uid, now) {
-  assertProposalComplete(p.proposal)
+function submissionBundle(p, data, uid, now, demo = false) {
+  if (!demo) assertProposalComplete(p.proposal)
   const version = p.proposalVersions.find(v => v.id === data.proposalVersionId)
   requireDomain(version && JSON.stringify(version.proposal) === JSON.stringify(p.proposal), 'PROPOSAL_VERSION_REQUIRED', 'Submission must reference the current proposal snapshot')
-  documents(p, data.documentIds, ['signed_rs1', 'affiliation_evidence'])
-  requireDomain(data.signaturesComplete === true && typeof data.usesOthersElectronicSignatures === 'boolean', 'SIGNATURES_REQUIRED', 'Confirm all required signatures and declare electronic signature use')
-  requireDomain(!data.usesOthersElectronicSignatures || data.consentConfirmed === true, 'CONSENT_REQUIRED', 'Consent from the other signature owners must be confirmed')
+  if (!demo) documents(p, data.documentIds, ['signed_rs1', 'affiliation_evidence'])
+  else documents(p, data.documentIds, [])
+  if (!demo) requireDomain(data.signaturesComplete === true && typeof data.usesOthersElectronicSignatures === 'boolean', 'SIGNATURES_REQUIRED', 'Confirm all required signatures and declare electronic signature use')
+  if (!demo) requireDomain(!data.usesOthersElectronicSignatures || data.consentConfirmed === true, 'CONSENT_REQUIRED', 'Consent from the other signature owners must be confirmed')
   p.signatureConsent = { projectId: p.id, proposalVersionId: version.id, signedDocumentId: data.documentIds.find(id => p.documents.find(d => d.id === id)?.kind === 'signed_rs1'),
-    usesOthersElectronicSignatures: data.usesOthersElectronicSignatures, confirmed: data.usesOthersElectronicSignatures ? true : null,
+    usesOthersElectronicSignatures: data.usesOthersElectronicSignatures, confirmed: data.usesOthersElectronicSignatures ? data.consentConfirmed === true : null,
     confirmedBy: uid, confirmedAt: now }
-  p.proposalSubmission = { proposalVersionId: version.id, documentIds: clone(data.documentIds), signaturesComplete: true,
+  p.proposalSubmission = { proposalVersionId: version.id, documentIds: clone(data.documentIds), signaturesComplete: data.signaturesComplete === true,
     requiredSignatories: requiredSignatories(p.proposal), consent: clone(p.signatureConsent), submittedAt: now, submittedBy: uid }
   // Freeze each submitted bundle in its version, preserving earlier evidence and attestations.
   version.submissions = [...(version.submissions || []), clone(p.proposalSubmission)]
@@ -128,8 +124,7 @@ export function executeProjectAction(previous, command, context) {
     }
     case 'submit_proposal': {
       requireDomain(p.proposalVersions.some(v => v.kind === 'ready' && (localDemoPolicyEnabled(p, actor, mode) || v.id === data.proposalVersionId)), 'READY_VERSION_REQUIRED', 'A previously confirmed ready version is required; production TR-03 remains OPEN')
-      if (localDemoPolicyEnabled(p, actor, mode)) validateDemoBundle(p, data)
-      submissionBundle(p, data, uid, now); break
+      submissionBundle(p, data, uid, now, localDemoPolicyEnabled(p, actor, mode)); break
     }
     case 'request_proposal_revision':
       requireDomain(text(data.notes) && p.proposalReview?.actionRequiredBy === 'staff', 'REVISION_REASON_REQUIRED', 'Staff must record revision instructions for a pending proposal')
@@ -137,13 +132,12 @@ export function executeProjectAction(previous, command, context) {
       p.proposalReview = { actionRequiredBy: 'researcher', notes: data.notes, requestedAt: now, requestedBy: uid, ...(localDemoPolicyEnabled(p, actor, mode) ? { editableSections: clone(data.editableSections || []), temporaryDecision: DEMO_POLICY_ID } : {}) }; break
     case 'resubmit_proposal':
       requireDomain(p.proposalReview?.actionRequiredBy === 'researcher', 'REVISION_NOT_REQUESTED', 'Researcher revision was not requested')
-      if (localDemoPolicyEnabled(p, actor, mode)) validateDemoBundle(p, data)
-      submissionBundle(p, data, uid, now)
+      submissionBundle(p, data, uid, now, localDemoPolicyEnabled(p, actor, mode))
       immutableProposal(p, 'resubmitted', now, uid).submissions = [clone(p.proposalSubmission)]
       break
     case 'pass_proposal':
       requireDomain(p.proposalReview?.actionRequiredBy === 'staff' && !!p.proposalSubmission && data.confirmed === true, 'PROPOSAL_CHECK_REQUIRED', 'Confirm the submitted proposal and evidence check')
-      documents(p, p.proposalSubmission.documentIds, ['signed_rs1', 'affiliation_evidence'])
+      if (!localDemoPolicyEnabled(p, actor, mode)) documents(p, p.proposalSubmission.documentIds, ['signed_rs1', 'affiliation_evidence'])
       p.proposalReview = { ...p.proposalReview, checkedBy: uid, checkedAt: now, actionRequiredBy: 'staff', passed: true }; break
     case 'record_acknowledgement':
       requireDomain(text(data.reference) && data.acknowledged === true, 'ACKNOWLEDGEMENT_REQUIRED', 'Record the external committee acknowledgement, not an approval')
@@ -151,10 +145,10 @@ export function executeProjectAction(previous, command, context) {
       documents(p, data.documentIds || [], [])
       p.administrativeRecords.push({ type: 'committee_acknowledgement', reference: data.reference, date: data.date, meeting: text(data.meeting) ? data.meeting : '', notes: text(data.notes) ? data.notes : '', documentIds: clone(data.documentIds || []), recordedBy: uid, recordedAt: now }); break
     case 'certify_project':
-      requireDomain(p.administrativeRecords.some(r => r.type === 'committee_acknowledgement') && data.confirmed === true && text(data.reference), 'CERTIFICATION_REQUIRED', 'External acknowledgement and explicit staff certification are required')
+      requireDomain(data.confirmed === true, 'CERTIFICATION_REQUIRED', 'Confirm external committee acknowledgement and staff certification')
       // No universal research-standards blocker: OPEN-17 is deliberately not decided here.
       documents(p, data.documentIds || [], [])
-      p.certification = { reference: data.reference, by: uid, date: now, notes: text(data.notes) ? data.notes : '', documentIds: clone(data.documentIds || []), standardsPolicy: 'OPEN-17' }; break
+      p.certification = { reference: text(data.reference) ? data.reference : '', externalAcknowledgementConfirmed: true, by: uid, date: now, notes: text(data.notes) ? data.notes : '', documentIds: clone(data.documentIds || []), standardsPolicy: 'OPEN-17' }; break
     case 'record_extension': {
       requireDomain(['approved', 'rejected'].includes(data.outcome) && text(data.reference) && text(data.reason), 'EXTERNAL_RESULT_REQUIRED', 'Record the e-Office result, reference and reason')
       assertDate(data.date, 'letter date')
@@ -261,13 +255,21 @@ export function executeProjectAction(previous, command, context) {
       const document = validateDocument(data.document, mode)
       if (document.proposalVersionId) requireDomain(validId(document.proposalVersionId) && p.proposalVersions.some(v => v.id === document.proposalVersionId), 'PROPOSAL_VERSION_REQUIRED', 'Document must reference an existing proposal version')
       if (actor.role === 'researcher' && p.status === 'STAFF_REVIEW') {
-        requireDomain(['signed_rs1', 'affiliation_evidence', 'proposal_pdf'].includes(document.kind) || localDemoPolicyEnabled(p, actor, mode) && p.proposalReview?.editableSections?.includes('supportingDocuments') && document.kind === 'support', 'EDIT_SCOPE_DENIED', 'Only revision evidence or explicitly requested supporting documents may be added', 403)
+        requireDomain(['signed_rs1', 'affiliation_evidence', 'proposal_pdf'].includes(document.kind) || localDemoPolicyEnabled(p, actor, mode) && document.kind === 'support', 'EDIT_SCOPE_DENIED', 'Only revision evidence or Local Demo supporting documents may be added', 403)
       }
       requireDomain(!p.documents.some(d => d.id === document.id), 'DOCUMENT_IMMUTABLE', 'Existing document versions cannot be overwritten')
       requireDomain(actor.role !== 'reviewer' || document.kind === 'feedback', 'ACCESS_DENIED', 'Reviewer uploads feedback only', 403)
       requireDomain(actor.role !== 'staff' || document.kind !== 'feedback', 'ACCESS_DENIED', 'Evaluation feedback belongs to its assigned reviewer', 403)
       requireDomain(actor.role !== 'researcher' || !['feedback', 'external_reference'].includes(document.kind), 'ACCESS_DENIED', 'Researcher cannot upload evaluation feedback or staff references', 403)
       p.documents.push({ ...document, uploadedBy: uid, uploadedAt: now })
+      eventDetails.document = { id: document.id, kind: document.kind, version: document.version }
+      break
+    }
+    case 'hide_demo_document': {
+      requireDomain(localDemoPolicyEnabled(p, actor, mode) && actor.role === 'researcher', 'ACCESS_DENIED', 'Available only in the fictional Local Demo', 403)
+      const document = p.documents.find(d => d.id === data.documentId)
+      requireDomain(document && document.uploadedBy === uid && !document.hiddenFromDemoSelection, 'DOCUMENT_NOT_FOUND', 'Own visible document required')
+      document.hiddenFromDemoSelection = true
       eventDetails.document = { id: document.id, kind: document.kind, version: document.version }
       break
     }

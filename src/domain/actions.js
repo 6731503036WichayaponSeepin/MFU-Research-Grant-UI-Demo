@@ -145,10 +145,10 @@ export function executeProjectAction(previous, command, context) {
       documents(p, data.documentIds || [], [])
       p.administrativeRecords.push({ type: 'committee_acknowledgement', reference: data.reference, date: data.date, meeting: text(data.meeting) ? data.meeting : '', notes: text(data.notes) ? data.notes : '', documentIds: clone(data.documentIds || []), recordedBy: uid, recordedAt: now }); break
     case 'certify_project':
-      requireDomain(p.administrativeRecords.some(r => r.type === 'committee_acknowledgement') && data.confirmed === true && text(data.reference), 'CERTIFICATION_REQUIRED', 'External acknowledgement and explicit staff certification are required')
+      requireDomain(data.confirmed === true, 'CERTIFICATION_REQUIRED', 'Confirm external committee acknowledgement and staff certification')
       // No universal research-standards blocker: OPEN-17 is deliberately not decided here.
       documents(p, data.documentIds || [], [])
-      p.certification = { reference: data.reference, by: uid, date: now, notes: text(data.notes) ? data.notes : '', documentIds: clone(data.documentIds || []), standardsPolicy: 'OPEN-17' }; break
+      p.certification = { reference: text(data.reference) ? data.reference : '', externalAcknowledgementConfirmed: true, by: uid, date: now, notes: text(data.notes) ? data.notes : '', documentIds: clone(data.documentIds || []), standardsPolicy: 'OPEN-17' }; break
     case 'record_extension': {
       requireDomain(['approved', 'rejected'].includes(data.outcome) && text(data.reference) && text(data.reason), 'EXTERNAL_RESULT_REQUIRED', 'Record the e-Office result, reference and reason')
       assertDate(data.date, 'letter date')
@@ -255,13 +255,21 @@ export function executeProjectAction(previous, command, context) {
       const document = validateDocument(data.document, mode)
       if (document.proposalVersionId) requireDomain(validId(document.proposalVersionId) && p.proposalVersions.some(v => v.id === document.proposalVersionId), 'PROPOSAL_VERSION_REQUIRED', 'Document must reference an existing proposal version')
       if (actor.role === 'researcher' && p.status === 'STAFF_REVIEW') {
-        requireDomain(['signed_rs1', 'affiliation_evidence', 'proposal_pdf'].includes(document.kind) || localDemoPolicyEnabled(p, actor, mode) && p.proposalReview?.editableSections?.includes('supportingDocuments') && document.kind === 'support', 'EDIT_SCOPE_DENIED', 'Only revision evidence or explicitly requested supporting documents may be added', 403)
+        requireDomain(['signed_rs1', 'affiliation_evidence', 'proposal_pdf'].includes(document.kind) || localDemoPolicyEnabled(p, actor, mode) && document.kind === 'support', 'EDIT_SCOPE_DENIED', 'Only revision evidence or Local Demo supporting documents may be added', 403)
       }
       requireDomain(!p.documents.some(d => d.id === document.id), 'DOCUMENT_IMMUTABLE', 'Existing document versions cannot be overwritten')
       requireDomain(actor.role !== 'reviewer' || document.kind === 'feedback', 'ACCESS_DENIED', 'Reviewer uploads feedback only', 403)
       requireDomain(actor.role !== 'staff' || document.kind !== 'feedback', 'ACCESS_DENIED', 'Evaluation feedback belongs to its assigned reviewer', 403)
       requireDomain(actor.role !== 'researcher' || !['feedback', 'external_reference'].includes(document.kind), 'ACCESS_DENIED', 'Researcher cannot upload evaluation feedback or staff references', 403)
       p.documents.push({ ...document, uploadedBy: uid, uploadedAt: now })
+      eventDetails.document = { id: document.id, kind: document.kind, version: document.version }
+      break
+    }
+    case 'hide_demo_document': {
+      requireDomain(localDemoPolicyEnabled(p, actor, mode) && actor.role === 'researcher', 'ACCESS_DENIED', 'Available only in the fictional Local Demo', 403)
+      const document = p.documents.find(d => d.id === data.documentId)
+      requireDomain(document && document.uploadedBy === uid && !document.hiddenFromDemoSelection, 'DOCUMENT_NOT_FOUND', 'Own visible document required')
+      document.hiddenFromDemoSelection = true
       eventDetails.document = { id: document.id, kind: document.kind, version: document.version }
       break
     }
