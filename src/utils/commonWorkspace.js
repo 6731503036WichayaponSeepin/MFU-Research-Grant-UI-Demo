@@ -1,5 +1,5 @@
 import { canAccess, hasCapability, projectProjection } from '../domain/permissions.js'
-import { evaluationProgress } from '../domain/model.js'
+import { evaluationProgress, canCloseOriginalReport } from '../domain/model.js'
 import { isFoundationProject } from '../domain/contracts.js'
 import { canRead } from './closure.js'
 
@@ -59,7 +59,7 @@ export function nextRequiredAction(p, actor) {
     (cap !== 'reviewProposal' || p.proposalReview?.actionRequiredBy !== 'researcher') &&
     (cap !== 'reviewClosure' || c?.actionRequiredBy !== 'researcher') &&
     (cap !== 'release' || !c?.release && evaluationProgress(p).submitted === 3) &&
-    (cap !== 'close' || c?.actionRequiredBy === 'staff' && (c?.method === 'publication' || c?.finalCheck || c?.revisedReportVersions?.length)))
+    (cap !== 'close' || canCloseOriginalReport(p) || c?.actionRequiredBy === 'staff' && (c?.method === 'publication' || c?.finalCheck || c?.revisedReportVersions?.length)))
   return { key: capability || 'waiting', capability }
 }
 export function timelineStates(p) {

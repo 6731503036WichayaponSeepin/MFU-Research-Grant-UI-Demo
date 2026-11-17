@@ -1,4 +1,5 @@
 import { CAPABILITY_MATRIX, ROLES, TERMINAL_STATES, actorId, requireDomain } from './contracts.js'
+import { canCloseOriginalReport } from './model.js'
 
 export function assertActor(actor, mode) {
   requireDomain(ROLES.includes(actor?.role) && !!actorId(actor) && !!actor.workspace && actor.active !== false,
@@ -44,7 +45,7 @@ export function hasCapability(project, actor, capability, { evaluationReviewerId
   if (capability === 'submitClosure') return actor.role === 'researcher' &&
     (project.status === 'IN_PROGRESS' || project.status === 'CLOSURE_REVIEW' && closure?.actionRequiredBy === 'researcher')
   if (capability === 'reviseReport') return actor.role === 'researcher' && project.status === 'REPORT_EVALUATION' &&
-    !!closure?.release && closure?.actionRequiredBy === 'researcher'
+    !!closure?.release && closure?.actionRequiredBy === 'researcher' && !canCloseOriginalReport(project)
   if (capability === 'evaluate') return actor.role === 'reviewer' && project.status === 'REPORT_EVALUATION' &&
     !closure?.release && !closure?.evaluations?.[uid]?.submitted
   if (capability === 'upload') {

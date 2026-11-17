@@ -2,7 +2,7 @@ import { signatureErrors } from '../utils/rs1Signatures.js'
 import { ACTIONS, TRANSITIONS, TERMINAL_STATES, CANCELLATION_REASONS, actorId, requireDomain } from './contracts.js'
 import { assertActor, assertCapability, hasCapability, projectProjection } from './permissions.js'
 import { newProject, assertProject, clone, pick, text, validId, proposalData, syncProposalInfo, emptyClosure,
-  validateDocument, assertDate, assertProposalComplete, addMonthsClamped, evaluationProgress, requiredSignatories } from './model.js'
+  validateDocument, assertDate, assertProposalComplete, addMonthsClamped, evaluationProgress, requiredSignatories, canCloseOriginalReport } from './model.js'
 import { validateEvaluation,cleanEvaluationAnswers,EVALUATION_RUBRIC_VERSION } from '../utils/evaluation.js'
 import { localDemoPolicyEnabled, correctionFields, EDITABLE_SECTIONS, DEMO_POLICY_ID } from './localDemoPolicy.js'
 
@@ -235,7 +235,9 @@ export function executeProjectAction(previous, command, context) {
       c.release = { id: command.id, releasedAt: now, releasedBy: uid, reviewerIds: clone(c.reviewers) }
       c.releasedFeedbackDocumentIds = c.reviewers.flatMap(id => c.evaluations[id].documentIds || [])
       c.revisionInstructions = text(data.notes) ? data.notes : ''
-      c.actionRequiredBy = 'researcher'; c.state = 'awaiting_revised_report'; break
+      if (canCloseOriginalReport(p)) { c.actionRequiredBy = 'staff'; c.state = 'final_check' }
+      else { c.actionRequiredBy = 'researcher'; c.state = 'awaiting_revised_report' }
+      break
     case 'submit_revised_report': {
       const docs = documents(p, data.documentIds, ['revised_report'])
       requireDomain(data.confirmed === true && docs.some(d => d.kind === 'revised_report' && !c.submissions.some(s => s.documentIds.includes(d.id)) && !c.revisedReportVersions.some(v => v.documentIds.includes(d.id))), 'NEW_REVISED_REPORT_REQUIRED', 'A new revised-report version and explicit submission are required')
@@ -252,8 +254,14 @@ export function executeProjectAction(previous, command, context) {
       c.finalCheck = { by: uid, date: now, revisedReportVersionId: latest.id, complete: true, notes: text(data.notes) ? data.notes : '' }; break
     }
     case 'close_report':
-      requireDomain(c?.method === 'report' && evaluationProgress(p).complete && c.release && c.finalCheck?.complete && c.finalCheck.revisedReportVersionId === c.revisedReportVersions.at(-1)?.id && data.confirmed === true, 'FINAL_CHECK_REQUIRED', 'Staff verification of the revised report is required')
-      documents(p, c.revisedReportVersions.at(-1).documentIds, ['revised_report'])
+      if (canCloseOriginalReport(p)) {
+        requireDomain(data.confirmed === true && c.assignments?.length === 3 && c.assignments.every(a => a.reportRevision === c.revision && JSON.stringify(a.documentIds) === JSON.stringify(c.reportDocumentIds)), 'FINAL_CHECK_REQUIRED', 'Confirm verification of the original report assigned to all reviewers')
+        documents(p, c.reportDocumentIds, ['report'])
+        c.finalCheck = { by: uid, date: now, originalReportRevision: c.revision, documentIds: clone(c.reportDocumentIds), complete: true, notes: text(data.notes) ? data.notes : '' }
+      } else {
+        requireDomain(c?.method === 'report' && evaluationProgress(p).complete && c.release && c.finalCheck?.complete && c.finalCheck.revisedReportVersionId === c.revisedReportVersions.at(-1)?.id && data.confirmed === true, 'FINAL_CHECK_REQUIRED', 'Staff verification of the revised report is required')
+        documents(p, c.revisedReportVersions.at(-1).documentIds, ['revised_report'])
+      }
       c.closedBy = uid; c.closedAt = now; c.state = 'completed'; p.closedAt = now; break
     case 'attach_document': {
       const document = validateDocument(data.document, mode)

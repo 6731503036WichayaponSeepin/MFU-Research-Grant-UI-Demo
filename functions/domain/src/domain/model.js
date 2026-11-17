@@ -119,5 +119,12 @@ export function evaluationProgress(p) {
   const submitted = valid ? ids.filter(id => p.closure.evaluations?.[id]?.submitted === true).length : 0
   return { assigned: ids.length, submitted, remaining: 3 - submitted, label: `${submitted}/3`, complete: valid && submitted === 3 }
 }
+// User-confirmed path: all three submitted assessments accept the original report.
+export function canCloseOriginalReport(p) {
+  const c = p?.closure
+  return p?.status === 'REPORT_EVALUATION' && c?.method === 'report' && !!c.release &&
+    evaluationProgress(p).complete && c.reviewers.every(id => c.evaluations?.[id]?.result === 0) &&
+    !c.revisedReportVersions?.length && !(p.statusHistory || []).some(e => e.action === 'request_revised_documents')
+}
 // Audit log and project history deliberately share the existing authoritative stream.
 export const auditLogs = p => clone(p.statusHistory)
