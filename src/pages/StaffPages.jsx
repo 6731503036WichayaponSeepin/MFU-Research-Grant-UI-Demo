@@ -4,7 +4,7 @@ import StaffReviewerAssignmentView, { ReviewerAssignmentSelection } from './Staf
 import StaffClosureReviewView from './StaffClosureReviewView'
 import './StaffCancellation.css'
 import ProjectStateBadge from '../components/ProjectStateBadge'
-import { FileText, CircleAlert } from 'lucide-react'
+import { CircleAlert } from 'lucide-react'
 import StaffChangeExtensionView from './StaffChangeExtensionView'
 import StaffCertificationView from './StaffCertificationView'
 import StaffProposalReviewView from './StaffProposalReviewView'
@@ -33,16 +33,15 @@ function Cancellation({ project: p, currentUser, go, local, commit }) {
   const [draft, setDraft, markSaved] = useFormDraft(`staff-v16:${currentUser.workspace}:${currentUser.uid}:${p.id}:cancellation-preview`, { reason: '', details: '', documentIds: [], confirmed: false })
   const [message, setMessage] = useState(''), [error, setError] = useState('')
   const [pending, setPending] = useState(null), [busy, setBusy] = useState(false)
-  function prepare() { setError(''); try { validateCancellation(p, draft); setPending({ project: p, payload: structuredClone(draft) }) } catch (e) { setError(e.message) } }
+  function prepare() { setError(''); try { const payload = { ...draft, documentIds: [] }; validateCancellation(p, payload); setPending({ project: p, payload: structuredClone(payload) }) } catch (e) { setError(e.message) } }
   async function cancelProject() { setBusy(true); setError(''); try { await commit(pending.project, 'cancel_project', pending.payload); markSaved(pending.payload); setMessage(text('บันทึกยกเลิกโครงการแล้ว', 'Project cancellation recorded')) } catch (e) { setError(e.message) } finally { setBusy(false); setPending(null) } }
-  function preview() { setError(''); setMessage(''); try { validateCancellation(p, draft); setMessage(text('ข้อมูลผ่านการตรวจสอบ ยังไม่ได้เปลี่ยนสถานะ', 'Details validated; status has not changed.')) } catch (e) { setError(e.message) } }
+  function preview() { setError(''); setMessage(''); try { validateCancellation(p, { ...draft, documentIds: [] }); setMessage(text('ข้อมูลผ่านการตรวจสอบ ยังไม่ได้เปลี่ยนสถานะ', 'Details validated; status has not changed.')) } catch (e) { setError(e.message) } }
   const reasonLabel = reason => ({RESIGNED:text('นักวิจัยลาออก','Researcher resigned'),EXCEEDED_DURATION:text('เกินระยะเวลาดำเนินโครงการ','Project duration exceeded'),OTHER:text('เหตุผลอื่น ๆ','Other reasons')})[reason] || reason
   return <div className="staff-cancellation">
     <header className="cx-heading"><div><span>{projectReference(p)}</span><h1 id="page-title" tabIndex={-1}>{text('บันทึกการยกเลิกโครงการ','Cancellation Record')}</h1><p>{!th&&p.titleEn||p.title}</p></div><ProjectStateBadge status={p.status}/></header>
     <div className="cx-grid"><div className="cx-left"><section className="panel shared-card"><h2>{text('รายละเอียดการยกเลิก','Cancellation Details')}</h2>
       <fieldset className="cx-reasons"><legend>{text('เหตุผลยกเลิก','Cancellation Reason')}</legend>{CANCELLATION_REASONS.map(reason=><label key={reason}><input type="radio" name="cancellation-reason" value={reason} checked={draft.reason===reason} onChange={e=>setDraft(d=>({...d,reason:e.target.value}))}/><span>{reasonLabel(reason)}</span></label>)}</fieldset>
       <label className="cx-details">{text('รายละเอียดเพิ่มเติม (เหตุผลอื่น ๆ ต้องระบุ)','Additional Details (required for OTHER)')}<textarea value={draft.details} onChange={e => setDraft(d => ({ ...d, details: e.target.value }))} /></label>
-      <section className="cx-documents"><h3>{text('เอกสารประกอบที่มีอยู่','Existing Supporting Documents')}</h3><p className="shared-note">{text('เลือกจากเอกสารโครงการที่มีอยู่','Select from existing project documents')}</p><div className="cx-document-list">{p.documents.map(doc => <label className="researcher-check" key={doc.id}><input type="checkbox" checked={draft.documentIds.includes(doc.id)} onChange={e => setDraft(d => ({ ...d, documentIds: e.target.checked ? [...d.documentIds, doc.id] : d.documentIds.filter(id => id !== doc.id) }))} /><FileText size={17}/><span>{doc.name}<small>{text('เวอร์ชัน','Version')} {doc.version}</small></span></label>)}{!p.documents.length&&<p className="shared-note">{text('ยังไม่มีเอกสารประกอบ','No supporting documents available')}</p>}</div></section>
       <label className="researcher-check cx-confirm"><input type="checkbox" checked={draft.confirmed} onChange={e => setDraft(d => ({ ...d, confirmed: e.target.checked }))} />{text('ยืนยันข้อมูลและเหตุผลการยกเลิก', 'Confirm cancellation details and reason')}</label>
       <p className="cx-permission">{text('สิทธิ์ใช้งานจริงยังรอยืนยัน (OPEN-20); ปุ่มนี้ใช้กับ Local Demo เท่านั้น','Production authority remains pending (OPEN-20); this action is for Local Demo only.')}</p>
       <div className="shared-actions cx-actions"><button className="outline-button" onClick={preview}>{text('ตรวจข้อมูลโดยไม่เปลี่ยนสถานะ', 'Validate without changing status')}</button><button className="primary" disabled={!local || busy || p.status !== 'IN_PROGRESS'} onClick={prepare}>{text('ยืนยันยกเลิกโครงการ', 'Confirm project cancellation')}</button></div>
