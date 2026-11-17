@@ -1,4 +1,4 @@
-import { LayoutDashboard, FolderOpen, CirclePlus, Bell, GraduationCap, Menu, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
+import { LayoutDashboard, FolderOpen, CirclePlus, GraduationCap, Menu, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
 
 import { useTranslation } from 'react-i18next'
 import { roleNavigation } from '../utils/commonWorkspace'
@@ -11,7 +11,6 @@ function Sidebar({ page, onNavigate, role, collapsed, onToggle, currentUser, ove
     {id:'dashboard',icon:LayoutDashboard,label:role==='staff'?(i18n.language==='en'?'Staff Dashboard':'ภาพรวมงานเจ้าหน้าที่'):role==='reviewer'?(i18n.language==='en'?'Reviewer Dashboard':'ภาพรวมงานประเมิน'):t('dashboard')},
     {id:'projects',icon:FolderOpen,label:role==='reviewer'?(i18n.language==='en'?'Assigned Reviews':'งานประเมินที่ได้รับมอบหมาย'):t(role==='staff'?'staffAllProjects':'myProjects')},
     ...(role==='researcher'?[{id:'choose',icon:CirclePlus,label:t('newProposal')}]:[]),
-    {id:'notifications',icon:Bell,label:t('notifications')}
   ].filter(menu => roleNavigation(role).includes(menu.id))
   function isActive(id){return page===id || id==='projects'&&['assigned-report','my-evaluation','details','timeline','documents','correction','evaluation','answers','results','project-change-record','proposal-pdf','revised-report','closure','staff-review','administrative-records','closure-review','reviewer-assignment','evaluation-tracking','final-verification','cancellation'].includes(page)||id==='choose'&&['manual','upload','submission'].includes(page)}
 
