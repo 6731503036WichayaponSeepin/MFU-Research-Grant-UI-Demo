@@ -37,15 +37,15 @@ test('one Local Demo record traverses proposal, correction, certification and pu
  p=run(p,'submit_closure',{method:'publication',summary:'Research summary',finishedDate:'2026-11-15',documentIds:[summary,publication]})
  p=run(p,'request_closure_documents',{notes:'Add publication information'},staff)
  assert.equal(nextRequiredAction(p,actor(staff)).capability,undefined)
- p=run(p,'supplement_closure',{method:'publication',summary:'Supplemented',finishedDate:'2026-11-15',documentIds:[summary,publication]})
- p=run(p,'check_closure',{confirmed:true},staff);p=run(p,'close_publication',{confirmed:true},staff)
+ p=run(p,'supplement_closure',{method:'publication',documentIds:[summary,publication]})
+ assert.equal(p.closure.summary,'Research summary'); assert.equal(p.closure.finishedDate,'2026-11-15'); p=run(p,'check_closure',{confirmed:true},staff);p=run(p,'close_publication',{confirmed:true},staff)
  assert.equal(p.status,'CLOSED');assert.equal(p.closure.assignments.length,0);assert.ok(!timelineStates(p).includes('REPORT_EVALUATION'))
  for(const tr of ['TR-01','TR-02','TR-03','TR-04','TR-05','TR-06','TR-08','TR-09','TR-10','TR-11','TR-12','TR-14'])assert.ok(p.statusHistory.some(e=>e.transitionRule===tr),tr)
  checkAudit(p)
 })
 test('three roles share report, drafts, release, PDFs, revised report and explicit final closure',()=>{
  let p=fixture('V16-ACTIVE'),report;[p,report]=attach(p,'report')
- p=run(p,'submit_closure',{method:'report',summary:'Five chapters',finishedDate:'2026-11-15',documentIds:[report]})
+ p=run(p,'submit_closure',{method:'report',documentIds:[report]})
  p=run(p,'check_closure',{confirmed:true},staff);p=run(p,'assign_reviewers',{reviewerIds:reviewers},staff)
  const assignments=structuredClone(p.closure.assignments),e={objectives:0,consistency:0,abstract:0,executive:0,result:1,utilization:{},additionalComments:'Submitted data'}
  for(const [i,uid]of reviewers.entries()){

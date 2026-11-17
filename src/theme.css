@@ -67,6 +67,11 @@ textarea { line-height:1.7; }
 .shared-table th,.shared-table td { padding:16px; }
 .shared-table tbody tr:last-child td { border-bottom:0; }
 .shared-table tbody tr:hover { background:#fafbfc; }
+.researcher-file-actions { display:flex; align-items:center; gap:12px; }
+.researcher-file-remove { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; padding:0; border:1px solid var(--border); border-radius:8px; background:var(--surface); color:var(--danger); cursor:pointer; }
+.researcher-file-remove:hover:not(:disabled) { background:var(--primary-light); border-color:var(--danger); }
+.researcher-file-remove:focus-visible { outline:2px solid var(--primary); outline-offset:2px; }
+.researcher-file-remove:disabled { opacity:.5; cursor:not-allowed; }
 .shared-status { border-radius:999px; padding:6px 12px; font-size:13px; border-color:transparent; color:#536174; background:#eef0f3; }
 .shared-status small { font-size:11px; }
 .state-IN_PROGRESS { color:#365f8e; background:#edf2f9; }

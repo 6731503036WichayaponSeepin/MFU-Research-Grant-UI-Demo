@@ -49,15 +49,14 @@ function submissionBundle(p, data, uid, now, demo = false) {
 }
 function closureSubmission(p, data, uid, now, supplementary = false) {
   requireDomain(['report', 'publication'].includes(data.method), 'CLOSURE_METHOD_REQUIRED', 'Choose report or publication path')
-  assertDate(data.finishedDate, 'finishedDate')
-  requireDomain(text(data.summary), 'CLOSURE_INCOMPLETE', 'Research summary required')
+  if (data.finishedDate) assertDate(data.finishedDate, 'finishedDate')
   documents(p, data.documentIds, data.method === 'report' ? ['report'] : ['summary_report', 'publication'])
   const c = p.closure || emptyClosure()
   requireDomain(!supplementary || c.method === data.method, 'CLOSURE_PATH_LOCKED', 'Supplementary documents must retain the selected path')
-  c.method = data.method; c.summary = data.summary; c.finishedDate = data.finishedDate
+  c.method = data.method; c.summary = data.summary ?? c.summary ?? ''; c.finishedDate = data.finishedDate || c.finishedDate || ''
   c.documentIds = clone(data.documentIds); c.revision++; c.state = 'submitted'; c.actionRequiredBy = 'staff'
   c.check = null
-  c.submissions.push({ revision: c.revision, documentIds: clone(data.documentIds), summary: data.summary, submittedBy: uid, submittedAt: now })
+  c.submissions.push({ revision: c.revision, documentIds: clone(data.documentIds), summary: c.summary, submittedBy: uid, submittedAt: now })
   p.closure = c
 }
 function validateCancellation(p, data) {
