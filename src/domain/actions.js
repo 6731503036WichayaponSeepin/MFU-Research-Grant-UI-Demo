@@ -87,15 +87,20 @@ export function executeProjectAction(previous, command, context) {
   if (rule) {
     requireDomain(rule.from.includes(previous?.status ?? null), 'INVALID_TRANSITION', `Invalid origin for ${ruleId}`)
     if (command.action === 'cancel_project') validateCancellation(previous, data)
-    requireDomain(!rule.open || ruleId === 'TR-03' && localDemoPolicyEnabled(previous, actor, mode), 'OPEN_REQUIREMENT', `${ruleId} is disabled pending ${rule.open}`, 409)
+    requireDomain(!rule.open || ['TR-03', 'TR-17'].includes(ruleId) && localDemoPolicyEnabled(previous, actor, mode), 'OPEN_REQUIREMENT', `${ruleId} is disabled pending ${rule.open}`, 409)
     requireDomain(rule.roles.includes(actor.role), 'ACCESS_DENIED', `Role cannot execute ${ruleId}`, 403)
   } else requireDomain(!contract.rules && contract.states?.includes(previous?.status), 'INVALID_TRANSITION', 'Action is unavailable at this project state')
-  assertCapability(previous, actor, contract.capability)
+  if (command.action === 'cancel_project') requireDomain(localDemoPolicyEnabled(previous, actor, mode) && actor.role === 'staff', 'ACCESS_DENIED', 'Cancellation is limited to staff in the fictional Local Demo', 403)
+  else assertCapability(previous, actor, contract.capability)
 
   let p = previous ? clone(previous) : newProject(data.projectId, actor, data.proposal || {}, now)
   const c = p.closure
   const eventDetails = {}
   switch (command.action) {
+    case 'cancel_project':
+      p.cancellation = { projectId: p.id, previousState: previous.status, reason: data.reason, details: text(data.details) ? data.details : '', documentIds: clone(data.documentIds || []), cancelledBy: uid, cancelledAt: now, temporaryDecision: 'LOCAL-DEMO-OPEN20' }
+      eventDetails.cancellation = clone(p.cancellation)
+      break
     case 'create_project': immutableProposal(p, 'draft', now, uid); break
     case 'save_proposal': {
       const proposal = proposalData(data.proposal || {})

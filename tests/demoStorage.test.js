@@ -20,6 +20,11 @@ test('migrates existing records, stores large PDFs and preserves them across sub
   }
   assert.equal(project.status, 'DRAFT')
   assert.equal(readFoundationProjects().find(p => p.id === project.id).documents.filter(d => d.id.startsWith('large-pdf-')).length, 4)
+  const base = project._version
+  const command = n => ({ id: `parallel-${n}`, action: 'attach_document', expectedVersion: base, payload: { document: { id: `parallel-file-${n}`, kind: 'support', name: `parallel-${n}.pdf`, size: 5, version: 5, dataUrl: `data:application/pdf;base64,${btoa('%PDF-')}` } } })
+  const [, latest] = await Promise.all([dispatchFoundationDemo(project.id, command(1), 'demo-user'), dispatchFoundationDemo(project.id, command(2), 'demo-user')])
+  assert.equal(latest.documents.find(d => d.id === 'parallel-file-2').version, 6)
+  await assert.rejects(dispatchFoundationDemo(project.id, { id: 'stale-save', action: 'save_proposal', expectedVersion: base, payload: { proposal: project.proposal } }, 'demo-user'), { code: 'VERSION_CONFLICT' })
   await initializeFoundationDemo()
   assert.equal(readFoundationProjects().find(p => p.id === project.id).documents.find(d => d.id === 'large-pdf-0').dataUrl, `data:application/pdf;base64,${btoa(bytes)}`)
 })
