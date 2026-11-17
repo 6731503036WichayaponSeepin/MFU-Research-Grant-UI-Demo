@@ -8,7 +8,6 @@ import { mergeImportedDraft } from '../utils/researcherWorkspace'
 import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
-  ArrowLeft,
   ArrowRight,
   CheckCircle2,
   FileText,
@@ -35,7 +34,7 @@ function fileToDataURL(file) {
   })
 }
 
-export default function UploadDocument({ onBack, onEdit, workspace }) {
+export default function UploadDocument({ onEdit, workspace }) {
   const { i18n } = useTranslation()
   const isThai = i18n.language !== 'en'
   const t = (th, en) => isThai ? th : en
@@ -212,30 +211,6 @@ export default function UploadDocument({ onBack, onEdit, workspace }) {
           'Import PDF/DOCX up to 10 MB for text extraction. Submitted PDFs must be at most 2 MB; an RS-1 PDF is generated from the reviewed form.'
         )}
       </p>
-
-      <button
-        className="outline-button"
-        type="button"
-        onClick={workspace ? workspace.manual : continueToForm}
-        disabled={loading}
-      >
-        {t(
-          'กรอกข้อมูลด้วยตนเองต่อ',
-          'Continue with editable manual fields'
-        )}
-      </button>
-
-      <button
-        className="upload-back"
-        type="button"
-        onClick={onBack}
-      >
-        <ArrowLeft size={17} />
-        {t(
-          'กลับไปเลือกวิธีสร้างข้อเสนอ',
-          'Back to Submission Methods'
-        )}
-      </button>
 
       <div className="upload-heading">
         <span className="upload-eyebrow">
