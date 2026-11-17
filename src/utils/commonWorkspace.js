@@ -69,6 +69,13 @@ export function timelineStates(p) {
 export const notificationReadKey = actor => `mfu-v16-notification-read:${actor.workspace || 'legacy-local'}:${actor.uid || actor.username}`
 export function workspaceNotifications(projects, actor, remote = null) {
   const visible = projects.map(p => visibleProject(p, actor)).filter(Boolean), ids = new Set(visible.map(p => p.id))
-  if (remote) return remote.filter(n => ids.has(n.projectId) && (!n.recipientId || n.recipientId === (actor.uid || actor.username)))
-  return visible.flatMap(p => isFoundationProject(p) ? p.notifications.filter(n => n.recipientId === (actor.uid || actor.username)).map(n => ({ ...n, id: `${p.id}:${n.id}` })) : (p.statusHistory || []).map((e, i) => ({ id: `${p.id}:${e.id || i}`, projectId: p.id, action: e.action || e.note, createdAt: e.updatedAt || e.date })))
+  const uid = actor.uid || actor.username
+  const reviewerNotification = (p, n) => {
+    if (actor.role !== 'reviewer') return true
+    if (n.action === 'assign_reviewers') return true
+    if (n.action !== 'submit_evaluation') return false
+    return n.actorUid === uid || (p.statusHistory || []).some(e => e.action === 'submit_evaluation' && e.updatedBy === uid && n.id === `${e.id}-${uid}`)
+  }
+  if (remote) return remote.filter(n => ids.has(n.projectId) && (!n.recipientId || n.recipientId === uid) && reviewerNotification(visible.find(p => p.id === n.projectId), n))
+  return visible.flatMap(p => isFoundationProject(p) ? p.notifications.filter(n => n.recipientId === uid && reviewerNotification(p, n)).map(n => ({ ...n, id: `${p.id}:${n.id}` })) : actor.role === 'reviewer' ? [] : (p.statusHistory || []).map((e, i) => ({ id: `${p.id}:${e.id || i}`, projectId: p.id, action: e.action || e.note, createdAt: e.updatedAt || e.date })))
 }

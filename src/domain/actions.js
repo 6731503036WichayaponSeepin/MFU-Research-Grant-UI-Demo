@@ -300,7 +300,8 @@ export function executeProjectAction(previous, command, context) {
     note: text(data.notes) ? data.notes : text(data.reason) ? data.reason : '', details: eventDetails }
   p.statusHistory.push(event)
   if (!['create_project', 'save_proposal', 'save_closure_draft', 'save_evaluation', 'attach_document'].includes(command.action)) {
-    const recipients = new Set([p.ownerUid, ...p.reviewerUids, ...Object.keys(profiles).filter(id => profiles[id]?.active && profiles[id].role === 'staff' && profiles[id].workspace === p.workspace)])
+    const reviewers = command.action === 'assign_reviewers' ? p.reviewerUids : command.action === 'submit_evaluation' ? [uid] : []
+    const recipients = new Set([p.ownerUid, ...reviewers, ...Object.keys(profiles).filter(id => profiles[id]?.active && profiles[id].role === 'staff' && profiles[id].workspace === p.workspace)])
     for (const recipientId of recipients) p.notifications.push({ id: `${command.id}-${recipientId}`, projectId: p.id, recipientId,
       action: command.action, createdAt: now, readAt: null, channel: 'in_app' })
   }

@@ -99,8 +99,9 @@ export const researchApi = onRequest(options, async (req,res) => {
         const view = projectView(next,{uid,role:user.role,workspace:actor.workspace})
         delete view.viewUids
         tx.set(viewRef,view)
-        if (!['save_proposal','save_draft','review_draft','check_draft','create_project','save_closure_draft','save_evaluation','attach_document'].includes(event.action)) {
-          tx.create(db.doc('workspaces/'+actor.workspace+'/users/'+uid+'/notifications/'+eventId),{notificationId:eventId,recipientId:uid,projectId:next.id,title:event.action,message:event.note || event.action,isRead:false,action:event.action,status:next.status,createdAt:next.serverUpdatedAt,readAt:null})
+        const reviewerNotice = user.role !== 'reviewer' || event.action === 'assign_reviewers' || event.action === 'submit_evaluation' && uid === actor.uid
+        if (reviewerNotice && !['save_proposal','save_draft','review_draft','check_draft','create_project','save_closure_draft','save_evaluation','attach_document'].includes(event.action)) {
+          tx.create(db.doc('workspaces/'+actor.workspace+'/users/'+uid+'/notifications/'+eventId),{notificationId:eventId,recipientId:uid,actorUid:actor.uid,projectId:next.id,title:event.action,message:event.note || event.action,isRead:false,action:event.action,status:next.status,createdAt:next.serverUpdatedAt,readAt:null})
         }
       }
       tx.update(ref,{viewUids})
